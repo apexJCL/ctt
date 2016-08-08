@@ -109,3 +109,322 @@ a.desc:after {
 .nav > li > form > button:hover {
     text-decoration: none;
 }
+
+
+/* Material  Icons */
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+.material-icons.md-96 { font-size: 96px; }
+.material-icons.md-128 { font-size: 128px; }
+
+
+/*
+    Video Styling
+*/
+.background-video {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height:100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background-size: 100%;
+}
+
+@media screen and (max-device-width: 600px) {
+    html {
+
+    }
+    .background-video {
+        display: none;
+    }
+}
+
+/*
+
+Welcome Styling
+
+*/
+
+.welcome-section {
+    min-height:100vh;
+    padding: 150px 0;
+}
+
+h1.page-title {
+    font-size: 5.6rem;
+}
+
+
+
+/* Lateral Menu Styles */
+
+
+/*
+*
+*   Keyframe effects
+*
+*/
+
+/*Google Chrome Support*/
+@-webkit-keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+/*Mozilla Firefox Support*/
+@-moz-keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+/*General Support*/
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/*Google Chrome Support*/
+@-webkit-keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+/*Mozilla Firefox Support*/
+@-moz-keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+/*General Support*/
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+
+.content-table {
+    z-index: 3;
+    position: fixed;
+    font-family: Raleway;
+    top: 25%;
+    right: 0px;
+    display: inline;
+    float: right;
+    min-width: 10vw;
+    text-align: right;
+}
+
+.table-of-contents a span {
+    opacity: 0;
+    color: rgba(145, 145, 145, 0.81);
+}
+
+.table-of-contents a span:hover {
+    -webkit-animation: fadeIn ease-in 1;
+    -moz-animation: fadeIn ease-in 1;
+    -o-animation: fadeIn ease-in 1;
+    animation: fadeIn ease-in 1;
+
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    -o-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+
+    -webkit-animation-duration: 0.2s;
+    -moz-animation-duration: 0.2s;
+    -o-animation-duration: 0.2s;
+    animation-duration: 0.2s;
+}
+
+.table-of-contents a:hover {
+    border: 0;
+}
+
+.table-of-contents a.active {
+    opacity: 1;
+    border: 0;
+}
+
+.table-of-contents ul li a div svg circle {
+    stroke: grey;
+    stroke-width: 2;
+    color: transparent;
+    fill: currentColor;
+}
+
+.table-of-contents ul li a div svg circle:hover {
+    color: grey;
+    fill: currentColor;
+}
+
+.table-of-contents ul li a.active div svg circle {
+    color: grey;
+    fill: currentColor;
+}
+
+.table-of-contents a.active span {
+    opacity: 1;
+}
+
+nav {
+    background-color: rgba(20, 52, 78, 0.6);
+}
+
+.showcase .row {
+    margin: 0;
+    padding: 0;
+}
+
+.showcase .col {
+    padding: 0;
+    margin: 0;
+}
+
+.showcase img {
+    min-height: 100%;
+    min-width: 100%;
+}
+
+.caption-container {
+    min-height: inherit;
+    position: relative;
+    overflow: hidden;
+}
+
+.caption-container--container {
+    position: absolute;
+    vertical-align: middle;
+    top:0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    opacity: 0;
+    /*Effects*/
+    -webkit-animation: fadeOut ease-in 1;
+    -moz-animation: fadeOut ease-in 1;
+    -o-animation: fadeOut ease-in 1;
+    animation: fadeOut ease-in 1;
+
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    -o-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+
+    -webkit-animation-duration: 0.4s;
+    -moz-animation-duration: 0.4s;
+    -o-animation-duration: 0.4s;
+    animation-duration: 0.4s;
+}
+
+.caption-container--container:hover {
+    -webkit-animation: fadeIn ease-in 1;
+    -moz-animation: fadeIn ease-in 1;
+    -o-animation: fadeIn ease-in 1;
+    animation: fadeIn ease-in 1;
+
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    -o-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+
+    -webkit-animation-duration: 0.2s;
+    -moz-animation-duration: 0.2s;
+    -o-animation-duration: 0.2s;
+    animation-duration: 0.2s;
+}
+
+.caption-container--text {
+    position: absolute;
+    -ms-text-align-last: right;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+
+.caption-container img {
+    min-height: 100%;
+    min-width: 100%;
+}
+
+.center-in-parent {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+
+.grey-overlay {
+    background-color: rgba(127, 127, 127, 0.7);
+}
+
+.blue-overlay {
+    background-color: rgba(0, 37, 127, 0.7);
+}
+
+.cyan-overlay {
+    background-color: rgba(0, 110, 127, 0.7);
+}
+
+.primary-overlay {
+    background-color: rgba(41, 103, 155, 0.7);
+}
+
+.no-margin {
+    margin: 0px 0px;
+}
+
+.fill {
+    background-size: cover;
+}
+
+/*
+Thin line decoration
+*/
+
+.thin-line {
+    width: 50px;
+    height: 15px;
+    margin-bottom: 10px;
+}
+
+.thin-line-small {
+    width: 30px;
+    height: 10px;
+    background-color:  rgba(61, 155, 233, 1);
+    margin-bottom: 10px;
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: #000000;
+    opacity: 0.7;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #000000;
+    opacity:  0.7;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #000000;
+    opacity:  0.7;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #000000;
+}
+
+.parallax-container {
+    height: 600px;
+}
+
+/*
+
+COlor ref: #00BCD4
+
+*/

@@ -1,11 +1,14 @@
 <?php
 namespace common\models;
 
+use backend\models\Role;
+use backend\models\Status;
+use backend\models\UserType;
 use Yii;
 use yii\base\NotSupportedException;
-use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\db\Expression;
+use yii\helpers\ArrayHelper;
 use yii\web\IdentityInterface;
 
 /**
@@ -61,13 +64,21 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
+            // Status
             ['status_id', 'default', 'value' => self::STATUS_ACTIVE],
+            [['status_id'],'in', 'range'=>array_keys($this->getStatusList())],
+            // Role
             ['role_id', 'default', 'value' => 10],
+            [['role_id'],'in', 'range'=>array_keys($this->getRoleList())],
+            // User type
             ['user_type_id', 'default', 'value' => 10],
+            [['user_type_id'],'in', 'range'=>array_keys($this->getUserTypeList())],
+            // Username
             ['username', 'filter', 'filter' => 'trim'],
             ['username', 'required'],
             ['username', 'unique'],
             ['username', 'string', 'min' => 6, 'max' => 35],
+            // Email
             ['email', 'filter', 'filter' => 'trim'],
             ['email', 'required'],
             ['email', 'email'],
@@ -88,7 +99,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function findIdentity($id)
     {
-        return static::findOne(['id' => $id, 'status' => self::STATUS_ACTIVE]);
+        return static::findOne(['id' => $id, 'status_id' => self::STATUS_ACTIVE]);
     }
 
     /**
@@ -107,7 +118,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function findByUsername($username)
     {
-        return static::findOne(['username' => $username, 'status' => self::STATUS_ACTIVE]);
+        return static::findOne(['username' => $username, 'status_id' => self::STATUS_ACTIVE]);
     }
 
     /**
@@ -124,7 +135,7 @@ class User extends ActiveRecord implements IdentityInterface
 
         return static::findOne([
             'password_reset_token' => $token,
-            'status' => self::STATUS_ACTIVE,
+            'status_id' => self::STATUS_ACTIVE,
         ]);
     }
 
@@ -212,5 +223,97 @@ class User extends ActiveRecord implements IdentityInterface
     public function removePasswordResetToken()
     {
         $this->password_reset_token = null;
+    }
+
+    /**
+     * Returns the role ID for a the actual user
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getRole()
+    {
+        return $this->hasOne(Role::className(), ['id' => 'role_id']);
+    }
+
+    public function getRoleName()
+    {
+        return $this->role ? $this->role->name : '-no role-';
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRoleList()
+    {
+        $droptions = Role::find()->asArray()->all();
+        return ArrayHelper::map($droptions, 'id', 'name');
+    }
+
+    /**
+     * Returns the user status
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getStatus()
+    {
+        return $this->hasOne(Status::className(), ['id' => 'status_id']);
+    }
+
+    /**
+     * Returns the status of the user as text, -no status- if not present.
+     *
+     * @return string
+     */
+    public function getStatusName()
+    {
+        return $this->status ? $this->status->name : '-no status-';
+    }
+
+    /**
+     * Returns a list of status
+     *
+     * @return array
+     */
+    public static function getStatusList()
+    {
+        $droptions = Status::find()->asArray()->all();
+        return Arrayhelper::map($droptions, 'id', 'name');
+    }
+
+    /**
+     * Returns the user type of the actual user
+     * 
+     * @return \yii\db\ActiveQuery
+     * 
+     */
+    public function getUserType()
+    {
+        return $this->hasOne(UserType::className(), ['id' => 'user_type_id']);
+    }
+
+    /**
+     * Returns the name of the user type
+     *
+     * @return string
+     */
+    public function getUserTypeName()
+    {
+        return $this->userType ? $this->userType->user_type_name : '- no user type -';
+    }
+
+    /**
+     * Returns a list of user types
+     *
+     * @return array
+     */
+    public function getUserTypeList()
+    {
+        $droptions = UserType::find()->asArray()->all();
+        return Arrayhelper::map($droptions, 'id', 'user_type_name');
+    }
+
+    public function getUserTypeId()
+    {
+        return $this->userType ? $this->userType->id : 'none';
     }
 }
