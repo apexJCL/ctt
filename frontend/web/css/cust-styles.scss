@@ -2,6 +2,7 @@
 $background-img-blur-intensity: 20px;
 $background-img-opacity: 0.5;
 $profile-img-radius: 96px;
+$static-viewport-height: 350px;
 /** Fonts **/
 
 .roboto-light {
@@ -170,4 +171,54 @@ FAB Button Style
       }
     }
   }
+}
+
+/*
+New display
+*/
+
+.static-display {
+  &--background {
+    img {
+      min-width: 100%;
+      position: fixed;
+      z-index: -3;
+      left: 50%;
+      transform: translate(-50%, -30%);
+      -webkit-filter: blur(10px);
+      filter: blur(10px);
+      @media only screen and (max-width: 600px){
+        max-width: 100px;
+      }
+    }
+  }
+  &--foreground {
+    z-index: -2;
+    position: fixed;
+    width: 100%;
+    &-profile-picture img {
+      z-index: -2;
+      max-width: 256px;
+      -webkit-clip-path: circle($profile-img-radius at center);
+      clip-path: circle($profile-img-radius at center);
+      @media only screen and (max-width: 700px){
+        max-width: 100%;
+        -webkit-clip-path: none;
+        clip-path: none;
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+      }
+    }
+    @media only screen and (max-width: 700px){
+      top: 50%;
+      left: 50%;
+    }
+  }
+}
+
+.static-display--viewport {
+  min-height: $static-viewport-height;
 }

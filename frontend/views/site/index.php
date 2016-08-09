@@ -93,15 +93,6 @@ $this->title = 'CTTE';
                     Clientes
                 </h1>
                 <div class="row">
-                    <div class="col s12 m6 l6 center hvr-underline-from-center">
-                        <a href="<?= Url::to(['users/index']) ?>" class=" white-text">
-                            <i class="material-icons md-96">assignment_ind</i>
-                            <p class="raleway flow-text">Ver</p>
-                        </a>
-                    </div>
-                    <div class="col s12 m6 l6 center">
-
-                    </div>
                 </div>
             </div>
             <div class="parallax"><img src="\img\filters.jpg" alt="" style="opacity: 0.7"></div>

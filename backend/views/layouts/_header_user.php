@@ -32,7 +32,7 @@ use yii\helpers\Url;
                         <div class="collapsible-body" style="">
                             <ul>
                                 <li>
-                                    <?= Html::a('Adminstrar', Url::to(['site/index'])) ?>
+                                    <?= Html::a('Adminstrar', Url::to(['user/index'])) ?>
                                 </li>
                             </ul>
                         </div>

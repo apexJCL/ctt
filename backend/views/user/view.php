@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
@@ -10,36 +11,79 @@ $this->title = $model->id;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Users'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="user-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+<div class="div">
+    <!-- Sección en blanco para poder ver fondo -->
+    <div class="section photo-viewport"></div>
+    <div class="section grey lighten-4 fab-container">
+        <div class="fixed-action-btn horizontal main-fab">
+            <a class="btn-floating btn-large">
+                <i class="large material-icons">menu</i>
+            </a>
+            <ul>
+                <li>
+                    <a href="#delete" class="btn-floating red modal-trigger tooltipped" data-position="bottom"
+                       data-delay="1000" data-tooltip="Eliminar"><i class="material-icons">delete</i></a>
+                </li>
+                <li>
+                    <?= Html::a(Html::tag('i', 'edit', ['class' => 'material-icons']),
+                        ['update', 'id' => $model->id],
+                        [
+                            'class' => 'btn-floating light-blue accent-2 tooltipped',
+                            'data-position' => "bottom",
+                            'data-delay' => '1000',
+                            'data-tooltip' => 'Editar'
+                        ])
+                    ?>
+                </li>
+                <li>
+                    <?= Html::a(Html::tag('i', 'list', ['class' => 'material-icons']),
+                        Url::to(['user/index']),
+                        [
+                            'class' => 'btn-floating blue accent-1 tooltipped',
+                            'data-position' => "bottom",
+                            'data-delay' => '1000',
+                            'data-tooltip' => 'Lista de Usuarios'
+                        ]
+                    ) ?>
+                </li>
+            </ul>
+        </div>
+        <div class="container">
+            <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a(Yii::t('app', 'Delete'), ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),
-                'method' => 'post',
-            ],
-        ]) ?>
-    </p>
+            <?= DetailView::widget([
+                'model' => $model,
+                'attributes' => [
+                    'id',
+                    'username',
+                    'email:email',
+                    'role_id',
+                    'status_id',
+                    'user_type_id',
+                    'created_at',
+                    'updated_at',
+                ],
+            ]) ?>
 
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'id',
-            'username',
-            'auth_key',
-            'password_hash',
-            'password_reset_token',
-            'email:email',
-            'role_id',
-            'status_id',
-            'user_type_id',
-            'created_at',
-            'updated_at',
-        ],
-    ]) ?>
+        </div>
+    </div>
 
+    <!-- Modal -->
+    <div class="modal red accent-4 white-text" id="delete">
+        <div class="modal-content">
+            <h4>¿Seguro que desea eliminar a este cliente?</h4>
+            <p>Esta acción no se puede revertir</p>
+        </div>
+        <div class="modal-footer">
+            <?= Html::a("Eliminar", ['delete', 'id' => $model->id],
+                ['class' => 'btn waves-effect waves-light red accent-2',
+                    'data' => [
+                        'method' => 'post'
+                    ],
+                ])
+            ?>
+            <a href="#!" class=" waves-effect waves-ripple btn-flat modal-close">Cancelar</a>
+        </div>
+    </div>
 </div>
