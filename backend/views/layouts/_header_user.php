@@ -3,8 +3,9 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 
 ?>
-<nav>
-    <div class="nav-wrapper">
+<div class="navbar-fixed">
+    <nav>
+        <div class="nav-wrapper">
         <span class="brand-logo center">
             <a href="<?= Url::to(['/']) ?>">
             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" data-original-aspect-ratio="0.8"
@@ -14,50 +15,52 @@ use yii\helpers\Url;
                     CTT EXP & RENTALS
                 </a>
                 </span>
-        <ul id="slide-out" class="side-nav">
-            <li>
-                <div class="userView">
-                    <img class="background" src="http://placehold.it/320x220">
-                    <a href="#!user"><img class="circle" src="http://placehold.it/320/240"></a>
-                    <a href="#!name"><span class="white-text name"><?= Yii::$app->user->identity->username ?></span></a>
-                    <a href="#!email"><span class="white-text email"><?= Yii::$app->user->identity->email ?></span></a>
-                </div>
-            </li>
-            <li>
-                <ul class="collapsible collapsible-accordion">
-                    <li class="bold">
-                        <a class="collapsible-header  waves-effect waves-ripple">
-                            Usuarios
-                        </a>
-                        <div class="collapsible-body" style="">
-                            <ul>
-                                <li>
-                                    <?= Html::a('Adminstrar', Url::to(['user/index'])) ?>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="bold"><a class="collapsible-header  waves-effect waves-ripple">Components</a>
-                        <div class="collapsible-body" style="">
-                            <ul>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="bold"><a class="collapsible-header waves-effect waves-ripple">JavaScript</a>
-                        <div class="collapsible-body" style="display: block;">
-                            <ul>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
-            </li>
-            <div class="divider"></div>
-            </li>
-            <li><a class="subheader">Cuenta</a></li>
-            <li>
-                <?= Html::a(Yii::t('app', 'Logout'), ['site/logout'], ['data' => ['method' => 'post']]) ?>
-            </li>
-        </ul>
-        <a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
-    </div>
-</nav>
+            <ul id="slide-out" class="side-nav">
+                <li>
+                    <div class="userView">
+                        <img class="background" src="http://placehold.it/320x220">
+                        <a href="#!user"><img class="circle" src="<?=Yii::$app->user->identity->getProfilePicture()?>"></a>
+                        <a href="#!name"><span class="white-text name"><?= Yii::$app->user->identity->username ?></span></a>
+                        <a href="#!email"><span class="white-text email"><?= Yii::$app->user->identity->email ?></span></a>
+                    </div>
+                </li>
+                <li>
+                    <ul class="collapsible collapsible-accordion">
+                        <li class="bold">
+                            <a class="collapsible-header  waves-effect waves-ripple">
+                                Usuarios
+                            </a>
+                            <div class="collapsible-body" style="">
+                                <ul>
+                                    <li>
+                                        <?= Html::a('Adminstrar', Url::to(['user/index'])) ?>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="bold"><a class="collapsible-header  waves-effect waves-ripple">Components</a>
+                            <div class="collapsible-body" style="">
+                                <ul>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="bold"><a class="collapsible-header waves-effect waves-ripple">JavaScript</a>
+                            <div class="collapsible-body" style="display: block;">
+                                <ul>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <div class="divider"></div>
+                </li>
+                <li><a class="subheader">Cuenta</a></li>
+                <li>
+                    <?= Html::a(Yii::t('app', 'Logout'), ['site/logout'], ['data' => ['method' => 'post']]) ?>
+                </li>
+            </ul>
+            <a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i
+                    class="material-icons">menu</i></a>
+        </div>
+    </nav>
+</div>

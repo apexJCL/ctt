@@ -9,8 +9,10 @@ use yii\base\NotSupportedException;
 use yii\db\ActiveRecord;
 use yii\db\Expression;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Url;
 use yii\web\IdentityInterface;
 use yii\web\NotFoundHttpException;
+use yii\web\UploadedFile;
 
 /**
  * User model
@@ -35,6 +37,11 @@ class User extends ActiveRecord implements IdentityInterface
 {
     const STATUS_DELETED = 0;
     const STATUS_ACTIVE = 10;
+
+    /**
+     * @var UploadedFile
+     */
+    public $profilePicture;
 
 
     /**
@@ -284,7 +291,7 @@ class User extends ActiveRecord implements IdentityInterface
     public static function getStatusList()
     {
         $droptions = Status::find()->asArray()->all();
-        return Arrayhelper::map($droptions, 'id', 'name');
+        return ArrayHelper::map($droptions, 'id', 'name');
     }
 
     /**
@@ -316,26 +323,31 @@ class User extends ActiveRecord implements IdentityInterface
     public function getUserTypeList()
     {
         $droptions = UserType::find()->asArray()->all();
-        return Arrayhelper::map($droptions, 'id', 'user_type_name');
+        return ArrayHelper::map($droptions, 'id', 'user_type_name');
     }
 
     public function getUserTypeId()
     {
-        return [
-            'id' => Yii::t('app', 'ID'),
-            'username' => Yii::t('app', 'Nombre de Usuario'),
-            'auth_key' => Yii::t('app', 'Auth Key'),
-            'password_hash' => Yii::t('app', 'Password Hash'),
-            'password_reset_token' => Yii::t('app', 'Password Reset Token'),
-            'email' => Yii::t('app', 'Email'),
-            'created_at' => Yii::t('app', 'Created At'),
-            'updated_at' => Yii::t('app', 'Updated At'),
-            'role_id' => Yii::t('app', 'Role ID'),
-            'status_id' => Yii::t('app', 'Status ID'),
-            'user_type_id' => Yii::t('app', 'User Type ID'),
-            'nombre' => Yii::t('app', 'Nombre'),
-            'apellido_paterno' => Yii::t('app', 'Apellido Paterno'),
-            'apellido_materno' => Yii::t('app', 'Apellido Materno'),
-        ];
+        return $this->userType ? $this->userType->id : 'none';
+    }
+
+    /**
+     * Uploads the user picture to the server in a specific subfolder
+     * @return bool
+     * @internal param $username
+     */
+    public function upload(){
+        return $this->profilePicture->saveAs(Yii::getAlias('@common').'/users/' . $this->username . '.' . $this->profilePicture->extension);
+    }
+
+    /**
+     * Returns the url to the profile picture, or default if it does not exists
+     */
+    public function getProfilePicture()
+    {
+        $baseUrl = 'img/users/'.$this->username;
+        return file_exists($baseUrl.'.jpg') ? '/'.$baseUrl.'.jpg' : (
+            file_exists($baseUrl . '.png') ? '/'.$baseUrl.'.png' : '/img/default_avatar.png'
+        );
     }
 }

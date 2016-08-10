@@ -2,12 +2,14 @@
 
 namespace backend\controllers;
 
+use frontend\models\SignupForm;
 use Yii;
 use common\models\User;
 use common\models\UserSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * UserController implements the CRUD actions for User model.
@@ -72,10 +74,16 @@ class UserController extends Controller
      */
     public function actionCreate()
     {
-        $model = new User();
+        $model = new SignupForm();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->profilePicture = UploadedFile::getInstance($model, 'profilePicture');
+            if ($user = $model->signup())
+                return $this->redirect(['view', 'id' => $user->id]);
+            else
+                return $this->render('create', [
+                    'model' => $model,
+                ]);
         } else {
             return $this->render('create', [
                 'model' => $model,

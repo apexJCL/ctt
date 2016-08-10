@@ -12,9 +12,10 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Users'), 'url' => ['
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<div class="div">
-    <!-- Sección en blanco para poder ver fondo -->
-    <div class="section photo-viewport"></div>
+<div>
+    <?= $this->render('_section_header_profile',[
+        'photoUrl' => $model->getProfilePicture()
+    ]) ?>
     <div class="section grey lighten-4 fab-container">
         <div class="fixed-action-btn horizontal main-fab">
             <a class="btn-floating btn-large">

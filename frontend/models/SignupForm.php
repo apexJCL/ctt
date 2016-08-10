@@ -1,8 +1,10 @@
 <?php
 namespace frontend\models;
 
+use Yii;
 use yii\base\Model;
 use common\models\User;
+use yii\web\UploadedFile;
 
 /**
  * Signup form
@@ -15,7 +17,11 @@ class SignupForm extends Model
     public $apellido_materno;
     public $email;
     public $password;
-
+    public $isNewRecord = true;
+    /**
+     * @var UploadedFile
+     */
+    public $profilePicture;
 
     /**
      * @inheritdoc
@@ -45,6 +51,7 @@ class SignupForm extends Model
 
             ['apellido_materno', 'required'],
             ['apellido_materno', 'string', 'max' => 50],
+            [['profilePicture'], 'image', 'skipOnEmpty' => true, 'extensions' => 'jpg, png, jpeg']
         ];
     }
 
@@ -58,8 +65,9 @@ class SignupForm extends Model
         if (!$this->validate()) {
             return null;
         }
-
         $user = new User();
+        // Primero asignamos el archivo que se subió
+        $user->profilePicture = UploadedFile::getInstance($this, 'profilePicture');
         $user->username = $this->username;
         $user->email = $this->email;
         $user->nombre = $this->nombre;
@@ -67,7 +75,10 @@ class SignupForm extends Model
         $user->apellido_materno = $this->apellido_materno;
         $user->setPassword($this->password);
         $user->generateAuthKey();
+        if ($user->save() && $user->validate() && $user->upload())
+            return $user;
         echo '<pre>';
-        return $user->save() ? $user : die(print_r($user->getErrors()));
+        print_r($user->getErrors());
+        die('x.x');
     }
 }
