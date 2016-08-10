@@ -1,0 +1,185 @@
+/** Fonts **/
+.roboto-light {
+  font-family: "Roboto" !important; }
+
+.roboto-medium {
+  font-family: "Roboto Medium" !important; }
+
+.roboto-regular {
+  font-family: "Roboto Regular" !important; }
+
+.roboto-thin {
+  font-family: "Roboto Thin" !important; }
+
+.roboto-bold {
+  font-family: "Roboto Bold" !important; }
+
+/*
+
+Raleway Font Face
+
+*/
+@font-face {
+  font-family: "Raleway";
+  src: url("../../fonts/raleway/Raleway-Regular.ttf") format("truetype");
+  font-weight: 400; }
+@font-face {
+  font-family: "Raleway Bold";
+  src: url("../../fonts/raleway/Raleway-Bold.ttf") format("truetype");
+  font-weight: 700; }
+@font-face {
+  font-family: "Raleway Light";
+  src: url("../../fonts/raleway/Raleway-Light.ttf") format("truetype");
+  font-weight: 300; }
+.raleway {
+  font-family: 'Raleway', sans-serif; }
+
+.raleway-bold {
+  font-family: 'Raleway Bold', sans-serif; }
+
+.raleway-light {
+  font-family: 'Raleway Light', sans-serif; }
+
+.home-logo {
+  margin-top: 200px; }
+  @media only screen and (max-width: 992px) {
+    .home-logo {
+      margin-top: 0px; } }
+
+.modal {
+  background-color: rgba(255, 255, 255, 0.8);
+  margin-top: 15vh; }
+
+.margin-big {
+  margin: 200px 0; }
+  @media only screen and (max-width: 992px) {
+    .margin-big {
+      margin: 0; } }
+
+.title-margin {
+  margin-top: 300px; }
+  @media only screen and (max-width: 992px) {
+    .title-margin {
+      margin: 0; } }
+
+/*
+FAB Button Style
+*/
+.main-fab {
+  position: absolute;
+  top: -30px;
+  right: 20px;
+  max-height: 48px; }
+  @media only screen and (max-width: 600px) {
+    .main-fab {
+      position: fixed;
+      top: auto;
+      bottom: 25px;
+      right: 20px; } }
+
+.fab-container {
+  position: relative; }
+
+.photo-viewport {
+  min-height: 350px; }
+  @media only screen and (max-width: 600px) {
+    .photo-viewport {
+      min-height: 200px; } }
+
+.dropdown-content-menu {
+  background-color: rgba(10, 29, 42, 0.6);
+  z-index: 100; }
+  .dropdown-content-menu li a {
+    text-align: left;
+    padding-left: 5px;
+    color: white; }
+  .dropdown-content-menu li:hover {
+    background-color: rgba(54, 166, 255, 0.8); }
+
+.profile-picture--container .foreground img {
+  position: absolute;
+  max-width: 256px;
+  max-height: 256px;
+  top: 128px;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  -webkit-clip-path: circle(96px at center);
+  clip-path: circle(96px at center); }
+  @media only screen and (max-width: 768px) {
+    .profile-picture--container .foreground img {
+      max-width: none;
+      max-height: 100%;
+      margin-top: auto;
+      position: relative;
+      top: auto;
+      left: auto;
+      transform: translate(0, 0);
+      min-width: 100%;
+      -webkit-clip-path: none;
+      clip-path: none; } }
+.profile-picture--container .background {
+  background-color: black;
+  position: absolute;
+  min-width: 100%; }
+  .profile-picture--container .background img {
+    opacity: 0.5;
+    min-width: 100%;
+    filter: blur(20px);
+    -webkit-filter: blur(20px);
+    transform: translateY(-30%); }
+    @media only screen and (max-width: 600px) {
+      .profile-picture--container .background img {
+        transform: translateY(0%); } }
+
+/*
+New display
+*/
+.static-display__background {
+  min-width: 100%;
+  position: fixed;
+  z-index: -3;
+  left: 50%;
+  transform: translate(-50%, -30%); }
+  .static-display__background--blurry img {
+    min-width: 100%;
+    -webkit-filter: blur(10px) brightness(80%);
+    filter: blur(10px) brightness(80%); }
+    @media only screen and (max-width: 600px) {
+      .static-display__background--blurry img {
+        min-height: 100%; } }
+@media only screen and (max-width: 700px) {
+  .static-display__foreground {
+    top: 50%;
+    left: 50%; } }
+.static-display__foreground--profile-picture {
+  display: inline;
+  z-index: -1;
+  position: absolute;
+  margin-top: 1rem;
+  min-width: 100%; }
+  .static-display__foreground--profile-picture img {
+    z-index: -2;
+    -webkit-clip-path: circle(96px at center);
+    clip-path: circle(96px at center); }
+    @media only screen and (max-width: 600px) {
+      .static-display__foreground--profile-picture img {
+        min-width: 100%;
+        padding: 0;
+        -webkit-clip-path: none;
+        clip-path: none;
+        display: block;
+        margin: auto; } }
+.static-display__foreground--brand-logo {
+  display: inline;
+  z-index: -1;
+  position: absolute;
+  margin-top: 1rem;
+  min-width: 100%; }
+  .static-display__foreground--brand-logo img {
+    z-index: -2;
+    max-height: 350px; }
+
+.static-display--viewport {
+  min-height: 350px; }
+
+/*# sourceMappingURL=cust-styles.css.map */

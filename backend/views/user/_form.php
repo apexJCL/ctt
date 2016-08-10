@@ -14,17 +14,11 @@ use yii\widgets\ActiveForm;
     <div class="input-field col s12">
         <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
     </div>
+    <div class="input-field col s12"><?= $form->field($model, 'nombre')->textInput(['maxlength' => true]) ?></div>
+    <div class="input-field col s12"><?= $form->field($model, 'apellido_paterno')->textInput(['maxlength' => true]) ?></div>
+    <div class="input-field col s12"><?= $form->field($model, 'apellido_materno')->textInput(['maxlength' => true]) ?></div>
     <div class="input-field col s12">
         <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
-    </div>
-    <div class="input-field col s12">
-        <?= $form->field($model, 'role_id')->textInput() ?>
-    </div>
-    <div class="input-field col s12">
-        <?= $form->field($model, 'status_id')->textInput() ?>
-    </div>
-    <div class="input-field col s12">
-        <?= $form->field($model, 'user_type_id')->textInput() ?>
     </div>
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Save'), ['class' => $model->isNewRecord ? 'btn waves-effect waves-light' : 'btn accent-2 waves-effect waves-light']) ?>

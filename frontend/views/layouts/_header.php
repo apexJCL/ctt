@@ -19,6 +19,15 @@
                             'data-beloworigin="true"',
                             'data-activates="dd-account"'
                         ]
+                    ],
+                    'clients' => [
+                        'id' => 'dd-clients',
+                        'class' => 'dropdown-content-menu',
+                        'data' => [
+                            'data-hover = "true"',
+                            'data-beloworigin="true"',
+                            'data-activates="dd-clients"'
+                        ]
                     ]
                 ]) ?>
             </ul>
@@ -26,13 +35,22 @@
                 <?= $this->render('_links',[
                     'account' => [
                         'id' => 'dd-m-account',
-                        'class' => 'dropdown-content-menu',
+                        'class' => '',
                         'data' => [
                             'data-hover = "true"',
                             'data-beloworigin="true"',
                             'data-activates="dd-m-account"'
                         ]
+                    ],
+                    'clients' => [
+                    'id' => 'dd-m-clients',
+                    'class' => '',
+                    'data' => [
+                        'data-hover = "true"',
+                        'data-beloworigin="true"',
+                        'data-activates="dd-m-clients"'
                     ]
+                ]
                 ]) ?>
             </ul>
         </div>

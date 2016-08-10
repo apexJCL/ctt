@@ -8,7 +8,6 @@ class CommonAssets  extends AssetBundle{
     public $sourcePath = '@frontend/web/css';
     public $css = [
         'site.css',
-        'effects.css',
-        'cust-styles.css'
+        'effects.css'
     ];
 }

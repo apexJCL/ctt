@@ -11,7 +11,7 @@ use yii\helpers\Url;
     <a href="#inventory" class="raleway">INVENTARIOS</a>
 </li>
 <li>
-    <a href="#!" class="raleway dropdown-button">CLIENTES</a>
+    <a href="#!" <?= implode(' ', $clients['data']) ?> class="raleway dropdown-button">CLIENTES</a>
 </li>
 <li>
     <a href="#documents" class="raleway">DOCUMENTOS</a>
@@ -29,10 +29,10 @@ use yii\helpers\Url;
 </script>
 
 <!-- Dropdown clientes -->
-<ul class="dropdown-content dropdown-content-menu" id="dropdown-clientes">
-    <li><a href="#">Uno</a></li>
-    <li><a href="#">Dos</a></li>
-    <li><a href="#">Tres</a></li>
+<ul class="dropdown-content <?= $clients['class'] ?>" id="<?=$clients['id']?>">
+    <li><a href="<?= Url::to(['client/index']) ?>">
+            <?= Yii::t('app', 'Manage') ?>
+        </a></li>
 </ul>
 
 <!-- Dropdown Cuenta del usuario actual -->

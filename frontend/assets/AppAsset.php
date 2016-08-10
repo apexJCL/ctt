@@ -12,10 +12,8 @@ class AppAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'css/materialize.css',
         'css/site.css',
         'css/effects.css',
-        'css/cust-styles.css'
     ];
     public $js = [
         'js/main.js'
@@ -23,6 +21,8 @@ class AppAsset extends AssetBundle
     public $depends = [
         'yii\web\YiiAsset',
         'frontend\assets\MaterializeAsset',
-        'frontend\assets\MaterialIconsAsset'
+        'frontend\assets\MaterialIconsAsset',
+        'frontend\assets\MaterializeCSSCustomAsset',
+        'frontend\assets\CTTAppAsset'
     ];
 }

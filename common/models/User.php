@@ -17,15 +17,18 @@ use yii\web\NotFoundHttpException;
  *
  * @property integer $id
  * @property string $username
+ * @property string $auth_key
  * @property string $password_hash
  * @property string $password_reset_token
  * @property string $email
- * @property int $role_id
- * @property int $status_id
- * @property string $auth_key
- * @property integer $status
- * @property integer $created_at
- * @property integer $updated_at
+ * @property string $created_at
+ * @property string $updated_at
+ * @property integer $role_id
+ * @property integer $status_id
+ * @property integer $user_type_id
+ * @property string $nombre
+ * @property string $apellido_paterno
+ * @property string $apellido_materno
  * @property string $password write-only password
  */
 class User extends ActiveRecord implements IdentityInterface
@@ -76,7 +79,6 @@ class User extends ActiveRecord implements IdentityInterface
             [['user_type_id'],'in', 'range'=>array_keys($this->getUserTypeList())],
             // Username
             ['username', 'filter', 'filter' => 'trim'],
-            ['username', 'required'],
             ['username', 'unique'],
             ['username', 'string', 'min' => 6, 'max' => 35],
             // Email
@@ -84,6 +86,10 @@ class User extends ActiveRecord implements IdentityInterface
             ['email', 'required'],
             ['email', 'email'],
             ['email', 'unique'],
+            // Datos Personales
+            [['nombre', 'apellido_paterno', 'apellido_materno'], 'string', 'max' => 50],
+            [['password_reset_token'], 'unique'],
+            [['username', 'auth_key', 'password_hash', 'email', 'nombre', 'apellido_paterno'], 'required']
         ];
     }
 
@@ -315,6 +321,21 @@ class User extends ActiveRecord implements IdentityInterface
 
     public function getUserTypeId()
     {
-        return $this->userType ? $this->userType->id : 'none';
+        return [
+            'id' => Yii::t('app', 'ID'),
+            'username' => Yii::t('app', 'Nombre de Usuario'),
+            'auth_key' => Yii::t('app', 'Auth Key'),
+            'password_hash' => Yii::t('app', 'Password Hash'),
+            'password_reset_token' => Yii::t('app', 'Password Reset Token'),
+            'email' => Yii::t('app', 'Email'),
+            'created_at' => Yii::t('app', 'Created At'),
+            'updated_at' => Yii::t('app', 'Updated At'),
+            'role_id' => Yii::t('app', 'Role ID'),
+            'status_id' => Yii::t('app', 'Status ID'),
+            'user_type_id' => Yii::t('app', 'User Type ID'),
+            'nombre' => Yii::t('app', 'Nombre'),
+            'apellido_paterno' => Yii::t('app', 'Apellido Paterno'),
+            'apellido_materno' => Yii::t('app', 'Apellido Materno'),
+        ];
     }
 }
