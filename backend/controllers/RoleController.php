@@ -45,7 +45,7 @@ class RoleController extends \yii\web\Controller
 
     public function actionDelete($name)
     {
-        if (RbacRole::deleteRole($name))
+        if (RbacRole::delete($name))
             return $this->redirect(['role/index']);
         else
             return $this->redirect(['role/error']);

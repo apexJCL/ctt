@@ -29,4 +29,14 @@ class FormRole extends Model
         }
         return false;
     }
+
+    public function attributeLabels()
+    {
+        return [
+            'name' => Yii::t('app', 'Name'),
+            'description' => Yii::t('app', 'Description')
+        ];
+    }
+
+
 }

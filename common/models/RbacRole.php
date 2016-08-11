@@ -55,7 +55,7 @@ class RbacRole extends Model
         ]);
     }
 
-    public static function deleteRole($name){
+    public static function delete($name){
         $role = Yii::$app->authManager->getRole($name);
         return Yii::$app->authManager->remove($role);
     }
