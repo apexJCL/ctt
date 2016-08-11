@@ -8,6 +8,7 @@ class FormRole extends Model
 {
     public $name;
     public $description;
+    public $isNewRecord = true;
 
     public function rules()
     {

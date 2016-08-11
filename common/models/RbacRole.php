@@ -13,6 +13,7 @@ use yii\data\ArrayDataProvider;
  *
  * @property string $name
  * @property string $description
+ * @property boolean $isNewRecord
  *
  */
 class RbacRole extends Model

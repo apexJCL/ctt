@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
@@ -20,6 +21,10 @@ use yii\widgets\ActiveForm;
 
     <div class="col s12">
         <?= Html::submitButton(Yii::t('app', 'Submit'), ['class' => 'btn btn-primary']) ?>
+        <?= Html::a(Yii::t('app', 'Cancel'), $model->isNewRecord ?
+            Url::to(['index']) :
+            Url::to(['view', 'name' => $model->name]),
+            ['class' => 'waves-effect btn-flat']) ?>
     </div>
     <?php ActiveForm::end(); ?>
 </div>
