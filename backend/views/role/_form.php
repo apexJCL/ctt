@@ -7,6 +7,7 @@ use yii\widgets\ActiveForm;
 /* @var $model common\models\RbacRole */
 /* @var $form ActiveForm */
 ?>
+
 <div class="container">
     <?php $form = ActiveForm::begin(); ?>
 
