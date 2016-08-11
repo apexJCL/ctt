@@ -4,41 +4,58 @@ namespace common\models;
 
 use Yii;
 use yii\base\Model;
+use yii\data\ArrayDataProvider;
 
 /**
  * Class RbacRole
  * @package common\models
  *
  *
- * @property string name
- * @property string description
+ * @property string $name
+ * @property string $description
  *
  */
 class RbacRole extends Model
 {
+    public static function getRoleId($name)
+    {
+        return Yii::$app->authManager->getRole($name)->id;
+    }
+
+    public static function getRole($get)
+    {
+        $role = Yii::$app->authManager->getRole($get);
+        return empty($role) ? 'x': $role;
+    }
+
     public function rules()
     {
         return [
-            ['name', 'required', 'string', 'max' => 30],
-            ['description', 'required', 'string', 'max' => 100]
+            ['name', 'required'],
+            ['description', 'required'],
+            ['name', 'string', 'min' => 5, 'max' => 30],
+            ['description', 'string', 'min' => 10, 'max' => 100]
         ];
     }
 
-    public function attributeLabels()
-    {
-        return [
-            'name' => Yii::t('app', 'Name'),
-            'description' => Yii::t('app', 'Description')
-        ];
+    public static function getRoles(){
+        return Yii::$app->authManager->getRoles();
     }
 
-    public function saveRole(){
-        if ($this->validate()){
-            $auth = Yii::$app->authManager;
-            $role = $auth->createRole($this->name);
-            $role->description = $this->description;
-            return $auth->add($role);
-        }
-        return false;
+    public static function getArrayDataProvider(){
+        return new ArrayDataProvider([
+            'allModels' => self::getRoles(),
+            'sort' => [
+                'attributes' => ['name', 'description']
+            ],
+            'pagination' => [
+                'pageSize' => 10
+            ]
+        ]);
+    }
+
+    public static function deleteRole($name){
+        $role = Yii::$app->authManager->getRole($name);
+        return Yii::$app->authManager->remove($role);
     }
 }

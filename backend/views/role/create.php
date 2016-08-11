@@ -1,9 +1,16 @@
 <?php
 /* @var $this yii\web\View */
-?>
-<h1>role/create</h1>
+/* @var $model \common\models\RbacRole */
 
-<p>
-    You may change the content of this page by modifying
-    the file <code><?= __FILE__; ?></code>.
-</p>
+$this->title = Yii::t('app', 'Creating role');
+?>
+<div>
+    <?= $this->render('//layouts/_section_header', [
+        'photoUrl' => '/img/showcase/users.jpg'
+    ]) ?>
+    <div class="section grey lighten-4 fab-container">
+        <?= $this->render('_form', [
+            'model' => $model
+        ]) ?>
+    </div>
+</div>

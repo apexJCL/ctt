@@ -17,7 +17,10 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Please login before continue' => 'Porfavor, inicie sesión para continuar',
+    'If photo not uploaded, default avatar will be used' => 'Si no se suba una foto, se usará el avatar por defecto',
+    'Personal Info' => 'Información personal',
+    'Profile Picture' => 'Foto de perfil',
+    'Protip: ' => 'Tip',
     'Cancel' => 'Cancelar',
     'Create' => 'Crear',
     'Create User' => 'Agregar Usuario',
@@ -25,10 +28,10 @@ return [
     'Login' => 'Iniciar Sesión',
     'Logout' => 'Cerrar Sesión',
     'Name' => 'Nombre',
+    'Please login before continue' => 'Porfavor, inicie sesión para continuar',
     'Reset' => 'Reiniciar',
     'Save' => 'Guardar',
     'Search' => 'Buscar',
-    'Update' => 'Actualizar',
     'Update {modelClass}: ' => 'Actualizar {modelClass}',
     'Users' => 'Usuarios',
     'View user: {name}' => 'Ver usuario: {name}',
