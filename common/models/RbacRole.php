@@ -23,12 +23,6 @@ class RbacRole extends Model
         return Yii::$app->authManager->getRole($name)->id;
     }
 
-    public static function getRole($get)
-    {
-        $role = Yii::$app->authManager->getRole($get);
-        return empty($role) ? 'x': $role;
-    }
-
     public function rules()
     {
         return [

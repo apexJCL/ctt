@@ -7,6 +7,7 @@ use common\models\RbacRole;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
+use yii\rbac\Role;
 
 class RoleController extends \yii\web\Controller
 {
@@ -14,7 +15,7 @@ class RoleController extends \yii\web\Controller
     {
         return [
             'access' => [
-                'class' =>  AccessControl::className(),
+                'class' => AccessControl::className(),
                 'rules' => [
                     [
                         'allow' => true,
@@ -32,17 +33,6 @@ class RoleController extends \yii\web\Controller
     }
 
 
-    public function actionCreate()
-    {
-        $form = new FormRole();
-        if($form->load(Yii::$app->request->post()) && $model = $form->saveRole()){
-            return $this->redirect(['view', 'name' => $form->name]);
-        }
-        return $this->render('create',[
-            'model' => $form
-        ]);
-    }
-
     public function actionDelete($name)
     {
         if (RbacRole::delete($name))
@@ -55,18 +45,46 @@ class RoleController extends \yii\web\Controller
     {
         $model = RbacRole::getArrayDataProvider();
         return $this->render('index', [
-            'model'=> $model
+            'model' => $model
+        ]);
+    }
+
+    public function actionCreate()
+    {
+        $form = new FormRole();
+        if ($form->load(Yii::$app->request->post()) && $form->saveRole()) {
+            return $this->redirect(['view', 'name' => $form->name]);
+        }
+        return $this->render('create', [
+            'model' => $form
         ]);
     }
 
     public function actionUpdate()
     {
-        return $this->render('update');
+        $form = FormRole::getRole(Yii::$app->getRequest()->getQueryParam('name'));
+        if ($form->load(Yii::$app->request->post()) && $form->saveRole()) {
+            return $this->redirect(['view', 'name' => $form->name]);
+        }
+        return $this->render('update', [
+            'model' => $form
+        ]);
+    }
+
+    public function actionChildren()
+    {
+        $name = Yii::$app->getRequest()->getQueryParam('name');
+        if (!empty($name) && $role = FormRole::getRole($name)){
+                return $this->render('children', [
+                    'model' => $role,
+                    'roles' => FormRole::getRolesAsJson()
+                ]);
+        } else return $this->redirect(['site/error']);
     }
 
     public function actionView()
     {
-        $model = RbacRole::getRole(Yii::$app->getRequest()->getQueryParam('name'));
+        $model = FormRole::getRole(Yii::$app->getRequest()->getQueryParam('name'));
         return $this->render('view', [
             'model' => $model
         ]);

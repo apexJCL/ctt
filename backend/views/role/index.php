@@ -3,6 +3,7 @@
 use yii\grid\GridView;
 use yii\helpers\Html;
 use yii\helpers\Url;
+use yii\web\View;
 
 /* @var $model \common\models\RbacRole */
 
@@ -47,10 +48,25 @@ $this->title = Yii::t('app', 'Roles');
                                     'data-pjax' => '0',
                                     'data-position' => 'bottom',
                                     'data-delay' => '200',
-                                    'data-tooltip' => 'Ver'
+                                    'data-tooltip' => Yii::t('app', 'Details')
                                 ]);
                         }
-                    ]
+                    ],
+                    [
+                        'header' => Html::tag('span', ''),
+                        'format' => 'raw',
+                        'value' => function ($data) {
+                            return Html::a(Html::tag('i', '', ['class' => 'mdi mdi-supervisor-account mdi-lg black-text']),
+                                Url::to(['children', 'name' => $data->name]),
+                                [
+                                    'class' => ['tooltipped right'],
+                                    'data-pjax' => '0',
+                                    'data-position' => 'bottom',
+                                    'data-delay' => '200',
+                                    'data-tooltip' => Yii::t('app', 'Add children roles')
+                                ]);
+                        }
+                    ],
                 ]
             ]) ?>
         </div>

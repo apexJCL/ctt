@@ -27,13 +27,19 @@ use yii\helpers\Url;
                 <li>
                     <ul class="collapsible collapsible-accordion">
                         <li class="bold">
-                            <a class="collapsible-header  waves-effect waves-ripple">
+                            <div class="collapsible-header waves-effect black-text active" id="userCollapsible">
                                 Usuarios
-                            </a>
+                            </div>
                             <div class="collapsible-body" style="">
                                 <ul>
-                                    <li>
-                                        <?= Html::a('Adminstrar', Url::to(['user/index'])) ?>
+                                    <li id="user">
+                                        <?= Html::a(Yii::t('app', 'Manage'), Url::to(['user/index'])) ?>
+                                    </li>
+                                    <li id="role">
+                                        <?= Html::a(Yii::t('app', 'Roles'), Url::to(['role/index'])) ?>
+                                    </li>
+                                    <li id="permission">
+                                        <?= Html::a(Yii::t('app', 'Permissions'), Url::to(['permission/index'])) ?>
                                     </li>
                                 </ul>
                             </div>

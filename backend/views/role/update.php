@@ -1,9 +1,15 @@
 <?php
-/* @var $this yii\web\View */
-?>
-<h1>role/update</h1>
 
-<p>
-    You may change the content of this page by modifying
-    the file <code><?= __FILE__; ?></code>.
-</p>
+/* @var $this yii\web\View */
+/* @var $model \common\models\RbacRole */
+
+?>
+<div>
+    <div class="section grey lighten-4 fab-container">
+        <div class="container">
+            <?= $this->render('_form', [
+                'model' => $model
+            ]) ?>
+        </div>
+    </div>
+</div>
