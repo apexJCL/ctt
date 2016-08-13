@@ -2,14 +2,13 @@
 
 namespace backend\controllers;
 
-use backend\models\FormRole;
-use common\models\RbacRole;
+use common\models\FormRole;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
-use yii\rbac\Role;
+use yii\web\Controller;
 
-class RoleController extends \yii\web\Controller
+class RoleController extends Controller
 {
     public function behaviors()
     {
@@ -35,7 +34,7 @@ class RoleController extends \yii\web\Controller
 
     public function actionDelete($name)
     {
-        if (RbacRole::delete($name))
+        if (FormRole::delete($name))
             return $this->redirect(['role/index']);
         else
             return $this->redirect(['role/error']);
@@ -43,7 +42,7 @@ class RoleController extends \yii\web\Controller
 
     public function actionIndex()
     {
-        $model = RbacRole::getArrayDataProvider();
+        $model = FormRole::getArrayDataProvider();
         return $this->render('index', [
             'model' => $model
         ]);

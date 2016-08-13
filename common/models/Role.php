@@ -1,11 +1,10 @@
 <?php
 
-namespace backend\models;
+namespace common\models;
 
-use common\models\RbacRole;
 use Yii;
 use yii\base\Model;
-use yii\helpers\ArrayHelper;
+use yii\data\ArrayDataProvider;
 use yii\rbac\Role;
 
 class FormRole extends Model
@@ -96,8 +95,61 @@ class FormRole extends Model
         ];
     }
 
+    /**
+     * Returns a role children items
+     *
+     * @param $name
+     * @return \yii\rbac\Item[]
+     */
     public function getChildren($name){
         return Yii::$app->authManager->getChildren($name);
     }
 
+    /**
+     * Deletes a role
+     *
+     * @param $name
+     * @return bool
+     */
+    public static function delete($name){
+        $role = Yii::$app->authManager->getRole($name);
+        return Yii::$app->authManager->remove($role);
+    }
+
+    /**
+     * Returns a Role Array Provider for GridView Widget
+     *
+     * @return ArrayDataProvider
+     */
+    public static function getArrayDataProvider(){
+        return new ArrayDataProvider([
+            'allModels' => self::getRoles(),
+            'sort' => [
+                'attributes' => ['name', 'description']
+            ],
+            'pagination' => [
+                'pageSize' => 10
+            ]
+        ]);
+    }
+
+    /**
+     * Returns all roles
+     *
+     * @return \yii\rbac\Role[]
+     */
+    public static function getRoles(){
+        return Yii::$app->authManager->getRoles();
+    }
+
+    /**
+     * Returns the Role ID (if exists)
+     *
+     * @param $name
+     * @return mixed
+     */
+    public static function getRoleId($name)
+    {
+        return Yii::$app->authManager->getRole($name)->id;
+    }
 }

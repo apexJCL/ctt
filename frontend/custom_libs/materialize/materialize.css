@@ -4625,8 +4625,8 @@ nav {
   color: #fff;
   background-color: #03a9f4;
   width: 100%;
-  height: 10vh;
-  line-height: 10vh; }
+  height: 90px;
+  line-height: 90px; }
   nav a {
     color: #fff; }
   nav i,
@@ -4634,8 +4634,8 @@ nav {
   nav i.material-icons {
     display: block;
     font-size: 2rem;
-    height: 10vh;
-    line-height: 10vh; }
+    height: 90px;
+    line-height: 90px; }
   nav .nav-wrapper {
     position: relative;
     height: 100%; }
@@ -4646,11 +4646,11 @@ nav {
     float: left;
     position: relative;
     z-index: 1;
-    height: 10vh; }
+    height: 90px; }
     nav .button-collapse i {
       font-size: 2.7rem;
-      height: 10vh;
-      line-height: 10vh; }
+      height: 90px;
+      line-height: 90px; }
   nav .brand-logo {
     position: absolute;
     color: #fff;
@@ -4730,7 +4730,7 @@ nav {
 
 .navbar-fixed {
   position: relative;
-  height: 10vh;
+  height: 90px;
   z-index: 998; }
   .navbar-fixed nav {
     position: fixed; }
