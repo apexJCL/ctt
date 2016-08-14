@@ -5,9 +5,8 @@ namespace common\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ArrayDataProvider;
-use yii\rbac\Role;
 
-class FormRole extends Model
+class Role extends Model
 {
     public $name;
     public $description;
@@ -15,11 +14,12 @@ class FormRole extends Model
     public $children = [];
 
     /**
-     * @param $role RbacRole
-     * @return FormRole
+     * @param $name
+     * @return Role
      */
-    public static function newRole($role)
+    public static function newRole($name)
     {
+        $role = Yii::$app->authManager->getRole($name);
         $t = new self();
         $t->name = $role->name;
         $t->description = $role->description;
