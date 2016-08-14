@@ -2,6 +2,9 @@
 
 namespace backend\controllers;
 
+use app\models\AuthItem;
+use common\models\AuthItemSearch;
+use Yii;
 use yii\web\Controller;
 
 class PermissionController extends Controller
@@ -18,7 +21,12 @@ class PermissionController extends Controller
 
     public function actionIndex()
     {
-        return $this->render('index');
+        $sm = AuthItemSearch::newPermissionSearch();
+        $dp = $sm->search(Yii::$app->request->queryParams);
+        return $this->render('index', [
+            'searchModel' => $sm,
+            'dataProvider' => $dp
+        ]);
     }
 
     public function actionUpdate()

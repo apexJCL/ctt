@@ -114,12 +114,43 @@ class AuthItem extends \yii\db\ActiveRecord
         return $this->hasMany(AuthItem::className(), ['name' => 'parent'])->viaTable('auth_item_child', ['child' => 'name']);
     }
 
-    public function getRole($name){
-        return self::find()->where(['type' => self::ROLE, 'name' => $name]);
+    /**
+     * Returns a role by his name
+     * @param $name
+     * @return array|null|\yii\db\ActiveRecord
+     */
+    public static function getRole($name){
+        return self::find()->where(['type' => self::ROLE, 'name' => $name])->one();
     }
 
-    public function getPermission($name)
+    /**
+     * Returns a permission by his name
+     *
+     * @param $name
+     * @return array|\yii\db\ActiveRecord
+     */
+    public static function getPermission($name)
     {
-        return self::find()->where(['type' => self::PERMISSION, 'name' => $name]);
+        return self::find()->where(['type' => self::PERMISSION, 'name' => $name])->one();
+    }
+
+    /**
+     * Returns all roles
+     *
+     * @return array|\yii\db\ActiveRecord[]
+     */
+    public function getRoles()
+    {
+        return self::find()->where(['type' => self::ROLE])->all();
+    }
+
+    /**
+     * Returns all permissions
+     *
+     * @return array|\yii\db\ActiveRecord[]
+     */
+    public function getPermissions()
+    {
+        return self::find()->where(['type' => self::PERMISSION])->all();
     }
 }

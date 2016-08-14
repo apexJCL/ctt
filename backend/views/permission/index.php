@@ -1,9 +1,30 @@
 <?php
-/* @var $this yii\web\View */
-?>
-<h1>permission/index</h1>
+/**
+ * @var $searchModel \common\models\AuthItemSearch
+ * @var $dataProvider \yii\data\ActiveDataProvider
+ * @var $this yii\web\View
+ */
+use yii\grid\GridView;
+use yii\widgets\Pjax;
 
-<p>
-    You may change the content of this page by modifying
-    the file <code><?= __FILE__; ?></code>.
-</p>
+$this->title = Yii::t('app', 'Permissions');
+?>
+
+<div>
+    <div class="section grey lighten-4">
+        <div class="container">
+            <? Pjax::begin() ?>
+            <?= GridView::widget([
+                'dataProvider' => $dataProvider,
+                'filterModel' => $searchModel,
+                'tableOptions' => ['class' => 'highlight'],
+                'columns' => [
+                    ['class' => 'yii\grid\SerialColumn'],
+                    'name',
+                    'description'
+                ]
+            ]) ?>
+            <? Pjax::end() ?>
+        </div>
+    </div>
+</div>
