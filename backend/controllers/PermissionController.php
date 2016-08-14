@@ -2,7 +2,9 @@
 
 namespace backend\controllers;
 
-class PermissionController extends \yii\web\Controller
+use yii\web\Controller;
+
+class PermissionController extends Controller
 {
     public function actionCreate()
     {
