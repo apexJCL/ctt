@@ -33,3 +33,17 @@ $roboto-font-path: '../../fonts/roboto/';
   @extend .section;
   min-height: 498px !important;
 }
+
+.brand-logo--offset-left {
+  @extend .brand-logo;
+  left: 25%;
+  transform: translateX(-25%);
+  @media only screen and (max-width: 992px) {
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }
+}

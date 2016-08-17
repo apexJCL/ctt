@@ -14,24 +14,9 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div>
-    <div class="static-display">
-        <div class="static-display__background">
-            <div class="static-display__background--blurry">
-                <img src="/img/showcase/users.jpg" alt="#" class="">
-            </div>
-        </div>
-        <div class="static-display__foreground--brand-logo row">
-            <div class="col l2 m4 hide-on-med-and-down">
-                <img src="/img/logo.png" alt="" class="responsive-img">
-            </div>
-            <div class="col l10 m8 white-text raleway-bold">
-                <div class="thin-line primary-overlay"></div>
-                <h1><?= Html::encode($this->title) ?></>
-            </div>
-        </div>
-    </div>
-    <!-- Sección en blanco para poder ver fondo -->
-    <div class="section static-display--viewport"></div>
+    <?= $this->render('//layouts/_section_header', [
+        'photoUrl' => '/img/showcase/users.jpg'
+    ]) ?>
     <div class="section grey lighten-5 fab-container" id="main">
         <div class="fixed-action-btn horizontal main-fab">
             <a class="btn-floating btn-large">

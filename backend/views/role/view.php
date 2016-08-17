@@ -4,6 +4,8 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\DetailView;
+use yii\widgets\Pjax;
+
 $this->title = Yii::t('app', 'Role: {role}', ['role' => $model->name]);
 ?>
 <div>
@@ -11,6 +13,7 @@ $this->title = Yii::t('app', 'Role: {role}', ['role' => $model->name]);
         'photoUrl' => '/img/showcase/users.jpg',
         'titleColor' => 'white'
     ]) ?>
+    <?php Pjax::begin(); ?>
     <div class="section grey lighten-4 fab-container">
         <div class="fixed-action-btn horizontal main-fab">
             <a class="btn-floating btn-large">
@@ -55,6 +58,7 @@ $this->title = Yii::t('app', 'Role: {role}', ['role' => $model->name]);
             ]) ?>
         </div>
     </div>
+    <?php Pjax::end() ?>
 </div>
 
 <!-- Modal -->
@@ -73,5 +77,4 @@ $this->title = Yii::t('app', 'Role: {role}', ['role' => $model->name]);
         ?>
         <a href="#!" class=" waves-effect waves-ripple btn-flat modal-close">Cancelar</a>
     </div>
-</div>
 </div>

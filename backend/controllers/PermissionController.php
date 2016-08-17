@@ -2,16 +2,46 @@
 
 namespace backend\controllers;
 
-use app\models\AuthItem;
-use common\models\AuthItemSearch;
+use backend\models\AuthItemSearch;
+use common\models\AuthItemForm;
 use Yii;
+use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 
 class PermissionController extends Controller
 {
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['root']
+                    ]
+                ]
+            ],
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'delete' => ['POST'],
+                ],
+            ],
+        ];
+    }
+
+
     public function actionCreate()
     {
-        return $this->render('create');
+        $form = new AuthItemForm();
+        if ($form->load(Yii::$app->request->post()) && $form->savePermission()){
+            return $this->redirect(['view', 'name' => $form->name]);
+        }
+        return $this->render('create', [
+            'model' => $form
+        ]);
     }
 
     public function actionDelete()
@@ -36,7 +66,10 @@ class PermissionController extends Controller
 
     public function actionView()
     {
-        return $this->render('view');
+        $model = AuthItemForm::getPermission(Yii::$app->getRequest()->getQueryParam('name'));
+        return $this->render('view',[
+            'model' => $model
+        ]);
     }
 
 }

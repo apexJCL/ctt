@@ -30,12 +30,11 @@
     });
     d.on('pjax:end', function() {
       $('.tooltipped').tooltip();
-      return loadingOverlay.hide(timeout);
+      loadingOverlay.hide(timeout);
     });
-    return;
     return true;
   });
 
 }).call(this);
 
-//# sourceMappingURL=main.js.map
+//# sourceMappingURL=app.js.map

@@ -1,8 +1,7 @@
 <?php
 
-namespace common\models;
+namespace backend\models;
 
-use app\models\AuthItem;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 

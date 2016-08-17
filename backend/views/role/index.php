@@ -8,6 +8,7 @@ use yii\grid\GridView;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\View;
+use yii\widgets\Pjax;
 
 $this->title = Yii::t('app', 'Roles');
 ?>
@@ -15,6 +16,7 @@ $this->title = Yii::t('app', 'Roles');
     <?= $this->render('//layouts/_section_header',[
         'photoUrl' => '/img/showcase/users.jpg'
     ]) ?>
+    <?php Pjax::begin(); ?>
     <div class="section grey lighten-4 fab-container">
         <div class="fixed-action-btn horizontal main-fab">
             <a class="btn-floating btn-large">
@@ -74,4 +76,5 @@ $this->title = Yii::t('app', 'Roles');
             ]) ?>
         </div>
     </div>
+    <?php Pjax::end(); ?>
 </div>

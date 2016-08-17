@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\User */
@@ -11,8 +12,10 @@ $this->title = Yii::t('app', 'Update {modelClass}: ', [
 ?>
 
 <div>
-    <!-- Sección en blanco para poder ver fondo -->
-    <div class="section" style="min-height: 250px"></div>
+    <?= $this->render('//layouts/_section_header', [
+        'photoUrl' => '/img/showcase/users.jpg'
+    ]) ?>
+    <?php Pjax::begin(); ?>
     <div class="section red green lighten-5">
         <div class="container">
             <div class="row">
@@ -27,4 +30,5 @@ $this->title = Yii::t('app', 'Update {modelClass}: ', [
             </div>
         </div>
     </div>
+    <?php Pjax::end(); ?>
 </div>

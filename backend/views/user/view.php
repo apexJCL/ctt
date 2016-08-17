@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\DetailView;
+use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\User */
@@ -11,9 +12,8 @@ $this->title = Yii::t('app', 'View user: {name}', ['name' => $model->nombre ? $m
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Users'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-
 <div>
-    <?= $this->render('_section_header_profile',[
+    <?= $this->render('_section_header_profile', [
         'photoUrl' => $model->getProfilePicture()
     ]) ?>
     <div class="section grey lighten-4 fab-container">

@@ -1,9 +1,17 @@
 <?php
-/* @var $this yii\web\View */
+/* @var $this yii\web\View
+ * @var $model \common\models\AuthItemForm
+ * */
 ?>
-<h1>permission/create</h1>
-
-<p>
-    You may change the content of this page by modifying
-    the file <code><?= __FILE__; ?></code>.
-</p>
+<div>
+    <?= $this->render('//layouts/_section_header', [
+        'photoUrl' => '/img/showcase/users.jpg'
+    ]) ?>
+    <div class="section grey lighten-4">
+        <div class="container">
+            <?= $this->render('//role/_form', [
+                'model' => $model
+            ]) ?>
+        </div>
+    </div>
+</div>

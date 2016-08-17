@@ -4651,34 +4651,36 @@ nav {
       font-size: 2.7rem;
       height: 90px;
       line-height: 90px; }
-  nav .brand-logo {
+  nav .brand-logo, nav .brand-logo--offset-left {
     position: absolute;
     color: #fff;
     display: inline-block;
     font-size: 1.2rem;
     padding: 0;
     white-space: nowrap; }
-    nav .brand-logo.center {
+    nav .brand-logo.center, nav .center.brand-logo--offset-left {
       left: 50%;
       transform: translateX(-50%); }
     @media only screen and (max-width: 992px) {
-      nav .brand-logo {
+      nav .brand-logo, nav .brand-logo--offset-left {
         left: 50%;
         transform: translateX(-50%); }
-        nav .brand-logo.left, nav .brand-logo.right {
+        nav .brand-logo.left, nav .left.brand-logo--offset-left, nav .brand-logo.right, nav .right.brand-logo--offset-left {
           padding: 0;
           transform: none; }
-        nav .brand-logo.left {
+        nav .brand-logo.left, nav .left.brand-logo--offset-left {
           left: 0.5rem; }
-        nav .brand-logo.right {
+        nav .brand-logo.right, nav .right.brand-logo--offset-left {
           right: 0.5rem;
           left: auto; } }
-    nav .brand-logo.right {
+    nav .brand-logo.right, nav .right.brand-logo--offset-left {
       right: 0.5rem;
       padding: 0; }
-    nav .brand-logo i,
-    nav .brand-logo [class^="mdi-"], nav .brand-logo [class*="mdi-"],
-    nav .brand-logo i.material-icons {
+    nav .brand-logo i, nav .brand-logo--offset-left i,
+    nav .brand-logo [class^="mdi-"],
+    nav .brand-logo--offset-left [class^="mdi-"], nav .brand-logo [class*="mdi-"], nav .brand-logo--offset-left [class*="mdi-"],
+    nav .brand-logo i.material-icons,
+    nav .brand-logo--offset-left i.material-icons {
       float: left;
       margin-right: 15px; }
   nav ul {
@@ -7942,5 +7944,17 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
 
 .section-big {
   min-height: 498px !important; }
+
+.brand-logo--offset-left {
+  left: 25%;
+  transform: translateX(-25%); }
+  @media only screen and (max-width: 992px) {
+    .brand-logo--offset-left {
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+      -moz-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+      -o-transform: translateX(-50%);
+      transform: translateX(-50%); } }
 
 /*# sourceMappingURL=materialize.css.map */

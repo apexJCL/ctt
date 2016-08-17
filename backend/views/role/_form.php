@@ -5,7 +5,7 @@ use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model \backend\models\FormRole*/
+/* @var $model \common\models\AuthItemForm */
 /* @var $form ActiveForm */
 ?>
 

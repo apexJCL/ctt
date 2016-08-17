@@ -3,11 +3,13 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\DetailView;
+use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Client */
 
 $this->title = $model->nombre;
+Pjax::begin();
 ?>
 <div>
     <?= $this->render('_section_header_profile',[
@@ -86,3 +88,4 @@ $this->title = $model->nombre;
         ?>
     </div>
 </div>
+<?php Pjax::end(); ?>

@@ -17,16 +17,17 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Cancel' => 'Cancelar',
-    'Manage' => 'Administrar',
+    'If you think this is a mistake, please contact Support.' => 'Si cree que esto es un error, contacte a Soporte Técnico.',
     'Are you sure you want to delete this item?' => '@@¿Seguro que desea eliminar este elemento?@@',
     'Delete' => '@@Eliminar@@',
+    'Cancel' => 'Cancelar',
     'Clients' => 'Clientes',
     'Create' => 'Crear',
     'Create Client' => 'Crear cliente',
     'If you forgot your password you can' => 'Si olvidó su contraseña, solicite',
     'Login' => 'Iniciar Sesión',
     'Logout' => 'Cerrar Sesión',
+    'Manage' => 'Administrar',
     'Please fill the next fields' => 'Porfavor, llene los siguientes campos',
     'Register' => 'Regístrate',
     'Reset' => 'Reiniciar',

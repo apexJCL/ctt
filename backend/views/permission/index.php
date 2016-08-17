@@ -6,30 +6,17 @@
  */
 use yii\grid\GridView;
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\widgets\Pjax;
 
 $this->title = Yii::t('app', 'Permissions');
 ?>
 
 <div>
-    <div class="static-display">
-        <div class="static-display__background">
-            <div class="static-display__background--blurry">
-                <img src="/img/showcase/users.jpg" alt="#" class="">
-            </div>
-        </div>
-        <div class="static-display__foreground--brand-logo row">
-            <div class="col l2 m4 hide-on-med-and-down">
-                <img src="/img/logo.png" alt="" class="responsive-img">
-            </div>
-            <div class="col l10 m8 white-text raleway-bold">
-                <div class="thin-line primary-overlay"></div>
-                <h1><?= Html::encode($this->title) ?></>
-            </div>
-        </div>
-    </div>
-    <!-- Sección en blanco para poder ver fondo -->
-    <div class="section static-display--viewport"></div>
+    <?= $this->render('//layouts/_section_header', [
+        'photoUrl' => '/img/showcase/users.jpg'
+    ]) ?>
+    <?php Pjax::begin(); ?>
     <div class="section grey lighten-4 fab-container">
         <div class="fixed-action-btn horizontal main-fab">
             <a class="btn-floating btn-large">
@@ -49,7 +36,6 @@ $this->title = Yii::t('app', 'Permissions');
             </ul>
         </div>
         <div class="container">
-            <? Pjax::begin() ?>
             <?= GridView::widget([
                 'dataProvider' => $dataProvider,
                 'filterModel' => $searchModel,
@@ -57,10 +43,25 @@ $this->title = Yii::t('app', 'Permissions');
                 'columns' => [
                     ['class' => 'yii\grid\SerialColumn'],
                     'name',
-                    'description'
+                    'description',
+                    [
+                        'header' => Html::tag('span', ''),
+                        'format' => 'raw',
+                        'value' => function ($data) {
+                            return Html::a(Html::tag('i', '', ['class' => 'mdi mdi-visibility mdi-lg black-text']),
+                                Url::to(['view', 'name' => $data->name]),
+                                [
+                                    'class' => ['tooltipped right'],
+                                    'data-pjax' => '0',
+                                    'data-position' => 'bottom',
+                                    'data-delay' => '200',
+                                    'data-tooltip' => Yii::t('app', 'Details')
+                                ]);
+                        }
+                    ],
                 ]
             ]) ?>
-            <? Pjax::end() ?>
         </div>
     </div>
+    <?php Pjax::end(); ?>
 </div>

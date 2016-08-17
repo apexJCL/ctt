@@ -6,9 +6,10 @@ use backend\models\AuthItem;
 use Yii;
 use yii\base\Model;
 
-class FormRole extends Model
+class AuthItemForm extends Model
 {
     public $name;
+    public $type;
     public $description;
     public $isNewRecord = true;
     public $children = [];
@@ -21,19 +22,28 @@ class FormRole extends Model
         $f = new self();
         $f->name = $r->name;
         $f->description = $r->description;
+        $f->type = $r->type;
         $f->isNewRecord = false;
         $f->children = Yii::$app->authManager->getChildren($r->name);
         return $f;
     }
 
+    /**
+     * Returns a form for the Permission (if exists)
+     *
+     * @param $name
+     * @return bool|AuthItemForm
+     */
     public static function getPermission($name)
     {
         $p = AuthItem::getPermission($name);
-        if (empty($r) or $r === null)
+        if (empty($p) or $p === null) {
             return false;
+        }
         $f = new self();
         $f->name = $p->name;
         $f->description = $p->description;
+        $f->type = $p->type;
         $f->isNewRecord = false;
         return $f;
     }
@@ -54,6 +64,16 @@ class FormRole extends Model
     public function saveRole()
     {
         return AuthItem::saveRole($this);
+    }
+
+    /**
+     * Saves a permission
+     *
+     * @return bool
+     */
+    public function savePermission()
+    {
+        return AuthItem::savePermission($this);
     }
 
     public function attributeLabels()

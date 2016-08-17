@@ -2,9 +2,9 @@
 
 namespace backend\controllers;
 
-use app\models\AuthItem;
-use common\models\AuthItemSearch;
-use common\models\FormRole;
+use backend\models\AuthItem;
+use backend\models\AuthItemSearch;
+use common\models\AuthItemForm;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
@@ -59,7 +59,7 @@ class RoleController extends Controller
 
     public function actionCreate()
     {
-        $form = new FormRole();
+        $form = new AuthItemForm();
         if ($form->load(Yii::$app->request->post()) && $form->saveRole()) {
             return $this->redirect(['view', 'name' => $form->name]);
         }
@@ -70,7 +70,7 @@ class RoleController extends Controller
 
     public function actionUpdate()
     {
-        $form = FormRole::getRole(Yii::$app->getRequest()->getQueryParam('name'));
+        $form = AuthItemForm::getRole(Yii::$app->getRequest()->getQueryParam('name'));
         if ($form->load(Yii::$app->request->post()) && $form->saveRole()) {
             return $this->redirect(['view', 'name' => $form->name]);
         }
@@ -81,12 +81,14 @@ class RoleController extends Controller
 
     public function actionChildren()
     {
-        $name = Yii::$app->getRequest()->getQueryParam('name');
-        if (!empty($name) && $role = AuthItem::getRole($name)){
-                return $this->render('children', [
-                    'model' => $role
-                ]);
-        } else return $this->redirect(['site/error']);
+        $form = AuthItemForm::getRole(Yii::$app->getRequest()->getQueryParam('name'));
+
+        if ($form->load(Yii::$app->request->post()) && $form->saveChildren())
+            return $this->redirect(['view', 'name' => $form->name]);
+
+        return $this->render('children',[
+            'model' => AuthItem::getRole(Yii::$app->request->getQueryParam('name'))
+        ]);
     }
 
     public function actionView()

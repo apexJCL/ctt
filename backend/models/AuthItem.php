@@ -1,9 +1,11 @@
 <?php
 
-namespace app\models;
+namespace backend\models;
 
-use common\models\FormRole;
+use common\models\AuthItemForm;
 use Yii;
+use yii\rbac\Permission;
+use yii\rbac\Role;
 
 /**
  * This is the model class for table "auth_item".
@@ -37,6 +39,7 @@ class AuthItem extends \yii\db\ActiveRecord
         return 'auth_item';
     }
 
+
     /**
      * @inheritdoc
      */
@@ -47,7 +50,7 @@ class AuthItem extends \yii\db\ActiveRecord
             [['type', 'created_at', 'updated_at'], 'integer'],
             [['description', 'data'], 'string'],
             [['name', 'rule_name'], 'string', 'max' => 64],
-            [['rule_name'], 'exist', 'skipOnError' => true, 'targetClass' => AuthRule::className(), 'targetAttribute' => ['rule_name' => 'name']],
+            [['rule_name'], 'exist', 'skipOnError' => true],
         ];
     }
 
@@ -118,7 +121,7 @@ class AuthItem extends \yii\db\ActiveRecord
     /**
      * Returns a role by his name
      * @param $name
-     * @return array|null|\yii\db\ActiveRecord
+     * @return Role
      */
     public static function getRole($name){
         return self::findAuth(self::ROLE)->where(['name' => $name])->one();
@@ -128,7 +131,7 @@ class AuthItem extends \yii\db\ActiveRecord
      * Returns a permission by his name
      *
      * @param $name
-     * @return array|\yii\db\ActiveRecord
+     * @return Permission
      */
     public static function getPermission($name)
     {
@@ -140,7 +143,7 @@ class AuthItem extends \yii\db\ActiveRecord
      *
      * @return array|\yii\db\ActiveRecord[]
      */
-    public function getRoles()
+    public static function getRoles()
     {
         return self::findAuth(self::ROLE)->all();
     }
@@ -150,7 +153,7 @@ class AuthItem extends \yii\db\ActiveRecord
      *
      * @return array|\yii\db\ActiveRecord[]
      */
-    public function getPermissions()
+    public static function getPermissions()
     {
         return self::findAuth(self::PERMISSION)->all();
     }
@@ -181,7 +184,7 @@ class AuthItem extends \yii\db\ActiveRecord
     /**
      * Saves a role
      *
-     * @param $form FormRole
+     * @param $form AuthItemForm
      * @return bool
      */
     public static function saveRole($form)
@@ -198,6 +201,30 @@ class AuthItem extends \yii\db\ActiveRecord
             $role->name = $form->name;
             $role->description = $form->description;
             return Yii::$app->authManager->update($form->name, $role);
+        }
+    }
+
+
+    /**
+     * Saves a permission
+     *
+     * @param $form AuthItemForm
+     * @return bool
+     */
+    public static function savePermission($form)
+    {
+        $p = self::getPermission($form->name);
+        if  (empty($p)){
+            if ($form->validate()){
+                $auth = Yii::$app->authManager;
+                $p = $auth->createPermission($form->name);
+                $p->description = $form->description;
+                return $auth->add($p);
+            } else return false;
+        } else {
+            $p->name = $form->name;
+            $p->description = $form->description;
+            return Yii::$app->authManager->update($form->name, $p);
         }
     }
 }

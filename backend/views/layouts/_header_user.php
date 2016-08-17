@@ -6,7 +6,7 @@ use yii\helpers\Url;
 <div class="navbar-fixed">
     <nav>
         <div class="nav-wrapper">
-        <span class="brand-logo center">
+        <span class="brand-logo--offset-left">
             <a href="<?= Url::to(['/']) ?>">
             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" data-original-aspect-ratio="0.8"
                  style="width: 40px; height: 50px; fill: #ffffff; vertical-align: middle"><g
@@ -18,7 +18,7 @@ use yii\helpers\Url;
             <ul id="slide-out" class="side-nav">
                 <li>
                     <div class="userView">
-                        <img class="background" src="http://placehold.it/320x220">
+                        <img class="background" src="http://lorempixel.com/400/200">
                         <a href="#!user"><img class="circle" src="<?=Yii::$app->user->identity->getProfilePicture()?>"></a>
                         <a href="#!name"><span class="white-text name"><?= Yii::$app->user->identity->username ?></span></a>
                         <a href="#!email"><span class="white-text email"><?= Yii::$app->user->identity->email ?></span></a>
@@ -27,7 +27,7 @@ use yii\helpers\Url;
                 <li>
                     <ul class="collapsible collapsible-accordion">
                         <li class="bold">
-                            <div class="collapsible-header waves-effect black-text active" id="userCollapsible">
+                            <div class="collapsible-header waves-effect black-text" id="userCollapsible">
                                 Usuarios
                             </div>
                             <div class="collapsible-body" style="">

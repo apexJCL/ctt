@@ -2,7 +2,8 @@
 
 /* @var $this yii\web\View */
 /* @var $form ActiveForm */
-/* @var $model \common\models\RbacRole */
+/* @var $model \backend\models\AuthItem */
+use common\widgets\Multiple;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\View;
@@ -16,16 +17,16 @@ $this->registerJsFile('/js/role/children_app.js', ['depends' => [\yii\web\Jquery
         <div class="container">
             <div class="row">
                 <?php $form = ActiveForm::begin(); ?>
-                <div class="input-field col s12 m6 l2">
-                    <?= $form->field($model, 'name')->textInput(['readonly' => true, 'disabled' => true]) ?>
-                </div>
-                <div class="input-field col s12 m6 l4">
-                    <?= $form->field($model, 'description')->textInput(['readonly' => true, 'disabled' => true]) ?>
-                </div>
-                <div class="row">
-                    <div class="input-field col s12">
-                    </div>
-                </div>
+                <?= $form->field($model, 'name')->textInput(['disabled' => true]) ?>
+                <?= Multiple::widget([
+                    'title' => [
+                        'text' => Yii::t('app', 'Manage'),
+                        'tag' => 'h4'
+                    ],
+                    'table_headers' => [
+                        'Rol hijo'
+                    ]
+                ]); ?>
                 <?php ActiveForm::end(); ?>
             </div>
             <div class="col s12">

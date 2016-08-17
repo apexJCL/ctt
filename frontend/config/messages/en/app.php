@@ -22,6 +22,7 @@ return [
     'Create' => '',
     'Create Client' => '',
     'If you forgot your password you can' => '',
+    'If you think this is a mistake, please contact Support.' => '',
     'Login' => '',
     'Logout' => '',
     'Manage' => '',
