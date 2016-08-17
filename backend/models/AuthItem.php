@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use common\models\FormRole;
 use Yii;
 
 /**
@@ -120,7 +121,7 @@ class AuthItem extends \yii\db\ActiveRecord
      * @return array|null|\yii\db\ActiveRecord
      */
     public static function getRole($name){
-        return self::find()->where(['type' => self::ROLE, 'name' => $name])->one();
+        return self::findAuth(self::ROLE)->where(['name' => $name])->one();
     }
 
     /**
@@ -131,7 +132,7 @@ class AuthItem extends \yii\db\ActiveRecord
      */
     public static function getPermission($name)
     {
-        return self::find()->where(['type' => self::PERMISSION, 'name' => $name])->one();
+        return self::findAuth(self::PERMISSION)->where(['name' => $name])->one();
     }
 
     /**
@@ -141,7 +142,7 @@ class AuthItem extends \yii\db\ActiveRecord
      */
     public function getRoles()
     {
-        return self::find()->where(['type' => self::ROLE])->all();
+        return self::findAuth(self::ROLE)->all();
     }
 
     /**
@@ -151,6 +152,52 @@ class AuthItem extends \yii\db\ActiveRecord
      */
     public function getPermissions()
     {
-        return self::find()->where(['type' => self::PERMISSION])->all();
+        return self::findAuth(self::PERMISSION)->all();
+    }
+
+    /**
+     * Finds Auth Item by type
+     *
+     * @param $type
+     * @return \yii\db\ActiveQuery
+     */
+    public static function findAuth($type)
+    {
+        return self::find()->where(['type' => $type]);
+    }
+
+    /**
+     * Deletes a role
+     *
+     * @param $name
+     * @return bool
+     */
+    public static function deleteRole($name)
+    {
+        $role = Yii::$app->authManager->getRole($name);
+        return Yii::$app->authManager->remove($role);
+    }
+
+    /**
+     * Saves a role
+     *
+     * @param $form FormRole
+     * @return bool
+     */
+    public static function saveRole($form)
+    {
+        $role = Yii::$app->authManager->getRole($form->name);
+        if (empty($role)) {
+            if ($form->validate()) {
+                $auth = Yii::$app->authManager;
+                $role = $auth->createRole($form->name);
+                $role->description = $form->description;
+                return $auth->add($role);
+            } else return false;
+        } else {
+            $role->name = $form->name;
+            $role->description = $form->description;
+            return Yii::$app->authManager->update($form->name, $role);
+        }
     }
 }

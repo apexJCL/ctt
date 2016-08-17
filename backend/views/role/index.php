@@ -1,11 +1,13 @@
 <?php
-/* @var $this yii\web\View */
+/* @var $this yii\web\View
+ * @var $searchModel \common\models\AuthItemSearch
+ * @var $dataProvider \yii\data\ActiveDataProvider
+ *
+ * */
 use yii\grid\GridView;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\View;
-
-/* @var $model \common\models\RbacRole */
 
 $this->title = Yii::t('app', 'Roles');
 ?>
@@ -33,7 +35,8 @@ $this->title = Yii::t('app', 'Roles');
         </div>
         <div class="container">
             <?= GridView::widget([
-                'dataProvider' => $model,
+                'dataProvider' => $dataProvider,
+                'filterModel' => $searchModel,
                 'columns' => [
                     'name',
                     'description',

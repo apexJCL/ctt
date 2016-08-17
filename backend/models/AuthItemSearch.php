@@ -18,6 +18,13 @@ class AuthItemSearch extends AuthItem
         return $t;
     }
 
+    public static function newRoleSearch()
+    {
+        $t = new self();
+        $t->searchType = AuthItem::ROLE;
+        return $t;
+    }
+
     public function rules()
     {
         return [
@@ -32,10 +39,7 @@ class AuthItemSearch extends AuthItem
 
     public function search($params)
     {
-        $query = AuthItem::find();
-
-        // add conditions that should always apply here
-
+        $query = AuthItem::findAuth($this->searchType);
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
@@ -48,17 +52,9 @@ class AuthItemSearch extends AuthItem
             return $dataProvider;
         }
 
-        // grid filtering conditions
-        $query->andFilterWhere([
-            'name' => $this->name,
-            'description' => $this->description,
-            'type' => $this->type,
-        ]);
-
         $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'description', $this->description])
-            ->andFilterWhere(['like', 'type', $this->searchType]);
-        
+            ->andFilterWhere(['like', 'description', $this->description]);
+
         return $dataProvider;
     }
 }
