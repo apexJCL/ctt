@@ -32,6 +32,6 @@ $(document).ready ->
   d.on 'pjax:end', ->
     $('.tooltipped').tooltip()
     loadingOverlay.hide(timeout)
-  return
+    return
 
   return true

@@ -227,4 +227,13 @@ class AuthItem extends \yii\db\ActiveRecord
             return Yii::$app->authManager->update($form->name, $p);
         }
     }
+
+    /**
+     * @param $role AuthItem
+     * @return array|\yii\db\ActiveRecord[]
+     */
+    public static function getRolePermissions($role)
+    {
+        return $role->getChildren()->where(['type' => self::PERMISSION])->all();
+    }
 }

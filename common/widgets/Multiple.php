@@ -7,7 +7,9 @@ use yii\bootstrap\Widget;
 
 class Multiple extends Widget {
 
+    public $message = 'Removed';
     public $childrenName = 'children';
+    public $model = null;
     public $title = [
         'text' => '',
         'tag' => 'h1'
@@ -23,8 +25,8 @@ class Multiple extends Widget {
             'class' => ''
         ],
         'options' => [
-            'class' => 'highlight',
-            'outer-div-class' => 'col s12'
+            'class' => '',
+            'outer-div-class' => 'col s12 m6'
         ],
         'button' => [
             'tag' => 'a',
@@ -54,7 +56,7 @@ class Multiple extends Widget {
     public function run()
     {
         return $this->render('@common/widgets/Multiple/views/multiple',[
-            'widget' => $this,
+            'config' => $this
         ]);
     }
 

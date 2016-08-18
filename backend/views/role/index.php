@@ -72,6 +72,21 @@ $this->title = Yii::t('app', 'Roles');
                                 ]);
                         }
                     ],
+                    [
+                        'header' => Html::tag('span', ''),
+                        'format' => 'raw',
+                        'value' => function ($data) {
+                            return Html::a(Html::tag('i', '', ['class' => 'mdi mdi-assignment mdi-lg black-text']),
+                                Url::to(['permissions', 'name' => $data->name]),
+                                [
+                                    'class' => ['tooltipped right'],
+                                    'data-pjax' => '0',
+                                    'data-position' => 'bottom',
+                                    'data-delay' => '200',
+                                    'data-tooltip' => Yii::t('app', 'Manage Permissions')
+                                ]);
+                        }
+                    ],
                 ]
             ]) ?>
         </div>

@@ -91,6 +91,16 @@ class RoleController extends Controller
         ]);
     }
 
+    public function actionPermissions()
+    {
+        $role = AuthItem::getRole(Yii::$app->request->getQueryParam('name'));
+        $permissions = AuthItem::getRolePermissions($role);
+        return $this->render('permissions',[
+            'role' => $role,
+            'permissions' => $permissions
+        ]);
+    }
+
     public function actionView()
     {
         $model = AuthItem::getRole(Yii::$app->getRequest()->getQueryParam('name'));

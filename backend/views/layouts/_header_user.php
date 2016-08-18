@@ -18,7 +18,7 @@ use yii\helpers\Url;
             <ul id="slide-out" class="side-nav">
                 <li>
                     <div class="userView">
-                        <img class="background" src="http://lorempixel.com/400/200">
+                        <img class="background" src="http://placehold.it/300x300">
                         <a href="#!user"><img class="circle" src="<?=Yii::$app->user->identity->getProfilePicture()?>"></a>
                         <a href="#!name"><span class="white-text name"><?= Yii::$app->user->identity->username ?></span></a>
                         <a href="#!email"><span class="white-text email"><?= Yii::$app->user->identity->email ?></span></a>
