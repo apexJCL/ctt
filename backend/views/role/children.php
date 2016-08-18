@@ -18,16 +18,6 @@ $this->registerJsFile('/js/role/children_app.js', ['depends' => [\yii\web\Jquery
             <div class="row">
                 <?php $form = ActiveForm::begin(); ?>
                 <?= $form->field($model, 'name')->textInput(['disabled' => true]) ?>
-                <?= Multiple::widget([
-                    'title' => [
-                        'text' => Yii::t('app', 'Manage'),
-                        'tag' => 'h4'
-                    ],
-                    'table_headers' => [
-                        'Rol hijo'
-                    ],
-                    'childrenName' => 'roles'
-                ]); ?>
             </div>
             <div class="col s12">
                 <?= Html::submitButton(Yii::t('app', 'Submit'), ['class' => 'btn btn-primary']) ?>

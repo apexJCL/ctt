@@ -12,9 +12,16 @@ class AuthItemForm extends Model
     public $type;
     public $description;
     public $isNewRecord = true;
-    public $children = [];
+    public $children;
 
-    public static function getRole($name)
+    public function __construct(array $config)
+    {
+        $this->children = Yii::$app->authManager->getChildren($this->name);
+        parent::__construct($config);
+    }
+
+
+    public static function getRoleForm($name)
     {
         $r = AuthItem::getRole($name);
         if (empty($r) or $r === null)
@@ -24,7 +31,7 @@ class AuthItemForm extends Model
         $f->description = $r->description;
         $f->type = $r->type;
         $f->isNewRecord = false;
-        $f->children = Yii::$app->authManager->getChildren($r->name);
+        $f->children = AuthItem::getRolePermissions($r);
         return $f;
     }
 
