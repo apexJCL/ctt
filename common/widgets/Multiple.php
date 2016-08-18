@@ -1,6 +1,6 @@
 <?php
 
-namespace common\widgets;
+namespace common\widgets\Multiple;
 
 use yii\bootstrap\Widget;
 
