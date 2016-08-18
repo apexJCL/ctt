@@ -1,11 +1,13 @@
 <?php
 
-namespace common\widgets\Multiple;
+namespace common\widgets;
 
+use backend\assets\MultipleWidgetAsset;
 use yii\bootstrap\Widget;
 
 class Multiple extends Widget {
 
+    public $childrenName = 'children';
     public $title = [
         'text' => '',
         'tag' => 'h1'
@@ -43,6 +45,7 @@ class Multiple extends Widget {
     public function init()
     {
         parent::init();
+        MultipleWidgetAsset::register($this->view);
     }
 
     /**
@@ -50,7 +53,7 @@ class Multiple extends Widget {
      */
     public function run()
     {
-        return $this->render('multiple',[
+        return $this->render('@common/widgets/Multiple/views/multiple',[
             'widget' => $this,
         ]);
     }

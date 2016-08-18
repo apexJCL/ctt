@@ -26,17 +26,21 @@ use yii\helpers\Html;
                                 'class' => $widget->table['button']['content']['class']
                             ]),
                         [
-                        'class' => $widget->table['button']['class'],
-                        'href' => $widget->table['button']['href'],
-                        'id' => $widget->table['button']['id']
-                    ] ));
+                            'class' => $widget->table['button']['class'],
+                            'href' => $widget->table['button']['href'],
+                            'id' => $widget->table['button']['id']
+                        ]));
                 ?>
             </tr>
             </thead>
-            <tbody id="mt_body">
-            </tbody>
+            <tbody id="mt_body"></tbody>
         </table>
     </div>
+</div>
+<div
+    id="multiple_config"
+    data-children_name="<?= $widget->childrenName ?>"
+>
 </div>
 <script>
     var autocomplete_data = <?= json_encode($widget->data) ?>;

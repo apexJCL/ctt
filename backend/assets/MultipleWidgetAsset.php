@@ -1,7 +1,18 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: zero_
- * Date: 17/08/2016
- * Time: 09:40 PM
- */
+
+namespace backend\assets;
+
+use yii\web\AssetBundle;
+
+class MultipleWidgetAsset extends AssetBundle
+{
+    public $sourcePath = '@common/widgets/Multiple';
+    public $publishOptions = [
+        'only' => [
+            'js/*.js'
+        ]
+    ];
+    public $js = [
+        'js/app.js'
+    ];
+}

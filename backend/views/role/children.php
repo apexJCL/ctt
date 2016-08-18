@@ -25,15 +25,16 @@ $this->registerJsFile('/js/role/children_app.js', ['depends' => [\yii\web\Jquery
                     ],
                     'table_headers' => [
                         'Rol hijo'
-                    ]
+                    ],
+                    'childrenName' => 'roles'
                 ]); ?>
-                <?php ActiveForm::end(); ?>
             </div>
             <div class="col s12">
                 <?= Html::submitButton(Yii::t('app', 'Submit'), ['class' => 'btn btn-primary']) ?>
                 <?= Html::a(Yii::t('app', 'Cancel'), Url::to(['index']),
                     ['class' => 'waves-effect btn-flat']) ?>
             </div>
+            <?php ActiveForm::end(); ?>
         </div>
     </div>
 </div>
