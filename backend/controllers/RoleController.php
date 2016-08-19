@@ -82,10 +82,8 @@ class RoleController extends Controller
     public function actionChildren()
     {
         $form = AuthItemForm::getRoleForm(Yii::$app->getRequest()->getQueryParam('name'));
-
         if ($form->load(Yii::$app->request->post()) && $form->saveChildren())
             return $this->redirect(['view', 'name' => $form->name]);
-
         return $this->render('children',[
             'model' => AuthItem::getRole(Yii::$app->request->getQueryParam('name'))
         ]);
@@ -93,9 +91,11 @@ class RoleController extends Controller
 
     public function actionPermissions()
     {
-        $role = AuthItem::getRole(Yii::$app->request->getQueryParam('name'));
+        $form = AuthItemForm::getRolePermissionsForm(Yii::$app->getRequest()->getQueryParam('name'));
+        if ($form->load(Yii::$app->request->post()) && $form->savePermissions())
+            return $this->redirect(['view', 'name' => $form->name]);
         return $this->render('permissions',[
-            'model' => $role
+            'model' => $form
         ]);
     }
 

@@ -4,6 +4,7 @@ namespace backend\models;
 
 use common\models\AuthItemForm;
 use Yii;
+use yii\helpers\ArrayHelper;
 use yii\rbac\Permission;
 use yii\rbac\Role;
 
@@ -30,6 +31,7 @@ class AuthItem extends \yii\db\ActiveRecord
 
     const ROLE = 1;
     const PERMISSION = 2;
+    public $children = [];
 
     /**
      * @inheritdoc
@@ -39,6 +41,19 @@ class AuthItem extends \yii\db\ActiveRecord
         return 'auth_item';
     }
 
+    public static function addPermission($parent, $permission)
+    {
+        $item = self::getPermission($permission);
+        return Yii::$app->authManager->addChild($parent, $item);
+    }
+
+    public static function removePermissions($parent, $permissions)
+    {
+        foreach ($permissions as $permission){
+            $item = self::getPermission($permission);
+            Yii::$app->authManager->removeChild($parent, $item);
+        }
+    }
 
     /**
      * @inheritdoc
@@ -124,7 +139,10 @@ class AuthItem extends \yii\db\ActiveRecord
      * @return Role
      */
     public static function getRole($name){
-        return self::findAuth(self::ROLE)->where(['name' => $name])->one();
+        /* @var $r AuthItem */
+        $r = self::findAuth(self::ROLE)->where(['name' => $name])->one();
+        $r->children = $r->getPermissionsAsArray();
+        return $r;
     }
 
     /**
@@ -235,5 +253,29 @@ class AuthItem extends \yii\db\ActiveRecord
     public static function getRolePermissions($role)
     {
         return $role->getChildren()->where(['type' => self::PERMISSION])->all();
+    }
+
+    /**
+     *
+     * Returns an arary containing only names for permission roles
+     */
+    private function getPermissionsAsArray()
+    {
+        $c = $this->getChildren()->where(['type' => self::PERMISSION])->select(['name'])->asArray()->all();
+        $r = [];
+        foreach ($c as $child){
+            array_push($r, $child['name']);
+        }
+        return $r;
+    }
+
+    public static function getRolePermissionsAsArray($name)
+    {
+        $c = self::getRole($name)->getChildren()->where(['type' => self::PERMISSION])->select(['name'])->asArray()->all();
+        $r = [];
+        foreach ($c as $child){
+            array_push($r, $child['name']);
+        }
+        return $r;
     }
 }

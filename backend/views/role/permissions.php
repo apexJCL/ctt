@@ -17,6 +17,12 @@ $this->title = Yii::t('app', 'Manage permissions');
             <?php $form = ActiveForm::begin(); ?>
             <div class="row">
                 <div class="col s12 m6">
+                    <?= $form->field($model, 'name')->textInput(['disabled' => true]) ?>
+                </div>
+                <div class="col s12 m6">
+                    <?= $form->field($model, 'description')->textInput(['disabled' => true]) ?>
+                </div>
+                <div class="col s12 m6">
                     <?= $form->field($model, 'children')->widget(MultipleInput::className(), [
                         'allowEmptyList' => true,
                         'columns' => [
@@ -33,7 +39,7 @@ $this->title = Yii::t('app', 'Manage permissions');
                             'class' => 'btn-flat waves-effect waves-red',
                             'label' => Html::tag('i', '', ['class' => 'material-icons mdi-delete'])
                         ]
-                    ]) ?>
+                    ])->label('') ?>
                 </div>
                 <div class="col s12 m4 l4">
                     <div class="card white">

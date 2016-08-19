@@ -5,6 +5,7 @@ namespace common\models;
 use backend\models\AuthItem;
 use Yii;
 use yii\base\Model;
+use yii\rbac\Role;
 
 class AuthItemForm extends Model
 {
@@ -13,13 +14,6 @@ class AuthItemForm extends Model
     public $description;
     public $isNewRecord = true;
     public $children;
-
-    public function __construct(array $config)
-    {
-        $this->children = Yii::$app->authManager->getChildren($this->name);
-        parent::__construct($config);
-    }
-
 
     public static function getRoleForm($name)
     {
@@ -52,6 +46,21 @@ class AuthItemForm extends Model
         $f->description = $p->description;
         $f->type = $p->type;
         $f->isNewRecord = false;
+        return $f;
+    }
+
+    public static function getRolePermissionsForm($name)
+    {
+        $r = AuthItem::getRole($name);
+        if (empty($r) or $r === null) {
+            return false;
+        }
+        $f = new self();
+        $f->name = $r->name;
+        $f->description = $r->description;
+        $f->type = $r->type;
+        $f->isNewRecord = false;
+        $f->children = AuthItem::getRolePermissionsAsArray($f->name);
         return $f;
     }
 
@@ -89,5 +98,29 @@ class AuthItemForm extends Model
             'name' => Yii::t('app', 'Name'),
             'description' => Yii::t('app', 'Description')
         ];
+    }
+
+    /**
+     *
+     */
+    public function savePermissions()
+    {
+        $parent = AuthItem::getRole($this->name);
+        $childrens = Yii::$app->request->post('AuthItemForm')['children']['permissions'];
+        /**
+         * @var $r Role
+         *
+         * First we add the new permissions
+         */
+        $permissions = AuthItem::getRolePermissionsAsArray($this->name);
+        for ($i = 0; $i < sizeof($childrens); $i++){
+            if (!in_array($childrens[$i], $permissions))
+                AuthItem::addPermission($parent, $childrens[$i]);
+            $permissions = array_splice($permissions, $i, 1); // Remove previously assigned permissions from list
+        }
+        // If permissions list still has elements, it means these permissions have been revoked, so we delete them
+        if (!empty($permissions) && sizeof($permissions) >= 1)
+            AuthItem::removePermissions($parent, $permissions);
+        return true;
     }
 }
