@@ -24,6 +24,7 @@ use yii\rbac\Role;
  * @property AuthItemChild[] $authItemChildren
  * @property AuthItemChild[] $authItemChildren0
  * @property AuthItem[] $children
+ * @property AuthItem[] $childrenRoles
  * @property AuthItem[] $parents
  */
 class AuthItem extends \yii\db\ActiveRecord
@@ -32,6 +33,7 @@ class AuthItem extends \yii\db\ActiveRecord
     const ROLE = 1;
     const PERMISSION = 2;
     public $children = [];
+    public $childrenRoles = [];
 
     /**
      * @inheritdoc
@@ -44,6 +46,8 @@ class AuthItem extends \yii\db\ActiveRecord
     public static function addPermission($parent, $permission)
     {
         $item = self::getPermission($permission);
+        if (empty($item) or !$item instanceof AuthItem)
+            return false;
         return Yii::$app->authManager->addChild($parent, $item);
     }
 
@@ -53,6 +57,52 @@ class AuthItem extends \yii\db\ActiveRecord
             $item = self::getPermission($permission);
             Yii::$app->authManager->removeChild($parent, $item);
         }
+    }
+
+    public static function addChildRole($parent, $role)
+    {
+        $item = self::getRole($role);
+        if (empty($item) or !$item instanceof AuthItem)
+            return false;
+        return Yii::$app->authManager->addChild($parent, $item);
+    }
+
+    public static function removeChildrenRoles($parent, $children_roles)
+    {
+        foreach ($children_roles as $child){
+            $item = self::getPermission($child);
+            Yii::$app->authManager->removeChild($parent, $item);
+        }
+    }
+
+    public static function getRolesAutocomplete($name)
+    {
+        $r = self::getRoles();
+        $t = [];
+        foreach ($r as $role){
+            if ($role->name != $name) // Quick hack, TODO: fix this hack
+                $t[$role->name] = null;
+        }
+        return $t;
+    }
+
+    public static function getPermissionsAutocomplete($name)
+    {
+        $p = self::getPermissions();
+        $t = [];
+        foreach ($p as $permission){
+            if ($permission->name != $name)
+                $t[$permission->name] = null;
+        }
+        return $t;
+    }
+
+    public static function getChildrenAutocomplete($parent, $type)
+    {
+        if ($type == AuthItem::ROLE)
+            return self::getRolesAutocomplete($parent);
+        elseif  ($type == AuthItem::PERMISSION)
+            return self::getPermissionsAutocomplete($parent);
     }
 
     /**
@@ -269,11 +319,33 @@ class AuthItem extends \yii\db\ActiveRecord
         return $r;
     }
 
-    public static function getRolePermissionsAsArray($name)
+    /**
+     * Returns all permissions assigned to a role, in an array
+     *
+     * @param $role AuthItem
+     * @return array
+     */
+    public static function getRolePermissionsAsArray($role)
     {
-        $c = self::getRole($name)->getChildren()->where(['type' => self::PERMISSION])->select(['name'])->asArray()->all();
+        $c = $role->getChildren()->where(['type' => self::PERMISSION])->select(['name'])->asArray()->all();
         $r = [];
         foreach ($c as $child){
+            array_push($r, $child['name']);
+        }
+        return $r;
+    }
+
+    /**
+     * Returns a role children roles, from where it inherits permissions
+     *
+     * @param $role AuthItem
+     * @return array
+     */
+    public static function getRoleChildrenAsArray($role)
+    {
+        $c =  $role->getChildren()->where(['type' => self::ROLE])->select(['name'])->asArray()->all();
+        $r = [];
+        foreach ($c as $child) {
             array_push($r, $child['name']);
         }
         return $r;

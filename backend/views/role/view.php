@@ -1,6 +1,10 @@
 <?php
 /* @var $this yii\web\View */
-/* @var $model \yii\rbac\Role */
+/* @var $model \backend\models\AuthItem */
+/* @var $permissionProvider \yii\data\ArrayDataProvider */
+/* @var $rolesProvider \yii\data\ArrayDataProvider */
+
+use yii\grid\GridView;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\DetailView;
@@ -49,13 +53,56 @@ $this->title = Yii::t('app', 'Role: {role}', ['role' => $model->name]);
             </ul>
         </div>
         <div class="container">
-            <?= DetailView::widget([
-                'model' => $model,
-                'attributes' => [
-                    'name',
-                    'description'
-                ]
-            ]) ?>
+            <div class="row">
+                <div class="section">
+                    <div class="row">
+                        <div class="col s12">
+                            <h4><?= Yii::t('app', 'General overview') ?></h4>
+                        </div>
+                        <div class="col s12">
+                            <?= DetailView::widget([
+                                'model' => $model,
+                                'attributes' => [
+                                    'name',
+                                    'description'
+                                ]
+                            ]) ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="row">
+                        <div class="col s12">
+                            <h4><?= Yii::t('app', 'Permissions') ?></h4>
+                        </div>
+                        <div class="col s12">
+                            <?= GridView::widget([
+                                'dataProvider' => $permissionProvider,
+                                'columns' => [
+                                    'name',
+                                    'description'
+                                ]
+                            ]) ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="row">
+                        <div class="col s12">
+                            <h4><?= Yii::t('app', 'Children Roles') ?></h4>
+                        </div>
+                        <div class="col s12">
+                            <?= GridView::widget([
+                                'dataProvider' => $rolesProvider,
+                                'columns' => [
+                                    'name',
+                                    'description'
+                                ]
+                            ]) ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <?php Pjax::end() ?>

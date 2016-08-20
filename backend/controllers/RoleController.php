@@ -6,6 +6,7 @@ use backend\models\AuthItem;
 use backend\models\AuthItemSearch;
 use common\models\AuthItemForm;
 use Yii;
+use yii\data\ArrayDataProvider;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
@@ -81,11 +82,11 @@ class RoleController extends Controller
 
     public function actionChildren()
     {
-        $form = AuthItemForm::getRoleForm(Yii::$app->getRequest()->getQueryParam('name'));
+        $form = AuthItemForm::getRoleChildrenForm(Yii::$app->getRequest()->getQueryParam('name'));
         if ($form->load(Yii::$app->request->post()) && $form->saveChildren())
             return $this->redirect(['view', 'name' => $form->name]);
         return $this->render('children',[
-            'model' => AuthItem::getRole(Yii::$app->request->getQueryParam('name'))
+            'model' => $form
         ]);
     }
 
@@ -99,11 +100,25 @@ class RoleController extends Controller
         ]);
     }
 
+    /**
+     * @return string
+     */
     public function actionView()
     {
+        /**
+         * @var $model AuthItem
+         */
         $model = AuthItem::getRole(Yii::$app->getRequest()->getQueryParam('name'));
+        $permissionProvider = new ArrayDataProvider([
+            'allModels' => $model->getChildren()->where(['type' => AuthItem::PERMISSION])->all()
+        ]);
+        $chilrenRolesProvider = new ArrayDataProvider([
+            'allModels' => $model->getChildren()->where(['type' => AuthItem::ROLE])->all()
+        ]);
         return $this->render('view', [
-            'model' => $model
+            'model' => $model,
+            'permissionProvider' => $permissionProvider,
+            'rolesProvider' => $chilrenRolesProvider
         ]);
     }
 

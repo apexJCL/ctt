@@ -5,7 +5,6 @@ namespace common\models;
 use backend\models\AuthItem;
 use Yii;
 use yii\base\Model;
-use yii\rbac\Role;
 
 class AuthItemForm extends Model
 {
@@ -14,6 +13,7 @@ class AuthItemForm extends Model
     public $description;
     public $isNewRecord = true;
     public $children;
+    public $childrenRoles;
 
     public static function getRoleForm($name)
     {
@@ -60,7 +60,21 @@ class AuthItemForm extends Model
         $f->description = $r->description;
         $f->type = $r->type;
         $f->isNewRecord = false;
-        $f->children = AuthItem::getRolePermissionsAsArray($f->name);
+        $f->children = AuthItem::getRolePermissionsAsArray($r);
+        return $f;
+    }
+
+    public static function getRoleChildrenForm($name)
+    {
+        $r = AuthItem::getRole($name);
+        if (empty($r) or $r === null)
+            return false;
+        $f = new self();
+        $f->name = $r->name;
+        $f->description = $r->description;
+        $f->type = $r->type;
+        $f->isNewRecord = false;
+        $f->childrenRoles = AuthItem::getRoleChildrenAsArray($r);
         return $f;
     }
 
@@ -106,21 +120,31 @@ class AuthItemForm extends Model
     public function savePermissions()
     {
         $parent = AuthItem::getRole($this->name);
-        $childrens = Yii::$app->request->post('AuthItemForm')['children']['permissions'];
-        /**
-         * @var $r Role
-         *
-         * First we add the new permissions
-         */
-        $permissions = AuthItem::getRolePermissionsAsArray($this->name);
-        for ($i = 0; $i < sizeof($childrens); $i++){
-            if (!in_array($childrens[$i], $permissions))
-                AuthItem::addPermission($parent, $childrens[$i]);
+        $children = array_values(Yii::$app->request->post('AuthItemForm')['children']['permissions']);
+        $permissions = AuthItem::getRolePermissionsAsArray($parent);
+        for ($i = 0; $i < sizeof($children); $i++){
+            if (!in_array($children[$i], $permissions))
+                AuthItem::addPermission($parent, $children[$i]);
             $permissions = array_splice($permissions, $i, 1); // Remove previously assigned permissions from list
         }
         // If permissions list still has elements, it means these permissions have been revoked, so we delete them
         if (!empty($permissions) && sizeof($permissions) >= 1)
             AuthItem::removePermissions($parent, $permissions);
+        return true;
+    }
+
+    public function saveChildren()
+    {
+        $parent = AuthItem::getRole($this->name);
+        $children = array_values(Yii::$app->request->post('AuthItemForm')['childrenRoles']['roles']);
+        $children_roles = AuthItem::getRoleChildrenAsArray($parent);
+        for ($i = 0; $i < sizeof($children); $i++){
+            if (!in_array($children[$i], $children_roles))
+                AuthItem::addChildRole($parent, $children[$i]);
+            $children_roles = array_splice($children_roles, $i, 1);
+        }
+        if (!empty($children_roles) && sizeof($children_roles) >= 1)
+            AuthItem::removeChildrenRoles($parent, $children_roles);
         return true;
     }
 }

@@ -3,19 +3,29 @@
 use unclead\widgets\MultipleInput;
 use yii\helpers\Html;
 use yii\helpers\Url;
+use yii\web\View;
 use yii\widgets\ActiveForm;
 
 /* @var $model \backend\models\AuthItem */
 /* @var $permissions \yii\db\ActiveRecord[] */
 
 $this->title = Yii::t('app', 'Manage permissions');
+$this->registerJsFile('/js/role/children_app.js', ['depends' => [
+    \yii\web\JqueryAsset::className(),
+    \backend\assets\MaterializeAsset::className()
+]
+], View::POS_END);
 ?>
-
+<?= $this->render('//layouts/_section_header', [
+    'photoUrl' => '/img/showcase/users.jpg',
+    'titleColor' => 'white'
+]) ?>
 <div>
     <div class="section grey lighten-4">
         <div class="container-lazy">
             <?php $form = ActiveForm::begin(); ?>
             <div class="row">
+                <span type="hidden" data-type="2" id="authitem-type">
                 <div class="col s12 m6">
                     <?= $form->field($model, 'name')->textInput(['disabled' => true]) ?>
                 </div>

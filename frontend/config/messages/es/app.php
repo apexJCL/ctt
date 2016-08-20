@@ -17,7 +17,6 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'If you think this is a mistake, please contact Support.' => 'Si cree que esto es un error, contacte a Soporte Técnico.',
     'Are you sure you want to delete this item?' => '@@¿Seguro que desea eliminar este elemento?@@',
     'Delete' => '@@Eliminar@@',
     'Cancel' => 'Cancelar',
@@ -25,6 +24,7 @@ return [
     'Create' => 'Crear',
     'Create Client' => 'Crear cliente',
     'If you forgot your password you can' => 'Si olvidó su contraseña, solicite',
+    'If you think this is a mistake, please contact Support.' => 'Si cree que esto es un error, contacte a Soporte Técnico.',
     'Login' => 'Iniciar Sesión',
     'Logout' => 'Cerrar Sesión',
     'Manage' => 'Administrar',
