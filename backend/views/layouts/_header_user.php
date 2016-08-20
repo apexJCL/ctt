@@ -18,7 +18,7 @@ use yii\helpers\Url;
             <ul id="slide-out" class="side-nav">
                 <li>
                     <div class="userView">
-                        <img class="background" src="http://placehold.it/300x300">
+                        <img class="background responsive-img" src="/img/menu_banner.jpg">
                         <a href="#!user"><img class="circle" src="<?=Yii::$app->user->identity->getProfilePicture()?>"></a>
                         <a href="#!name"><span class="white-text name"><?= Yii::$app->user->identity->username ?></span></a>
                         <a href="#!email"><span class="white-text email"><?= Yii::$app->user->identity->email ?></span></a>
@@ -41,18 +41,6 @@ use yii\helpers\Url;
                                     <li id="permission">
                                         <?= Html::a(Yii::t('app', 'Permissions'), Url::to(['permission/index'])) ?>
                                     </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="bold"><a class="collapsible-header  waves-effect waves-ripple">Components</a>
-                            <div class="collapsible-body" style="">
-                                <ul>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="bold"><a class="collapsible-header waves-effect waves-ripple">JavaScript</a>
-                            <div class="collapsible-body" style="display: block;">
-                                <ul>
                                 </ul>
                             </div>
                         </li>

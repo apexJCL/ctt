@@ -347,7 +347,7 @@ class User extends ActiveRecord implements IdentityInterface
     {
         $baseUrl = 'img/users/'.$this->username;
         return file_exists($baseUrl.'.jpg') ? '/'.$baseUrl.'.jpg' : (
-            file_exists($baseUrl . '.png') ? '/'.$baseUrl.'.png' : '/img/default_avatar.png'
+            file_exists($baseUrl . '.png') ? '/'.$baseUrl.'.png' : '/img/default_avatar.jpg'
         );
     }
 }
