@@ -1,5 +1,6 @@
 <?php
 
+use yii\grid\GridView;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\DetailView;
@@ -51,25 +52,34 @@ $this->params['breadcrumbs'][] = $this->title;
             </ul>
         </div>
         <div class="container">
-            <h1><?= Html::encode($this->title) ?></h1>
-
-            <?= DetailView::widget([
-                'model' => $model,
-                'attributes' => [
-                    'id',
-                    'username',
-                    'nombre',
-                    'apellido_paterno',
-                    'apellido_materno',
-                    'email:email',
-                    'role_id',
-                    'status_id',
-                    'user_type_id',
-                    'created_at',
-                    'updated_at',
-                ],
-            ]) ?>
-
+            <div class="row">
+                <div class="col s12">
+                    <?= DetailView::widget([
+                        'model' => $model,
+                        'attributes' => [
+                            'id',
+                            'username',
+                            'nombre',
+                            'apellido_paterno',
+                            'apellido_materno',
+                            'email:email',
+                            'created_at',
+                            'updated_at',
+                        ],
+                    ]) ?>
+                </div>
+                <div class="col s12">
+                    <h3><?= Yii::t('app', 'Roles') ?></h3>
+                </div>
+                <div class="col s12">
+                    <?= GridView::widget([
+                        'dataProvider' => $roleProvider,
+                        'columns' => [
+                            'roleName'
+                        ]
+                    ]) ?>
+                </div>
+            </div>
         </div>
     </div>
 

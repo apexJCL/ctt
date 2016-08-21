@@ -55,6 +55,21 @@ $this->params['breadcrumbs'][] = $this->title;
                             'header' => Html::tag('span', ''),
                             'format' => 'raw',
                             'value' => function ($data) {
+                                return Html::a(Html::tag('i', '', ['class' => 'mdi mdi-supervisor-account mdi-lg black-text']),
+                                    Url::to(['roles', 'id' => $data->id]),
+                                    [
+                                        'class' => ['tooltipped right'],
+                                        'data-pjax' => '0',
+                                        'data-position' => 'bottom',
+                                        'data-delay' => '200',
+                                        'data-tooltip' => Yii::t('app', 'Add roles')
+                                    ]);
+                            }
+                        ],
+                        [
+                            'header' => Html::tag('span', ''),
+                            'format' => 'raw',
+                            'value' => function ($data) {
                                 return Html::a(Html::tag('i', '', ['class' => 'mdi mdi-visibility mdi-lg black-text']),
                                     Url::to(['view', 'id' => $data->id]),
                                     [

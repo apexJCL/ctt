@@ -6,6 +6,7 @@ use frontend\models\SignupForm;
 use Yii;
 use common\models\User;
 use common\models\UserSearch;
+use yii\data\ArrayDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -62,8 +63,13 @@ class UserController extends Controller
      */
     public function actionView($id)
     {
+        $model = $this->findModel($id);
+        $roleProvider = new ArrayDataProvider([
+            'allModels' => $model->getChildren()
+        ]);
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
+            'roleProvider' => $roleProvider
         ]);
     }
 
@@ -74,11 +80,10 @@ class UserController extends Controller
      */
     public function actionCreate()
     {
-        $model = new SignupForm();
-
+        $model = new User();
         if ($model->load(Yii::$app->request->post())) {
             $model->profilePicture = UploadedFile::getInstance($model, 'profilePicture');
-            if ($user = $model->signup())
+            if ($user = $model->signUp())
                 return $this->redirect(['view', 'id' => $user->id]);
             else
                 return $this->render('create', [
@@ -101,8 +106,10 @@ class UserController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->updateData()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            } else return $this->render('create', ['model' => $model]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -121,6 +128,21 @@ class UserController extends Controller
         $user = $this->findModel($id);
         $user->deleteProfile();
         return $this->redirect(['index']);
+    }
+
+    public function actionRoles()
+    {
+        $form = User::getForm(Yii::$app->request->getQueryParam('id'));
+
+        if ($form && $form->load(Yii::$app->request->post()) && $form->saveRoles())
+            return $this->render('roles',[
+                'model' => $this->findModel(Yii::$app->request->getQueryParam('id'))
+            ]);
+        else
+            return $this->render('roles',[
+                'model' => $this->findModel(Yii::$app->request->getQueryParam('id')),
+                'form' => $form
+            ]);
     }
 
     /**

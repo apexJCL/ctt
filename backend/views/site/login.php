@@ -10,12 +10,8 @@ use yii\bootstrap\ActiveForm;
 $this->title = Yii::t('app', 'Login');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<div class="background-image mute" style="background: url(/img/background.jpg)"></div>
 <div class="section white-text">
-    <div class="background-image">
-        <div class="background-image--blur">
-            <img src="/img/background.jpg" alt="" class="responsive-img">
-        </div>
-    </div>
     <div class="container">
         <div class="row">
             <div class="col s12">

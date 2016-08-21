@@ -3,6 +3,7 @@ $background-img-blur-intensity: 20px;
 $background-img-opacity: 0.5;
 $profile-img-radius: 96px;
 $static-viewport-height: 350px;
+$mute_value: 30%;
 
 /** Fonts **/
 
@@ -214,7 +215,7 @@ New display
       -ms-transform: translate(-50%, 10%);
       -o-transform: translate(-50%, 10%);
       transform: translate(-50%, 10%);
-      @media only screen and (max-width: 600px){
+      @media only screen and (max-width: 600px) {
         top: auto;
         left: auto;
         -webkit-transform: translate(0, 0);
@@ -231,12 +232,12 @@ New display
         border-radius: 50%;
         @media only screen and (max-width: 600px) {
           min-width: 100%;
-          padding:0;
+          padding: 0;
           border-radius: 0;
         }
       }
     }
-    &--brand-logo{
+    &--brand-logo {
       display: inline;
       z-index: -1;
       position: absolute;
@@ -261,7 +262,7 @@ New display
   top: 50%;
   left: 50%;
   min-width: 100%;
-  min-height:100%;
+  min-height: 100%;
   -webkit-transform: translate(-50%, -50%);
   -moz-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
@@ -282,8 +283,13 @@ New display
 
 .background-image {
   z-index: -1;
-  min-width: 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   position: absolute;
+  min-height: 100%;
+  width: 100%;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
@@ -291,8 +297,12 @@ New display
   -ms-transform: translate(-50%, -50%);
   -o-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  &--blur {
-    -webkit-filter: brightness(50%);
-    filter: brightness(50%);
+  @media only screen and(max-width: 600px) {
+
   }
+}
+
+.mute {
+  -webkit-filter: brightness($mute_value);
+  filter: brightness($mute_value);
 }

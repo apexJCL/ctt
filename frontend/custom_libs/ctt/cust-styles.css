@@ -223,8 +223,13 @@ New display
 
 .background-image {
   z-index: -1;
-  min-width: 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   position: absolute;
+  min-height: 100%;
+  width: 100%;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
@@ -232,8 +237,9 @@ New display
   -ms-transform: translate(-50%, -50%);
   -o-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%); }
-  .background-image--blur {
-    -webkit-filter: brightness(50%);
-    filter: brightness(50%); }
+
+.mute {
+  -webkit-filter: brightness(30%);
+  filter: brightness(30%); }
 
 /*# sourceMappingURL=cust-styles.css.map */

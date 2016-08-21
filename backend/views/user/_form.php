@@ -20,9 +20,12 @@ use yii\widgets\ActiveForm;
         class="input-field col s12 m4 l4"><?= $form->field($model, 'apellido_paterno')->textInput(['maxlength' => true]) ?></div>
     <div
         class="input-field col s12 m4 l4"><?= $form->field($model, 'apellido_materno')->textInput(['maxlength' => true]) ?></div>
-    <div class="input-field col s12 m6 l4"><?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?></div>
-    <div class="input-field col s12 m6 l4"><?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?></div>
-    <div class="input-field col s12 m6 l4"><?= $form->field($model, 'password')->passwordInput() ?></div>
+    <div
+        class="input-field col s12 m6 l4"><?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?></div>
+    <div
+        class="input-field col s12 m6 l4"><?= $form->field($model, 'email')->textInput(['maxlength' => true, 'autocomplete' => 'off']) ?></div>
+    <div
+        class="input-field col s12 m6 l4"><?= $form->field($model, 'new_password')->passwordInput(['autocomplete' => 'off']) ?></div>
     <!-- Profile Picture -->
     <div class="col s12">
         <h4><?= Yii::t('app', 'Profile Picture') ?></h4>

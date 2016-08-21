@@ -4,14 +4,13 @@ namespace common\models;
 use backend\models\Role;
 use backend\models\Status;
 use backend\models\UserType;
+use frontend\models\SignupForm;
 use Yii;
 use yii\base\NotSupportedException;
 use yii\db\ActiveRecord;
 use yii\db\Expression;
 use yii\helpers\ArrayHelper;
-use yii\helpers\Url;
 use yii\web\IdentityInterface;
-use yii\web\NotFoundHttpException;
 use yii\web\UploadedFile;
 
 /**
@@ -37,6 +36,8 @@ class User extends ActiveRecord implements IdentityInterface
 {
     const STATUS_DELETED = 0;
     const STATUS_ACTIVE = 10;
+    public $roles = [];
+    public $new_password;
 
     /**
      * @var UploadedFile
@@ -50,6 +51,16 @@ class User extends ActiveRecord implements IdentityInterface
     public static function tableName()
     {
         return '{{%user}}';
+    }
+
+    public static function getForm($userID)
+    {
+        $u = self::find()->where(['id' => $userID]);
+        if (empty($u) || !isset($u))
+            return false;
+        $f = new SignupForm();
+        $f->nombre = $u->nombre;
+
     }
 
     /**
@@ -77,13 +88,13 @@ class User extends ActiveRecord implements IdentityInterface
         return [
             // Status
             ['status_id', 'default', 'value' => self::STATUS_ACTIVE],
-            [['status_id'],'in', 'range'=>array_keys($this->getStatusList())],
+            [['status_id'], 'in', 'range' => array_keys($this->getStatusList())],
             // Role
             ['role_id', 'default', 'value' => 10],
-            [['role_id'],'in', 'range'=>array_keys($this->getRoleList())],
+            [['role_id'], 'in', 'range' => array_keys($this->getRoleList())],
             // User type
             ['user_type_id', 'default', 'value' => 10],
-            [['user_type_id'],'in', 'range'=>array_keys($this->getUserTypeList())],
+            [['user_type_id'], 'in', 'range' => array_keys($this->getUserTypeList())],
             // Username
             ['username', 'filter', 'filter' => 'trim'],
             ['username', 'unique'],
@@ -96,7 +107,8 @@ class User extends ActiveRecord implements IdentityInterface
             // Datos Personales
             [['nombre', 'apellido_paterno', 'apellido_materno'], 'string', 'max' => 50],
             [['password_reset_token'], 'unique'],
-            [['username', 'auth_key', 'password_hash', 'email', 'nombre', 'apellido_paterno'], 'required']
+            [['username', 'auth_key', 'password_hash', 'email', 'nombre', 'apellido_paterno'], 'required'],
+            [['profilePicture'], 'image', 'skipOnEmpty' => true, 'extensions' => 'jpg, png, jpeg']
         ];
     }
 
@@ -165,7 +177,7 @@ class User extends ActiveRecord implements IdentityInterface
             return false;
         }
 
-        $timestamp = (int) substr($token, strrpos($token, '_') + 1);
+        $timestamp = (int)substr($token, strrpos($token, '_') + 1);
         $expire = Yii::$app->params['user.passwordResetTokenExpire'];
         return $timestamp + $expire >= time();
     }
@@ -296,9 +308,9 @@ class User extends ActiveRecord implements IdentityInterface
 
     /**
      * Returns the user type of the actual user
-     * 
+     *
      * @return \yii\db\ActiveQuery
-     * 
+     *
      */
     public function getUserType()
     {
@@ -336,10 +348,12 @@ class User extends ActiveRecord implements IdentityInterface
      * @return bool
      * @internal param $username
      */
-    public function upload(){
-        if (!empty($this->profilePicture) && isset($this->profilePicture))
-            return $this->profilePicture->saveAs(Yii::getAlias('@common').'/users/' . $this->username . '.' . $this->profilePicture->extension);
-        else  return true;
+    public function upload()
+    {
+        if (!empty($this->profilePicture) && isset($this->profilePicture)) {
+            $this->deletePicture();
+            return $this->profilePicture->saveAs(Yii::getAlias('@common') . '/users/' . $this->username . '.' . $this->profilePicture->extension);
+        } else return false;
     }
 
     /**
@@ -347,19 +361,69 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function getProfilePicture()
     {
-        $baseUrl = 'img/users/'.$this->username;
-        return file_exists($baseUrl.'.jpg') ? '/'.$baseUrl.'.jpg' : (
-            file_exists($baseUrl . '.png') ? '/'.$baseUrl.'.png' : '/img/default_avatar.jpg'
+        $baseUrl = 'img/users/' . $this->username;
+        return file_exists($baseUrl . '.jpg') ? '/' . $baseUrl . '.jpg' : (
+        file_exists($baseUrl . '.png') ? '/' . $baseUrl . '.png' : '/img/default_avatar.jpg'
         );
     }
 
     public function deleteProfile()
     {
-        $baseUrl = 'img/users/'.$this->username;
-        if (file_exists($baseUrl.'.jpg'))
-            unlink($baseUrl.'jpg');
-        elseif  (file_exists($baseUrl . '.png'))
-            unlink($baseUrl.'.png');
+        $this->deletePicture();
         return $this->delete();
+    }
+
+    public function deletePicture()
+    {
+        $baseUrl = 'img/users/' . $this->username;
+        if (file_exists($baseUrl . '.jpg'))
+            return unlink($baseUrl . 'jpg');
+        elseif (file_exists($baseUrl . '.png'))
+            return unlink($baseUrl . '.png');
+    }
+
+    public function getChildren()
+    {
+        return Yii::$app->authManager->getAssignments($this->id);
+    }
+
+    public function updatePassword($new_password)
+    {
+        $this->password_hash = Yii::$app->security->generatePasswordHash($new_password);
+    }
+
+    public function updateData()
+    {
+        $this->profilePicture = UploadedFile::getInstance($this, 'profilePicture');
+        $this->new_password = Yii::$app->request->post()['User']['new_password'];
+        if ($this->validate()) {
+            // First, profile picture
+            $this->upload();
+            // Then, password
+            if (!empty($this->new_password))
+                $this->updatePassword($this->new_password);
+            // Then we save
+            return $this->save();
+        }
+    }
+
+    /**
+     * Signs user up.
+     *
+     * @return bool|User|null
+     */
+    public function signUp()
+    {
+        // Primero asignamos el archivo que se subió
+        $this->profilePicture = UploadedFile::getInstance($this, 'profilePicture');
+        // Luego la contraseña
+        $this->new_password = Yii::$app->request->post()['User']['new_password'];
+        $this->setPassword($this->new_password);
+        $this->generateAuthKey();
+        if ($this->save() && $this->validate()) {
+            $this->upload();
+            return $this;
+        }
+        return false;
     }
 }

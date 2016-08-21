@@ -54,31 +54,4 @@ class SignupForm extends Model
             [['profilePicture'], 'image', 'skipOnEmpty' => true, 'extensions' => 'jpg, png, jpeg']
         ];
     }
-
-    /**
-     * Signs user up.
-     *
-     * @return bool|User|null
-     */
-    public function signup()
-    {
-        if (!$this->validate()) {
-            return null;
-        }
-        $user = new User();
-        // Primero asignamos el archivo que se subió
-        $user->profilePicture = UploadedFile::getInstance($this, 'profilePicture');
-        $user->username = $this->username;
-        $user->email = $this->email;
-        $user->nombre = $this->nombre;
-        $user->apellido_paterno = $this->apellido_paterno;
-        $user->apellido_materno = $this->apellido_materno;
-        $user->setPassword($this->password);
-        $user->generateAuthKey();
-        if ($user->save() && $user->validate()) {
-            $user->upload();
-            return $user;
-        }
-        return false;
-    }
 }
