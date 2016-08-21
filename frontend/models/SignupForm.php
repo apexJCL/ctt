@@ -58,7 +58,7 @@ class SignupForm extends Model
     /**
      * Signs user up.
      *
-     * @return User|null the saved model or null if saving fails
+     * @return bool|User|null
      */
     public function signup()
     {
@@ -75,7 +75,10 @@ class SignupForm extends Model
         $user->apellido_materno = $this->apellido_materno;
         $user->setPassword($this->password);
         $user->generateAuthKey();
-        if ($user->save() && $user->validate() && $user->upload())
+        if ($user->save() && $user->validate()) {
+            $user->upload();
             return $user;
+        }
+        return false;
     }
 }

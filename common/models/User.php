@@ -337,7 +337,9 @@ class User extends ActiveRecord implements IdentityInterface
      * @internal param $username
      */
     public function upload(){
-        return $this->profilePicture->saveAs(Yii::getAlias('@common').'/users/' . $this->username . '.' . $this->profilePicture->extension);
+        if (!empty($this->profilePicture) && isset($this->profilePicture))
+            return $this->profilePicture->saveAs(Yii::getAlias('@common').'/users/' . $this->username . '.' . $this->profilePicture->extension);
+        else  return true;
     }
 
     /**
