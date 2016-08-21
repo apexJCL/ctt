@@ -375,9 +375,9 @@ class User extends ActiveRecord implements IdentityInterface
 
     public function deletePicture()
     {
-        $baseUrl = 'img/users/' . $this->username;
+        $baseUrl = Yii::getAlias('@common') . DIRECTORY_SEPARATOR . 'users' . DIRECTORY_SEPARATOR . $this->username;
         if (file_exists($baseUrl . '.jpg'))
-            return unlink($baseUrl . 'jpg');
+            return unlink($baseUrl . '.jpg');
         elseif (file_exists($baseUrl . '.png'))
             return unlink($baseUrl . '.png');
     }
@@ -397,14 +397,15 @@ class User extends ActiveRecord implements IdentityInterface
         $this->profilePicture = UploadedFile::getInstance($this, 'profilePicture');
         $this->new_password = Yii::$app->request->post()['User']['new_password'];
         if ($this->validate()) {
-            // First, profile picture
-            $this->upload();
-            // Then, password
+            // First, password
             if (!empty($this->new_password))
                 $this->updatePassword($this->new_password);
             // Then we save
-            return $this->save();
+            $this->save();
+            // Last but not least, profile picture
+            return $this->upload();
         }
+        return false;
     }
 
     /**
