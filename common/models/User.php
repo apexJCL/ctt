@@ -36,6 +36,8 @@ class User extends ActiveRecord implements IdentityInterface
 {
     const STATUS_DELETED = 0;
     const STATUS_ACTIVE = 10;
+    const JPG = '.jpg';
+    const PNG = '.png';
     public $roles = [];
     public $new_password;
 
@@ -362,8 +364,8 @@ class User extends ActiveRecord implements IdentityInterface
     public function getProfilePicture()
     {
         $baseUrl = 'img/users/' . $this->username;
-        return file_exists($baseUrl . '.jpg') ? '/' . $baseUrl . '.jpg' : (
-        file_exists($baseUrl . '.png') ? '/' . $baseUrl . '.png' : '/img/default_avatar.jpg'
+        return file_exists($baseUrl . self::JPG) ? '/' . $baseUrl . self::JPG : (
+        file_exists($baseUrl . self::PNG) ? '/' . $baseUrl . self::PNG : '/img/default_avatar.jpg'
         );
     }
 
@@ -376,10 +378,10 @@ class User extends ActiveRecord implements IdentityInterface
     public function deletePicture()
     {
         $baseUrl = Yii::getAlias('@common') . DIRECTORY_SEPARATOR . 'users' . DIRECTORY_SEPARATOR . $this->username;
-        if (file_exists($baseUrl . '.jpg'))
-            return unlink($baseUrl . '.jpg');
-        elseif (file_exists($baseUrl . '.png'))
-            return unlink($baseUrl . '.png');
+        if (file_exists($baseUrl . self::JPG))
+            return unlink($baseUrl . self::JPG);
+        elseif (file_exists($baseUrl . self::PNG))
+            return unlink($baseUrl . self::PNG);
     }
 
     public function getChildren()
