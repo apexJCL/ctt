@@ -77,8 +77,5 @@ class SignupForm extends Model
         $user->generateAuthKey();
         if ($user->save() && $user->validate() && $user->upload())
             return $user;
-        echo '<pre>';
-        print_r($user->getErrors());
-        die('x.x');
     }
 }

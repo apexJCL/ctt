@@ -17,8 +17,15 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
+    'If photo not uploaded, default avatar will be used' => 'Si no se sube una fotografía, se usará el avatar por defecto',
+    'Personal Info' => 'Información personal',
+    'Profile Picture' => 'Foto de perfil',
+    'Protip: ' => 'Tip: ',
+    'Save' => 'Guardar',
     'Are you sure you want to delete this item?' => '@@¿Seguro que desea eliminar este elemento?@@',
     'Delete' => '@@Eliminar@@',
+    'Please fill the next fields' => '@@Porfavor, llene los siguientes campos@@',
+    'Signup' => '@@Registrar@@',
     'Cancel' => 'Cancelar',
     'Clients' => 'Clientes',
     'Create' => 'Crear',
@@ -28,11 +35,9 @@ return [
     'Login' => 'Iniciar Sesión',
     'Logout' => 'Cerrar Sesión',
     'Manage' => 'Administrar',
-    'Please fill the next fields' => 'Porfavor, llene los siguientes campos',
     'Register' => 'Regístrate',
     'Reset' => 'Reiniciar',
     'Search' => 'Buscar',
-    'Signup' => 'Registrar',
     'Update' => 'Actualizar',
     'Update {modelClass}: ' => 'Actualizar {modelClass}',
     'reset it' => 'reiniciarla',

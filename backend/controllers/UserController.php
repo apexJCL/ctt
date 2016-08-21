@@ -118,8 +118,8 @@ class UserController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
-
+        $user = $this->findModel($id);
+        $user->deleteProfile();
         return $this->redirect(['index']);
     }
 

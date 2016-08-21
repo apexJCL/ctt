@@ -350,4 +350,14 @@ class User extends ActiveRecord implements IdentityInterface
             file_exists($baseUrl . '.png') ? '/'.$baseUrl.'.png' : '/img/default_avatar.jpg'
         );
     }
+
+    public function deleteProfile()
+    {
+        $baseUrl = 'img/users/'.$this->username;
+        if (file_exists($baseUrl.'.jpg'))
+            unlink($baseUrl.'jpg');
+        elseif  (file_exists($baseUrl . '.png'))
+            unlink($baseUrl.'.png');
+        return $this->delete();
+    }
 }
