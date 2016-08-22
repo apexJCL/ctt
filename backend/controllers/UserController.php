@@ -132,16 +132,13 @@ class UserController extends Controller
 
     public function actionRoles()
     {
-        $form = User::getForm(Yii::$app->request->getQueryParam('id'));
+        $model = User::getUserRoles(Yii::$app->request->getQueryParam('id'));
 
-        if ($form && $form->load(Yii::$app->request->post()) && $form->saveRoles())
-            return $this->render('roles',[
-                'model' => $this->findModel(Yii::$app->request->getQueryParam('id'))
-            ]);
+        if ($model && $model->load(Yii::$app->request->post()) && $model->manageRoles(array_values(Yii::$app->request->post()['User']['roles'])))
+            return $this->redirect(['view', 'id' => $model->id]);
         else
             return $this->render('roles',[
-                'model' => $this->findModel(Yii::$app->request->getQueryParam('id')),
-                'form' => $form
+                'model' => $model,
             ]);
     }
 

@@ -25,7 +25,7 @@ $this->registerJsFile('/js/role/children_app.js', ['depends' => [
         <div class="container-lazy">
             <?php $form = ActiveForm::begin(); ?>
             <div class="row">
-                <span type="hidden" data-type="2" id="authitem-type">
+                <span type="hidden" data-type="2" id="authitem-type"></span>
                 <div class="col s12 m6">
                     <?= $form->field($model, 'name')->textInput(['disabled' => true]) ?>
                 </div>
@@ -39,6 +39,9 @@ $this->registerJsFile('/js/role/children_app.js', ['depends' => [
                             [
                                 'name' => 'permissions',
                                 'title' => Yii::t('app', 'Permissions'),
+                                'options' => [
+                                    'autocomplete' => 'off'
+                                ]
                             ]
                         ],
                         'addButtonOptions' => [

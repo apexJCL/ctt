@@ -2,6 +2,7 @@
 
 /* @var $form \yii\widgets\ActiveForm */
 /* @var $model \common\models\User */
+
 use unclead\widgets\MultipleInput;
 use yii\bootstrap\Html;
 use yii\helpers\Url;

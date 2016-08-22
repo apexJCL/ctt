@@ -60,7 +60,7 @@ class AuthItemForm extends Model
         $f->description = $r->description;
         $f->type = $r->type;
         $f->isNewRecord = false;
-        $f->children = AuthItem::getRolePermissionsAsArray($r);
+        $f->children = AuthItem::getRolePermissionsAsArray($r->name);
         return $f;
     }
 
@@ -122,29 +122,26 @@ class AuthItemForm extends Model
         $parent = AuthItem::getRole($this->name);
         $children = array_values(Yii::$app->request->post('AuthItemForm')['children']['permissions']);
         $permissions = AuthItem::getRolePermissionsAsArray($parent);
-        for ($i = 0; $i < sizeof($children); $i++){
-            if (!in_array($children[$i], $permissions))
-                AuthItem::addPermission($parent, $children[$i]);
-            $permissions = array_splice($permissions, $i, 1); // Remove previously assigned permissions from list
+        $new = array_diff($children, $permissions);
+        $delete = array_diff($permissions, $children);
+        foreach ($new as $n){
+            AuthItem::addPermission($parent,$n);
         }
-        // If permissions list still has elements, it means these permissions have been revoked, so we delete them
-        if (!empty($permissions) && sizeof($permissions) >= 1)
-            AuthItem::removePermissions($parent, $permissions);
+        AuthItem::removePermissions($parent, $delete);
         return true;
     }
 
-    public function saveChildren()
+    public function saveChildren($c)
     {
         $parent = AuthItem::getRole($this->name);
-        $children = array_values(Yii::$app->request->post('AuthItemForm')['childrenRoles']['roles']);
+        $children = isset($c) ? $c : [];
         $children_roles = AuthItem::getRoleChildrenAsArray($parent);
-        for ($i = 0; $i < sizeof($children); $i++){
-            if (!in_array($children[$i], $children_roles))
-                AuthItem::addChildRole($parent, $children[$i]);
-            $children_roles = array_splice($children_roles, $i, 1);
+        $new = array_diff($children, $children_roles);
+        $delete = array_diff($children_roles, $children);
+        foreach ($new as $n){
+            AuthItem::addChildRole($parent, $n);
         }
-        if (!empty($children_roles) && sizeof($children_roles) >= 1)
-            AuthItem::removeChildrenRoles($parent, $children_roles);
+        AuthItem::removeChildrenRoles($parent, $delete);
         return true;
     }
 }

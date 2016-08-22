@@ -11,6 +11,7 @@ var ajaxGetChildren = function () {
         },
         dataType: 'JSON',
         success: function (data) {
+            console.debug(data);
             $('input.form-control').autocomplete({
                 data: data
             });
@@ -23,5 +24,9 @@ var ajaxGetChildren = function () {
 }
 
 $('.multiple-input').on('afterAddRow', function (e) {
+    $('input.form-control').keypress(function (e) {
+        if (e.which === 13)
+            return false;
+    });
     ajaxGetChildren();
 });

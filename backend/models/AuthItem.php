@@ -4,7 +4,9 @@ namespace backend\models;
 
 use common\models\AuthItemForm;
 use Yii;
+use yii\db\ActiveRecord;
 use yii\helpers\ArrayHelper;
+use yii\rbac\Assignment;
 use yii\rbac\Permission;
 use yii\rbac\Role;
 
@@ -27,11 +29,12 @@ use yii\rbac\Role;
  * @property AuthItem[] $childrenRoles
  * @property AuthItem[] $parents
  */
-class AuthItem extends \yii\db\ActiveRecord
+class AuthItem extends ActiveRecord
 {
 
     const ROLE = 1;
     const PERMISSION = 2;
+    public $actualChildren = self::ROLE;
     public $children = [];
     public $childrenRoles = [];
 
@@ -41,6 +44,13 @@ class AuthItem extends \yii\db\ActiveRecord
     public static function tableName()
     {
         return 'auth_item';
+    }
+
+    public static function getRoleWithRoleChildren($name, $type)
+    {
+        $t = self::getRole($name);
+        $t->children = $t->getRoleChildrenAsArray($t->name);
+        return $t;
     }
 
     public static function addPermission($parent, $permission)
@@ -103,6 +113,33 @@ class AuthItem extends \yii\db\ActiveRecord
             return self::getRolesAutocomplete($parent);
         elseif  ($type == AuthItem::PERMISSION)
             return self::getPermissionsAutocomplete($parent);
+        else return null;
+    }
+
+    /**
+     * Assigns a role to the given user
+     *
+     * @param $id int User id
+     * @param $roleName string Name of the role
+     * @return Assignment
+     */
+    public static function assignRole($id, $roleName)
+    {
+        $r = self::getRole($roleName);
+        return Yii::$app->authManager->assign($r, $id);
+    }
+
+    /**
+     * Revokes a role from the given user
+     *
+     * @param $id
+     * @param $roleName
+     * @return bool
+     */
+    public static function removeRole($id, $roleName)
+    {
+        $r = self::getRole($roleName);
+        return Yii::$app->authManager->revoke($r, $id);
     }
 
     /**
@@ -186,7 +223,7 @@ class AuthItem extends \yii\db\ActiveRecord
     /**
      * Returns a role by his name
      * @param $name
-     * @return Role
+     * @return AuthItem
      */
     public static function getRole($name){
         /* @var $r AuthItem */
@@ -311,10 +348,10 @@ class AuthItem extends \yii\db\ActiveRecord
      */
     private function getPermissionsAsArray()
     {
-        $c = $this->getChildren()->where(['type' => self::PERMISSION])->select(['name'])->asArray()->all();
+        $c = Yii::$app->authManager->getPermissionsByRole($this->name);
         $r = [];
         foreach ($c as $child){
-            array_push($r, $child['name']);
+            array_push($r, $child->name);
         }
         return $r;
     }
@@ -338,16 +375,46 @@ class AuthItem extends \yii\db\ActiveRecord
     /**
      * Returns a role children roles, from where it inherits permissions
      *
-     * @param $role AuthItem
+     * @param $role string
      * @return array
      */
     public static function getRoleChildrenAsArray($role)
     {
-        $c =  $role->getChildren()->where(['type' => self::ROLE])->select(['name'])->asArray()->all();
+        $c =  Yii::$app->authManager->getChildren($role);
         $r = [];
         foreach ($c as $child) {
-            array_push($r, $child['name']);
+            if ($child->type == self::ROLE)
+                array_push($r, $child->name);
         }
         return $r;
+    }
+
+    /**
+     * Returns all assignments for a given user
+     *
+     * @param $id int User id
+     * @return array []
+     */
+    public static function getAssignments($id)
+    {
+        $a = Yii::$app->authManager->getAssignments($id);
+        $r = [];
+        foreach ($a as $item)
+            array_push($r, $item->roleName);
+        return $r;
+    }
+
+    public function saveChildrenRoles($c)
+    {
+        $parent = self::getRole($this->name);
+        $children = isset($c) ? $c : [];
+        $children_roles = self::getRoleChildrenAsArray($parent->name);
+        $new = array_diff($children, $children_roles);
+        $delete = array_diff($children_roles, $children);
+        foreach ($new as $n){
+            self::addChildRole($parent, $n);
+        }
+        self::removeChildrenRoles($parent, $delete);
+        return true;
     }
 }

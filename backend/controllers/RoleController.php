@@ -82,8 +82,11 @@ class RoleController extends Controller
 
     public function actionChildren()
     {
-        $form = AuthItemForm::getRoleChildrenForm(Yii::$app->getRequest()->getQueryParam('name'));
-        if ($form->load(Yii::$app->request->post()) && $form->saveChildren())
+        /**
+         * @var $form AuthItem
+         */
+        $form = AuthItem::getRoleWithRoleChildren(Yii::$app->request->getQueryParam('name'), AuthItem::ROLE);
+        if (!empty(Yii::$app->request->post('AuthItem')['roles']) && $form->saveChildrenRoles(Yii::$app->request->post('AuthItem')['roles']))
             return $this->redirect(['view', 'name' => $form->name]);
         return $this->render('children',[
             'model' => $form
@@ -112,13 +115,13 @@ class RoleController extends Controller
         $permissionProvider = new ArrayDataProvider([
             'allModels' => $model->getChildren()->where(['type' => AuthItem::PERMISSION])->all()
         ]);
-        $chilrenRolesProvider = new ArrayDataProvider([
+        $childrenRoleProvider = new ArrayDataProvider([
             'allModels' => $model->getChildren()->where(['type' => AuthItem::ROLE])->all()
         ]);
         return $this->render('view', [
             'model' => $model,
             'permissionProvider' => $permissionProvider,
-            'rolesProvider' => $chilrenRolesProvider
+            'rolesProvider' => $childrenRoleProvider
         ]);
     }
 

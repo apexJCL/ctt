@@ -25,7 +25,7 @@ $this->registerJsFile('/js/role/children_app.js', ['depends' => [
     <div class="section grey lighten-4">
         <div class="container">
             <?php $form = ActiveForm::begin(); ?>
-            <span type="hidden" data-type="1" id="authitem-type">
+            <span type="hidden" data-type="1" id="authitem-type"></span>
             <div class="row">
                 <div class="col s12 m6">
                     <?= $form->field($model, 'name')->textInput(['disabled' => true]) ?>
@@ -34,7 +34,7 @@ $this->registerJsFile('/js/role/children_app.js', ['depends' => [
                     <?= $form->field($model, 'description')->textInput(['disabled' => true]) ?>
                 </div>
                 <div class="col s12 m6">
-                    <?= $form->field($model, 'childrenRoles')->widget(MultipleInput::className(), [
+                    <?= $form->field($model, 'children')->widget(MultipleInput::className(), [
                         'allowEmptyList' => true,
                         'columns' => [
                             [

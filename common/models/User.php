@@ -1,10 +1,10 @@
 <?php
 namespace common\models;
 
+use backend\models\AuthItem;
 use backend\models\Role;
 use backend\models\Status;
 use backend\models\UserType;
-use frontend\models\SignupForm;
 use Yii;
 use yii\base\NotSupportedException;
 use yii\db\ActiveRecord;
@@ -31,6 +31,7 @@ use yii\web\UploadedFile;
  * @property string $apellido_paterno
  * @property string $apellido_materno
  * @property string $password write-only password
+ * @property AuthItem[] $roles
  */
 class User extends ActiveRecord implements IdentityInterface
 {
@@ -55,14 +56,13 @@ class User extends ActiveRecord implements IdentityInterface
         return '{{%user}}';
     }
 
-    public static function getForm($userID)
+    public static function getUserRoles($id)
     {
-        $u = self::find()->where(['id' => $userID]);
+        $u = self::findIdentity($id);
         if (empty($u) || !isset($u))
             return false;
-        $f = new SignupForm();
-        $f->nombre = $u->nombre;
-
+        $u->roles = AuthItem::getAssignments($u->id);
+        return $u;
     }
 
     /**
@@ -428,5 +428,38 @@ class User extends ActiveRecord implements IdentityInterface
             return $this;
         }
         return false;
+    }
+
+    /**
+     * Iterates through an array and adds the roles,
+     * if roles are missing from the received array,
+     * those are deleted
+     *
+     * @param $roles [] string Role names
+     * @return bool
+     */
+    public function manageRoles($roles)
+    {
+        $assigned = AuthItem::getAssignments($this->id);
+        $new = array_diff($roles, $assigned);
+        $delete = array_diff($assigned, $roles);
+        foreach ($new as $n){
+            AuthItem::assignRole($this->id, $n);
+        }
+        $this->removeRoles($delete);
+        return true;
+    }
+
+    /**
+     * Removes current user assignment with the given roles
+     *
+     * @param $assigned [] string Role Names
+     * @return bool
+     */
+    private function removeRoles($assigned)
+    {
+        foreach ($assigned as $roleName)
+            AuthItem::removeRole($this->id, $roleName);
+        return true;
     }
 }
