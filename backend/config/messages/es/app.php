@@ -17,10 +17,20 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Children Roles' => 'Roles hijo',
+    'Actual list of roles' => 'Lista de roles actual',
+    'Add roles' => 'Agregar rol',
+    'Admin Panel' => 'Panel Administrativo',
+    'An error has ocurred, maybe a typo?' => 'Ocurrió un error',
+    'Assign only the necessary role for this user' => 'Asigne sólo los roles necesarios para este usuario',
+    'General' => 'General',
+    'Home' => 'Inicio',
+    'Permission: {permission}' => 'Permiso: {permission}',
+    'Roles of: {name}' => 'Roles de: {name}',
+    '{name}' => '{name}',
     'Add children roles' => 'Agregar roles hijos',
     'Cancel' => 'Cancelar',
     'Children' => 'Hijos',
+    'Children Roles' => 'Roles hijo',
     'Create' => 'Crear',
     'Create User' => 'Agregar Usuario',
     'Created At' => 'Creado',
@@ -57,5 +67,4 @@ return [
     'Update {modelClass}: ' => 'Actualizar {modelClass}',
     'Updated At' => 'Actualizado',
     'Users' => 'Usuarios',
-    'View user: {name}' => 'Ver usuario: {name}',
 ];

@@ -9,12 +9,17 @@ use yii\helpers\Url;
 use yii\web\View;
 use yii\widgets\ActiveForm;
 
+$this->title = Yii::t('app', 'Roles of: {name}', ['name'=> $model->nombre]);
+
 $this->registerJsFile('/js/role/children_app.js', ['depends' => [
     \yii\web\JqueryAsset::className(),
     \backend\assets\MaterializeAsset::className()
 ]
 ], View::POS_END);
 ?>
+<?= $this->render('//layouts/_section_header', [
+    'photoUrl' => '/img/showcase/users.jpg'
+]) ?>
 <div>
     <div class="section grey lighten-4 greedy">
         <span type="hidden" data-type="1" id="authitem-type">

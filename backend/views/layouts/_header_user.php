@@ -48,7 +48,8 @@ use yii\helpers\Url;
                 </li>
                 <div class="divider"></div>
                 </li>
-                <li><a class="subheader">Cuenta</a></li>
+                <li><a class="subheader"><?= Yii::t('app', 'General') ?></a></li>
+                <li><a href="<?= Url::to(['/']) ?>"><?= Yii::t('app', 'Home') ?></a></li>
                 <li>
                     <?= Html::a(Yii::t('app', 'Logout'), ['site/logout'], ['data' => ['method' => 'post']]) ?>
                 </li>

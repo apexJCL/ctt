@@ -22,5 +22,3 @@ use yii\helpers\Html;
         </span>
     </div>
 </div>
-<!-- Sección en blanco para poder ver fondo -->
-<div class="section static-display--viewport"></div>

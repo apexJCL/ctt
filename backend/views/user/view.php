@@ -9,7 +9,7 @@ use yii\widgets\Pjax;
 /* @var $this yii\web\View */
 /* @var $model common\models\User */
 
-$this->title = Yii::t('app', 'View user: {name}', ['name' => $model->nombre ? $model->nombre : $model->id]);
+$this->title = Yii::t('app', '{name}', ['name' => $model->nombre ? $model->nombre : $model->id]);
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Users'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

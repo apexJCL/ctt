@@ -17,7 +17,12 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
+    'Actual list of roles' => '',
     'Add children roles' => '',
+    'Add roles' => '',
+    'Admin Panel' => '',
+    'An error has ocurred, maybe a typo?' => '',
+    'Assign only the necessary role for this user' => '',
     'Cancel' => '',
     'Children' => '',
     'Children Roles' => '',
@@ -28,9 +33,11 @@ return [
     'Data' => '',
     'Description' => '',
     'Details' => '',
+    'General' => '',
     'General overview' => '',
     'Here you can add or remove existing permissions for the given role' => '',
     'Here you manage relation between roles, the actual will inherit permissions from them' => '',
+    'Home' => '',
     'ID' => '',
     'If photo not uploaded, default avatar will be used' => '',
     'Login' => '',
@@ -40,6 +47,7 @@ return [
     'Manage permissions' => '',
     'Manage role children' => '',
     'Name' => '',
+    'Permission: {permission}' => '',
     'Permissions' => '',
     'Personal Info' => '',
     'Please login before continue' => '',
@@ -49,6 +57,7 @@ return [
     'Reset' => '',
     'Role: {role}' => '',
     'Roles' => '',
+    'Roles of: {name}' => '',
     'Rule Name' => '',
     'Save' => '',
     'Search' => '',
@@ -57,5 +66,5 @@ return [
     'Update {modelClass}: ' => '',
     'Updated At' => '',
     'Users' => '',
-    'View user: {name}' => '',
+    '{name}' => '',
 ];

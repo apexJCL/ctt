@@ -7946,7 +7946,7 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
   min-height: 498px !important; }
 
 .brand-logo--offset-left {
-  left: 25%;
+  left: 360px;
   transform: translateX(-25%); }
   @media only screen and (max-width: 992px) {
     .brand-logo--offset-left {

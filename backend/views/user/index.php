@@ -13,10 +13,10 @@ $this->title = Yii::t('app', 'Users');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
+<?= $this->render('//layouts/_section_header', [
+    'photoUrl' => '/img/showcase/users.jpg'
+]) ?>
 <div>
-    <?= $this->render('//layouts/_section_header', [
-        'photoUrl' => '/img/showcase/users.jpg'
-    ]) ?>
     <div class="section grey lighten-5 fab-container greedy" id="main">
         <div class="fixed-action-btn horizontal main-fab">
             <a class="btn-floating btn-large">

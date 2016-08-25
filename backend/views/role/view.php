@@ -12,11 +12,11 @@ use yii\widgets\Pjax;
 
 $this->title = Yii::t('app', 'Role: {role}', ['role' => $model->name]);
 ?>
+<?= $this->render('//layouts/_section_header', [
+    'photoUrl' => '/img/showcase/users.jpg',
+    'titleColor' => 'white'
+]) ?>
 <div>
-    <?= $this->render('//layouts/_section_header', [
-        'photoUrl' => '/img/showcase/users.jpg',
-        'titleColor' => 'white'
-    ]) ?>
     <?php Pjax::begin(); ?>
     <div class="section grey lighten-4 fab-container greedy">
         <div class="fixed-action-btn horizontal main-fab">

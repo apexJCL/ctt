@@ -60,7 +60,7 @@ class AuthItemForm extends Model
         $f->description = $r->description;
         $f->type = $r->type;
         $f->isNewRecord = false;
-        $f->children = AuthItem::getRolePermissionsAsArray($r->name);
+        $f->children = AuthItem::getRolePermissionsAsArray($r);
         return $f;
     }
 

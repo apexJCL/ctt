@@ -6,10 +6,10 @@ use yii\widgets\Pjax;
 
 $this->title = Yii::t('app', 'Creating role');
 ?>
+<?= $this->render('//layouts/_section_header', [
+    'photoUrl' => '/img/showcase/users.jpg'
+]) ?>
 <div>
-    <?= $this->render('//layouts/_section_header', [
-        'photoUrl' => '/img/showcase/users.jpg'
-    ]) ?>
     <?php Pjax::begin(); ?>
     <div class="section grey lighten-4 fab-container greedy">
         <?= $this->render('_form', [
