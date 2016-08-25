@@ -19,7 +19,7 @@ $this->title = 'CTTExp & Rentals :: Admin Area';
             </div>
             <div class="col l10 m8 white-text raleway-bold">
                 <div class="thin-line primary-overlay"></div>
-                <h1><?= Html::encode($this->title) ?></>
+                <h1><?= Yii::t('app', 'Admin Panel') ?></>
             </div>
         </div>
     </div>

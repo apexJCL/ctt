@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use backend\models\AuthItem;
 use Yii;
 use common\models\Client;
 use common\models\ClientSearch;
