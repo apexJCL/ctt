@@ -11,7 +11,7 @@ $this->title = Yii::t('app', 'Creating role');
         'photoUrl' => '/img/showcase/users.jpg'
     ]) ?>
     <?php Pjax::begin(); ?>
-    <div class="section grey lighten-4 fab-container">
+    <div class="section grey lighten-4 fab-container greedy">
         <?= $this->render('_form', [
             'model' => $model
         ]) ?>

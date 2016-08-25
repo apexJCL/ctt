@@ -137,6 +137,7 @@ New display
 */
 .static-display__background {
   min-width: 100%;
+  max-height: 350px;
   position: fixed;
   z-index: -3;
   left: 50%;
@@ -178,21 +179,27 @@ New display
     z-index: -2;
     display: block;
     margin: auto;
+    -webkit-clip-path: circle(96px at center);
+    clip-path: circle(96px at center);
     border-radius: 50%; }
     @media only screen and (max-width: 600px) {
       .static-display__foreground--profile-picture img {
         min-width: 100%;
         padding: 0;
-        border-radius: 0; } }
+        border-radius: 0;
+        -webkit-clip-path: none;
+        clip-path: none; } }
 .static-display__foreground--brand-logo {
-  display: inline;
-  z-index: -1;
-  position: absolute;
-  margin-top: 1rem;
-  min-width: 100%; }
+  position: relative;
+  float: left;
+  display: flex;
+  min-width: 100vw;
+  min-height: 350px; }
   .static-display__foreground--brand-logo img {
-    z-index: -2;
-    max-height: 350px; }
+    max-height: 350px;
+    padding: 10px; }
+  .static-display__foreground--brand-logo .row {
+    min-height: 350px; }
 
 .static-display--viewport {
   min-height: 350px; }
@@ -241,5 +248,24 @@ New display
 .mute {
   -webkit-filter: brightness(30%);
   filter: brightness(30%); }
+
+.greedy {
+  min-height: 50vh; }
+
+.padding-50 {
+  padding-top: 50px; }
+
+.padding-100 {
+  padding-top: 100px; }
+
+.footer-tag {
+  position: relative; }
+  .footer-tag img {
+    position: absolute;
+    left: 2%;
+    bottom: 150px; }
+  @media only screen and (max-width: 1333px) {
+    .footer-tag {
+      display: none; } }
 
 /*# sourceMappingURL=cust-styles.css.map */

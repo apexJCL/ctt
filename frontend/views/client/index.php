@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div>
     <?= $this->render('_section_header') ?>
     <?php Pjax::begin(); ?>
-    <div class="section grey lighten-5 fab-container">
+    <div class="section grey lighten-5 fab-container greedy">
         <div class="fixed-action-btn horizontal main-fab">
             <a class="btn-floating btn-large">
                 <i class="large material-icons">menu</i>

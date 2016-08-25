@@ -21,7 +21,7 @@ $this->registerJsFile('/js/role/children_app.js', ['depends' => [
     'titleColor' => 'white'
 ]) ?>
 <div>
-    <div class="section grey lighten-4">
+    <div class="section grey lighten-4 greedy">
         <div class="container-lazy">
             <?php $form = ActiveForm::begin(); ?>
             <div class="row">

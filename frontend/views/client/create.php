@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= $this->render('_section_header') ?>
     <!-- Actual Form -->
     <?php Pjax::begin(); ?>
-    <div class="section grey lighten-4">
+    <div class="section grey lighten-4 greedy">
         <div class="container">
             <?= $this->render('_form', [
                 'model' => $model,

@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= $this->render('//layouts/_section_header', [
         'photoUrl' => '/img/showcase/users.jpg'
     ]) ?>
-    <div class="section grey lighten-5 fab-container" id="main">
+    <div class="section grey lighten-5 fab-container greedy" id="main">
         <div class="fixed-action-btn horizontal main-fab">
             <a class="btn-floating btn-large">
                 <i class="large material-icons">menu</i>

@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= $this->render('//layouts/_section_header', [
         'photoUrl' => '/img/showcase/users.jpg'
     ]) ?>
-    <div class="section grey lighten-4">
+    <div class="section grey lighten-4 greedy">
         <div class="container">
             <div class="row">
                 <div class="col s12">

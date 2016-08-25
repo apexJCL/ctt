@@ -22,7 +22,7 @@ $this->registerJsFile('/js/role/children_app.js', ['depends' => [
     'titleColor' => 'white'
 ]) ?>
 <div>
-    <div class="section grey lighten-4">
+    <div class="section grey lighten-4 greedy">
         <div class="container">
             <?php $form = ActiveForm::begin(); ?>
             <span type="hidden" data-type="1" id="authitem-type"></span>

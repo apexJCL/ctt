@@ -14,7 +14,7 @@ $this->title = Yii::t('app', 'Update {modelClass}: ', [
         'photoUrl' => '/img/users/1.jpg'
     ]) ?>
     <?php Pjax::begin(); ?>
-    <div class="section grey lighten-4">
+    <div class="section grey lighten-4 greedy">
         <div class="container-lazy">
             <?= $this->render('_form', [
                 'model' => $model,

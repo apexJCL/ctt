@@ -12,7 +12,7 @@ use yii\widgets\Pjax;
         'titleColor' => 'white'
     ]) ?>
     <?php Pjax::begin(); ?>
-    <div class="section grey lighten-4 fab-container">
+    <div class="section grey lighten-4 fab-container greedy">
         <div class="fixed-action-btn horizontal main-fab">
             <a class="btn-floating btn-large">
                 <i class="large material-icons">menu</i>

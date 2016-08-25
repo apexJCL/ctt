@@ -16,7 +16,7 @@ $this->title = Yii::t('app', 'Update {modelClass}: ', [
         'photoUrl' => '/img/showcase/users.jpg'
     ]) ?>
     <?php Pjax::begin(); ?>
-    <div class="section red green lighten-5">
+    <div class="section red green lighten-5 greedy">
         <div class="container">
             <div class="row">
                 <div class="col s12">

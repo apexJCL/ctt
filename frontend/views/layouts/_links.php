@@ -5,7 +5,7 @@ use yii\helpers\Url;
 /* @var $user */
 ?>
 <li>
-    <a href="#home" class="raleway">INICIO</a>
+    <a href="<?= Url::to(['site/index']) ?>" class="raleway">INICIO</a>
 </li>
 <li>
     <a href="#inventory" class="raleway">INVENTARIOS</a>

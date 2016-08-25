@@ -13,15 +13,13 @@ use yii\helpers\Html;
         </div>
     </div>
     <div class="static-display__foreground--brand-logo row">
-        <div class="col l2 m4 hide-on-small-and-down">
-            <img src="/img/logo.png" alt="" class="responsive-img">
-        </div>
-        <div class="col l10 m8 s12 <?= isset($titleColor) ? $titleColor : 'white' ?>-text raleway-bold">
+        <img src="/img/logo.png" alt="" class="responsive-img hide-on-med-and-down">
+        <span class="<?= isset($titleColor) ? $titleColor : 'white' ?>-text raleway-bold">
             <h1>
                 <div class="thin-line primary-overlay"></div>
                 <?= Html::encode($this->title) ?>
             </h1>
-        </div>
+        </span>
     </div>
 </div>
 <!-- Sección en blanco para poder ver fondo -->

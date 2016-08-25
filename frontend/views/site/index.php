@@ -31,7 +31,7 @@ $this->title = 'CTTE';
     <!-- Fondo Video -->
     <div class="hide-on-small-and-down">
         <video autoplay loop class="background-video">
-            <source src="video/CDMX.webm" type="video/webm">
+            <source src="/video/CDMX.webm" type="video/webm">
         </video>
     </div>
 

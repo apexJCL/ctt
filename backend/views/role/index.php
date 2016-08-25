@@ -17,7 +17,7 @@ $this->title = Yii::t('app', 'Roles');
         'photoUrl' => '/img/showcase/users.jpg'
     ]) ?>
     <?php Pjax::begin(); ?>
-    <div class="section grey lighten-4 fab-container">
+    <div class="section grey lighten-4 fab-container greedy">
         <div class="fixed-action-btn horizontal main-fab">
             <a class="btn-floating btn-large">
                 <i class="large material-icons">menu</i>

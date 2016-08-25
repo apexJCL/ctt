@@ -13,19 +13,19 @@ $this->title = 'CTTExp & Rentals :: Admin Area';
                 <img src="/img/showcase/users.jpg" alt="#" class="">
             </div>
         </div>
-        <div class="static-display__foreground--brand-logo row">
-            <div class="col l2 m4 hide-on-med-and-down">
-                <img src="/img/logo.png" alt="" class="responsive-img">
-            </div>
-            <div class="col l10 m8 white-text raleway-bold">
-                <div class="thin-line primary-overlay"></div>
-                <h1><?= Yii::t('app', 'Admin Panel') ?></>
-            </div>
+        <div class="static-display__foreground--brand-logo">
+            <img src="/img/logo.png" alt="" class="responsive-img hide-on-med-and-down">
+            <span class="white-text raleway-bold">
+                <h1>
+                    <div class="thin-line primary-overlay"></div>
+                    <?= Yii::t('app', 'Admin Panel') ?>
+                </h1>
+            </span>
         </div>
     </div>
     <!-- Sección en blanco para poder ver fondo -->
     <div class="section static-display--viewport"></div>
-    <div class="section grey lighten-4">
+    <div class="section grey lighten-4 greedy">
         <div class="container-lazy">
             <h1>Bienvenido</h1>
         </div>

@@ -1,4 +1,4 @@
-<footer class="page-footer grey darken-4 raleway" style="margin-top: 0px">
+<footer class="page-footer grey darken-4 raleway padding-100" style="margin-top: 0px">
     <div class="container">
         <div class="row">
             <div class="col l6 s12">
@@ -30,5 +30,8 @@
     <div class="footer-copyright grey darken-4">
         <div class="container">
         </div>
+    </div>
+    <div class="footer-tag">
+        <img src="/img/small_logo.png" alt="">
     </div>
 </footer>

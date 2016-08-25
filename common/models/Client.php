@@ -15,6 +15,9 @@ use Yii;
  */
 class Client extends \yii\db\ActiveRecord
 {
+    const JPG = '.jpg';
+    const PNG = '.png';
+
     /**
      * @inheritdoc
      */
@@ -46,5 +49,16 @@ class Client extends \yii\db\ActiveRecord
             'apellido_materno' => Yii::t('app', 'Apellido Materno'),
             'email' => Yii::t('app', 'Email'),
         ];
+    }
+
+    /**
+     * Returns the url to the profile picture, or default if it does not exists
+     */
+    public function getProfilePicture()
+    {
+        $baseUrl = 'img/clients/' . $this->id;
+        return file_exists($baseUrl . self::JPG) ? '/' . $baseUrl . self::JPG : (
+        file_exists($baseUrl . self::PNG) ? '/' . $baseUrl . self::PNG : '/img/default_avatar.jpg'
+        );
     }
 }

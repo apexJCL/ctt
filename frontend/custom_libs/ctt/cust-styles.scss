@@ -183,6 +183,7 @@ New display
 .static-display {
   &__background {
     min-width: 100%;
+    max-height: $static-viewport-height;
     position: fixed;
     z-index: -3;
     left: 50%;
@@ -229,23 +230,30 @@ New display
         z-index: -2;
         display: block;
         margin: auto;
+        -webkit-clip-path: circle($profile-img-radius at center);
+        clip-path: circle($profile-img-radius at center);
         border-radius: 50%;
         @media only screen and (max-width: 600px) {
           min-width: 100%;
           padding: 0;
           border-radius: 0;
+          -webkit-clip-path: none;
+          clip-path: none;
         }
       }
     }
     &--brand-logo {
-      display: inline;
-      z-index: -1;
-      position: absolute;
-      margin-top: 1rem;
-      min-width: 100%;
+      position: relative;
+      float: left;
+      display: flex;
+      min-width: 100vw;
+      min-height: $static-viewport-height;
       img {
-        z-index: -2;
         max-height: $static-viewport-height;
+        padding: 10px;
+      }
+      .row {
+        min-height: $static-viewport-height;
       }
     }
   }
@@ -305,4 +313,28 @@ New display
 .mute {
   -webkit-filter: brightness($mute_value);
   filter: brightness($mute_value);
+}
+
+.greedy {
+  min-height: 50vh;
+}
+
+.padding-50 {
+  padding-top: 50px;
+}
+
+.padding-100 {
+  padding-top: 100px;
+}
+
+.footer-tag {
+  position: relative;
+  img {
+    position: absolute;
+    left: 2%;
+    bottom: 150px;
+  }
+  @media only screen and (max-width: 1333px) {
+    display: none;
+  }
 }

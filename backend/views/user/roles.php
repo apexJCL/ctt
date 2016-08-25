@@ -16,7 +16,7 @@ $this->registerJsFile('/js/role/children_app.js', ['depends' => [
 ], View::POS_END);
 ?>
 <div>
-    <div class="section grey lighten-4">
+    <div class="section grey lighten-4 greedy">
         <span type="hidden" data-type="1" id="authitem-type">
         <?php $form = ActiveForm::begin(); ?>
         <div class="container">

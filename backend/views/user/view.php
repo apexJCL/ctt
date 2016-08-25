@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= $this->render('_section_header_profile', [
         'photoUrl' => $model->getProfilePicture()
     ]) ?>
-    <div class="section grey lighten-4 fab-container">
+    <div class="section grey lighten-4 fab-container greedy">
         <div class="fixed-action-btn horizontal main-fab">
             <a class="btn-floating btn-large">
                 <i class="large material-icons">menu</i>
