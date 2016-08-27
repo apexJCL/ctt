@@ -26,7 +26,7 @@ class ClientController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['index', 'create', 'update', 'view'],
+                        'actions' => ['index', 'create', 'update', 'view', 'delete'],
                         'roles' => ['@'], // Any logged in user can go in, only if they have the permission assigned
                         'matchCallback' => function ($rule, $action) {
                             return RBACHelper::hasAccess($action);

@@ -20,21 +20,21 @@ $this->title = $model->nombre;
                 <i class="large material-icons">menu</i>
             </a>
             <ul>
-                <li>
-                    <a href="#delete" class="btn-floating red modal-trigger tooltipped" data-position="bottom"
-                       data-delay="1000" data-tooltip="Eliminar"><i class="material-icons">delete</i></a>
-                </li>
-                <li>
+                <?= Yii::$app->user->can('deleteClient') ? "<li>
+                    <a href=\"#delete\" class=\"btn-floating red modal-trigger tooltipped\" data-position=\"bottom\"
+                       data-delay=\"1000\" data-tooltip=\"Eliminar\"><i class=\"material-icons\">delete</i></a>
+                </li>" : '' ?>
+                <?= Yii::$app->user->can('updateClient') ? "<li>
                     <?= Html::a(Html::tag('i', 'edit', ['class' => 'material-icons']),
                         ['update', 'id' => $model->id],
                         [
                             'class' => 'btn-floating light-blue accent-2 tooltipped',
-                            'data-position' => "bottom",
+                            'data-position' => \"bottom\",
                             'data-delay' => '1000',
-                            'data-tooltip' => 'Editar'
+                            'data-tooltip' => Yii::t('app', 'Edit')
                         ])
                     ?>
-                </li>
+                </li>" : '' ?>
                 <li>
                     <?= Html::a(Html::tag('i', 'list', ['class' => 'material-icons']),
                         Url::to(['index']),
@@ -42,9 +42,22 @@ $this->title = $model->nombre;
                             'class' => 'btn-floating blue accent-1 tooltipped',
                             'data-position' => "bottom",
                             'data-delay' => '1000',
-                            'data-tooltip' => 'Lista de Usuarios'
+                            'data-tooltip' => Yii::t('app', "User's list")
                         ]
                     ) ?>
+                </li>
+                <li>
+                    <?= Html::a(
+                        Html::tag('i', '', ['class' => 'material-icons mdi-undo black-text']),
+                        Url::previous(),
+                        [
+                            'class' => 'btn-floating white tooltipped',
+                            'data-position' => 'bottom',
+                            'data-delay' => '1000',
+                            'data-tooltip' => Yii::t('app', 'Go back')
+                        ]
+                    )
+                    ?>
                 </li>
             </ul>
         </div>
