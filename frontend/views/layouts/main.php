@@ -21,7 +21,7 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 
 <?= $this->render('_header') ?>
-<main>
+<main id="pjax-container">
     <?= $content ?>
 </main>
 <?= $this->render('_footer') ?>

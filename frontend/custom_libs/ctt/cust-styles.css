@@ -262,7 +262,7 @@ New display
   position: relative; }
   .footer-tag img {
     position: absolute;
-    left: 2%;
+    right: 2%;
     bottom: 150px; }
   @media only screen and (max-width: 1333px) {
     .footer-tag {

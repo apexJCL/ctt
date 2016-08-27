@@ -1,7 +1,6 @@
 <?php
 
 /* @var $this yii\web\View */
-use yii\widgets\Pjax;
 
 /* @var $model common\models\Client */
 
@@ -12,7 +11,6 @@ $this->params['breadcrumbs'][] = $this->title;
 <div>
     <?= $this->render('_section_header') ?>
     <!-- Actual Form -->
-    <?php Pjax::begin(); ?>
     <div class="section grey lighten-4 greedy">
         <div class="container">
             <?= $this->render('_form', [
@@ -20,5 +18,4 @@ $this->params['breadcrumbs'][] = $this->title;
             ]) ?>
         </div>
     </div>
-    <?php Pjax::end(); ?>
 </div>

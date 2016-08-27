@@ -2,13 +2,13 @@
 
 namespace frontend\controllers;
 
-use backend\models\AuthItem;
-use Yii;
+use common\helpers\RBACHelper;
 use common\models\Client;
 use common\models\ClientSearch;
+use Yii;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * ClientController implements the CRUD actions for Client model.
@@ -22,11 +22,15 @@ class ClientController extends Controller
     {
         return [
             'access' => [
-                'class' =>  \yii\filters\AccessControl::className(),
+                'class' => \yii\filters\AccessControl::className(),
                 'rules' => [
                     [
                         'allow' => true,
-                        'roles' => ['root']
+                        'actions' => ['index', 'create', 'update', 'view'],
+                        'roles' => ['@'], // Any logged in user can go in, only if they have the permission assigned
+                        'matchCallback' => function ($rule, $action) {
+                            return RBACHelper::hasAccess($action);
+                        }
                     ]
                 ]
             ],
@@ -65,6 +69,7 @@ class ClientController extends Controller
             'model' => $this->findModel($id),
         ]);
     }
+
 
     /**
      * Creates a new Client model.

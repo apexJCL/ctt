@@ -462,4 +462,13 @@ class User extends ActiveRecord implements IdentityInterface
             AuthItem::removeRole($this->id, $roleName);
         return true;
     }
+
+    public static function hasRole($user_id, $role){
+        $roles = Yii::$app->authManager->getRolesByUser($user_id);
+        foreach ($roles as $r){
+            if ($r->name === $role)
+                return true;
+        }
+        return false;
+    }
 }

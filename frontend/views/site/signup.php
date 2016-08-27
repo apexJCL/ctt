@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
             class="input-field col s12 m6 l4"><?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?></div>
         <div
             class="input-field col s12 m6 l4"><?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?></div>
-        <div class="input-field col s12 m6 l4"><?= $form->field($model, 'password')->passwordInput() ?></div>
+        <div class="input-field col s12 m6 l4"><?= $form->field($model, 'new_password')->passwordInput()->label(Yii::t('app', 'Password')) ?></div>
         <!-- Profile Picture -->
         <div class="col s12">
             <h4><?= Yii::t('app', 'Profile Picture') ?></h4>

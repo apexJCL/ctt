@@ -5,7 +5,7 @@ use yii\helpers\Url;
 ?>
 <nav>
     <div class="nav-wrapper">
-        <span class="brand-logo center">
+        <span class="brand-logo--offset-left">
             <a href="<?= Url::to(['/']) ?>">
             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" data-original-aspect-ratio="0.8"
                  style="width: 40px; height: 50px; fill: #ffffff; vertical-align: middle"><g
