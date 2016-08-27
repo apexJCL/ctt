@@ -46,19 +46,6 @@ $this->title = $model->nombre;
                         ]
                     ) ?>
                 </li>
-                <li>
-                    <?= Html::a(
-                        Html::tag('i', '', ['class' => 'material-icons mdi-undo black-text']),
-                        Url::previous(),
-                        [
-                            'class' => 'btn-floating white tooltipped',
-                            'data-position' => 'bottom',
-                            'data-delay' => '1000',
-                            'data-tooltip' => Yii::t('app', 'Go back')
-                        ]
-                    )
-                    ?>
-                </li>
             </ul>
         </div>
         <div class="container row">
