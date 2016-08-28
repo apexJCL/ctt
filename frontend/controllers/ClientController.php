@@ -3,6 +3,7 @@
 namespace frontend\controllers;
 
 use common\helpers\RBACHelper;
+use common\models\Bitacora;
 use common\models\Client;
 use common\models\ClientSearch;
 use Yii;
@@ -100,6 +101,7 @@ class ClientController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Bitacora::register(Client::tableName());
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
