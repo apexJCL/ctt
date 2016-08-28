@@ -1,20 +1,18 @@
 <?php
 
-namespace frontend\controllers;
+namespace backend\controllers;
 
-use common\helpers\RBACHelper;
-use common\models\Bitacora;
-use common\models\Client;
-use common\models\ClientSearch;
 use Yii;
-use yii\filters\VerbFilter;
+use common\models\Bitacora;
+use common\models\BitacoraSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\filters\VerbFilter;
 
 /**
- * ClientController implements the CRUD actions for Client model.
+ * BinnacleController implements the CRUD actions for Bitacora model.
  */
-class ClientController extends Controller
+class BinnacleController extends Controller
 {
     /**
      * @inheritdoc
@@ -22,19 +20,6 @@ class ClientController extends Controller
     public function behaviors()
     {
         return [
-            'access' => [
-                'class' => \yii\filters\AccessControl::className(),
-                'rules' => [
-                    [
-                        'allow' => true,
-                        'actions' => ['index', 'create', 'update', 'view', 'delete'],
-                        'roles' => ['@'], // Any logged in user can go in, only if they have the permission assigned
-                        'matchCallback' => function ($rule, $action) {
-                            return RBACHelper::hasAccess($action);
-                        }
-                    ]
-                ]
-            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -45,12 +30,12 @@ class ClientController extends Controller
     }
 
     /**
-     * Lists all Client models.
+     * Lists all Bitacora models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new ClientSearch();
+        $searchModel = new BitacoraSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -60,7 +45,7 @@ class ClientController extends Controller
     }
 
     /**
-     * Displays a single Client model.
+     * Displays a single Bitacora model.
      * @param integer $id
      * @return mixed
      */
@@ -73,25 +58,7 @@ class ClientController extends Controller
 
 
     /**
-     * Creates a new Client model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
-    public function actionCreate()
-    {
-        $model = new Client();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
-        }
-    }
-
-    /**
-     * Updates an existing Client model.
+     * Updates an existing Bitacora model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -101,7 +68,6 @@ class ClientController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            Bitacora::register(Client::tableName());
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
@@ -111,28 +77,28 @@ class ClientController extends Controller
     }
 
     /**
-     * Deletes an existing Client model.
+     * Deletes an existing Bitacora model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
      */
     public function actionDelete($id)
     {
-        Bitacora::register(Client::tableName());
         $this->findModel($id)->delete();
+
         return $this->redirect(['index']);
     }
 
     /**
-     * Finds the Client model based on its primary key value.
+     * Finds the Bitacora model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Client the loaded model
+     * @return Bitacora the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Client::findOne($id)) !== null) {
+        if (($model = Bitacora::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

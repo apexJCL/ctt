@@ -21,13 +21,13 @@ $this->params['breadcrumbs'][] = $this->title;
             </a>
             <ul>
                 <li>
-                    <?= Yii::$app->user->can('addClient') ?
+                    <?=
                     Html::a(Html::tag('i', '', ['class' => 'material-icons mdi-add']), ['create'], [
                         'class' => 'btn-floating cyan tooltipped',
                         'data-position' => "bottom",
                         'data-delay' => '1000',
                         'data-tooltip' => 'Añadir'
-                    ]) : '' ?>
+                    ]) ?>
                 </li>
             </ul>
         </div>

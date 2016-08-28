@@ -9,32 +9,28 @@ class m160828_001246_add_bitacora_table extends Migration
         $this->createTable('bitacora', [
             'id' => $this->primaryKey(),
             'fecha' => $this->dateTime()->notNull(),
-            'accion' => $this->string(50)
-        ]);
-        $this->createTable('bitacora_detalles', [
-            'id' => $this->primaryKey(),
-            'bitacora_id' => $this->integer(),
-            'user_id' => $this->integer(),
-            'tabla' => $this->string(50)
+            'accion' => $this->string(50)->notNull(),
+            'user_id' => $this->integer()->notNull(),
+            'tabla' => $this->string(50)->notNull(),
+            'ip' => $this->string(40)
         ]);
         $this->createTable('bitacora_client', [
             'id' => $this->primaryKey(),
-            'user_id' => $this->integer(),
             'fecha' => $this->dateTime(),
+            'usuario_id' => $this->integer(),
             'nombre' => $this->string(50),
             'apellido_paterno' => $this->string(50),
             'apellido_materno' => $this->string(50),
             'email' => $this->string(50)
         ]);
-
-        $this->addForeignKey('fk_bitacora_detalles_bitacora_id', 'bitacora_detalles', 'bitacora_id', 'bitacora', 'id', 'cascade');
+        $this->execute('DROP TRIGGER IF EXISTS client_update; DROP TRIGGER IF EXISTS client_delete;');
         // Trigger update
         $this->execute('
         CREATE TRIGGER client_update AFTER UPDATE ON client
         FOR EACH ROW 
         BEGIN 
-          INSERT INTO bitacora_client (user_id, fecha, nombre, apellido_paterno, apellido_materno, email)
-          VALUE (OLD.id, NOW(), OLD.nombre, OLD.apellido_paterno, OLD.apellido_materno, OLD.email);
+          INSERT INTO bitacora_client (usuario_id, nombre, apellido_paterno, apellido_materno, email, fecha)
+          VALUE (OLD.id ,OLD.nombre, OLD.apellido_paterno, OLD.apellido_materno, OLD.email, NOW());
         END;
         ');
         // Trigger delete
@@ -42,15 +38,14 @@ class m160828_001246_add_bitacora_table extends Migration
         CREATE TRIGGER client_delete AFTER DELETE ON client
         FOR EACH ROW 
         BEGIN 
-          INSERT INTO bitacora_client (user_id, fecha, nombre, apellido_paterno, apellido_materno, email)
-          VALUE (OLD.id, NOW(), OLD.nombre, OLD.apellido_paterno, OLD.apellido_materno, OLD.email);
+          INSERT INTO bitacora_client (usuario_id,nombre, apellido_paterno, apellido_materno, email, fecha)
+          VALUE (OLD.id ,OLD.nombre, OLD.apellido_paterno, OLD.apellido_materno, OLD.email, NOW());
         END;
         ');
     }
 
     public function down()
     {
-        $this->dropTable('bitacora_detalles');
         $this->dropTable('bitacora');
         $this->dropTable('bitacora_client');
         $this->execute('DROP TRIGGER IF EXISTS client_update; DROP TRIGGER IF EXISTS client_delete;');

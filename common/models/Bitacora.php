@@ -10,8 +10,10 @@ use Yii;
  * @property integer $id
  * @property string $fecha
  * @property string $accion
+ * @property integer $user_id
+ * @property string $tabla
+ * @property string $ip
  *
- * @property BitacoraDetalles[] $bitacoraDetalles
  */
 class Bitacora extends \yii\db\ActiveRecord
 {
@@ -24,14 +26,33 @@ class Bitacora extends \yii\db\ActiveRecord
     }
 
     /**
+     * Registers a new action
+     *
+     * @param $tableName
+     * @return bool
+     */
+    public static function register($tableName)
+    {
+        $t = new self();
+        $t->tabla = $tableName;
+        $t->fecha = date("Y-m-d H:i:s");
+        $t->accion = Yii::$app->requestedAction->id;
+        $t->ip = Yii::$app->request->getUserIP();
+        $t->user_id = Yii::$app->user->id;
+        return $t->validate() && $t->save();
+    }
+
+    /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['fecha'], 'required'],
+            [['fecha', 'accion', 'user_id', 'tabla'], 'required'],
             [['fecha'], 'safe'],
-            [['accion'], 'string', 'max' => 50],
+            [['user_id'], 'integer'],
+            [['accion', 'tabla'], 'string', 'max' => 50],
+            [['ip'], 'string', 'max' => 40],
         ];
     }
 
@@ -42,38 +63,12 @@ class Bitacora extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'fecha' => Yii::t('app', 'Fecha'),
-            'accion' => Yii::t('app', 'Accion'),
+            'fecha' => Yii::t('app', 'Date'),
+            'accion' => Yii::t('app', 'Action'),
+            'user_id' => Yii::t('app', 'User ID'),
+            'tabla' => Yii::t('app', 'Table'),
+            'ip' => Yii::t('app', 'IP'),
         ];
     }
 
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getBitacoraDetalles()
-    {
-        return $this->hasMany(BitacoraDetalles::className(), ['bitacora_id' => 'id']);
-    }
-
-    /**
-     * Registers an event in the table
-     *
-     * @param $table
-     * @return bool
-     */
-    public static function register($table)
-    {
-        $t = new self();
-        $t->accion = Yii::$app->requestedAction->id;
-        $t->fecha = date("Y-m-d H:i:s");
-        if ($t->validate())
-            $t->save();
-        else
-            return false;
-        $td = new BitacoraDetalles();
-        $td->bitacora_id = $t->id;
-        $td->tabla = $table;
-        $td->user_id = Yii::$app->user->id;
-        return $td->validate() && $td->save();
-    }
 }

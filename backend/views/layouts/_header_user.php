@@ -26,20 +26,32 @@ use yii\helpers\Url;
                 </li>
                 <li>
                     <ul class="collapsible collapsible-accordion">
+                        <li class="bold blue accent-1">
+                            <div class="collapsible-header waves-effect white-text" id="userCollapsible">
+                                <?= Yii::t('app', 'Users') ?>
+                            </div>
+                            <div class="collapsible-body" style="">
+                                <ul class="blue lighten-4">
+                                    <li>
+                                        <?= Html::a(Yii::t('app', 'Manage'), Url::to(['user/index']), ['class' => 'white-text']) ?>
+                                    </li>
+                                    <li>
+                                        <?= Html::a(Yii::t('app', 'Roles'), Url::to(['role/index'])) ?>
+                                    </li>
+                                    <li>
+                                        <?= Html::a(Yii::t('app', 'Permissions'), Url::to(['permission/index'])) ?>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li> <!--- Management -->
                         <li class="bold">
                             <div class="collapsible-header waves-effect black-text" id="userCollapsible">
-                                Usuarios
+                                <?= Yii::t('app', 'Events') ?>
                             </div>
                             <div class="collapsible-body" style="">
                                 <ul>
-                                    <li id="user">
-                                        <?= Html::a(Yii::t('app', 'Manage'), Url::to(['user/index'])) ?>
-                                    </li>
-                                    <li id="role">
-                                        <?= Html::a(Yii::t('app', 'Roles'), Url::to(['role/index'])) ?>
-                                    </li>
-                                    <li id="permission">
-                                        <?= Html::a(Yii::t('app', 'Permissions'), Url::to(['permission/index'])) ?>
+                                    <li>
+                                        <?= Html::a(Yii::t('app', 'Binnacle'), Url::to(['binnacle/index'])) ?>
                                     </li>
                                 </ul>
                             </div>
