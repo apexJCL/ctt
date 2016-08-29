@@ -193,7 +193,6 @@ New display
   position: relative;
   float: left;
   display: flex;
-  min-width: 100vw;
   min-height: 350px; }
   .static-display__foreground--brand-logo img {
     max-height: 350px;
@@ -234,8 +233,8 @@ New display
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  position: absolute;
-  min-height: 100%;
+  position: fixed;
+  min-height: 100vh;
   width: 100%;
   top: 50%;
   left: 50%;
@@ -244,6 +243,8 @@ New display
   -ms-transform: translate(-50%, -50%);
   -o-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%); }
+  .background-image img {
+    min-height: 100vh; }
 
 .mute {
   -webkit-filter: brightness(30%);
@@ -267,5 +268,8 @@ New display
   @media only screen and (max-width: 1333px) {
     .footer-tag {
       display: none; } }
+
+.ctt {
+  background-color: rgba(10, 29, 42, 0.6); }
 
 /*# sourceMappingURL=cust-styles.css.map */

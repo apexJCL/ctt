@@ -32,6 +32,7 @@
       $('.tooltipped').tooltip();
       loadingOverlay.hide(timeout);
     });
+    $('.datepicker').pickadate();
     return true;
   });
 

@@ -246,7 +246,6 @@ New display
       position: relative;
       float: left;
       display: flex;
-      min-width: 100vw;
       min-height: $static-viewport-height;
       img {
         max-height: $static-viewport-height;
@@ -295,8 +294,8 @@ New display
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  position: absolute;
-  min-height: 100%;
+  position: fixed;
+  min-height: 100vh;
   width: 100%;
   top: 50%;
   left: 50%;
@@ -305,8 +304,8 @@ New display
   -ms-transform: translate(-50%, -50%);
   -o-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  @media only screen and(max-width: 600px) {
-
+  img {
+    min-height: 100vh;
   }
 }
 
@@ -337,4 +336,8 @@ New display
   @media only screen and (max-width: 1333px) {
     display: none;
   }
+}
+
+.ctt {
+  background-color: rgba(10, 29, 42, 0.6);
 }

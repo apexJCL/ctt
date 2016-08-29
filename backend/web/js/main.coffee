@@ -34,4 +34,6 @@ $(document).ready ->
     loadingOverlay.hide(timeout)
     return
 
+  $('.datepicker').pickadate()
+
   return true

@@ -5,10 +5,6 @@
 
 use backend\assets\AppAsset;
 use yii\helpers\Html;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
-use yii\widgets\Breadcrumbs;
-use common\widgets\Alert;
 
 AppAsset::register($this);
 $this->beginPage();
@@ -44,9 +40,11 @@ $this->beginPage();
             <div class="spinner-layer">
                 <div class="circle-clipper left">
                     <div class="circle"></div>
-                </div><div class="gap-patch">
+                </div>
+                <div class="gap-patch">
                     <div class="circle"></div>
-                </div><div class="circle-clipper right">
+                </div>
+                <div class="circle-clipper right">
                     <div class="circle"></div>
                 </div>
             </div>

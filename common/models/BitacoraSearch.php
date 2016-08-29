@@ -2,10 +2,9 @@
 
 namespace common\models;
 
-use Yii;
+use DateTime;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\Bitacora;
 
 /**
  * BitacoraSearch represents the model behind the search form about `common\models\Bitacora`.
@@ -19,7 +18,7 @@ class BitacoraSearch extends Bitacora
     {
         return [
             [['id', 'user_id'], 'integer'],
-            [['fecha', 'accion', 'tabla', 'ip'], 'safe'],
+            [['fecha', 'accion', 'tabla', 'ip'], 'safe']
         ];
     }
 

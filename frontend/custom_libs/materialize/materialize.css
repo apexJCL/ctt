@@ -4625,8 +4625,8 @@ nav {
   color: #fff;
   background-color: #03a9f4;
   width: 100%;
-  height: 90px;
-  line-height: 90px; }
+  height: 80px;
+  line-height: 80px; }
   nav a {
     color: #fff; }
   nav i,
@@ -4634,8 +4634,8 @@ nav {
   nav i.material-icons {
     display: block;
     font-size: 2rem;
-    height: 90px;
-    line-height: 90px; }
+    height: 80px;
+    line-height: 80px; }
   nav .nav-wrapper {
     position: relative;
     height: 100%; }
@@ -4646,11 +4646,11 @@ nav {
     float: left;
     position: relative;
     z-index: 1;
-    height: 90px; }
+    height: 80px; }
     nav .button-collapse i {
       font-size: 2.7rem;
-      height: 90px;
-      line-height: 90px; }
+      height: 80px;
+      line-height: 80px; }
   nav .brand-logo, nav .brand-logo--offset-left {
     position: absolute;
     color: #fff;
@@ -4732,18 +4732,18 @@ nav {
 
 .navbar-fixed {
   position: relative;
-  height: 90px;
+  height: 80px;
   z-index: 998; }
   .navbar-fixed nav {
     position: fixed; }
 
 @media only screen and (min-width: 601px) {
   nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
-    height: 98px;
-    line-height: 98px; }
+    height: 100px;
+    line-height: 100px; }
 
   .navbar-fixed {
-    height: 98px; } }
+    height: 100px; } }
 @font-face {
   font-family: "Roboto";
   src: local(Roboto Thin), url("../../fonts/roboto/Roboto-Thin.eot");
@@ -7956,5 +7956,9 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
       -ms-transform: translateX(-50%);
       -o-transform: translateX(-50%);
       transform: translateX(-50%); } }
+
+.userView {
+  min-height: 200px;
+  margin-bottom: 0px; }
 
 /*# sourceMappingURL=materialize.css.map */
