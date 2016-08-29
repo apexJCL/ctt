@@ -51,7 +51,7 @@ class Bitacora extends \yii\db\ActiveRecord
             [['fecha', 'accion', 'user_id', 'tabla'], 'required'],
             [['fecha'], 'safe'],
             [['user_id'], 'integer'],
-            [['fecha'], 'datetime'],
+            [['fecha'], 'date'],
             [['accion', 'tabla'], 'string', 'max' => 50],
             [['ip'], 'string', 'max' => 40],
         ];

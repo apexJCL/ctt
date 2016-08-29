@@ -5,7 +5,7 @@ use yii\helpers\Url;
 /* @var $this yii\web\View */
 /* @var $model \common\models\LoginForm */
 
-$this->title = 'CTTE';
+$this->title = 'CTTExp :: WebApp';
 ?>
 <!-- Ruler Guide -->
 <!--<div>-->

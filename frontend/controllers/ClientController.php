@@ -10,6 +10,7 @@ use Yii;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\web\UploadedFile;
 
 /**
  * ClientController implements the CRUD actions for Client model.
@@ -81,8 +82,13 @@ class ClientController extends Controller
     {
         $model = new Client();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+            if ($user = $model->create())
+                return $this->redirect(['view', 'id' => $user->id]);
+            else
+                return $this->render('create', [
+                    'model' => $model,
+                ]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -118,9 +124,10 @@ class ClientController extends Controller
      */
     public function actionDelete($id)
     {
-        Bitacora::register(Client::tableName());
-        $this->findModel($id)->delete();
-        return $this->redirect(['index']);
+        if (Bitacora::register(Client::tableName())) {
+            $this->findModel($id)->delete();
+            return $this->redirect(['index']);
+        }
     }
 
     /**

@@ -18,6 +18,7 @@ class Client extends \yii\db\ActiveRecord
 {
     const JPG = '.jpg';
     const PNG = '.png';
+    const PICTURE_PATH = 'clients';
     /**
      * @var UploadedFile
      */
@@ -65,5 +66,38 @@ class Client extends \yii\db\ActiveRecord
         return file_exists($baseUrl . self::JPG) ? '/' . $baseUrl . self::JPG : (
         file_exists($baseUrl . self::PNG) ? '/' . $baseUrl . self::PNG : '/img/default_avatar.jpg'
         );
+    }
+
+    public function create()
+    {
+        // Primero asignamos el archivo que se subió
+        $this->profilePicture = UploadedFile::getInstance($this, 'profilePicture');
+        if ($this->save() && $this->validate()) {
+            $this->upload();
+            return $this;
+        }
+        return false;
+    }
+
+    /**
+     * Uploads the user picture to the server in a specific subfolder
+     * @return bool
+     * @internal param $username
+     */
+    public function upload()
+    {
+        if (!empty($this->profilePicture) && isset($this->profilePicture)) {
+            $this->deletePicture();
+            return $this->profilePicture->saveAs(Yii::getAlias('@common') . DIRECTORY_SEPARATOR . self::PICTURE_PATH . DIRECTORY_SEPARATOR . $this->id. '.' . $this->profilePicture->extension);
+        } else return false;
+    }
+
+    public function deletePicture()
+    {
+        $baseUrl = Yii::getAlias('@common') . DIRECTORY_SEPARATOR . self::PICTURE_PATH . DIRECTORY_SEPARATOR . $this->id;
+        if (file_exists($baseUrl . self::JPG))
+            return unlink($baseUrl . self::JPG);
+        elseif (file_exists($baseUrl . self::PNG))
+            return unlink($baseUrl . self::PNG);
     }
 }

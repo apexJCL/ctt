@@ -34,7 +34,6 @@ use yii\helpers\Url;
             <?= Yii::t('app', 'Manage') ?>
         </a></li>
 </ul>
-
 <!-- Dropdown Cuenta del usuario actual -->
 <ul class="dropdown-content <?= $account['class'] ?>" id="<?= $account['id'] ?>">
     <li>

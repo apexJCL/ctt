@@ -36,18 +36,19 @@ use yii\helpers\Url;
                 <?= Html::a(Html::tag('i', 'keyboard_arrow_down', ['class' => 'mdi left white-text']) . Yii::t('app', 'Access'), null, ['class' => "collapsible-header waves-effect waves-light blue darken-3 white-text"]) ?>
                 <div class="collapsible-body" style="">
                     <ul class="blue darken-2">
-                        <li><?= Html::a(Yii::t('app', 'Users'), Url::to(['user/index']), ['class' => 'white-text']) ?></li>
-                        <li><?= Html::a(Yii::t('app', 'Roles'), Url::to(['role/index']), ['class' => 'white-text']) ?></li>
-                        <li><?= Html::a(Yii::t('app', 'Permission'), Url::to(['permission/index']), ['class' => 'white-text']) ?></li>
+                        <li><?= Html::a(Html::tag('i', null, ['class' => 'mdi mdi-perm-identity white-text left']) . Yii::t('app', 'Users'), Url::to(['user/index']), ['class' => 'white-text']) ?></li>
+                        <li><?= Html::a(Html::tag('i', null, ['class' => 'mdi mdi-people white-text left']) . Yii::t('app', 'Roles'), Url::to(['role/index']), ['class' => 'white-text']) ?></li>
+                        <li><?= Html::a(Html::tag('i', null, ['class' => 'mdi mdi-lock white-text left']) . Yii::t('app', 'Permission'), Url::to(['permission/index']), ['class' => 'white-text']) ?></li>
+                        <li><?= Html::a(Html::tag('i', null, ['class' => 'mdi mdi-book white-text left']) . Yii::t('app', 'Binnacles') , Url::to(['binnacle/index']),  ['class' => 'white-text']) ?></li>
                     </ul>
                 </div>
             </li>
             <li class="no-padding">
-                <?= Html::a(Html::tag('i', 'account_circle', ['class' => 'mdi left white-text']).Yii::$app->user->identity->username, null, ['class' => 'collapsible-header waves-effect waves-light blue darken-3 white-text']) ?>
+                <?= Html::a(Html::tag('i', 'account_circle', ['class' => 'mdi left white-text']) . Yii::$app->user->identity->username, null, ['class' => 'collapsible-header waves-effect waves-light blue darken-3 white-text']) ?>
                 <div class="collapsible-body">
                     <ul class="blue darken-2">
                         <li>
-                            <?= Html::a(Yii::t('app', 'Logout'), ['site/logout'], ['data' => ['method' => 'post'], 'class' => 'white-text']) ?>
+                            <?= Html::a(Html::tag('i', null, ['class' => 'mdi mdi-exit-to-app white-text left']) . Yii::t('app', 'Logout'), ['site/logout'], ['data' => ['method' => 'post'], 'class' => 'white-text']) ?>
                         </li>
                     </ul>
                 </div>
