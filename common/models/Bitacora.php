@@ -3,6 +3,8 @@
 namespace common\models;
 
 use Yii;
+use yii\db\ActiveRecord;
+use yii\db\Expression;
 
 /**
  * This is the model class for table "bitacora".
@@ -25,6 +27,19 @@ class Bitacora extends \yii\db\ActiveRecord
         return 'bitacora';
     }
 
+    public function behaviors()
+    {
+        return [
+            'timestamp' => [
+                'class' => 'yii\behaviors\TimestampBehavior',
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => ['fecha']
+                ],
+                'value' => new Expression('NOW()'),
+            ],
+        ];
+    }
+
     /**
      * Registers a new action
      *
@@ -35,7 +50,6 @@ class Bitacora extends \yii\db\ActiveRecord
     {
         $t = new self();
         $t->tabla = $tableName;
-        $t->fecha = date("Y-m-d H:i:s");
         $t->accion = Yii::$app->requestedAction->id;
         $t->ip = Yii::$app->request->getUserIP();
         $t->user_id = Yii::$app->user->id;
@@ -48,10 +62,9 @@ class Bitacora extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['fecha', 'accion', 'user_id', 'tabla'], 'required'],
+            [['accion', 'user_id', 'tabla'], 'required'],
             [['fecha'], 'safe'],
             [['user_id'], 'integer'],
-            [['fecha'], 'date'],
             [['accion', 'tabla'], 'string', 'max' => 50],
             [['ip'], 'string', 'max' => 40],
         ];

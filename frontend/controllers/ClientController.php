@@ -127,7 +127,8 @@ class ClientController extends Controller
         if (Bitacora::register(Client::tableName())) {
             $this->findModel($id)->delete();
             return $this->redirect(['index']);
-        }
+        } else
+            return $this->redirect(['view', 'id' => $id]);
     }
 
     /**
