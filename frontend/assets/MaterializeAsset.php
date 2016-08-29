@@ -15,4 +15,7 @@ class MaterializeAsset extends AssetBundle{
     public $js = [
         'js/materialize.js'
     ];
+    public $depends = [
+        'frontend\assets\AppAsset'
+    ];
 }
