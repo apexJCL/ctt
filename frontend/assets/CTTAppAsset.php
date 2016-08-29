@@ -15,6 +15,8 @@ class CTTAppAsset extends AssetBundle {
         'cust-styles.css'
     ];
     public $depends = [
-        'frontend\assets\MaterializeCSSCustomAsset'
+        'frontend\assets\MaterializeAsset',
+        'frontend\assets\MaterialIconsAsset',
+        'frontend\assets\MaterializeCSSCustomAsset',
     ];
 }

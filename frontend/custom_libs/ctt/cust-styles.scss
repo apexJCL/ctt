@@ -304,8 +304,8 @@ New display
   -ms-transform: translate(-50%, -50%);
   -o-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  img {
-    min-height: 100vh;
+  @media only screen and(max-width: 600px) {
+
   }
 }
 
@@ -336,6 +336,11 @@ New display
   @media only screen and (max-width: 1333px) {
     display: none;
   }
+}
+
+div.userView {
+  min-height: 200px;
+  margin-bottom: 0px;
 }
 
 .ctt {

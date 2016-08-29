@@ -21,6 +21,6 @@ class AppAsset extends AssetBundle
     ];
     public $depends = [
         'yii\web\YiiAsset',
-        'frontend\assets\CTTAppAsset'
+        'frontend\assets\CTTAppAsset',
     ];
 }

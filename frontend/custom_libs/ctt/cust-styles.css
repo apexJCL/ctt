@@ -243,8 +243,6 @@ New display
   -ms-transform: translate(-50%, -50%);
   -o-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%); }
-  .background-image img {
-    min-height: 100vh; }
 
 .mute {
   -webkit-filter: brightness(30%);
@@ -268,6 +266,10 @@ New display
   @media only screen and (max-width: 1333px) {
     .footer-tag {
       display: none; } }
+
+div.userView {
+  min-height: 200px;
+  margin-bottom: 0px; }
 
 .ctt {
   background-color: rgba(10, 29, 42, 0.6); }

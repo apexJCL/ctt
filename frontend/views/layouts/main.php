@@ -4,17 +4,9 @@
 /* @var $content string */
 
 use frontend\assets\AppAsset;
-use frontend\assets\CTTAppAsset;
-use frontend\assets\MaterialIconsAsset;
-use frontend\assets\MaterializeAsset;
-use frontend\assets\MaterializeCSSCustomAsset;
 use yii\helpers\Html;
 
-MaterializeAsset::register($this);
-MaterializeCSSCustomAsset::register($this);
-CTTAppAsset::register($this);
 AppAsset::register($this);
-MaterialIconsAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>

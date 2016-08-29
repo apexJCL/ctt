@@ -17,6 +17,6 @@ class MaterializeAsset extends AssetBundle{
     ];
 
     public $depends = [
-        'frontend\assets\MaterializeCSSCustomAsset'
+        'frontend\assets\MaterializeCSSCustomAsset',
     ];
 }
