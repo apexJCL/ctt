@@ -79,6 +79,10 @@ $this->params['breadcrumbs'][] = $this->title;
                         ]
                     ]) ?>
                 </div>
+                <div class="col s2 right">
+                    <?= Html::a(Html::tag('i', 'add', ['class' => 'mdi']), Url::to(['roles', 'id' => $model->id]), ['class' => 'btn waves-effect waves-light']) ?>
+                </div>
+
             </div>
         </div>
     </div>
@@ -86,7 +90,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <!-- Modal -->
     <div class="modal red accent-4 white-text" id="delete">
         <div class="modal-content">
-            <h4>¿Seguro que desea eliminar a este cliente?</h4>
+            <h4>¿Seguro que desea eliminar a este usuario?</h4>
             <p>Esta acción no se puede revertir</p>
         </div>
         <div class="modal-footer">

@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="section white-text">
     <div class="container">
         <div class="row">
-            <div class="col s12">
+            <div class="col s12 z-depth-1">
                 <h1 class="no-margin"><?= Html::encode($this->title) ?></h1>
                 <p><?= Yii::t('app', 'Please login before continue') ?></p>
             </div>

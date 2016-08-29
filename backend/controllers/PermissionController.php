@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use backend\models\AuthItem;
 use backend\models\AuthItemSearch;
 use common\models\AuthItemForm;
 use Yii;
@@ -44,9 +45,12 @@ class PermissionController extends Controller
         ]);
     }
 
-    public function actionDelete()
+    public function actionDelete($name)
     {
-        return $this->render('delete');
+        if (AuthItem::deletePermission($name))
+            return $this->redirect(['index']);
+        else
+            return $this->redirect(['site/error']);
     }
 
     public function actionIndex()

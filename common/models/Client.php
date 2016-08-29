@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\web\UploadedFile;
 
 /**
  * This is the model class for table "client".
@@ -17,6 +18,10 @@ class Client extends \yii\db\ActiveRecord
 {
     const JPG = '.jpg';
     const PNG = '.png';
+    /**
+     * @var UploadedFile
+     */
+    public $profilePicture;
 
     /**
      * @inheritdoc

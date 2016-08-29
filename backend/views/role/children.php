@@ -65,7 +65,7 @@ $this->registerJsFile('/js/role/children_app.js', ['depends' => [
                 </div>
                 <div class="col s12">
                     <?= Html::submitButton(Yii::t('app', 'Submit'), ['class' => 'btn btn-primary']) ?>
-                    <?= Html::a(Yii::t('app', 'Cancel'), Url::to(['index']),
+                    <?= Html::a(Yii::t('app', 'Cancel'), Url::previous(),
                         ['class' => 'waves-effect btn-flat']) ?>
                 </div>
             </div>

@@ -62,7 +62,7 @@ $this->title = Yii::t('app', 'Permission: {permission}', ['permission' => $model
 <!-- Modal -->
 <div class="modal red accent-4 white-text" id="delete">
     <div class="modal-content">
-        <h4>¿Seguro que desea eliminar a este cliente?</h4>
+        <h4>¿Seguro que desea eliminar este permiso?</h4>
         <p>Esta acción no se puede revertir</p>
     </div>
     <div class="modal-footer">

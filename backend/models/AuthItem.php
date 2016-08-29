@@ -69,6 +69,7 @@ class AuthItem extends ActiveRecord
         }
     }
 
+
     public static function addChildRole($parent, $role)
     {
         $item = self::getRole($role);
@@ -284,6 +285,18 @@ class AuthItem extends ActiveRecord
     {
         $role = Yii::$app->authManager->getRole($name);
         return Yii::$app->authManager->remove($role);
+    }
+
+    /**
+     * Deletes a permission
+     *
+     * @param $name
+     * @return bool
+     */
+    public static function deletePermission($name)
+    {
+        $permission = Yii::$app->authManager->getPermission($name);
+        return Yii::$app->authManager->remove($permission);
     }
 
     /**

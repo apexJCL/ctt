@@ -21,7 +21,7 @@ use yii\helpers\Url;
     if (Yii::$app->user->isGuest)
         echo Html::tag('a', 'INICIAR SESIÓN', ['class' => 'raleway modal-trigger', 'href' => '#login-modal']);
     else
-        echo '<a href="#!"' . implode(' ', $account['data']) . ' class="raleway dropdown-button">CUENTA</a>';
+        echo '<a href="#!"' . implode(' ', $account['data']) . ' class="raleway dropdown-button">'.Yii::$app->user->identity->username.'</a>';
     ?>
 </li>
 <script>

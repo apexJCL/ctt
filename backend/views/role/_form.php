@@ -21,9 +21,8 @@ use yii\widgets\ActiveForm;
 
     <div class="col s12">
         <?= Html::submitButton(Yii::t('app', 'Submit'), ['class' => 'btn btn-primary']) ?>
-        <?= Html::a(Yii::t('app', 'Cancel'), $model->isNewRecord ?
-            Url::to(['index']) :
-            Url::to(['view', 'name' => $model->name]),
+        <?= Html::a(Yii::t('app', 'Cancel'),
+            Url::previous(),
             ['class' => 'waves-effect btn-flat']) ?>
     </div>
     <?php ActiveForm::end(); ?>

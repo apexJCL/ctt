@@ -84,6 +84,13 @@ $this->title = Yii::t('app', 'Role: {role}', ['role' => $model->name]);
                                 ]
                             ]) ?>
                         </div>
+                        <div class="col s12">
+                            <?= Html::a(Html::tag('i', '', ['class' => 'mdi mdi-add mdi-lg']),
+                                Url::to(['permissions', 'name' => $model->name]),
+                                [
+                                    'class' => 'btn blue darken-2 waves-effect waves-light right'
+                                ]) ?>
+                        </div>
                     </div>
                 </div>
                 <div class="section">
@@ -100,6 +107,12 @@ $this->title = Yii::t('app', 'Role: {role}', ['role' => $model->name]);
                                 ]
                             ]) ?>
                         </div>
+                        <div class="col s12">
+                            <?= Html::a(Html::tag('i', '', ['class' => 'mdi mdi-add mdi-lg']),
+                                Url::to(['children', 'name' => $model->name]), [
+                                    'class' => 'btn blue darken-2 waves-effect waves-light right'
+                                ]) ?>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -111,7 +124,7 @@ $this->title = Yii::t('app', 'Role: {role}', ['role' => $model->name]);
 <!-- Modal -->
 <div class="modal red accent-4 white-text" id="delete">
     <div class="modal-content">
-        <h4>¿Seguro que desea eliminar a este cliente?</h4>
+        <h4>¿Seguro que desea eliminar este rol?</h4>
         <p>Esta acción no se puede revertir</p>
     </div>
     <div class="modal-footer">

@@ -80,7 +80,6 @@ class LoginForm extends Model
 
     public function loginAdmin()
     {
-        echo '<pre>';
         if ($this->validate())
             if (!empty(Yii::$app->authManager->getAssignment('root', $this->getUser()->id))){
                 return Yii::$app->user->login($this->getUser(),
