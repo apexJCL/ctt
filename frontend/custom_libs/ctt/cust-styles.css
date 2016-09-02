@@ -179,16 +179,12 @@ New display
     z-index: -2;
     display: block;
     margin: auto;
-    -webkit-clip-path: circle(96px at center);
-    clip-path: circle(96px at center);
     border-radius: 50%; }
     @media only screen and (max-width: 600px) {
       .static-display__foreground--profile-picture img {
         min-width: 100%;
         padding: 0;
-        border-radius: 0;
-        -webkit-clip-path: none;
-        clip-path: none; } }
+        border-radius: 0; } }
 .static-display__foreground--brand-logo {
   position: relative;
   float: left;

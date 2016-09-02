@@ -1,6 +1,6 @@
 <?php use yii\helpers\Url; ?>
 <header>
-    <nav>
+    <nav class="darken-1">
         <div class="nav-wrapper container">
             <a href="<?= Url::to(['/']) ?>" class="raleway-bold">
                 <span class="brand-logo">

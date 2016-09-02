@@ -17,9 +17,9 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Edit' => '',
-    'Password' => '',
-    'User\'s list' => '',
+    'General Overview' => 'Datos Generales',
+    'General info' => 'Información general',
+    'Picture' => 'Imágen',
     'Are you sure you want to delete this item?' => '@@¿Seguro que desea eliminar este elemento?@@',
     'Delete' => '@@Eliminar@@',
     'Please fill the next fields' => '@@Porfavor, llene los siguientes campos@@',
@@ -28,12 +28,14 @@ return [
     'Clients' => 'Clientes',
     'Create' => 'Crear',
     'Create Client' => 'Crear cliente',
+    'Edit' => 'Editar',
     'If photo not uploaded, default avatar will be used' => 'Si no se sube una fotografía, se usará el avatar por defecto',
     'If you forgot your password you can' => 'Si olvidó su contraseña, solicite',
     'If you think this is a mistake, please contact Support.' => 'Si cree que esto es un error, contacte a Soporte Técnico.',
     'Login' => 'Iniciar Sesión',
     'Logout' => 'Cerrar Sesión',
     'Manage' => 'Administrar',
+    'Password' => 'Contraseña',
     'Personal Info' => 'Información personal',
     'Profile Picture' => 'Foto de perfil',
     'Protip: ' => 'Tip: ',
@@ -43,5 +45,6 @@ return [
     'Search' => 'Buscar',
     'Update' => 'Actualizar',
     'Update {modelClass}: ' => 'Actualizar {modelClass}',
+    'User\'s list' => 'Lista de usuarios',
     'reset it' => 'reiniciarla',
 ];

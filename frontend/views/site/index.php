@@ -65,19 +65,19 @@ $this->title = 'CTTExp :: WebApp';
             </div>
             <div class="row">
                 <div class="col s12 m6 l3 no-padding raleway">
-                    <div class="thin-line-small"></div>
+                    <div class="thin-line-small blue darken-1"></div>
                     CATÁLOGOS
                 </div>
                 <div class="col s12 m6 l3 no-padding raleway">
-                    <div class="thin-line-small"></div>
+                    <div class="thin-line-small blue darken-1"></div>
                     ARTÍCULOS
                 </div>
                 <div class="col s12 m6 l3 no-padding raleway">
-                    <div class="thin-line-small"></div>
+                    <div class="thin-line-small blue darken-1"></div>
                     EXISTENCIAS
                 </div>
                 <div class="col s12 m6 l3 no-padding raleway">
-                    <div class="thin-line-small"></div>
+                    <div class="thin-line-small blue darken-1"></div>
                     MÓVILES
                 </div>
             </div>
@@ -88,8 +88,8 @@ $this->title = 'CTTExp :: WebApp';
     <div id="clients" class="scrollspy">
         <div class="parallax-container" style="background-color: rgba(41, 103, 155, 0.4);">
             <div class="container-small">
-                <h1 class="raleway-bold">
-                    <div class="thin-line blue"></div>
+                <h1 class="raleway-bold white-text">
+                    <div class="thin-line blue darken-1"></div>
                     Clientes
                 </h1>
                 <div class="row">
@@ -106,7 +106,7 @@ $this->title = 'CTTExp :: WebApp';
                 <div class="row">
                     <div class="col s12 m12 l12">
                         <h1 class="raleway-bold">
-                            <div class="thin-line blue"></div>
+                            <div class="thin-line blue darken-1"></div>
                             Documentos
                         </h1>
                     </div>
@@ -202,7 +202,7 @@ $this->title = 'CTTExp :: WebApp';
         <div class="section-big white">
             <div class="container-small">
                 <h1 class="raleway-bold">
-                    <div class="thin-line blue"></div>
+                    <div class="thin-line blue darken-1"></div>
                     Estadísticas
                 </h1>
                 <div class="row raleway">
@@ -234,7 +234,7 @@ $this->title = 'CTTExp :: WebApp';
         <div class="section-big grey lighten-2">
             <div class="container-small">
                 <h1 class="raleway-bold">
-                    <div class="thin-line blue"></div>
+                    <div class="thin-line blue darken-1"></div>
                     Usuarios
                 </h1>
                 <div class="row raleway">
@@ -327,7 +327,7 @@ $this->title = 'CTTExp :: WebApp';
     <div class="section-big white scrollspy" id="support">
         <div class="container">
             <h1 class="raleway-bold">
-                <div class="thin-line blue"></div>
+                <div class="thin-line blue darken-1"></div>
                 Soporte
             </h1>
             <div class="row raleway">

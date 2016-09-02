@@ -26,7 +26,7 @@ use yii\helpers\Url;
 <ul id="slide-out" class="side-nav ctt">
     <li class="no-padding">
         <div class="userView" style="margin-bottom: 0px">
-            <img class="background responsive-img" src="/img/menu_banner.jpg">
+            <img class="background responsive-img mute" src="/img/menu_banner.jpg">
             <a href="#!user"><img class="circle" src="<?= Yii::$app->user->identity->getProfilePicture() ?>"></a>
         </div>
     </li>

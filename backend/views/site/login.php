@@ -14,25 +14,30 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="section white-text">
     <div class="container">
         <div class="row">
-            <div class="col s12 z-depth-1">
-                <h1 class="no-margin"><?= Html::encode($this->title) ?></h1>
-                <p><?= Yii::t('app', 'Please login before continue') ?></p>
+            <div class="col l4 hide-on-med-and-down">
+                <img src="/img/logo.png" alt="" class="responsive-img">
             </div>
-            <div class="col l5">
-                <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
-                <div class="input-field col s12">
-                    <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
-                </div>
-                <div class="input-field col s12">
-                    <?= $form->field($model, 'password')->passwordInput() ?>
+            <div class="col s12 l8">
+                <div class="col s12 z-depth-1">
+                    <h1 class="no-margin"><?= Html::encode($this->title) ?></h1>
+                    <p><?= Yii::t('app', 'Please login before continue') ?></p>
                 </div>
                 <div class="col s12">
-                    <?= $form->field($model, 'rememberMe')->checkbox() ?>
+                    <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
+                    <div class="input-field col s12">
+                        <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
+                    </div>
+                    <div class="input-field col s12">
+                        <?= $form->field($model, 'password')->passwordInput() ?>
+                    </div>
+                    <div class="col s12">
+                        <?= $form->field($model, 'rememberMe')->checkbox() ?>
+                    </div>
+                    <div class="col s12">
+                        <?= Html::submitButton(Yii::t('app', 'Login'), ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+                    </div>
+                    <?php ActiveForm::end(); ?>
                 </div>
-                <div class="col s12">
-                    <?= Html::submitButton(Yii::t('app', 'Login'), ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
-                </div>
-                <?php ActiveForm::end(); ?>
             </div>
         </div>
     </div>

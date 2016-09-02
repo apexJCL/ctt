@@ -18,7 +18,7 @@
  */
 return [
     'Access' => 'Acceso',
-    'Binnacles' => 'BItácoras',
+    'Binnacles' => 'Bitácoras',
     'Create Bitacora' => 'Crear Bitácora',
     'Permission' => 'Permisos',
     'Actual list of roles' => 'Lista de roles actual',

@@ -32,6 +32,6 @@
         </div>
     </div>
     <div class="footer-tag">
-        <img src="/img/small_logo.png" alt="" class="white-glow">
+        <img src="/img/small_logo.png" alt="">
     </div>
 </footer>

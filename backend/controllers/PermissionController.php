@@ -8,6 +8,7 @@ use common\models\AuthItemForm;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
+use yii\helpers\Url;
 use yii\web\Controller;
 
 class PermissionController extends Controller
@@ -65,7 +66,13 @@ class PermissionController extends Controller
 
     public function actionUpdate()
     {
-        return $this->render('update');
+        $model = AuthItemForm::getPermission(Yii::$app->request->getQueryParam('name'));
+        if ($model->load(Yii::$app->request->post()) && AuthItem::savePermission($model)){
+            return $this->redirect(Url::to(['view', 'name' => $model->name]));
+        }
+        return $this->render('update', [
+            'model' => $model
+        ]);
     }
 
     public function actionView()

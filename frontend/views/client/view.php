@@ -55,6 +55,9 @@ $this->title = $model->nombre;
                     <?= Html::encode($this->title) ?>
                 </h1>
             </div>
+            <div class="col s12">
+                <h3 class="raleway-thin"><?= Yii::t('app', 'General Overview') ?></h3>
+            </div>
             <div class="col l4 m6 s12 ">
                 <?= DetailView::widget([
                     'model' => $model,

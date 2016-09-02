@@ -331,7 +331,7 @@ class AuthItem extends ActiveRecord
      */
     public static function savePermission($form)
     {
-        $p = self::getPermission($form->name);
+        $p = Yii::$app->authManager->getPermission($form->name);
         if  (empty($p)){
             if ($form->validate()){
                 $auth = Yii::$app->authManager;

@@ -13,20 +13,24 @@ use yii\widgets\Pjax;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = Yii::t('app', 'Binnacles');
-$this->params['breadcrumbs'][] = $this->title;
 ?>
-
+<?= $this->render('//layouts/_section_header', [
+    'photoUrl' => '/img/showcase/users.jpg'
+]) ?>
 <div class="section grey lighten-5 fab-container greedy" id="main">
     <div class="container">
-
-        <h1><?= Html::encode($this->title) ?></h1>
         <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
         <?php Pjax::begin(); ?>    <?= GridView::widget([
             'dataProvider' => $dataProvider,
             'filterModel' => $searchModel,
             'columns' => [
                 ['class' => 'yii\grid\SerialColumn'],
-                'fecha',
+                [
+                    'attribute' => 'fecha',
+                    'filter' => [
+                        ''
+                    ]
+                ],
                 'accion',
                 'user_id',
                 'tabla',

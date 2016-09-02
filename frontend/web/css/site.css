@@ -231,7 +231,7 @@ h1.page-title {
 
 .table-of-contents a span {
     opacity: 0;
-    color: rgba(145, 145, 145, 0.81);
+    color: rgb(255, 255, 255);
 }
 
 .table-of-contents a span:hover {
@@ -261,19 +261,19 @@ h1.page-title {
 }
 
 .table-of-contents ul li a div svg circle {
-    stroke: grey;
+    stroke: white;
     stroke-width: 2;
     color: transparent;
     fill: currentColor;
 }
 
 .table-of-contents ul li a div svg circle:hover {
-    color: grey;
+    color: white;
     fill: currentColor;
 }
 
 .table-of-contents ul li a.active div svg circle {
-    color: grey;
+    color: white;
     fill: currentColor;
 }
 
@@ -283,6 +283,10 @@ h1.page-title {
 
 nav {
     background-color: rgba(20, 52, 78, 0.6);
+}
+
+nav.darken-1 {
+    background-color: rgba(20, 52, 78, 0.8);
 }
 
 .showcase .row {
@@ -408,7 +412,6 @@ Thin line decoration
 .thin-line-small {
     width: 30px;
     height: 10px;
-    background-color:  rgba(61, 155, 233, 1);
     margin-bottom: 10px;
 }
 
