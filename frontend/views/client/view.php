@@ -20,16 +20,16 @@ $this->title = $model->nombre;
                 <i class="large material-icons">menu</i>
             </a>
             <ul>
-                <?= Yii::$app->user->can('deleteClient') ?
-                    Html::a(Html::tag('i', null, ['class' => 'mdi mdi-delete']), null, [
+                <?= Yii::$app->user->identity->canI('deleteClient') ?
+                    Html::tag('li', Html::a(Html::tag('i', null, ['class' => 'mdi mdi-delete']), null, [
                         'href' => '#delete',
                         'class' => 'btn-floating red modal-trigger tooltipped',
                         'data-position' => 'bottom',
                         'data-delay' => '1000',
                         'data-tooltip' => Yii::t('app', 'Delete')
-                    ]) : ''
+                    ])) : ''
                 ?>
-                <?= Yii::$app->user->can('editClient') ?
+                <?= Yii::$app->user->identity->canI('updateClient') ?
                     Html::tag('li', Html::a(Html::tag('i', 'edit', ['class' => 'material-icons']),
                         ['update', 'id' => $model->id],
                         [
@@ -41,13 +41,13 @@ $this->title = $model->nombre;
                     : ''
                 ?>
                 <li>
-                    <?= Html::a(Html::tag('i', 'list', ['class' => 'material-icons']),
+                    <?= Html::a(Html::tag('i', 'undo', ['class' => 'mdi black-text']),
                         Url::to(['index']),
                         [
-                            'class' => 'btn-floating blue accent-1 tooltipped',
+                            'class' => 'btn-floating white tooltipped',
                             'data-position' => "bottom",
                             'data-delay' => '1000',
-                            'data-tooltip' => Yii::t('app', "User's list")
+                            'data-tooltip' => Yii::t('app', "Back")
                         ]
                     ) ?>
                 </li>

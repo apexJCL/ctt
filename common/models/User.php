@@ -471,4 +471,18 @@ class User extends ActiveRecord implements IdentityInterface
         }
         return false;
     }
+
+    public function canI($permission)
+    {
+        $p = Yii::$app->authManager->getPermission($permission);
+        if (empty($p) or $p === null)
+            return false;
+        $roles = Yii::$app->authManager->getRolesByUser(Yii::$app->user->id);
+        foreach ($roles as $role){
+            $permissions = Yii::$app->authManager->getPermissionsByRole($role->name);
+            if (in_array($p, $permissions))
+                return true;
+        }
+        return false;
+    }
 }

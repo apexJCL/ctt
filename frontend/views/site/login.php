@@ -20,7 +20,7 @@ $this->title = Yii::t('app', 'Login');
                     <div class="col s12">
                         <h1 class="white-text"><?= Html::encode($this->title) ?></h1>
                     </div>
-                    <div class="row">
+                    <div class="row white-text">
                         <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
                         <div class="input-field col s12">
                             <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>

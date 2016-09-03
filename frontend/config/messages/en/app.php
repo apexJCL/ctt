@@ -17,6 +17,7 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
+    'Back' => '',
     'Cancel' => '',
     'Clients' => '',
     'Create' => '',
@@ -26,7 +27,6 @@ return [
     'General info' => '',
     'If photo not uploaded, default avatar will be used' => '',
     'If you forgot your password you can' => '',
-    'If you think this is a mistake, please contact Support.' => '',
     'Login' => '',
     'Logout' => '',
     'Manage' => '',
@@ -41,10 +41,11 @@ return [
     'Search' => '',
     'Update' => '',
     'Update {modelClass}: ' => '',
-    'User\'s list' => '',
     'reset it' => '',
     'Are you sure you want to delete this item?' => '@@@@',
-    'Delete' => '@@@@',
+    'If you think this is a mistake, please contact Support.' => '@@@@',
     'Please fill the next fields' => '@@@@',
     'Signup' => '@@@@',
+    'User\'s list' => '@@@@',
+    'Delete' => '@@@@',
 ];

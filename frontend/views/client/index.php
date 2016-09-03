@@ -21,7 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </a>
             <ul>
                 <li>
-                    <?= Yii::$app->user->can('createClient') ?
+                    <?= Yii::$app->user->identity->canI('createClient') ?
                     Html::a(Html::tag('i', '', ['class' => 'material-icons mdi-add']), ['create'], [
                         'class' => 'btn-floating cyan tooltipped',
                         'data-position' => "bottom",
