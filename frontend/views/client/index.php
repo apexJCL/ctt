@@ -21,13 +21,13 @@ $this->params['breadcrumbs'][] = $this->title;
             </a>
             <ul>
                 <li>
-                    <?=
+                    <?= Yii::$app->user->can('createClient') ?
                     Html::a(Html::tag('i', '', ['class' => 'material-icons mdi-add']), ['create'], [
                         'class' => 'btn-floating cyan tooltipped',
                         'data-position' => "bottom",
                         'data-delay' => '1000',
                         'data-tooltip' => 'Añadir'
-                    ]) ?>
+                    ]) : ''?>
                 </li>
             </ul>
         </div>
@@ -43,6 +43,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'apellido_paterno',
                     'apellido_materno',
                     'email:email',
+                    Yii::$app->user->can('viewClient') ?
                     [
                         'header' => Html::tag('span', ''),
                         'format' => 'raw',
@@ -57,7 +58,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     'data-tooltip' => 'Ver'
                                 ]);
                         }
-                    ],
+                    ] : [],
                     ['class' => 'yii\grid\ActionColumn'],
                 ],
             ]); ?>

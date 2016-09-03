@@ -103,9 +103,7 @@ FAB Button Style
   max-height: 256px;
   top: 128px;
   left: 50%;
-  transform: translate(-50%, 0%);
-  -webkit-clip-path: circle(96px at center);
-  clip-path: circle(96px at center); }
+  transform: translate(-50%, 0%); }
   @media only screen and (max-width: 768px) {
     .profile-picture--container .foreground img {
       max-width: none;
@@ -115,9 +113,7 @@ FAB Button Style
       top: auto;
       left: auto;
       transform: translate(0, 0);
-      min-width: 100%;
-      -webkit-clip-path: none;
-      clip-path: none; } }
+      min-width: 100%; } }
 .profile-picture--container .background {
   background-color: black;
   position: absolute;

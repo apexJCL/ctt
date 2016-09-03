@@ -142,8 +142,6 @@ FAB Button Style
       top: 128px;
       left: 50%;
       transform: translate(-50%, 0%);
-      -webkit-clip-path: circle($profile-img-radius at center);
-      clip-path: circle($profile-img-radius at center);
       @media only screen and (max-width: 768px) {
         max-width: none;
         max-height: 100%;
@@ -153,8 +151,6 @@ FAB Button Style
         left: auto;
         transform: translate(0, 0);
         min-width: 100%;
-        -webkit-clip-path: none;
-        clip-path: none;
       }
     }
   }

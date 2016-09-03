@@ -20,21 +20,26 @@ $this->title = $model->nombre;
                 <i class="large material-icons">menu</i>
             </a>
             <ul>
-                <li>
-                    <a href="#delete" class="btn-floating red modal-trigger tooltipped" data-position="bottom"
-                       data-delay="1000" data-tooltip="Eliminar"><i class="material-icons">delete</i></a>
-                </li>
-                <li>
-                    <?= Html::a(Html::tag('i', 'edit', ['class' => 'material-icons']),
+                <?= Yii::$app->user->can('deleteClient') ?
+                    Html::a(Html::tag('i', null, ['class' => 'mdi mdi-delete']), null, [
+                        'href' => '#delete',
+                        'class' => 'btn-floating red modal-trigger tooltipped',
+                        'data-position' => 'bottom',
+                        'data-delay' => '1000',
+                        'data-tooltip' => Yii::t('app', 'Delete')
+                    ]) : ''
+                ?>
+                <?= Yii::$app->user->can('editClient') ?
+                    Html::tag('li', Html::a(Html::tag('i', 'edit', ['class' => 'material-icons']),
                         ['update', 'id' => $model->id],
                         [
                             'class' => 'btn-floating light-blue accent-2 tooltipped',
                             'data-position' => "bottom",
                             'data-delay' => '1000',
                             'data-tooltip' => Yii::t('app', 'Edit')
-                        ])
-                    ?>
-                </li>
+                        ]))
+                    : ''
+                ?>
                 <li>
                     <?= Html::a(Html::tag('i', 'list', ['class' => 'material-icons']),
                         Url::to(['index']),
