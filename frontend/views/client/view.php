@@ -11,9 +11,11 @@ use yii\widgets\Pjax;
 $this->title = $model->nombre;
 ?>
 <div>
+    <?php Pjax::begin(); ?>
     <?= $this->render('_section_header_profile', [
         'photoUrl' => $model->getProfilePicture()
     ]) ?>
+    <?php Pjax::end(); ?>
     <div class="section grey lighten-4 fab-container greedy">
         <div class="fixed-action-btn horizontal main-fab">
             <a class="btn-floating btn-large">

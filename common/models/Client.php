@@ -70,7 +70,6 @@ class Client extends \yii\db\ActiveRecord
 
     public function create()
     {
-        // Primero asignamos el archivo que se subió
         $this->profilePicture = UploadedFile::getInstance($this, 'profilePicture');
         if ($this->save() && $this->validate()) {
             $this->upload();
