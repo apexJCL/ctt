@@ -120,7 +120,9 @@ class AuthItemForm extends Model
     public function savePermissions()
     {
         $parent = AuthItem::getRole($this->name);
-        $children = array_values(Yii::$app->request->post('AuthItemForm')['children']['permissions']);
+        $children = isset(Yii::$app->request->post('AuthItemForm')['children']['permissions']) ?
+            array_values(Yii::$app->request->post('AuthItemForm')['children']['permissions']) :
+            [];
         $permissions = AuthItem::getRolePermissionsAsArray($parent);
         $new = array_diff($children, $permissions);
         $delete = array_diff($permissions, $children);
@@ -131,10 +133,10 @@ class AuthItemForm extends Model
         return true;
     }
 
-    public function saveChildren($c)
+    public function saveChildren()
     {
         $parent = AuthItem::getRole($this->name);
-        $children = isset($c) ? $c : [];
+        $children = isset(Yii::$app->request->post('AuthItem')['roles']) ? Yii::$app->request->post('AuthItem')['roles'] : [];
         $children_roles = AuthItem::getRoleChildrenAsArray($parent);
         $new = array_diff($children, $children_roles);
         $delete = array_diff($children_roles, $children);

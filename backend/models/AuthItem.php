@@ -417,10 +417,10 @@ class AuthItem extends ActiveRecord
         return $r;
     }
 
-    public function saveChildrenRoles($c)
+    public function saveChildrenRoles()
     {
         $parent = self::getRole($this->name);
-        $children = isset($c) ? $c : [];
+        $children = isset(Yii::$app->request->post('AuthItem')['roles']) ? Yii::$app->request->post('AuthItem')['roles'] : [];
         $children_roles = self::getRoleChildrenAsArray($parent->name);
         $new = array_diff($children, $children_roles);
         $delete = array_diff($children_roles, $children);

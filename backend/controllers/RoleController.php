@@ -86,7 +86,7 @@ class RoleController extends Controller
          * @var $form AuthItem
          */
         $form = AuthItem::getRoleWithRoleChildren(Yii::$app->request->getQueryParam('name'), AuthItem::ROLE);
-        if (!empty(Yii::$app->request->post('AuthItem')['roles']) && $form->saveChildrenRoles(Yii::$app->request->post('AuthItem')['roles']))
+        if ($form->load(Yii::$app->request->post()) && $form->saveChildrenRoles())
             return $this->redirect(['view', 'name' => $form->name]);
         return $this->render('children',[
             'model' => $form

@@ -43,7 +43,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'apellido_paterno',
                     'apellido_materno',
                     'email:email',
-                    Yii::$app->user->can('viewClient') ?
+                    Yii::$app->user->identity->canI('viewClient') ?
                     [
                         'header' => Html::tag('span', ''),
                         'format' => 'raw',

@@ -10,8 +10,8 @@ $this->title = Yii::t('app', 'Update {modelClass}: ', [
     ]);
 ?>
 <div>
-    <?= $this->render('_section_header_profile',[
-        'photoUrl' => '/img/users/1.jpg'
+    <?= $this->render('_section_header_profile', [
+        'photoUrl' => $model->getProfilePicture()
     ]) ?>
     <div class="section grey lighten-4 greedy">
         <div class="container-lazy">

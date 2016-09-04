@@ -27,10 +27,10 @@ $this->registerJsFile('/js/role/children_app.js', ['depends' => [
             <div class="row">
                 <span type="hidden" data-type="2" id="authitem-type"></span>
                 <div class="col s12 m6">
-                    <?= $form->field($model, 'name')->textInput(['disabled' => true]) ?>
+                    <?= $form->field($model, 'name')->textInput(['readonly' => true]) ?>
                 </div>
                 <div class="col s12 m6">
-                    <?= $form->field($model, 'description')->textInput(['disabled' => true]) ?>
+                    <?= $form->field($model, 'description')->textInput(['readonly' => true]) ?>
                 </div>
                 <div class="col s12 m6">
                     <?= $form->field($model, 'children')->widget(MultipleInput::className(), [
@@ -46,7 +46,7 @@ $this->registerJsFile('/js/role/children_app.js', ['depends' => [
                         ],
                         'addButtonOptions' => [
                             'class' => 'btn-flat waves-effect waves-light',
-                            'label' => Html::tag('i','', ['class' => 'material-icons mdi-add'])
+                            'label' => Html::tag('i', '', ['class' => 'material-icons mdi-add'])
                         ],
                         'removeButtonOptions' => [
                             'class' => 'btn-flat waves-effect waves-red',

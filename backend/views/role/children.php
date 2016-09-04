@@ -28,10 +28,10 @@ $this->registerJsFile('/js/role/children_app.js', ['depends' => [
             <span type="hidden" data-type="1" id="authitem-type"></span>
             <div class="row">
                 <div class="col s12 m6">
-                    <?= $form->field($model, 'name')->textInput(['disabled' => true]) ?>
+                    <?= $form->field($model, 'name')->textInput(['readonly' => true]) ?>
                 </div>
                 <div class="col s12 m6">
-                    <?= $form->field($model, 'description')->textInput(['disabled' => true]) ?>
+                    <?= $form->field($model, 'description')->textInput(['readonly' => true]) ?>
                 </div>
                 <div class="col s12 m6">
                     <?= $form->field($model, 'children')->widget(MultipleInput::className(), [
