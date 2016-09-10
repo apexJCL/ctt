@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\DetailView;
-use yii\widgets\Pjax;
+
 $this->title = Yii::t('app', 'Permission: {permission}', ['permission' => $model->name]);
 ?>
 <?= $this->render('//layouts/_section_header', [
@@ -11,7 +11,6 @@ $this->title = Yii::t('app', 'Permission: {permission}', ['permission' => $model
     'titleColor' => 'white'
 ]) ?>
 <div>
-    <?php Pjax::begin(); ?>
     <div class="section grey lighten-4 fab-container greedy">
         <div class="fixed-action-btn horizontal main-fab">
             <a class="btn-floating btn-large">
@@ -47,32 +46,40 @@ $this->title = Yii::t('app', 'Permission: {permission}', ['permission' => $model
             </ul>
         </div>
         <div class="container">
-            <?= DetailView::widget([
-                'model' => $model,
-                'attributes' => [
-                    'name',
-                    'description'
-                ]
-            ]) ?>
+            <div class="row">
+                <div class="col s12">
+                    <?= DetailView::widget([
+                        'model' => $model,
+                        'attributes' => [
+                            'name',
+                            'description'
+                        ]
+                    ]) ?>
+                </div>
+                <div class="col s12">
+                    <a class="waves-effect btn-flat" href="<?= Url::to(['index']) ?>">
+                        <i class="mdi left mdi-keyboard-arrow-left"></i>
+                        Volver
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
-    <?php Pjax::end() ?>
-</div>
 
-<!-- Modal -->
-<div class="modal red accent-4 white-text" id="delete">
-    <div class="modal-content">
-        <h4>¿Seguro que desea eliminar este permiso?</h4>
-        <p>Esta acción no se puede revertir</p>
+    <!-- Modal -->
+    <div class="modal red accent-4 white-text" id="delete">
+        <div class="modal-content">
+            <h4>¿Seguro que desea eliminar este permiso?</h4>
+            <p>Esta acción no se puede revertir</p>
+        </div>
+        <div class="modal-footer">
+            <?= Html::a("Eliminar", ['delete', 'name' => $model->name],
+                ['class' => 'btn waves-effect waves-light red accent-2',
+                    'data' => [
+                        'method' => 'post'
+                    ],
+                ])
+            ?>
+            <a href="#!" class=" waves-effect waves-ripple btn-flat modal-close">Cancelar</a>
+        </div>
     </div>
-    <div class="modal-footer">
-        <?= Html::a("Eliminar", ['delete', 'name' => $model->name],
-            ['class' => 'btn waves-effect waves-light red accent-2',
-                'data' => [
-                    'method' => 'post'
-                ],
-            ])
-        ?>
-        <a href="#!" class=" waves-effect waves-ripple btn-flat modal-close">Cancelar</a>
-    </div>
-</div>

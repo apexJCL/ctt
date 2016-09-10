@@ -11,13 +11,13 @@ use yii\widgets\DetailView;
 use yii\widgets\Pjax;
 
 $this->title = Yii::t('app', 'Role: {role}', ['role' => $model->name]);
+Url::remember();
 ?>
 <?= $this->render('//layouts/_section_header', [
     'photoUrl' => '/img/showcase/users.jpg',
     'titleColor' => 'white'
 ]) ?>
 <div>
-    <?php Pjax::begin(); ?>
     <div class="section grey lighten-4 fab-container greedy">
         <div class="fixed-action-btn horizontal main-fab">
             <a class="btn-floating btn-large">
@@ -113,12 +113,17 @@ $this->title = Yii::t('app', 'Role: {role}', ['role' => $model->name]);
                                     'class' => 'btn blue darken-2 waves-effect waves-light right'
                                 ]) ?>
                         </div>
+                        <div class="col s12">
+                            <a class="waves-effect btn-flat" href="<?= Url::to(['index']) ?>">
+                                <i class="mdi left mdi-keyboard-arrow-left"></i>
+                                Volver
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <?php Pjax::end() ?>
 </div>
 
 <!-- Modal -->

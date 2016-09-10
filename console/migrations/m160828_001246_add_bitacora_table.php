@@ -23,7 +23,6 @@ class m160828_001246_add_bitacora_table extends Migration
             'apellido_materno' => $this->string(50),
             'email' => $this->string(50)
         ]);
-        $this->execute('DROP TRIGGER IF EXISTS client_update; DROP TRIGGER IF EXISTS client_delete;');
         // Trigger update
         $this->execute('
         CREATE TRIGGER client_update AFTER UPDATE ON client

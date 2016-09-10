@@ -10,6 +10,7 @@ use yii\helpers\Url;
 use yii\widgets\Pjax;
 
 $this->title = Yii::t('app', 'Permissions');
+Url::remember();
 ?>
 
 <?= $this->render('//layouts/_section_header', [

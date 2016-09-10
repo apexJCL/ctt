@@ -54,6 +54,12 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="container">
             <div class="row">
                 <div class="col s12">
+                    <a class="waves-effect btn-flat" href="<?= Url::to(['index']) ?>">
+                        <i class="mdi left mdi-keyboard-arrow-left"></i>
+                        Volver
+                    </a>
+                </div>
+                <div class="col s12">
                     <?= DetailView::widget([
                         'model' => $model,
                         'attributes' => [
@@ -82,7 +88,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="col s2 right">
                     <?= Html::a(Html::tag('i', 'add', ['class' => 'mdi']), Url::to(['roles', 'id' => $model->id]), ['class' => 'btn waves-effect waves-light']) ?>
                 </div>
-
+                <div class="col s12">
+                    <a class="waves-effect btn-flat" href="<?= Url::to(['index']) ?>">
+                        <i class="mdi left mdi-keyboard-arrow-left"></i>
+                        Volver
+                    </a>
+                </div>
             </div>
         </div>
     </div>
