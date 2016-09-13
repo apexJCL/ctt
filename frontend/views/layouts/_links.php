@@ -14,7 +14,7 @@ use yii\helpers\Url;
     <a href="#!" <?= implode(' ', $clients['data']) ?> class="raleway dropdown-button">CLIENTES</a>
 </li>
 <li>
-    <a href="#documents" class="raleway">DOCUMENTOS</a>
+    <a href="<?= Url::to(['item-description/index']) ?>" class="raleway">DOCUMENTOS</a>
 </li>
 <li>
     <?php
