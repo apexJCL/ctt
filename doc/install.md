@@ -2,15 +2,15 @@
 
 ## Requisitos
 
-- Git
-- Servidor Web Apache
-- PHP v5.4 (mínimo)
+-   Git
+-   Servidor Web Apache
+-   PHP v5.4 (mínimo)
 
 ## Configurando dependencias
 
 ### Git
 
-Primero instale git para poder proceder con el proyecto, lo puede descargar [aqui](https://git-scm.com/downloads) Ahora bien, también puede usar la versión gráfica ofrecida por GitHub, llamada (GitHub Desktop)[<https://desktop.github.com/>]
+Primero instale git para poder proceder con el proyecto, lo puede descargar [aqui](https://git-scm.com/downloads) Ahora bien, también puede usar la versión gráfica ofrecida por GitHub, llamada [GitHub Desktop](https://desktop.github.com/)
 
 ## Instalando Proyecto
 
@@ -92,7 +92,7 @@ Si está en *nix:
 
 Yii2 hace manejo de dependencias, tales como librerías, plugins, etc, a través de **Composer**, para esto, ejecutemos el siguiente comando para instalar/actualizar las mismas:
 
-```
+```bash
 composer update
 ```
 
