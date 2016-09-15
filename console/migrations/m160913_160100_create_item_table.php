@@ -1,5 +1,6 @@
 <?php
 
+use console\models\Defaults;
 use yii\db\Migration;
 
 /**
@@ -26,7 +27,7 @@ class m160913_160100_create_item_table extends Migration
         $this->addForeignKey('item_updated_by_fk', 'item', 'updated_by', 'user', 'id');
         $this->addForeignKey('item_category_fk', 'item', 'category_id', 'category', 'id');
         // Create permissions
-        \console\models\Defaults::addDefaultPermissions('item');
+        Defaults::addDefaultPermissions('item');
     }
 
     /**
@@ -35,5 +36,6 @@ class m160913_160100_create_item_table extends Migration
     public function down()
     {
         $this->dropTable('item');
+        Defaults::deletePermissions('item');
     }
 }
