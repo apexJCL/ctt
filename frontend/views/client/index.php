@@ -12,8 +12,8 @@ use yii\widgets\Pjax;
 $this->title = Yii::t('app', 'Clients');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<?= $this->render('_section_header') ?>
 <div>
-    <?= $this->render('_section_header') ?>
     <div class="section grey lighten-5 fab-container greedy">
         <div class="fixed-action-btn horizontal main-fab">
             <a class="btn-floating btn-large">

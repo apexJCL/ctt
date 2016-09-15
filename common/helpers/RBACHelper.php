@@ -26,7 +26,7 @@ class RBACHelper
      */
     public static function hasAccess($action)
     {
-        return Yii::$app->user->can($action->id . ucfirst($action->controller->id))
+        return Yii::$app->user->identity->canI($action->id . ucfirst($action->controller->id))
         || User::hasRole(Yii::$app->user->id, 'root');
     }
 

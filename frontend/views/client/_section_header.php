@@ -20,6 +20,4 @@ use yii\helpers\Html;
         </span>
     </div>
 </div>
-</div>
-</div>
 <!-- Sección en blanco para poder ver fondo -->

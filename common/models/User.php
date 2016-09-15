@@ -478,6 +478,7 @@ class User extends ActiveRecord implements IdentityInterface
         if (empty($p) or $p === null)
             return false;
         $roles = Yii::$app->authManager->getRolesByUser(Yii::$app->user->id);
+        if (in_array('root', array_keys($roles))) return true;
         foreach ($roles as $role){
             $permissions = Yii::$app->authManager->getPermissionsByRole($role->name);
             if (in_array($p, $permissions))

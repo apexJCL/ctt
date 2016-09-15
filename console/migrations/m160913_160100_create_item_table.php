@@ -25,6 +25,8 @@ class m160913_160100_create_item_table extends Migration
         $this->addForeignKey('item_created_by_fk', 'item', 'created_by', 'user', 'id');
         $this->addForeignKey('item_updated_by_fk', 'item', 'updated_by', 'user', 'id');
         $this->addForeignKey('item_category_fk', 'item', 'category_id', 'category', 'id');
+        // Create permissions
+        \console\models\Defaults::addDefaultPermissions('item');
     }
 
     /**

@@ -28,6 +28,8 @@ class m160913_160556_create_item_description_table extends Migration
         $this->addForeignKey('item_description_accessory_fk', 'item_description', 'accessory_of', 'item_description','id');
         $this->addForeignKey('item_description_created_by_fk', 'item_description', 'created_by', 'user', 'id');
         $this->addForeignKey('item_description_updated_by_fk', 'item_description', 'updated_by', 'user', 'id');
+        // Create permissions
+        \console\models\Defaults::addDefaultPermissions('item-description');
     }
 
     /**
@@ -36,5 +38,6 @@ class m160913_160556_create_item_description_table extends Migration
     public function down()
     {
         $this->dropTable('item_description');
+        \console\models\Defaults::deletePermissions('item-description');
     }
 }

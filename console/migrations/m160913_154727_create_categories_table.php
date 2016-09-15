@@ -23,6 +23,8 @@ class m160913_154727_create_categories_table extends Migration
         ]);
         $this->addForeignKey('category_created_by_fk', 'category', 'created_by', 'user', 'id');
         $this->addForeignKey('category_updated_by_fk', 'category', 'updated_by', 'user', 'id');
+        // Create permissions
+        \console\models\Defaults::addDefaultPermissions('category');
     }
 
     /**
