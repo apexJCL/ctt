@@ -10,12 +10,12 @@ use yii\helpers\Html;
 <div class="static-display">
     <div class="static-display__background">
         <div class="static-display__background--blurry">
-            <img src="<?= $photoUrl ?>" alt="#" class="">
+            <img src="<?= isset($photoUrl) ? $photoUrl : '' ?>" alt="#" class="">
         </div>
     </div>
     <div class="static-display__foreground--brand-logo">
         <img src="/img/logo.png" alt="" class="responsive-img">
-        <span class="col l10 m8 s12 <?= $titleColor ? $titleColor : 'white' ?>-text raleway-bold">
+        <span class="col l10 m8 s12 <?= isset($titleColor) ? $titleColor : 'black' ?>-text raleway-bold">
             <h1>
                 <div class="thin-line primary-overlay"></div>
                 <?= Html::encode($this->title) ?>

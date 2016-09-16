@@ -1,8 +1,9 @@
 <?php
 
-use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\Url;
 use yii\widgets\Pjax;
+
 /* @var $this yii\web\View */
 /* @var $searchModel frontend\models\ItemSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -10,26 +11,45 @@ use yii\widgets\Pjax;
 $this->title = Yii::t('app', 'Items');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="item-index">
+<div>
+    <?= $this->render('//layouts/_section_header') ?>
+    <div class="section grey lighten-5 fab-container greedy">
+        <?=
+        $this->render('//layouts/_fab', [
+            'buttons' => [
+                [
+                    'permission' => 'createItem',
+                    'link' => [
+                        'options' => [
+                            'class' => 'mdi mdi-add'
+                        ]
+                    ],
+                    'url' => Url::to(['create']),
+                    'options' => [
+                        'class' => 'btn-floating cyan tooltipped',
+                        'data-position' => 'bottom',
+                        'data-delay' => '1000',
+                        'data-tooltip' => Yii::t('app', 'Add')
+                    ]
+                ]
+            ]
+        ]) ?>
+        <div class="container-lazy">
+            <?php Pjax::begin(); ?>    <?= GridView::widget([
+                'dataProvider' => $dataProvider,
+                'filterModel' => $searchModel,
+                'columns' => [
+                    ['class' => 'yii\grid\SerialColumn'],
 
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+                    'id',
+                    'name',
+                    'description',
+                    'category_id',
 
-    <p>
-        <?= Html::a(Yii::t('app', 'Create Item'), ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-<?php Pjax::begin(); ?>    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
-            'name',
-            'description',
-            'category_id',
-
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
-<?php Pjax::end(); ?></div>
+                    ['class' => 'yii\grid\ActionColumn'],
+                ],
+            ]); ?>
+        </div>
+    </div>
+    <?php Pjax::end(); ?>
+</div>

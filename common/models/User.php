@@ -4,6 +4,7 @@ namespace common\models;
 use backend\models\AuthItem;
 use Yii;
 use yii\base\NotSupportedException;
+use yii\behaviors\AttributeBehavior;
 use yii\db\ActiveRecord;
 use yii\db\Expression;
 use yii\helpers\ArrayHelper;
@@ -75,8 +76,17 @@ class User extends ActiveRecord implements IdentityInterface
                 ],
                 'value' => new Expression('NOW()'),
             ],
+            'attribute' => [
+                'class' => AttributeBehavior::className(),
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => ['created_by', 'updated_by'],
+                    ActiveRecord::EVENT_BEFORE_UPDATE => ['updated_by']
+                ],
+                'value' => isset(Yii::$app->user->id) ? Yii::$app->user->id : 1
+            ]
         ];
     }
+
 
     /**
      * @inheritdoc

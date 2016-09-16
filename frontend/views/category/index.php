@@ -12,34 +12,34 @@ use yii\widgets\Pjax;
 $this->title = Yii::t('app', 'Categories');
 ?>
 <div>
-    <?= $this->render('//layouts/_section_header', [
-        'photoUrl' => '',
-        'titleColor' => 'black'
-    ]) ?>
+    <?= $this->render('//layouts/_section_header') ?>
     <div class="section grey lighten-5 fab-container greedy">
-        <div class="fixed-action-btn horizontal main-fab">
-            <a class="btn-floating btn-large">
-                <i class="large material-icons">menu</i>
-            </a>
-            <ul>
-                <li>
-                    <?= Yii::$app->user->identity->canI('createClient') ?
-                        Html::a(Html::tag('i', '', ['class' => 'material-icons mdi-add']), ['create'], [
-                            'class' => 'btn-floating cyan tooltipped',
-                            'data-position' => "bottom",
-                            'data-delay' => '1000',
-                            'data-tooltip' => 'Añadir'
-                        ]) : '' ?>
-                </li>
-            </ul>
-        </div>
+        <?=
+        $this->render('//layouts/_fab', [
+            'buttons' => [
+                [
+                    'permission' => 'createCategory',
+                    'link' => [
+                        'options' => [
+                            'class' => 'mdi mdi-add'
+                        ]
+                    ],
+                    'url' => Url::to(['create']),
+                    'options' => [
+                        'class' => 'btn-floating cyan tooltipped',
+                        'data-position' => 'bottom',
+                        'data-delay' => '1000',
+                        'data-tooltip' => Yii::t('app', 'Add')
+                    ]
+                ]
+            ]
+        ]) ?>
         <div class="container-lazy">
             <?php Pjax::begin(); ?>    <?= GridView::widget([
                 'dataProvider' => $dataProvider,
                 'filterModel' => $searchModel,
                 'columns' => [
                     ['class' => 'yii\grid\SerialColumn'],
-                    'id',
                     'name',
                     'description',
                     Yii::$app->user->identity->canI('viewCategory') ?
