@@ -8,7 +8,7 @@ class m160916_145510_remove_user_type_table extends Migration
     {
         $this->dropColumn('user', 'user_type_id');
         $this->dropColumn('user', 'role_id');
-        $this->dropColumn('user', 'status_type_id');
+        $this->dropColumn('user', 'status_id');
         $this->dropTable('user_type');
         $this->dropTable('role');
         $this->dropTable('status');
