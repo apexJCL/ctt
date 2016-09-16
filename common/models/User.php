@@ -474,11 +474,14 @@ class User extends ActiveRecord implements IdentityInterface
 
     public function canI($permission)
     {
+        // If the user is root, skip
+        $roles = Yii::$app->authManager->getRolesByUser(Yii::$app->user->id);
+        if (in_array('root', array_keys($roles))) return true;
+        // Retrieve permissions for user
         $p = Yii::$app->authManager->getPermission($permission);
         if (empty($p) or $p === null)
             return false;
-        $roles = Yii::$app->authManager->getRolesByUser(Yii::$app->user->id);
-        if (in_array('root', array_keys($roles))) return true;
+        // Check for each role of the user
         foreach ($roles as $role){
             $permissions = Yii::$app->authManager->getPermissionsByRole($role->name);
             if (in_array($p, $permissions))

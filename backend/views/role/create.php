@@ -10,11 +10,9 @@ $this->title = Yii::t('app', 'Creating role');
     'photoUrl' => '/img/showcase/users.jpg'
 ]) ?>
 <div>
-    <?php Pjax::begin(); ?>
     <div class="section grey lighten-4 fab-container greedy">
         <?= $this->render('_form', [
             'model' => $model
         ]) ?>
     </div>
-    <?php Pjax::end(); ?>
 </div>

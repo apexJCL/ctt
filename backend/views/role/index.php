@@ -18,23 +18,25 @@ $this->title = Yii::t('app', 'Roles');
 <div>
     <?php Pjax::begin(); ?>
     <div class="section grey lighten-4 fab-container greedy">
-        <div class="fixed-action-btn horizontal main-fab">
-            <a class="btn-floating btn-large">
-                <i class="large material-icons">menu</i>
-            </a>
-            <ul>
-                <li>
-                    <?=
-                    Html::a('<i class="material-icons mdi-add"></i>', ['create'], [
+        <?= $this->render('@frontend/views/layouts/_fab', [
+            'buttons' => [
+                [
+                    'permission' => 'createClient',
+                    'link' => [
+                        'options' => [
+                            'class' => 'mdi mdi-add'
+                        ]
+                    ],
+                    'url' => Url::to(['create']),
+                    'options' => [
                         'class' => 'btn-floating cyan tooltipped',
-                        'data-position' => "bottom",
+                        'data-position' => 'bottom',
                         'data-delay' => '1000',
-                        'data-tooltip' => 'Añadir'
-                    ]) ?>
-
-                </li>
-            </ul>
-        </div>
+                        'data-tooltip' => Yii::t('app', 'Add')
+                    ]
+                ]
+            ]
+        ]) ?>
         <div class="container">
             <?= GridView::widget([
                 'dataProvider' => $dataProvider,

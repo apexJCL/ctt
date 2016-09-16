@@ -11,15 +11,15 @@ $this->title = Yii::t('app', 'Update {modelClass}: ', [
 ]) . $model->id;
 ?>
 
+<?= $this->render('//layouts/_section_header', [
+    'photoUrl' => '/img/showcase/users.jpg'
+]) ?>
 <div>
-    <?= $this->render('//layouts/_section_header', [
-        'photoUrl' => '/img/showcase/users.jpg'
-    ]) ?>
     <?php Pjax::begin(); ?>
     <div class="section red green lighten-5 greedy">
         <div class="container">
             <div class="row">
-                <div class="col s12">
+                <div class="col s12 hide-on-med-and-up">
                     <h3 class="raleway-thin"><?= Html::encode($this->title) ?></h3>
                 </div>
                 <div class="col s12">

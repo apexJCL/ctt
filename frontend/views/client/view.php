@@ -17,44 +17,55 @@ $this->title = $model->nombre;
     ]) ?>
     <?php Pjax::end(); ?>
     <div class="section grey lighten-4 fab-container greedy">
-        <div class="fixed-action-btn horizontal main-fab">
-            <a class="btn-floating btn-large">
-                <i class="large material-icons">menu</i>
-            </a>
-            <ul>
-                <?= Yii::$app->user->identity->canI('deleteClient') ?
-                    Html::tag('li', Html::a(Html::tag('i', null, ['class' => 'mdi mdi-delete']), null, [
+        <?= $this->render('//layouts/_fab', [
+            'buttons' => [
+                [
+                    'permission' => 'deleteClient',
+                    'link' => [
+                        'options' => [
+                            'class' => 'mdi mdi-delete'
+                        ]
+                    ],
+                    'options' => [
                         'href' => '#delete',
                         'class' => 'btn-floating red modal-trigger tooltipped',
                         'data-position' => 'bottom',
                         'data-delay' => '1000',
                         'data-tooltip' => Yii::t('app', 'Delete')
-                    ])) : ''
-                ?>
-                <?= Yii::$app->user->identity->canI('updateClient') ?
-                    Html::tag('li', Html::a(Html::tag('i', 'edit', ['class' => 'material-icons']),
-                        ['update', 'id' => $model->id],
-                        [
-                            'class' => 'btn-floating light-blue accent-2 tooltipped',
-                            'data-position' => "bottom",
-                            'data-delay' => '1000',
-                            'data-tooltip' => Yii::t('app', 'Edit')
-                        ]))
-                    : ''
-                ?>
-                <li>
-                    <?= Html::a(Html::tag('i', 'undo', ['class' => 'mdi black-text']),
-                        Url::to(['index']),
-                        [
-                            'class' => 'btn-floating white tooltipped',
-                            'data-position' => "bottom",
-                            'data-delay' => '1000',
-                            'data-tooltip' => Yii::t('app', "Back")
+                    ]
+                ],
+                [
+                    'permission' => 'updateClient',
+                    'link' => [
+                        'options' => [
+                            'class' => 'mdi mdi-edit'
                         ]
-                    ) ?>
-                </li>
-            </ul>
-        </div>
+                    ],
+                    'options' => [
+                        'class' => 'btn-floating light-blue accent-2 tooltipped',
+                        'data-position' => 'bottom',
+                        'data-delay' => '1000',
+                        'data-tooltip' => Yii::t('app', 'Edit')
+                    ],
+                    'url' => Url::to(['update', 'id' => $model->id])
+                ],
+                [
+                    'permission' => null,
+                    'link' => [
+                        'options' => [
+                            'class' => 'mdi mdi-undo'
+                        ]
+                    ],
+                    'options' => [
+                        'class' => 'btn-floating blue tooltipped',
+                        'data-position' => "bottom",
+                        'data-delay' => '1000',
+                        'data-tooltip' => Yii::t('app', "Back")
+                    ],
+                    'url' => Url::to(['index'])
+                ]
+            ]
+        ]) ?>
         <div class="container row">
             <div class="col s12 black-text raleway-bold show-on-small hide-on-med-and-up">
                 <h1>

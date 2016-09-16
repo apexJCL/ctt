@@ -18,39 +18,55 @@ $this->params['breadcrumbs'][] = $this->title;
         'photoUrl' => $model->getProfilePicture()
     ]) ?>
     <div class="section grey lighten-4 fab-container greedy">
-        <div class="fixed-action-btn horizontal main-fab">
-            <a class="btn-floating btn-large">
-                <i class="large material-icons">menu</i>
-            </a>
-            <ul>
-                <li>
-                    <a href="#delete" class="btn-floating red modal-trigger tooltipped" data-position="bottom"
-                       data-delay="1000" data-tooltip="Eliminar"><i class="material-icons">delete</i></a>
-                </li>
-                <li>
-                    <?= Html::a(Html::tag('i', 'edit', ['class' => 'material-icons']),
-                        ['update', 'id' => $model->id],
-                        [
-                            'class' => 'btn-floating light-blue accent-2 tooltipped',
-                            'data-position' => "bottom",
-                            'data-delay' => '1000',
-                            'data-tooltip' => 'Editar'
-                        ])
-                    ?>
-                </li>
-                <li>
-                    <?= Html::a(Html::tag('i', 'list', ['class' => 'material-icons']),
-                        Url::to(['user/index']),
-                        [
-                            'class' => 'btn-floating blue accent-1 tooltipped',
-                            'data-position' => "bottom",
-                            'data-delay' => '1000',
-                            'data-tooltip' => 'Lista de Usuarios'
+        <?= $this->render('@frontend/views/layouts/_fab', [
+            'buttons' => [
+                [
+                    'permission' => 'deleteUser',
+                    'link' => [
+                        'options' => [
+                            'class' => 'mdi mdi-delete'
                         ]
-                    ) ?>
-                </li>
-            </ul>
-        </div>
+                    ],
+                    'options' => [
+                        'href' => '#delete',
+                        'class' => 'btn-floating red modal-trigger tooltipped',
+                        'data-position' => 'bottom',
+                        'data-delay' => '1000',
+                        'data-tooltip' => Yii::t('app', 'Delete')
+                    ]
+                ],
+                [
+                    'permission' => 'updateUser',
+                    'link' => [
+                        'options' => [
+                            'class' => 'mdi mdi-edit'
+                        ]
+                    ],
+                    'options' => [
+                        'class' => 'btn-floating light-blue accent-2 tooltipped',
+                        'data-position' => 'bottom',
+                        'data-delay' => '1000',
+                        'data-tooltip' => Yii::t('app', 'Edit')
+                    ],
+                    'url' => Url::to(['update', 'id' => $model->id])
+                ],
+                [
+                    'permission' => null,
+                    'link' => [
+                        'options' => [
+                            'class' => 'mdi mdi-undo'
+                        ]
+                    ],
+                    'options' => [
+                        'class' => 'btn-floating blue tooltipped',
+                        'data-position' => "bottom",
+                        'data-delay' => '1000',
+                        'data-tooltip' => Yii::t('app', "Back")
+                    ],
+                    'url' => Url::to(['index'])
+                ]
+            ]
+        ]) ?>
         <div class="container">
             <div class="row">
                 <div class="col s12">
