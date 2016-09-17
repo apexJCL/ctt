@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= $this->render('//layouts/_fab', [
             'buttons' => [
                 [
-                    'permission' => 'deleteItem',
+                    'permission' => 'delete',
                     'link' => [
                         'options' => [
                             'class' => 'mdi mdi-delete'
@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     ]
                 ],
                 [
-                    'permission' => 'updateItem',
+                    'permission' => 'update',
                     'link' => [
                         'options' => [
                             'class' => 'mdi mdi-edit'
@@ -80,6 +80,12 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'format' => 'raw',
                                 'value' => $model->getCategory()->one()->name
                             ],
+                            [
+                                'attribute' => 'brand_id',
+                                'label' => Yii::t('app', 'Brand'),
+                                'format' => 'raw',
+                                'value' => $model->getBrand()->one()->name
+                            ]
                         ],
                     ]) ?>
                 </div>
@@ -87,3 +93,16 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 </div>
+<?= $this->render('//layouts/_delete', [
+    'message' => Yii::t('app', 'Are you sure you want to delete this item?'),
+    'options' => [
+        'class' => 'raleway-light'
+    ],
+    'warning' => [
+        'message' => 'This operation cannot be undone',
+        'options' => [
+            'class' => 'flow-text white-text'
+        ]
+    ],
+    'model' => $model
+]) ?>

@@ -20,7 +20,7 @@ $this->title = $model->nombre;
         <?= $this->render('//layouts/_fab', [
             'buttons' => [
                 [
-                    'permission' => 'deleteClient',
+                    'permission' => 'delete',
                     'link' => [
                         'options' => [
                             'class' => 'mdi mdi-delete'
@@ -35,7 +35,7 @@ $this->title = $model->nombre;
                     ]
                 ],
                 [
-                    'permission' => 'updateClient',
+                    'permission' => 'update',
                     'link' => [
                         'options' => [
                             'class' => 'mdi mdi-edit'

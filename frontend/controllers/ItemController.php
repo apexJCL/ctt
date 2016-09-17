@@ -4,6 +4,7 @@ namespace frontend\controllers;
 
 use common\helpers\RBACHelper;
 use frontend\models\Brand;
+use frontend\models\BrandSearch;
 use frontend\models\Category;
 use Yii;
 use frontend\models\Item;
@@ -11,6 +12,7 @@ use frontend\models\ItemSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\Response;
 
 /**
  * ItemController implements the CRUD actions for Item model.
@@ -27,11 +29,16 @@ class ItemController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
+                    'brand-autocomplete' => ['GET']
                 ],
             ],
             'access' => [
                 'class' => \yii\filters\AccessControl::className(),
                 'rules' => [
+                    [
+                        'allow' => true,
+                        'actions' => ['brand-autocomplete']
+                    ],
                     [
                         'allow' => true,
                         'actions' => ['index', 'create', 'update', 'view', 'delete'],
@@ -131,6 +138,24 @@ class ItemController extends Controller
 
         return $this->redirect(['index']);
     }
+
+    /**
+     * Returns a JSON of brands
+     * brand {
+     *  id:,
+     *  name:
+     * }
+     *
+     * @return array|\yii\db\ActiveRecord[]|Response
+     */
+    public function actionBrandAutocomplete(){
+        if (!Yii::$app->request->isGet)
+            return $this->redirect(['site/error']);
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        $searchString = Yii::$app->request->getQueryParam('brand');
+        $result = BrandSearch::find()->select(['id', 'name'])->filterWhere(['like', 'name', $searchString])->asArray()->all();
+        return $result;
+    } // TODO: Implement JS and Dropdown with search for interface, also, move this to BrandController
 
     /**
      * Finds the Item model based on its primary key value.

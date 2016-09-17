@@ -18,7 +18,7 @@ $this->title = Yii::t('app', 'Categories');
         $this->render('//layouts/_fab', [
             'buttons' => [
                 [
-                    'permission' => 'createCategory',
+                    'permission' => 'create',
                     'link' => [
                         'options' => [
                             'class' => 'mdi mdi-add'

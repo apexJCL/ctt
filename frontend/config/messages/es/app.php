@@ -17,9 +17,9 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Brand ID' => 'ID Marca',
-    'Category' => 'ID Categoria',
-    'Model' => 'Modelo',
+    'Brand' => 'Marca',
+    'Brands' => 'Marcas',
+    'Create Brand' => 'Crear marca',
     'If you think this is a mistake, please contact Support.' => 'Si cree que esto es un error, contacte a Soporte Técnico.',
     'Please fill the next fields' => 'Porfavor, llene los siguientes campos',
     'Signup' => 'Registrar',
@@ -29,8 +29,10 @@ return [
     'Add' => 'Añadir',
     'Are you sure you want to delete this item?' => '¿Seguro que desea eliminar este elemento?',
     'Back' => 'Atrás',
+    'Brand ID' => 'ID Marca',
     'Cancel' => 'Cancelar',
     'Categories' => 'Categorias',
+    'Category' => 'Categoria',
     'Category ID' => 'ID Categoria',
     'Clients' => 'Clientes',
     'Create' => 'Crear',
@@ -53,6 +55,7 @@ return [
     'Login' => 'Iniciar Sesión',
     'Logout' => 'Cerrar Sesión',
     'Manage' => 'Administrar',
+    'Model' => 'Modelo',
     'Name' => 'Nombre',
     'Password' => 'Contraseña',
     'Personal Info' => 'Información personal',

@@ -5,18 +5,15 @@ use yii\helpers\Url;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model frontend\models\Category */
+/* @var $model frontend\models\Brand */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Categories'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Brands'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div>
-    <?= $this->render('//layouts/_section_header', [
-        'photoUrl' => '',
-        'titleColor' => 'black'
-    ]) ?>
-    <div class="section grey lighten-5 fab-container greedy">
+    <?= $this->render('//layouts/_section_header') ?>
+    <div class="section grey lighten-4 fab-container greedy">
         <?= $this->render('//layouts/_fab', [
             'buttons' => [
                 [
@@ -66,37 +63,18 @@ $this->params['breadcrumbs'][] = $this->title;
                 ]
             ]
         ]) ?>
-        <div class="container row">
-            <div class="col s12">
-                <h3 class="raleway-light"><?= Yii::t('app', 'General Overview') ?></h3>
-            </div>
-            <div class="col s12">
-                <?= DetailView::widget([
-                    'model' => $model,
-                    'attributes' => [
-                        'name',
-                        'description',
-                    ],
-                ]) ?>
+        <div class="container-lazy">
+            <div class="row">
+                <div class="col s12 m6">
+                    <?= DetailView::widget([
+                        'model' => $model,
+                        'attributes' => [
+                            'id',
+                            'name',
+                        ],
+                    ]) ?>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-
-<!-- Modal -->
-<div class="modal red accent-4 white-text" id="delete">
-    <div class="modal-content">
-        <h4>¿Seguro que desea eliminar esta categoria?</h4>
-        <p>Esta acción no se puede revertir</p>
-    </div>
-    <div class="modal-footer">
-        <a href="#!" class=" waves-effect waves-ripple btn-flat modal-close">Cancelar</a>
-        <?= Html::a("Eliminar", ['delete', 'id' => $model->id],
-            ['class' => 'btn waves-effect waves-light red accent-2',
-                'data' => [
-                    'method' => 'post'
-                ],
-            ])
-        ?>
     </div>
 </div>

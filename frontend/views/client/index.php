@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= $this->render('//layouts/_fab', [
             'buttons' => [
                 [
-                    'permission' => 'createClient',
+                    'permission' => 'create',
                     'link' => [
                         'options' => [
                             'class' => 'mdi mdi-add'
@@ -46,7 +46,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'apellido_paterno',
                     'apellido_materno',
                     'email:email',
-                    Yii::$app->user->identity->canI('viewClient') ?
+                    Yii::$app->user->identity->canI('viewClient') ? // TODO: implement view permission on all the index
                         [
                             'header' => Html::tag('span', ''),
                             'format' => 'raw',
