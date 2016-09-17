@@ -7,6 +7,7 @@ use Yii;
 use yii\behaviors\AttributeBehavior;
 use yii\db\ActiveRecord;
 use yii\db\Expression;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "category".
@@ -110,5 +111,10 @@ class Category extends \yii\db\ActiveRecord
     public function getItems()
     {
         return $this->hasMany(Item::className(), ['category_id' => 'id']);
+    }
+
+    public static function getCategoriesDropdown()
+    {
+        return ArrayHelper::map(Category::find()->all(), 'id', 'name');
     }
 }

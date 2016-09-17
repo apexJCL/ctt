@@ -2,22 +2,25 @@
 
 use yii\helpers\Html;
 
-/* @var $this yii\web\View */
-/* @var $model frontend\models\Item */
+/* @var $this yii\web\View
+ * @var $model frontend\models\Item
+ * @var $categories array
+ * @var $brands array
+ */
 
 $this->title = Yii::t('app', 'Update {modelClass}: ', [
-    'modelClass' => 'Item',
-]) . $model->name;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Items'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = Yii::t('app', 'Update');
+        'modelClass' => 'Item',
+    ]) . $model->name;
 ?>
-<div class="item-update">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <?= $this->render('_form', [
-        'model' => $model,
-    ]) ?>
-
+<div>
+    <?= $this->render('//layouts/_section_header') ?>
+    <div class="section grey lighten-4 greedy">
+        <div class="container-lazy">
+            <?= $this->render('_form', [
+                'model' => $model,
+                'categories' => $categories,
+                'brands' => $brands
+            ]) ?>
+        </div>
+    </div>
 </div>

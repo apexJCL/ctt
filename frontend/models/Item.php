@@ -19,7 +19,10 @@ use yii\db\Expression;
  * @property string $updated_at
  * @property integer $created_by
  * @property integer $updated_by
+ * @property integer $brand_id
+ * @property string $model
  *
+ * @property Brand $brand
  * @property Category $category
  * @property User $createdBy
  * @property User $updatedBy
@@ -41,12 +44,30 @@ class Item extends \yii\db\ActiveRecord
     {
         return [
             [['name'], 'required'],
-            [['category_id', 'created_by', 'updated_by'], 'integer'],
+            [['category_id', 'created_by', 'updated_by', 'brand_id'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
-            [['name'], 'string', 'max' => 100],
+            [['name', 'model'], 'string', 'max' => 100],
             [['description'], 'string', 'max' => 200],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Category::className(), 'targetAttribute' => ['category_id' => 'id']]
+        ];
+    }
 
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'id' => Yii::t('app', 'ID'),
+            'name' => Yii::t('app', 'Name'),
+            'description' => Yii::t('app', 'Description'),
+            'category_id' => Yii::t('app', 'Category ID'),
+            'created_at' => Yii::t('app', 'Created At'),
+            'updated_at' => Yii::t('app', 'Updated At'),
+            'created_by' => Yii::t('app', 'Created By'),
+            'updated_by' => Yii::t('app', 'Updated By'),
+            'brand_id' => Yii::t('app', 'Brand ID'),
+            'model' => Yii::t('app', 'Model'),
         ];
     }
 
@@ -76,20 +97,11 @@ class Item extends \yii\db\ActiveRecord
     }
 
     /**
-     * @inheritdoc
+     * @return \yii\db\ActiveQuery
      */
-    public function attributeLabels()
+    public function getBrand()
     {
-        return [
-            'id' => Yii::t('app', 'ID'),
-            'name' => Yii::t('app', 'Name'),
-            'description' => Yii::t('app', 'Description'),
-            'category_id' => Yii::t('app', 'Category ID'),
-            'created_at' => Yii::t('app', 'Created At'),
-            'updated_at' => Yii::t('app', 'Updated At'),
-            'created_by' => Yii::t('app', 'Created By'),
-            'updated_by' => Yii::t('app', 'Updated By'),
-        ];
+        return $this->hasOne(Brand::className(), ['id' => 'brand_id']);
     }
 
     /**

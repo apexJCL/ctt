@@ -3,6 +3,8 @@
 namespace frontend\controllers;
 
 use common\helpers\RBACHelper;
+use frontend\models\Brand;
+use frontend\models\Category;
 use Yii;
 use frontend\models\Item;
 use frontend\models\ItemSearch;
@@ -78,15 +80,21 @@ class ItemController extends Controller
     public function actionCreate()
     {
         $model = new Item();
+        $categories = Category::getCategoriesDropdown();
+        $brands = Brand::getBrandsDropdown();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
+                'categories' => $categories,
+                'brands' => $brands
             ]);
         }
     }
+
+    // TODO: Finish item implementation, add itemDescriptions to items, categories, etc.
 
     /**
      * Updates an existing Item model.
@@ -97,12 +105,16 @@ class ItemController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $categories = Category::getCategoriesDropdown();
+        $brands = Brand::getBrandsDropdown();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
+                'categories' => $categories,
+                'brands' => $brands
             ]);
         }
     }
