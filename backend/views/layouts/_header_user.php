@@ -6,7 +6,7 @@ use yii\helpers\Url;
 ?>
 <div class="navbar-fixed">
     <nav>
-        <div class="nav-wrapper">
+        <div class="nav-wrapper container-header">
             <a href="<?= Url::to(['/']) ?>" class="brand-logo--offset-left">
                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" data-original-aspect-ratio="0.8"
                      style="width: 40px; height: 50px; fill: #ffffff; vertical-align: middle">
@@ -18,16 +18,22 @@ use yii\helpers\Url;
                 </svg>
                 CTT EXP & RENTALS
             </a>
-            <a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i
-                    class="mdi">menu</i></a>
+            <a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="mdi">menu</i></a>
         </div>
     </nav>
 </div>
 <ul id="slide-out" class="side-nav ctt">
     <li class="no-padding">
         <div class="userView" style="margin-bottom: 0px">
-            <img class="background responsive-img mute" src="/img/menu_banner.jpg">
-            <a href="#!user"><img class="circle" src="<?= Yii::$app->user->identity->getProfilePicture() ?>"></a>
+            <div class="menu-photo">
+                <div class="menu-photo--user-picture">
+                    <a href="#!user"><img class="circle" src="<?= Yii::$app->user->identity->getProfilePicture() ?>"></a>
+                </div>
+                <div class="menu-photo--cover primary"></div>
+                <div class="menu-photo--background-picture">
+                    <img class="background responsive-img" src="/img/menu_banner.jpg">
+                </div>
+            </div>
         </div>
     </li>
     <li class="no-padding">

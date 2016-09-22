@@ -34,11 +34,14 @@ $this->params['breadcrumbs'][] = $this->title;
                 ]
             ]
         ]) ?>
-        <div class="container-lazy">
+        <div class="container">
             <?php Pjax::begin(); ?>
             <?= GridView::widget([
                 'dataProvider' => $dataProvider,
                 'filterModel' => $searchModel,
+                'rowOptions' => [
+                    'class' => 'slim',
+                ],
                 'columns' => [
                     ['class' => 'yii\grid\SerialColumn'],
                     'id',
