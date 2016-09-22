@@ -92,6 +92,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
         </div>
     </div>
+    <?= var_dump($existence) ?>
 </div>
 <?= $this->render('//layouts/_delete', [
     'message' => Yii::t('app', 'Are you sure you want to delete this item?'),

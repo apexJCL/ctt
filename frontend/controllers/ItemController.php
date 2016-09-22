@@ -6,6 +6,7 @@ use common\helpers\RBACHelper;
 use frontend\models\Brand;
 use frontend\models\BrandSearch;
 use frontend\models\Category;
+use frontend\models\ItemDescription;
 use Yii;
 use frontend\models\Item;
 use frontend\models\ItemSearch;
@@ -74,8 +75,10 @@ class ItemController extends Controller
      */
     public function actionView($id)
     {
+        $existence = ItemDescription::find()->where(['item_id' => $id])->asArray()->all();
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'existence' => $existence
         ]);
     }
 

@@ -8,8 +8,8 @@ $this->title = Yii::t('app', 'Create Client');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Clients'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<?= $this->render('_section_header') ?>
 <div>
-    <?= $this->render('_section_header') ?>
     <!-- Actual Form -->
     <div class="section grey lighten-4 greedy">
         <div class="container">
