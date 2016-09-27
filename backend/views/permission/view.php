@@ -57,9 +57,8 @@ $this->title = Yii::t('app', 'Permission: {permission}', ['permission' => $model
                     ]) ?>
                 </div>
                 <div class="col s12">
-                    <a class="waves-effect btn-flat" href="<?= Url::to(['index']) ?>">
-                        <i class="mdi left mdi-keyboard-arrow-left"></i>
-                        Volver
+                    <a class="waves-effect btn-floating btn-flat" href="<?= Url::to(['index']) ?>">
+                        <i class="mdi black-text">undo</i>
                     </a>
                 </div>
             </div>

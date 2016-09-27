@@ -1,5 +1,5 @@
 // Variables
-$background-img-blur-intensity: 20px;
+$background-img-blur-intensity: 5px;
 $background-img-opacity: 0.5;
 $profile-img-radius: 96px;
 $static-viewport-height: 350px;
@@ -183,12 +183,12 @@ New display
     position: fixed;
     z-index: -3;
     left: 50%;
-    transform: translate(-50%, -30%);
+    transform: translate(-50%, -80%);
     &--blurry {
       img {
         min-width: 100%;
-        -webkit-filter: blur(10px) brightness(80%);
-        filter: blur(10px) brightness(80%);
+        -webkit-filter: blur($background-img-blur-intensity) brightness(80%);
+        filter: blur($background-img-blur-intensity) brightness(80%);
         @media only screen and (max-width: 600px) {
           min-height: 100%;
         }
@@ -355,34 +355,4 @@ div.userView {
 
 .container-header {
   margin-left: 20px;
-}
-
-.menu-photo {
-  &--background-picture {
-    z-index: -1;
-  }
-  &--user-picture {
-    a{
-      img {
-        z-index: 2;
-      }
-    }
-  }
-
-  &--cover {
-    position: absolute;
-    width: 300px;
-    height: 200px;
-    left: 50%;
-    top: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    z-index: 0;
-    &.primary {
-      background-color: rgba(41, 103, 155, 0.7);
-    }
-  }
 }
