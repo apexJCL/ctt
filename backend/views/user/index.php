@@ -43,6 +43,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= GridView::widget([
                     'dataProvider' => $dataProvider,
                     'filterModel' => $searchModel,
+                    'rowOptions' => [
+                        'class' => 'slim',
+                    ],
                     'tableOptions' => ['class' => 'highlight'],
                     'layout' => "{pager}\n{summary}\n{items}",
                     'columns' => [

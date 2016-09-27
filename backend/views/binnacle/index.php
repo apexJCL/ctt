@@ -23,6 +23,9 @@ $this->title = Yii::t('app', 'Binnacles');
         <?php Pjax::begin(); ?>    <?= GridView::widget([
             'dataProvider' => $dataProvider,
             'filterModel' => $searchModel,
+            'rowOptions' => [
+                'class' => 'slim',
+            ],
             'columns' => [
                 ['class' => 'yii\grid\SerialColumn'],
                 [

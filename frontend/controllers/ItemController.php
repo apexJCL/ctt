@@ -3,12 +3,17 @@
 namespace frontend\controllers;
 
 use common\helpers\RBACHelper;
+use frontend\models\Brand;
+use frontend\models\BrandSearch;
+use frontend\models\Category;
+use frontend\models\ItemDescription;
 use Yii;
 use frontend\models\Item;
 use frontend\models\ItemSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\Response;
 
 /**
  * ItemController implements the CRUD actions for Item model.
@@ -25,11 +30,16 @@ class ItemController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
+                    'brand-autocomplete' => ['GET']
                 ],
             ],
             'access' => [
                 'class' => \yii\filters\AccessControl::className(),
                 'rules' => [
+                    [
+                        'allow' => true,
+                        'actions' => ['brand-autocomplete']
+                    ],
                     [
                         'allow' => true,
                         'actions' => ['index', 'create', 'update', 'view', 'delete'],
@@ -65,8 +75,10 @@ class ItemController extends Controller
      */
     public function actionView($id)
     {
+        $existence = ItemDescription::find()->where(['item_id' => $id])->asArray()->all();
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'existence' => $existence
         ]);
     }
 
@@ -78,15 +90,21 @@ class ItemController extends Controller
     public function actionCreate()
     {
         $model = new Item();
+        $categories = Category::getCategoriesDropdown();
+        $brands = Brand::getBrandsDropdown();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
+                'categories' => $categories,
+                'brands' => $brands
             ]);
         }
     }
+
+    // TODO: Finish item implementation, add itemDescriptions to items, categories, etc.
 
     /**
      * Updates an existing Item model.
@@ -97,12 +115,16 @@ class ItemController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $categories = Category::getCategoriesDropdown();
+        $brands = Brand::getBrandsDropdown();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
+                'categories' => $categories,
+                'brands' => $brands
             ]);
         }
     }
@@ -119,6 +141,24 @@ class ItemController extends Controller
 
         return $this->redirect(['index']);
     }
+
+    /**
+     * Returns a JSON of brands
+     * brand {
+     *  id:,
+     *  name:
+     * }
+     *
+     * @return array|\yii\db\ActiveRecord[]|Response
+     */
+    public function actionBrandAutocomplete(){
+        if (!Yii::$app->request->isGet)
+            return $this->redirect(['site/error']);
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        $searchString = Yii::$app->request->getQueryParam('brand');
+        $result = BrandSearch::find()->select(['id', 'name'])->filterWhere(['like', 'name', $searchString])->asArray()->all();
+        return $result;
+    } // TODO: Implement JS and Dropdown with search for interface, also, move this to BrandController
 
     /**
      * Finds the Item model based on its primary key value.

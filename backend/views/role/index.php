@@ -41,6 +41,9 @@ $this->title = Yii::t('app', 'Roles');
             <?= GridView::widget([
                 'dataProvider' => $dataProvider,
                 'filterModel' => $searchModel,
+                'rowOptions' => [
+                    'class' => 'slim',
+                ],
                 'columns' => [
                     'name',
                     'description',

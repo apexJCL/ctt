@@ -17,12 +17,12 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Update: {permission}' => '',
+    'Update: {permission}' => 'Actualizar: {permission}',
     'Access' => 'Acceso',
     'Actual list of roles' => 'Lista de roles actual',
     'Add children roles' => 'Agregar roles hijos',
     'Add roles' => 'Agregar rol',
-    'Admin Panel' => 'Panel Administrativo',
+    'Admin Panel' => 'Administración',
     'An error has ocurred, maybe a typo?' => 'Ocurrió un error',
     'Assign only the necessary role for this user' => 'Asigne sólo los roles necesarios para este usuario',
     'Binnacles' => 'Bitácoras',

@@ -6,18 +6,16 @@ use yii\helpers\Html;
 /* @var $model frontend\models\Category */
 
 $this->title = Yii::t('app', 'Update {modelClass}: ', [
-    'modelClass' => 'Category',
-]) . $model->name;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Categories'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = Yii::t('app', 'Update');
+        'modelClass' => 'Category',
+    ]) . $model->name;
 ?>
-<div class="category-update">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <?= $this->render('_form', [
-        'model' => $model,
-    ]) ?>
-
+<div>
+    <?= $this->render('//layouts/_section_header') ?>
+    <div class="section grey lighten-4 greedy">
+        <div class="container-lazy">
+            <?= $this->render('_form', [
+                'model' => $model,
+            ]) ?>
+        </div>
+    </div>
 </div>

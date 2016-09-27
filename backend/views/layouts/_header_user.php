@@ -2,12 +2,11 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 
-// TODO: Implement correct navbar
 ?>
 <div class="navbar-fixed">
     <nav>
-        <div class="nav-wrapper">
-            <a href="<?= Url::to(['/']) ?>" class="brand-logo--offset-left">
+        <div class="nav-wrapper container-header">
+            <a href="<?= Url::to(['/']) ?>" class="brand-logo center">
                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" data-original-aspect-ratio="0.8"
                      style="width: 40px; height: 50px; fill: #ffffff; vertical-align: middle">
                     <g
@@ -18,16 +17,15 @@ use yii\helpers\Url;
                 </svg>
                 CTT EXP & RENTALS
             </a>
-            <a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i
-                    class="mdi">menu</i></a>
+            <a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="mdi">menu</i></a>
         </div>
     </nav>
 </div>
 <ul id="slide-out" class="side-nav ctt">
     <li class="no-padding">
         <div class="userView" style="margin-bottom: 0px">
-            <img class="background responsive-img mute" src="/img/menu_banner.jpg">
             <a href="#!user"><img class="circle" src="<?= Yii::$app->user->identity->getProfilePicture() ?>"></a>
+            <img class="background responsive-img blue" src="/img/menu_banner_blue.jpg">
         </div>
     </li>
     <li class="no-padding">
@@ -39,7 +37,7 @@ use yii\helpers\Url;
                         <li><?= Html::a(Html::tag('i', null, ['class' => 'mdi mdi-perm-identity white-text left']) . Yii::t('app', 'Users'), Url::to(['user/index']), ['class' => 'white-text']) ?></li>
                         <li><?= Html::a(Html::tag('i', null, ['class' => 'mdi mdi-people white-text left']) . Yii::t('app', 'Roles'), Url::to(['role/index']), ['class' => 'white-text']) ?></li>
                         <li><?= Html::a(Html::tag('i', null, ['class' => 'mdi mdi-lock white-text left']) . Yii::t('app', 'Permission'), Url::to(['permission/index']), ['class' => 'white-text']) ?></li>
-                        <li><?= Html::a(Html::tag('i', null, ['class' => 'mdi mdi-book white-text left']) . Yii::t('app', 'Binnacles') , Url::to(['binnacle/index']),  ['class' => 'white-text']) ?></li>
+                        <li><?= Html::a(Html::tag('i', null, ['class' => 'mdi mdi-book white-text left']) . Yii::t('app', 'Binnacles'), Url::to(['binnacle/index']), ['class' => 'white-text']) ?></li>
                     </ul>
                 </div>
             </li>

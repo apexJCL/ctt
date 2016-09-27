@@ -40,6 +40,9 @@ Url::remember();
             <?= GridView::widget([
                 'dataProvider' => $dataProvider,
                 'filterModel' => $searchModel,
+                'rowOptions' => [
+                    'class' => 'slim',
+                ],
                 'tableOptions' => ['class' => 'highlight'],
                 'columns' => [
                     ['class' => 'yii\grid\SerialColumn'],

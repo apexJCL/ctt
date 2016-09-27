@@ -73,6 +73,11 @@ Url::remember();
                 <div class="section">
                     <div class="row">
                         <div class="col s12">
+                            <a class="waves-effect btn-floating btn-flat" href="<?= Url::to(['index']) ?>">
+                                <i class="mdi black-text">undo</i>
+                            </a>
+                        </div>
+                        <div class="col s12">
                             <h4><?= Yii::t('app', 'General overview') ?></h4>
                         </div>
                         <div class="col s12">
@@ -130,9 +135,8 @@ Url::remember();
                                 ]) ?>
                         </div>
                         <div class="col s12">
-                            <a class="waves-effect btn-flat" href="<?= Url::to(['index']) ?>">
-                                <i class="mdi left mdi-keyboard-arrow-left"></i>
-                                Volver
+                            <a class="waves-effect btn-floating btn-flat" href="<?= Url::to(['index']) ?>">
+                                <i class="mdi black-text">undo</i>
                             </a>
                         </div>
                     </div>

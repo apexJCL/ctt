@@ -1,3 +1,0 @@
-# Interfaz
-
-La configuración

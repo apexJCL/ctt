@@ -36,6 +36,7 @@ use yii\helpers\Url;
 </ul>
 <!-- Dropdown inventario -->
 <ul class="dropdown-content <?= $inventory['class'] ?>" id="<?= $inventory['id'] ?>">
+    <li><a href="<?= Url::to(['brand/index']) ?>"><?= Yii::t('app', 'Brands') ?></a></li>
     <li><a href="<?= Url::to(['category/index']) ?>"><?= Yii::t('app', 'Categories') ?></a></li>
     <li><a href="<?= Url::to(['item/index']) ?>"><?= Yii::t('app', 'Items') ?></a></li>
 </ul>
