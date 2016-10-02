@@ -2,23 +2,23 @@
 
 namespace frontend\models;
 
-use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use frontend\models\ItemDescription;
 
 /**
  * ItemDescriptionSearch represents the model behind the search form about `frontend\models\ItemDescription`.
  */
 class ItemDescriptionSearch extends ItemDescription
 {
+    var $ids = null;
+
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['id', 'accessory_of', 'sale', 'created_by', 'updated_by'], 'integer'],
+            [['id', 'accessory_of', 'sale', 'created_by', 'updated_by', 'item_id'], 'integer'],
             [['serial_number', 'created_at', 'updated_at'], 'safe'],
             [['acquisition_price', 'sell_price', 'rent_price'], 'number'],
         ];
@@ -70,6 +70,7 @@ class ItemDescriptionSearch extends ItemDescription
             'updated_at' => $this->updated_at,
             'created_by' => $this->created_by,
             'updated_by' => $this->updated_by,
+            'item_id' => ($this->ids !== null) ? $this->ids : $this->item_id,
         ]);
 
         $query->andFilterWhere(['like', 'serial_number', $this->serial_number]);

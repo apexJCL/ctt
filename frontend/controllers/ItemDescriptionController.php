@@ -78,12 +78,14 @@ class ItemDescriptionController extends Controller
     public function actionCreate()
     {
         $model = new ItemDescription();
+        $id = Yii::$app->request->getQueryParam('item_id');
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
+                'item_id' => $id
             ]);
         }
     }

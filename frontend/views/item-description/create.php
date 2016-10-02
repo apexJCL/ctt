@@ -4,6 +4,7 @@ use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
+/* @var $item_id integer */
 /* @var $model frontend\models\ItemDescription */
 
 $this->title = Yii::t('app', 'Create Item Description');
@@ -16,6 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= $this->render('_form', [
         'model' => $model,
+        'item_id' => $item_id
     ]) ?>
 
 </div>

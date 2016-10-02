@@ -121,8 +121,8 @@ FAB Button Style
   .profile-picture--container .background img {
     opacity: 0.5;
     min-width: 100%;
-    filter: blur(5px);
-    -webkit-filter: blur(5px);
+    filter: blur(1px);
+    -webkit-filter: blur(1px);
     transform: translateY(-30%); }
     @media only screen and (max-width: 600px) {
       .profile-picture--container .background img {
@@ -140,8 +140,8 @@ New display
   transform: translate(-50%, -80%); }
   .static-display__background--blurry img {
     min-width: 100%;
-    -webkit-filter: blur(5px) brightness(80%);
-    filter: blur(5px) brightness(80%); }
+    -webkit-filter: blur(1px) brightness(80%);
+    filter: blur(1px) brightness(80%); }
     @media only screen and (max-width: 600px) {
       .static-display__background--blurry img {
         min-height: 100%; } }

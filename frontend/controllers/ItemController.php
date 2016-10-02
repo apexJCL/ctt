@@ -7,6 +7,7 @@ use frontend\models\Brand;
 use frontend\models\BrandSearch;
 use frontend\models\Category;
 use frontend\models\ItemDescription;
+use frontend\models\ItemDescriptionSearch;
 use Yii;
 use frontend\models\Item;
 use frontend\models\ItemSearch;
@@ -76,9 +77,14 @@ class ItemController extends Controller
     public function actionView($id)
     {
         $existence = ItemDescription::find()->where(['item_id' => $id])->asArray()->all();
+        $itemDescriptionSearch = new ItemDescriptionSearch();
+        $itemDescriptionSearch->ids = $id;
+        $itemDescriptionProvider = $itemDescriptionSearch->search(Yii::$app->request->queryParams);
         return $this->render('view', [
             'model' => $this->findModel($id),
-            'existence' => $existence
+            'existence' => $existence,
+            'itemDescriptionProvider' => $itemDescriptionProvider,
+            'itemDescriptionSearch' => $itemDescriptionSearch
         ]);
     }
 
