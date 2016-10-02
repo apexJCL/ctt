@@ -77,9 +77,9 @@ class ItemController extends Controller
     public function actionView($id)
     {
         $existence = ItemDescription::find()->where(['item_id' => $id])->asArray()->all();
-        $itemDescriptionSearch = new ItemDescriptionSearch();
-        $itemDescriptionSearch->ids = $id;
+        $itemDescriptionSearch = ItemDescriptionSearch::newFor($id);
         $itemDescriptionProvider = $itemDescriptionSearch->search(Yii::$app->request->queryParams);
+        $itemDescriptionProvider->pagination->pageSize = 10;
         return $this->render('view', [
             'model' => $this->findModel($id),
             'existence' => $existence,

@@ -1,5 +1,6 @@
 <?php
 
+use frontend\models\ItemDescription;
 use frontend\models\ItemDescriptionSearch;
 use yii\data\ActiveDataProvider;
 use yii\grid\GridView;
@@ -68,45 +69,20 @@ $this->params['breadcrumbs'][] = $this->title;
                     ]
                 ]
             ]) ?>
-            <div class="row">
-                <div class="container-lazy">
-
-                    <div class="col s12">
-                        <h3 class="raleway-light"><?= Yii::t('app', 'General Overview') ?></h3>
-                    </div>
-                    <div class="col s12">
-                        <?= DetailView::widget([
-                            'model' => $model,
-                            'attributes' => [
-                                'name',
-                                'description',
-                                [
-                                    'attribute' => 'category_id',
-                                    'label' => Yii::t('app', 'Category'),
-                                    'format' => 'raw',
-                                    'value' => $model->getCategory()->one()->name
-                                ],
-                                [
-                                    'attribute' => 'brand_id',
-                                    'label' => Yii::t('app', 'Brand'),
-                                    'format' => 'raw',
-                                    'value' => $model->getBrand()->one()->name
-                                ]
-                            ],
-                        ]) ?>
-                    </div>
-                </div>
-            </div>
             <div class="row container-lazy">
                 <div class="col s12">
                     <h3 class="raleway-light"><?= Yii::t('app', 'Existence') ?></h3>
                 </div>
+                <?php \yii\widgets\Pjax::begin(); ?>
                 <div class="col s12">
                     <!-- Aquí va la muestra de los objetos que hay con este atributo -->
                     <?=
                     GridView::widget([
                         'dataProvider' => $itemDescriptionProvider,
                         'filterModel' => $itemDescriptionSearch,
+                        'filterRowOptions' => [
+                            'class' => 'no-margin'
+                        ],
                         'rowOptions' => [
                             'class' => 'slim',
                         ],
@@ -116,16 +92,52 @@ $this->params['breadcrumbs'][] = $this->title;
                             'sell_price',
                             'rent_price',
                             'accessory_of',
-                            'sale',
-                            ['class' => 'yii\grid\ActionColumn'],
+                            [
+                                'attribute' => 'sale',
+                                'format' => 'raw',
+                                'value' =>
+                                    function ($data) {
+                                        /* @var $data ItemDescription */
+                                        return Html::tag('span',
+                                            Html::input('checkbox', null, null, ['checked' => $data->sale ? 'checked' : null, 'disabled' => 'disabled', 'id' => 'forSale']) .
+                                            Html::label('', 'forSale'));
+                                    },
+                            ],
                         ],
                     ]) ?>
                 </div>
+                <?php \yii\widgets\Pjax::end(); ?>
                 <div class="col s12">
                     <?= Html::a(
                         Html::tag('i', 'add', ['class' => 'mdi']),
                         Url::to(['item-description/create', 'item_id' => $model->id]),
-                        ['class' => 'btn-floating right']) ?>
+                        ['class' => 'btn right']) ?>
+                </div>
+            </div>
+            <div class="row container-lazy">
+                <div class="col s12">
+                    <h3 class="raleway-light"><?= Yii::t('app', 'General Overview') ?></h3>
+                </div>
+                <div class="col s12">
+                    <?= DetailView::widget([
+                        'model' => $model,
+                        'attributes' => [
+                            'name',
+                            'description',
+                            [
+                                'attribute' => 'category_id',
+                                'label' => Yii::t('app', 'Category'),
+                                'format' => 'raw',
+                                'value' => $model->getCategory()->one()->name
+                            ],
+                            [
+                                'attribute' => 'brand_id',
+                                'label' => Yii::t('app', 'Brand'),
+                                'format' => 'raw',
+                                'value' => $model->getBrand()->one()->name
+                            ]
+                        ],
+                    ]) ?>
                 </div>
             </div>
         </div>

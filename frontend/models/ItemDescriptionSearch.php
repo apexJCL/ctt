@@ -13,6 +13,20 @@ class ItemDescriptionSearch extends ItemDescription
     var $ids = null;
 
     /**
+     * Creates a new instance of the class but filtering only for an specific item id, thus only providing
+     * search functionality that belongs to the specified item id.
+     *
+     * @param $id integer - Item ID
+     * @return ItemDescriptionSearch
+     */
+    public static function newFor($id)
+    {
+        $tmp = new self();
+        $tmp->ids = $id;
+        return $tmp;
+    }
+
+    /**
      * @inheritdoc
      */
     public function rules()
