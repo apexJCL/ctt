@@ -1,12 +1,12 @@
 <?php
 
-use frontend\models\ItemDescription;
 use frontend\models\ItemDescriptionSearch;
 use yii\data\ActiveDataProvider;
 use yii\grid\GridView;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\DetailView;
+use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
 /* @var $model frontend\models\Item */
@@ -73,40 +73,43 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="col s12">
                     <h3 class="raleway-light"><?= Yii::t('app', 'Existence') ?></h3>
                 </div>
-                <?php \yii\widgets\Pjax::begin(); ?>
                 <div class="col s12">
                     <!-- Aquí va la muestra de los objetos que hay con este atributo -->
-                    <?=
-                    GridView::widget([
+                    <?php Pjax::begin(); ?>
+                    <?= GridView::widget([
                         'dataProvider' => $itemDescriptionProvider,
                         'filterModel' => $itemDescriptionSearch,
-                        'filterRowOptions' => [
-                            'class' => 'no-margin'
-                        ],
-                        'rowOptions' => [
-                            'class' => 'slim',
-                        ],
                         'columns' => [
-                            ['class' => 'yii\grid\SerialColumn'],
-                            'serial_number',
-                            'sell_price',
-                            'rent_price',
-                            'accessory_of',
+                            ['class' => \yii\grid\SerialColumn::className()],
                             [
+                                'class' => \common\custom\widgets\grid\DataColumn::className(),
+                                'attribute' => 'serial_number'
+                            ],
+                            [
+                                'class' => \common\custom\widgets\grid\DataColumn::className(),
+                                'attribute' => 'rent_price'
+                            ],
+                            [
+                                'class' => \common\custom\widgets\grid\DataColumn::className(),
                                 'attribute' => 'sale',
                                 'format' => 'raw',
-                                'value' =>
-                                    function ($data) {
-                                        /* @var $data ItemDescription */
-                                        return Html::tag('span',
-                                            Html::input('checkbox', null, null, ['checked' => $data->sale ? 'checked' : null, 'disabled' => 'disabled', 'id' => 'forSale']) .
-                                            Html::label('', 'forSale'));
-                                    },
-                            ],
-                        ],
-                    ]) ?>
+                                'value' => function ($data) {
+                                    /* @var $data \frontend\models\ItemDescription */
+                                    return Html::input(
+                                        'checkbox',
+                                        null, null,
+                                        ['checked' => $data->sale ? 'checked' : null, 'id' => 'forSale', 'disabled' => 'disabled']) .
+                                    Html::label(null, 'forSale');
+                                },
+//                                'filterInputOptions' => [
+//                                    'type' => 'checkbox'
+//                                ]
+                            ]
+                        ]
+                    ]);
+                    ?>
+                    <?php Pjax::end(); ?>
                 </div>
-                <?php \yii\widgets\Pjax::end(); ?>
                 <div class="col s12">
                     <?= Html::a(
                         Html::tag('i', 'add', ['class' => 'mdi']),
