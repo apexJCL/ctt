@@ -76,38 +76,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="col s12">
                     <!-- Aquí va la muestra de los objetos que hay con este atributo -->
                     <?php Pjax::begin(); ?>
-                    <?= GridView::widget([
-                        'dataProvider' => $itemDescriptionProvider,
-                        'filterModel' => $itemDescriptionSearch,
-                        'columns' => [
-                            ['class' => \yii\grid\SerialColumn::className()],
-                            [
-                                'class' => \common\custom\widgets\grid\DataColumn::className(),
-                                'attribute' => 'serial_number'
-                            ],
-                            [
-                                'class' => \common\custom\widgets\grid\DataColumn::className(),
-                                'attribute' => 'rent_price'
-                            ],
-                            [
-                                'class' => \common\custom\widgets\grid\DataColumn::className(),
-                                'attribute' => 'sale',
-                                'format' => 'raw',
-                                'value' => function ($data) {
-                                    /* @var $data \frontend\models\ItemDescription */
-                                    return Html::input(
-                                        'checkbox',
-                                        null, null,
-                                        ['checked' => $data->sale ? 'checked' : null, 'id' => 'forSale', 'disabled' => 'disabled']) .
-                                    Html::label(null, 'forSale');
-                                },
-//                                'filterInputOptions' => [
-//                                    'type' => 'checkbox'
-//                                ]
-                            ]
-                        ]
-                    ]);
-                    ?>
                     <?php Pjax::end(); ?>
                 </div>
                 <div class="col s12">

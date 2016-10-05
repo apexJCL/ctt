@@ -4,9 +4,11 @@
 /* @var $content string */
 
 use frontend\assets\AppAsset;
+use frontend\assets\BootstrapMaterializeAsset;
 use yii\helpers\Html;
 
 AppAsset::register($this);
+BootstrapMaterializeAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -33,9 +35,11 @@ AppAsset::register($this);
             <div class="spinner-layer">
                 <div class="circle-clipper left">
                     <div class="circle"></div>
-                </div><div class="gap-patch">
+                </div>
+                <div class="gap-patch">
                     <div class="circle"></div>
-                </div><div class="circle-clipper right">
+                </div>
+                <div class="circle-clipper right">
                     <div class="circle"></div>
                 </div>
             </div>
