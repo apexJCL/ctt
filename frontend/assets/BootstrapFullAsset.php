@@ -13,16 +13,18 @@ use kartik\base\AssetBundle;
 
 class BootstrapFullAsset extends AssetBundle
 {
-    public $sourcePath = '@vendor/bower/bootstrap/dist/';
+    public $sourcePath = '@bower/bootstrap/dist/';
+
     public $publishOptions = [
         'only' => [
-            '*.min.css',
+            '*.css',
             '*.min.js'
         ]
     ];
 
     public $css = [
-        'css/bootstrap.min.css'
+        'css/bootstrap.min.css',
+        'css/bootstrap.css'
     ];
     public $js = [
         'js/bootstrap.min.js'

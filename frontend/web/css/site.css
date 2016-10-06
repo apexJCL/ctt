@@ -281,8 +281,9 @@ h1.page-title {
     opacity: 1;
 }
 
-nav {
+.nav-ctt {
     background-color: rgba(20, 52, 78, 0.6);
+    min-height: 100px;
 }
 
 nav.darken-1 {
@@ -440,3 +441,16 @@ Thin line decoration
 COlor ref: #00BCD4
 
 */
+
+.navbar-nav {
+    margin-top: 20px;
+}
+
+.navbar-brand {
+    margin-top: 15px;
+}
+
+.no-gutter > [class*='col-'] {
+    padding-right:0;
+    padding-left:0;
+}

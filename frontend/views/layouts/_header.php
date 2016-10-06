@@ -1,65 +1,51 @@
-<header>
-    <div class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse"
-                        data-target=".navbar-responsive-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="javascript:void(0)">Brand
-                    <div class="ripple-container"></div>
-                </a>
-            </div>
-            <div class="navbar-collapse collapse navbar-responsive-collapse">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="javascript:void(0)">Active
-                            <div class="ripple-container"></div>
-                        </a></li>
-                    <li><a href="javascript:void(0)">Link</a></li>
-                    <li class="dropdown">
-                        <a href="http://fezvrasta.github.io/bootstrap-material-design/bootstrap-elements.html"
-                           data-target="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Dropdown
-                            <b class="caret"></b>
-                            <div class="ripple-container"></div>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="javascript:void(0)">Action</a></li>
-                            <li><a href="javascript:void(0)">Another action</a></li>
-                            <li><a href="javascript:void(0)">Something else here</a></li>
-                            <li class="divider"></li>
-                            <li class="dropdown-header">Dropdown header</li>
-                            <li><a href="javascript:void(0)">Separated link</a></li>
-                            <li><a href="javascript:void(0)">One more separated link</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <form class="navbar-form navbar-left">
-                    <div class="form-group is-empty">
-                        <input type="text" class="form-control col-sm-8" placeholder="Search">
+<?php
+use yii\helpers\Url;
+?>
+<!--Navbar-->
+<nav class="nav-ctt navbar navbar-dark raleway">
+    <!-- Collapse button-->
+    <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#collapseEx2">
+        <i class="fa fa-bars"></i>
+    </button>
+
+    <div class="container">
+        <!--Collapse content-->
+        <div class="collapse navbar-toggleable-xs" id="collapseEx2">
+            <!--Navbar Brand-->
+            <a href="<?= Url::to(['/']) ?>" class="raleway-bold navbar-brand">
+                <span class="brand-logo">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" data-original-aspect-ratio="0.8"
+                         style="width: 40px; height: 50px; fill: #ffffff; vertical-align: middle"><g
+                            transform="translate(-13.066666603088379,-8.166666984558105)"><path
+                                d="M22.442001 25.480001l14.504 14.373334l-17.476667 17.313334l-4.671333 -4.638666L27.570667 39.853334L13.066667 25.480001l17.476667 -17.313334l4.671333 4.638666L22.442001 25.480001zM52.266668 12.805333L47.595334 8.166667L30.118667 25.480001l17.476667 17.313334l4.671333 -4.638666L39.494001 25.480001L52.266668 12.805333z"></path></g></svg>
+                    CTT EXP & RENTALS
+                </span>
+            </a>
+            <!--Links-->
+            <ul class="nav navbar-nav pull-right">
+                <li class="nav-item">
+                    <a class="nav-link">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">Pricing</a>
+                </li>
+                <li class="nav-item btn-group">
+                    <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+                       aria-expanded="false">Dropdown</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <a class="dropdown-item">Action</a>
+                        <a class="dropdown-item">Another action</a>
+                        <a class="dropdown-item">Something else here</a>
                     </div>
-                </form>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="javascript:void(0)">Link
-                            <div class="ripple-container"></div>
-                        </a></li>
-                    <li class="dropdown">
-                        <a href="http://fezvrasta.github.io/bootstrap-material-design/bootstrap-elements.html"
-                           data-target="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Dropdown
-                            <b class="caret"></b>
-                            <div class="ripple-container"></div>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="javascript:void(0)">Action</a></li>
-                            <li><a href="javascript:void(0)">Another action</a></li>
-                            <li><a href="javascript:void(0)">Something else here</a></li>
-                            <li class="divider"></li>
-                            <li><a href="javascript:void(0)">Separated link</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
+                </li>
+            </ul>
         </div>
+        <!--/.Collapse content-->
+
     </div>
-</header>
+
+</nav>
+<!--/.Navbar-->

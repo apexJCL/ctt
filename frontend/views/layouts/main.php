@@ -4,11 +4,20 @@
 /* @var $content string */
 
 use frontend\assets\AppAsset;
+use frontend\assets\BootstrapFullAsset;
 use frontend\assets\BootstrapMaterializeAsset;
+use frontend\assets\CTTAppAsset;
+use frontend\assets\MDBootstrapAsset;
+use frontend\assets\MDBootstrapCSSAsset;
+use frontend\assets\MDBootstrapCustomAsset;
+use frontend\assets\MDBootstrapJSAsset;
 use yii\helpers\Html;
 
 AppAsset::register($this);
-BootstrapMaterializeAsset::register($this);
+//BootstrapFullAsset::register($this);
+MDBootstrapAsset::register($this);
+MDBootstrapCustomAsset::register($this);
+CTTAppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -18,6 +27,9 @@ BootstrapMaterializeAsset::register($this);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+
     <?php $this->head() ?>
 </head>
 <body>

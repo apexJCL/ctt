@@ -1,0 +1,35 @@
+// MDB Framework //
+@charset "UTF-8";
+
+// Mixins
+@import "../../../vendor/npm/mdbootstrap/sass/free/data/prefixer";
+@import "../../../vendor/npm/mdbootstrap/sass/free/data/mixins";
+// Variables
+@import "../../../vendor/npm/mdbootstrap/sass/free/data/colors";
+
+@import "../../../vendor/npm/mdbootstrap/sass/free/data/variables-b4";
+@import "../../../vendor/npm/mdbootstrap/sass/free/data/variables";
+
+//Global
+@import "../../../vendor/npm/mdbootstrap/sass/free/global";
+
+$roboto-font-path: '/vendor/npm/mdbootstrap/font/roboto/';
+
+// MDB Free
+//@import "../../../vendor/npm/mdbootstrap/sass/free/roboto";
+@import "../../../vendor/npm/mdbootstrap/sass/free/typography";
+@import "../../../vendor/npm/mdbootstrap/sass/free/animations";
+@import "../../../vendor/npm/mdbootstrap/sass/free/waves";
+@import "../../../vendor/npm/mdbootstrap/sass/free/helpers";
+@import "../../../vendor/npm/mdbootstrap/sass/free/buttons";
+@import "../../../vendor/npm/mdbootstrap/sass/free/forms-basic";
+@import "../../../vendor/npm/mdbootstrap/sass/free/cards-basic";
+@import "../../../vendor/npm/mdbootstrap/sass/free/navbars";
+@import "../../../vendor/npm/mdbootstrap/sass/free/hover-effects";
+@import "../../../vendor/npm/mdbootstrap/sass/free/footer";
+@import "../../../vendor/npm/mdbootstrap/sass/free/carousels-basic";
+
+.container-general {
+  @extend .container-fluid !optional;
+  padding: 50px 30px 50px 30px;
+}

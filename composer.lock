@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d90572fc96bc91e6d0d3ec5bee9fe151",
-    "content-hash": "a398c5898e8914f8fdfeab33c8dc7c68",
+    "hash": "9be1c7fcd22885feb1aefcb1a85579c0",
+    "content-hash": "b3acce1d83d3f42a48c7a470b33265ae",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -1836,6 +1836,52 @@
                 "web-font"
             ],
             "time": "2016-02-22 01:05:40"
+        },
+        {
+            "name": "npm-asset/mdbootstrap",
+            "version": "4.1.1",
+            "dist": {
+                "type": "tar",
+                "url": "https://registry.npmjs.org/mdbootstrap/-/mdbootstrap-4.1.1.tgz",
+                "reference": null,
+                "shasum": "a5f79db54d29a2ac1c2413a5ecf8039431ee6de5"
+            },
+            "type": "npm-asset-library",
+            "extra": {
+                "npm-asset-bugs": {
+                    "url": "https://github.com/mdbootstrap/bootstrap-material-design/issues"
+                },
+                "npm-asset-main": "index.html",
+                "npm-asset-directories": [],
+                "npm-asset-repository": {
+                    "type": "git",
+                    "url": "git://github.com/mdbootstrap/bootstrap-material-design.git"
+                },
+                "npm-asset-scripts": {
+                    "test": "echo \"Error: no test specified\" && exit 1"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "MDBootstrap"
+                }
+            ],
+            "description": "Material Design for Bootstrap (MDB) is a powerful Material Design UI KIT for most popular HTML, CSS, and JS framework - Bootstrap.",
+            "homepage": "https://github.com/mdbootstrap/bootstrap-material-design#readme",
+            "keywords": [
+                "bootstrap",
+                "css",
+                "design",
+                "framework",
+                "material",
+                "mdb",
+                "mdbootstrap",
+                "mobile-first",
+                "responsive"
+            ]
         },
         {
             "name": "swiftmailer/swiftmailer",
