@@ -1,5 +1,7 @@
 <?php
+use yii\bootstrap\Html;
 use yii\helpers\Url;
+
 ?>
 <!--Navbar-->
 <nav class="nav-ctt navbar navbar-dark raleway">
@@ -32,15 +34,27 @@ use yii\helpers\Url;
                 <li class="nav-item">
                     <a class="nav-link">Pricing</a>
                 </li>
-                <li class="nav-item btn-group">
-                    <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
-                       aria-expanded="false">Dropdown</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                        <a class="dropdown-item">Action</a>
-                        <a class="dropdown-item">Another action</a>
-                        <a class="dropdown-item">Something else here</a>
-                    </div>
-                </li>
+
+                <?= (Yii::$app->user->isGuest) ?
+                    Html::tag('li', Html::a(Yii::t('app', 'Login'), Url::to(['site/login']), ['class' => 'nav-link']),
+                        ['class' => 'nav-item']) :
+                    Html::tag('li',
+                        Html::a(Yii::$app->user->identity->username, '#', ['class' => 'nav-link dropwdown-toggle', 'id' => 'dropdownMenu1', 'aria-haspopup' => 'true', 'aria-expanded' => 'false','data-toggle' => 'dropdown']).
+                        Html::tag('div',
+                            Html::a(Yii::t('app', 'Logout'), ['site/logout'], ['data' => ['method' => 'post']]),
+                            ['class' => 'dropdown-menu', 'aria-labelledby' => 'dropdownMenu1']),
+                        ['class' => 'nav-item btn-group'])
+                ?>
+
+                <!--                <li class="nav-item btn-group">-->
+                <!--                    <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"-->
+                <!--                       aria-expanded="false">Dropdown</a>-->
+                <!--                    <div class="dropdown-menu" aria-labelledby="dropdownMenu1">-->
+                <!--                        <a class="dropdown-item">Action</a>-->
+                <!--                        <a class="dropdown-item">Another action</a>-->
+                <!--                        <a class="dropdown-item">Something else here</a>-->
+                <!--                    </div>-->
+                <!--                </li>-->
             </ul>
         </div>
         <!--/.Collapse content-->
