@@ -1,7 +1,5 @@
 <?php
 
-use yii\helpers\Url;
-
 /* @var $this yii\web\View */
 /* @var $model \common\models\LoginForm */
 
@@ -98,7 +96,7 @@ $this->title = 'CTTExp :: WebApp';
                         </div>
                     </div>
                 </div>
-<!--                <div class="parallax"><img src="\img\filters.jpg" alt="" style="opacity: 0.7"></div>-->
+                <!--                <div class="parallax"><img src="\img\filters.jpg" alt="" style="opacity: 0.7"></div>-->
             </div>
         </div>
 
@@ -216,29 +214,41 @@ $this->title = 'CTTExp :: WebApp';
                 </div>
                 <div class="container">
                     <div class="row center">
-                        <div class="col-sm-12 col-md-4 col-lg-3"><img src="/img/brands/brand_1.jpg" alt="" class="responsive-img">
+                        <div class="col-sm-12 col-md-4 col-lg-3"><img src="/img/brands/brand_1.jpg" alt=""
+                                                                      class="responsive-img">
                         </div>
-                        <div class="col-sm-12 col-md-4 col-lg-3"><img src="/img/brands/brand_2.jpg" alt="" class="responsive-img">
+                        <div class="col-sm-12 col-md-4 col-lg-3"><img src="/img/brands/brand_2.jpg" alt=""
+                                                                      class="responsive-img">
                         </div>
-                        <div class="col-sm-12 col-md-4 col-lg-3"><img src="/img/brands/brand_3.jpg" alt="" class="responsive-img">
+                        <div class="col-sm-12 col-md-4 col-lg-3"><img src="/img/brands/brand_3.jpg" alt=""
+                                                                      class="responsive-img">
                         </div>
-                        <div class="col-sm-12 col-md-4 col-lg-3"><img src="/img/brands/brand_4.jpg" alt="" class="responsive-img">
+                        <div class="col-sm-12 col-md-4 col-lg-3"><img src="/img/brands/brand_4.jpg" alt=""
+                                                                      class="responsive-img">
                         </div>
-                        <div class="col-sm-12 col-md-4 col-lg-3"><img src="/img/brands/brand_5.jpg" alt="" class="responsive-img">
+                        <div class="col-sm-12 col-md-4 col-lg-3"><img src="/img/brands/brand_5.jpg" alt=""
+                                                                      class="responsive-img">
                         </div>
-                        <div class="col-sm-12 col-md-4 col-lg-3"><img src="/img/brands/brand_6.jpg" alt="" class="responsive-img">
+                        <div class="col-sm-12 col-md-4 col-lg-3"><img src="/img/brands/brand_6.jpg" alt=""
+                                                                      class="responsive-img">
                         </div>
-                        <div class="col-sm-12 col-md-4 col-lg-3"><img src="/img/brands/brand_7.jpg" alt="" class="responsive-img">
+                        <div class="col-sm-12 col-md-4 col-lg-3"><img src="/img/brands/brand_7.jpg" alt=""
+                                                                      class="responsive-img">
                         </div>
-                        <div class="col-sm-12 col-md-4 col-lg-3"><img src="/img/brands/brand_8.jpg" alt="" class="responsive-img">
+                        <div class="col-sm-12 col-md-4 col-lg-3"><img src="/img/brands/brand_8.jpg" alt=""
+                                                                      class="responsive-img">
                         </div>
-                        <div class="col-sm-12 col-md-4 col-lg-3"><img src="/img/brands/brand_9.jpg" alt="" class="responsive-img">
+                        <div class="col-sm-12 col-md-4 col-lg-3"><img src="/img/brands/brand_9.jpg" alt=""
+                                                                      class="responsive-img">
                         </div>
-                        <div class="col-sm-12 col-md-4 col-lg-3"><img src="/img/brands/brand_10.jpg" alt="" class="responsive-img">
+                        <div class="col-sm-12 col-md-4 col-lg-3"><img src="/img/brands/brand_10.jpg" alt=""
+                                                                      class="responsive-img">
                         </div>
-                        <div class="col-sm-12 col-md-4 col-lg-3"><img src="/img/brands/brand_11.jpg" alt="" class="responsive-img">
+                        <div class="col-sm-12 col-md-4 col-lg-3"><img src="/img/brands/brand_11.jpg" alt=""
+                                                                      class="responsive-img">
                         </div>
-                        <div class="col-sm-12 col-md-4 col-lg-3"><img src="/img/brands/brand_12.jpg" alt="" class="responsive-img">
+                        <div class="col-sm-12 col-md-4 col-lg-3"><img src="/img/brands/brand_12.jpg" alt=""
+                                                                      class="responsive-img">
                         </div>
                     </div>
                 </div>
@@ -246,62 +256,62 @@ $this->title = 'CTTExp :: WebApp';
         </div>
 
         <!-- Usuarios -->
-<!--        <div class="scrollspy" id="users">-->
-<!--            <div class="container-general grey lighten-2">-->
-<!--                <div class="container">-->
-<!--                    <h1 class="raleway-bold">-->
-<!--                        <div class="thin-line blue darken-1"></div>-->
-<!--                        Usuarios-->
-<!--                    </h1>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="row center no-gutter">-->
-<!--                <div class="col-sm-12 col-md-6 col-lg-3 "-->
-<!--                     style="background: url(/img/users/1.jpg); min-height: 250px; background-size: cover;">-->
-<!--                    <div class="caption-container">-->
-<!--                        <div class="caption-container--container grey-overlay">-->
-<!--                            <div class="caption-container--text">-->
-<!--                                <h4 class="white-text raleway-bold">David Salazar</h4>-->
-<!--                                <p class="white-text raleway">Social Strategist</p>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class="col-sm-12 col-md-6 col-lg-3 "-->
-<!--                     style="background: url(/img/users/2.jpg); min-height: 250px; background-size: cover;">-->
-<!--                    <div class="caption-container">-->
-<!--                        <div class="caption-container--container grey-overlay">-->
-<!--                            <div class="caption-container--text">-->
-<!--                                <h4 class="white-text raleway-bold">Ashley Stewart</h4>-->
-<!--                                <p class="white-text raleway">Community Manager</p>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class="col-sm-12 col-md-6 col-lg-3 "-->
-<!--                     style="background: url(/img/users/3.jpg); min-height: 250px; background-size: cover;">-->
-<!--                    <div class="caption-container">-->
-<!--                        <div class="caption-container--container grey-overlay">-->
-<!--                            <div class="caption-container--text">-->
-<!--                                <h4 class="white-text raleway-bold">Patrick Stone</h4>-->
-<!--                                <p class="white-text raleway">PR Manager</p>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class="col-sm-12 col-md-6 col-lg-3 "-->
-<!--                     style="background: url(/img/users/4.jpg); min-height: 250px; background-size: cover;">-->
-<!--                    <div class="caption-container">-->
-<!--                        <div class="caption-container--container grey-overlay">-->
-<!--                            <div class="caption-container--text">-->
-<!--                                <h4 class="white-text raleway-bold">Lisa Riley</h4>-->
-<!--                                <p class="white-text raleway">CEO</p>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
+        <!--        <div class="scrollspy" id="users">-->
+        <!--            <div class="container-general grey lighten-2">-->
+        <!--                <div class="container">-->
+        <!--                    <h1 class="raleway-bold">-->
+        <!--                        <div class="thin-line blue darken-1"></div>-->
+        <!--                        Usuarios-->
+        <!--                    </h1>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--            <div class="row center no-gutter">-->
+        <!--                <div class="col-sm-12 col-md-6 col-lg-3 "-->
+        <!--                     style="background: url(/img/users/1.jpg); min-height: 250px; background-size: cover;">-->
+        <!--                    <div class="caption-container">-->
+        <!--                        <div class="caption-container--container grey-overlay">-->
+        <!--                            <div class="caption-container--text">-->
+        <!--                                <h4 class="white-text raleway-bold">David Salazar</h4>-->
+        <!--                                <p class="white-text raleway">Social Strategist</p>-->
+        <!--                            </div>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--                <div class="col-sm-12 col-md-6 col-lg-3 "-->
+        <!--                     style="background: url(/img/users/2.jpg); min-height: 250px; background-size: cover;">-->
+        <!--                    <div class="caption-container">-->
+        <!--                        <div class="caption-container--container grey-overlay">-->
+        <!--                            <div class="caption-container--text">-->
+        <!--                                <h4 class="white-text raleway-bold">Ashley Stewart</h4>-->
+        <!--                                <p class="white-text raleway">Community Manager</p>-->
+        <!--                            </div>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--                <div class="col-sm-12 col-md-6 col-lg-3 "-->
+        <!--                     style="background: url(/img/users/3.jpg); min-height: 250px; background-size: cover;">-->
+        <!--                    <div class="caption-container">-->
+        <!--                        <div class="caption-container--container grey-overlay">-->
+        <!--                            <div class="caption-container--text">-->
+        <!--                                <h4 class="white-text raleway-bold">Patrick Stone</h4>-->
+        <!--                                <p class="white-text raleway">PR Manager</p>-->
+        <!--                            </div>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--                <div class="col-sm-12 col-md-6 col-lg-3 "-->
+        <!--                     style="background: url(/img/users/4.jpg); min-height: 250px; background-size: cover;">-->
+        <!--                    <div class="caption-container">-->
+        <!--                        <div class="caption-container--container grey-overlay">-->
+        <!--                            <div class="caption-container--text">-->
+        <!--                                <h4 class="white-text raleway-bold">Lisa Riley</h4>-->
+        <!--                                <p class="white-text raleway">CEO</p>-->
+        <!--                            </div>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </div>-->
 
         <!-- Reservaciones -->
         <div class="scrollspy" id="reservations">
@@ -330,9 +340,9 @@ $this->title = 'CTTExp :: WebApp';
                         </div>
                     </div>
                 </div>
-<!--                <div class="parallax"><img src="\img\parallax_user.jpg" alt="" style="opacity: 0.7"-->
-<!--                                           class="responsive-img">-->
-<!--                </div>-->
+                <!--                <div class="parallax"><img src="\img\parallax_user.jpg" alt="" style="opacity: 0.7"-->
+                <!--                                           class="responsive-img">-->
+                <!--                </div>-->
             </div>
         </div>
 

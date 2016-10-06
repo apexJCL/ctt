@@ -1,3 +1,6 @@
+<?php
+/* @var $this \yii\web\View */
+?>
 <!--Footer-->
 <footer class="page-footer grey darken-4 center-on-small-only raleway">
     <!--Footer Links-->

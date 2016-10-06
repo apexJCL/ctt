@@ -4,7 +4,6 @@
 /* @var $content string */
 
 use frontend\assets\AppAsset;
-use frontend\assets\BootstrapFullAsset;
 use frontend\assets\BootstrapMaterializeAsset;
 use frontend\assets\CTTAppAsset;
 use frontend\assets\MDBootstrapAsset;

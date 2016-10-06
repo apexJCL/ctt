@@ -5,23 +5,27 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $model LoginForm */
-
 ?>
-<!-- Modal Structure -->
-<div id="login-modal" class="modal">
-    <div class="modal-content">
-        <div class="row">
-            <div class="col s12">
-                <h4>Inicia Sesión</h4>
+<!-- Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <!--Content-->
+        <div class="modal-content">
+            <!--Header-->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel"><?= Yii::t('app', 'Login') ?></h4>
             </div>
-            <div class="col s12">
-                <div class="container">
+            <!--Body-->
+            <div class="modal-body">
+                <div class="container row">
                     <?php $form = ActiveForm::begin([
                         'id' => 'login-form',
                         'options' => ['class' => 'form-horizontal'],
                         'fieldConfig' => [
-                            'template' => "{label}\n<div class=\"col s12\">{input}</div>\n<div class=\"col s12\">{error}</div>",
-                            'labelOptions' => ['class' => 'col-lg-1 control-label'],
+                            'template' => "<div class=\"col-sm-12 md-form\">{label}{input}{error}</div>"
                         ],
                     ]); ?>
 
@@ -29,22 +33,16 @@ use yii\widgets\ActiveForm;
 
                     <?= $form->field($model, 'password')->passwordInput() ?>
 
-                    <?= $form->field($model, 'rememberMe')->checkbox([
-                        'template' => "<div class=\"col-lg-offset-1 col-lg-3\">{input} {label}</div>\n<div class=\"col-lg-8\">{error}</div>",
-                    ]) ?>
-
-                    <div class="form-group">
-                        <div class="col-lg-offset-1 col-lg-11">
-                            <?= Html::submitButton('Aceptar', ['class' => 'btn blue darken-1', 'name' => 'login-button']) ?>
-                        </div>
-                    </div>
-
-                    <?php ActiveForm::end(); ?>
+                    <?= $form->field($model, 'rememberMe')->checkbox() ?>
                 </div>
             </div>
+            <!--Footer-->
+            <div class="modal-footer">
+                <?= Html::submitButton('Aceptar', ['class' => 'btn blue darken-1', 'name' => 'login-button']) ?>
+                <button type="button" class="btn btn-danger" data-dismiss="modal"><?= Yii::t('app', 'Cancel') ?></button>
+            </div>
+            <?php ActiveForm::end(); ?>
         </div>
-    </div>
-    <div class="modal-footer">
-        <a href="#!" class=" modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>
+        <!--/.Content-->
     </div>
 </div>

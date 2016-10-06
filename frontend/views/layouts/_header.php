@@ -1,15 +1,13 @@
 <?php
-use yii\bootstrap\Html;
 use yii\helpers\Url;
 
+/* @var $this \yii\web\View */
 ?>
-<!--Navbar-->
 <nav class="nav-ctt navbar navbar-dark raleway">
     <!-- Collapse button-->
     <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#collapseEx2">
         <i class="fa fa-bars"></i>
     </button>
-
     <div class="container">
         <!--Collapse content-->
         <div class="collapse navbar-toggleable-xs" id="collapseEx2">
@@ -25,41 +23,63 @@ use yii\helpers\Url;
             </a>
             <!--Links-->
             <ul class="nav navbar-nav pull-right">
-                <li class="nav-item">
-                    <a class="nav-link">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link">Features</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link">Pricing</a>
-                </li>
-
-                <?= (Yii::$app->user->isGuest) ?
-                    Html::tag('li', Html::a(Yii::t('app', 'Login'), Url::to(['site/login']), ['class' => 'nav-link']),
-                        ['class' => 'nav-item']) :
-                    Html::tag('li',
-                        Html::a(Yii::$app->user->identity->username, '#', ['class' => 'nav-link dropwdown-toggle', 'id' => 'dropdownMenu1', 'aria-haspopup' => 'true', 'aria-expanded' => 'false','data-toggle' => 'dropdown']).
-                        Html::tag('div',
-                            Html::a(Yii::t('app', 'Logout'), ['site/logout'], ['data' => ['method' => 'post']]),
-                            ['class' => 'dropdown-menu', 'aria-labelledby' => 'dropdownMenu1']),
-                        ['class' => 'nav-item btn-group'])
+                <!--  Renders client link -->
+                <?= $this->render('_link_render', [
+                    'url' => Url::to(['client/index']),
+                    'text' => Yii::t('app', 'Clients'),
+                    'permission' => 'indexClient'
+                ]) ?>
+                <!--  Renders Inventory Dropdown -->
+                <?=
+                $this->render('_dropdown_menu', [
+                    'links' => [
+                        [
+                            'title' => Yii::t('app', 'Brands'),
+                            'url' => Url::to(['brand/index']),
+                            'permission' => 'indexBrand'
+                        ],
+                        [
+                            'title' => Yii::t('app', 'Categories'),
+                            'url' => Url::to(['category/index']),
+                            'permission' => 'indexCategory'
+                        ],
+                        [
+                            'title' => Yii::t('app', 'Items'),
+                            'url' => Url::to(['item/index']),
+                            'permission' => 'indexItem'
+                        ]
+                    ],
+                    'title' => Yii::t('app', 'Inventory'),
+                    'id' => 'inventoryDropdown',
+                    'loginRequired' => true
+                ])
                 ?>
-
-                <!--                <li class="nav-item btn-group">-->
-                <!--                    <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"-->
-                <!--                       aria-expanded="false">Dropdown</a>-->
-                <!--                    <div class="dropdown-menu" aria-labelledby="dropdownMenu1">-->
-                <!--                        <a class="dropdown-item">Action</a>-->
-                <!--                        <a class="dropdown-item">Another action</a>-->
-                <!--                        <a class="dropdown-item">Something else here</a>-->
-                <!--                    </div>-->
-                <!--                </li>-->
+                <!--  Renders User tab -->
+                <?php
+                if (Yii::$app->user->isGuest)
+                    echo $this->render('_link_render', [
+                        'url' => '#',
+                        'text' => Yii::t('app', 'Login'),
+                        'link_options' => [
+                            'data' => ['toggle' => 'modal', 'target' => '#loginModal'],
+                        ]
+                    ]);
+                else
+                    echo $this->render('_dropdown_menu', [
+                        'links' => [
+                            [
+                                'title' => Yii::t('app', 'Logout'),
+                                'url' => ['site/logout'],
+                                'options' => [
+                                    'data' => ['method' => 'post'],
+                                ]
+                            ]
+                        ],
+                        'title' => Yii::$app->user->isGuest ? Yii::t('app', 'Login') : Yii::$app->user->identity->username,
+                        'id' => 'userDropdown'
+                    ]);
+                ?>
             </ul>
         </div>
-        <!--/.Collapse content-->
-
     </div>
-
 </nav>
-<!--/.Navbar-->
