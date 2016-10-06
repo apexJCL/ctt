@@ -30,7 +30,8 @@
     "kartik-v/yii2-grid": "@dev",
     "kartik-v/yii2-widgets": "@dev",
     "bower-asset/bootstrap-material-design": "*",
-    "npm-asset/mdbootstrap": "*"
+    "npm-asset/mdbootstrap": "*",
+    "bower-asset/bootstrap": "~3.3.7"
   },
   "require-dev": {
     "yiisoft/yii2-codeception": "*",

@@ -8,25 +8,24 @@
 
 namespace frontend\assets;
 
-
-use kartik\base\AssetBundle;
+use yii\web\AssetBundle;
 
 class BootstrapFullAsset extends AssetBundle
 {
-    public $sourcePath = '@bower/bootstrap/dist/';
+    public $sourcePath = '@bower/bootstrap/';
 
     public $publishOptions = [
         'only' => [
             '*.css',
-            '*.min.js'
+            '*.js',
+            '*.woff2',
         ]
     ];
 
     public $css = [
-        'css/bootstrap.min.css',
-        'css/bootstrap.css'
+        'dist/css/bootstrap.min.css',
     ];
     public $js = [
-        'js/bootstrap.min.js'
+        'dist/js/bootstrap.min.js',
     ];
 }

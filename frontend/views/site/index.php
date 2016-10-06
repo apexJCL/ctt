@@ -5,6 +5,8 @@
 
 $this->title = 'CTTExp :: WebApp';
 ?>
+<?= Yii::$app->user->isGuest ? $this->render('//layouts/_login', ['model' => $model]) : '' ?>
+
     <!-- Ruler Guide -->
     <!--<div>-->
     <!--    <div class="row no-margin">-->
@@ -461,4 +463,3 @@ $this->title = 'CTTExp :: WebApp';
             </ul>
         </div>
     </div>
-<?= Yii::$app->user->isGuest ? $this->render('//layouts/_login', ['model' => $model]) : '' ?>

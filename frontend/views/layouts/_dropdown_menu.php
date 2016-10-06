@@ -30,24 +30,32 @@ if ($loginRequired)
         return;
 ?>
 
-<li class="nav-item btn-group">
-    <a class="nav-link dropdown-toggle" id="<?= $id ?>" data-toggle="dropdown" aria-haspopup="true"
-       aria-expanded="false"><?= $title ?></a>
-    <div class="dropdown-menu" aria-labelledby="<?= $id ?>">
+<li class="dropdown">
+    <a class="dropdown-toggle" id="<?= $id ?>" data-toggle="dropdown" aria-haspopup="true"
+       aria-expanded="false"><?= $title ?><b class="caret"></b></a>
+    <ul class="dropdown-menu">
         <?php
         if (isset($links))
             foreach ($links as $link) {
                 if (!$loginRequired) // If login is not required
-                    echo Html::a($link['title'],
-                        $link['url'],
-                        isset($link['options']) ? array_merge($link['options'], ['class' => 'dropdown-item']) : ['class' => 'dropdown-item']
+                    echo Html::tag(
+                        'li',
+                        Html::a(
+                            $link['title'],
+                            $link['url'],
+                            isset($link['options']) ? $link['options'] : null
+                        )
                     );
                 elseif (Yii::$app->user->identity->canI($link['permission']) || !isset($link['permission'])) // If login is required and has permission (if requested)
-                    echo Html::a($link['title'],
-                        $link['url'],
-                        isset($link['options']) ? array_merge($link['options'], ['class' => 'dropdown-item']) : ['class' => 'dropdown-item']
+                    echo Html::tag(
+                        'li',
+                        Html::a(
+                            $link['title'],
+                            $link['url'],
+                            isset($link['options']) ? $link['options'] : null
+                        )
                     );
             }
         ?>
-    </div>
+    </ul>
 </li>

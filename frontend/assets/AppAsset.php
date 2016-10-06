@@ -21,6 +21,8 @@ class AppAsset extends AssetBundle
     ];
     public $depends = [
         'yii\web\YiiAsset',
+        'frontend\assets\BootstrapFullAsset',
+        'frontend\assets\MaterialDesignAsset'
 //        'frontend\assets\BootstrapFullAsset'
     ];
 }

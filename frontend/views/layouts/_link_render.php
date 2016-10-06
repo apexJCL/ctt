@@ -14,6 +14,8 @@
 
 use yii\bootstrap\Html;
 
+$options = isset($options) ? $options : [];
+
 if (isset($permission) && Yii::$app->user->isGuest)
     return; // Asks for permission but guest user has no permissions
 
@@ -22,7 +24,5 @@ if (!isset($permission) || Yii::$app->user->identity->canI($permission))
     echo Html::tag('li',
         Html::a($text,
             $url,
-            isset($link_options) ? array_merge($link_options, ['class' => 'nav-link']) : ['class' => 'nav-link']
-        ),
-        isset($options) ? array_merge($options, ['class' => 'nav-item']) : ['class' => 'nav-item']
-    );
+            isset($link_options) ? $link_options : null
+        ), $options);
