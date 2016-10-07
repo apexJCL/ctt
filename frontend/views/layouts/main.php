@@ -7,11 +7,13 @@ use frontend\assets\AppAsset;
 use frontend\assets\BootstrapFullAsset;
 use frontend\assets\BootstrapPaperAsset;
 use frontend\assets\CTTAppAsset;
+use frontend\assets\FlatUIAsset;
 use frontend\assets\MaterialDesignAsset;
 use yii\helpers\Html;
 
 AppAsset::register($this);
-BootstrapPaperAsset::register($this);
+FlatUIAsset::register($this);
+CTTAppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -21,8 +23,6 @@ BootstrapPaperAsset::register($this);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
     <?php $this->head() ?>
 </head>
 <body>

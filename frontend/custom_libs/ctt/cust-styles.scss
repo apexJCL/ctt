@@ -356,15 +356,34 @@ footer.page-footer {
   margin-top: 0px;
 }
 
-.navbar-brand{
-  padding-left: 50px;
-}
-
 .btn-group.open .dropdown-toggle {
   -webkit-box-shadow: none;
   box-shadow: none;
 }
 
 .navbar {
+  border-radius: 0px;
   margin-bottom: 0px;
+}
+
+.text-primary {
+  color: white;
+}
+
+a {
+  color: #0277BD;
+  &:hover {
+    color: #02a2ff;
+  }
+  &:focus {
+    color: #02a2ff;
+  }
+  &.text-primary{
+    &:hover {
+      color: #02a2ff;
+    }
+    &:focus {
+      color: #02a2ff;
+    }
+  }
 }

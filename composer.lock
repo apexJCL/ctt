@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ca64689cc3a8c132ca2d47596b67f7e9",
-    "content-hash": "c0644120fb028b3cdccdb8c1d4aec55a",
+    "hash": "c126b317d2663cbc4b076ca54fb5b781",
+    "content-hash": "52788f3715aed99f9e0e44b9955be204",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -212,6 +212,53 @@
             ]
         },
         {
+            "name": "bower-asset/flat-ui",
+            "version": "2.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/designmodo/Flat-UI.git",
+                "reference": "8e35fb5360f38fbabf581617052b69a261c01466"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/designmodo/Flat-UI/zipball/8e35fb5360f38fbabf581617052b69a261c01466",
+                "reference": "8e35fb5360f38fbabf581617052b69a261c01466",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/videojs": "~4.7.2"
+            },
+            "require-dev": {
+                "bower-asset/bootstrap": "~3.2.0",
+                "bower-asset/bootstrap-switch": "~3.0.2",
+                "bower-asset/bootstrap-tagsinput": "~0.4.2",
+                "bower-asset/google-code-prettify": "~1.0.3",
+                "bower-asset/holderjs": "~2.4.0",
+                "bower-asset/html5shiv": "~3.7.2",
+                "bower-asset/jquery": "~1.11.1",
+                "bower-asset/jquery-ui": "~1.10.4",
+                "bower-asset/jquery-ui-touch-punch": "*",
+                "bower-asset/respond": "~1.4.2",
+                "bower-asset/select2": "~3.5.1",
+                "bower-asset/typeahead.js": "~0.10.5"
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": [
+                    "less/flat-ui.less",
+                    "dist/css/flat-ui.css",
+                    "dist/js/flat-ui.js",
+                    "dist/fonts/glyphicons/flat-ui-icons-regular.eot",
+                    "dist/fonts/glyphicons/flat-ui-icons-regular.svg",
+                    "dist/fonts/glyphicons/flat-ui-icons-regular.ttf",
+                    "dist/fonts/glyphicons/flat-ui-icons-regular.woff"
+                ],
+                "bower-asset-ignore": [
+                    ".*"
+                ]
+            }
+        },
+        {
             "name": "bower-asset/jquery",
             "version": "2.2.4",
             "source": {
@@ -340,6 +387,44 @@
                     "package.json"
                 ]
             }
+        },
+        {
+            "name": "bower-asset/videojs",
+            "version": "v4.7.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/videojs/video.js.git",
+                "reference": "760eb308db573022d6a96ee67bed9d205cde2aca"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/videojs/video.js/zipball/760eb308db573022d6a96ee67bed9d205cde2aca",
+                "reference": "760eb308db573022d6a96ee67bed9d205cde2aca",
+                "shasum": ""
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": [
+                    "dist/video-js/video.js",
+                    "dist/video-js/video-js.css"
+                ],
+                "bower-asset-ignore": [
+                    "**/.*",
+                    "node_modules",
+                    "bower_components",
+                    "test",
+                    "tests",
+                    "build"
+                ]
+            },
+            "description": "An HTML5 and Flash video player with a common API and skin for both.",
+            "keywords": [
+                "flash",
+                "html5",
+                "player",
+                "video",
+                "videojs"
+            ]
         },
         {
             "name": "bower-asset/yii2-pjax",

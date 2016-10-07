@@ -442,14 +442,6 @@ COlor ref: #00BCD4
 
 */
 
-.navbar-nav {
-    margin-top: 20px;
-}
-
-.navbar-brand {
-    margin-top: 15px;
-}
-
 .no-gutter > [class*='col-'] {
     padding-right:0;
     padding-left:0;
