@@ -17,7 +17,7 @@ class BootstrapFullAsset extends AssetBundle
     public $css = [
         'dist/css/bootstrap.min.css',
     ];
-    
+
     public $js = [
         'dist/js/bootstrap.min.js',
     ];
