@@ -35,4 +35,6 @@ phpunit.phar
 img/default_avatar.png
 img/users
 
-common/users
+common/
+
+frontend/web/assets
