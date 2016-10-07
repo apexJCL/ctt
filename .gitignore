@@ -38,3 +38,7 @@ img/users
 common/
 
 frontend/web/assets
+/frontend/custom_libs/bootstrap/stylesheets/
+/frontend/custom_libs/bootstrap/fonts/bootstrap/
+/frontend/custom_libs/bootstrap/javascripts/
+/frontend/custom_libs/bootstrap/images/
