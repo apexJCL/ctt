@@ -15,10 +15,13 @@ class FlatUIAsset extends AssetBundle
 {
     public $sourcePath = '@bower/flat-ui/dist';
     public $css = [
-        'css/vendor/bootstrap/css/bootstrap.min.css',
         'css/flat-ui.min.css'
+
     ];
     public $js = [
         'js/flat-ui.min.js'
+    ];
+    public $depends = [
+        'frontend\assets\BootstrapFullAsset'
     ];
 }

@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c126b317d2663cbc4b076ca54fb5b781",
-    "content-hash": "52788f3715aed99f9e0e44b9955be204",
+    "hash": "fb7e724e02882538c39a6998340aea2f",
+    "content-hash": "2f680778f9025c37df3c5c0f4aceeded",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -358,6 +358,65 @@
                 "jquery",
                 "mask",
                 "plugins"
+            ]
+        },
+        {
+            "name": "bower-asset/materialize",
+            "version": "v0.97.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Dogfalo/materialize.git",
+                "reference": "c0bf0b7e71e4763bb2aa31f8100c7e0e97964cec"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Dogfalo/materialize/zipball/c0bf0b7e71e4763bb2aa31f8100c7e0e97964cec",
+                "reference": "c0bf0b7e71e4763bb2aa31f8100c7e0e97964cec",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/jquery": ">=2.1.1"
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": [
+                    "bin/materialize.css",
+                    "bin/materialize.js"
+                ],
+                "bower-asset-ignore": [
+                    "jade/",
+                    ".gitignore",
+                    "CNAME",
+                    "css/",
+                    "bower.json",
+                    "README.md",
+                    "images/",
+                    "js/jquery.timeago.js",
+                    "js/init.js",
+                    "js/prism.js",
+                    "res/",
+                    "sass/style.scss",
+                    "sass/ghpages-materialize.scss",
+                    "**/*.html",
+                    "**/*.zip",
+                    "**/*.txt",
+                    "sitemap.xml",
+                    "package.json",
+                    "Gruntfile.js"
+                ]
+            },
+            "description": "A modern responsive front-end framework based on Material Design",
+            "keywords": [
+                "css",
+                "design",
+                "framework",
+                "front-end",
+                "js",
+                "material",
+                "mobile-first",
+                "responsive",
+                "sass",
+                "ux"
             ]
         },
         {

@@ -5,15 +5,17 @@
 
 use frontend\assets\AppAsset;
 use frontend\assets\BootstrapFullAsset;
-use frontend\assets\BootstrapPaperAsset;
+use frontend\assets\BootstrapCustomAsset;
 use frontend\assets\CTTAppAsset;
 use frontend\assets\FlatUIAsset;
 use frontend\assets\MaterialDesignAsset;
+use frontend\assets\MaterializeCSSAsset;
 use yii\helpers\Html;
 
 AppAsset::register($this);
 FlatUIAsset::register($this);
 CTTAppAsset::register($this);
+MaterializeCSSAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
