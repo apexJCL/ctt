@@ -4,7 +4,7 @@ use yii\helpers\Url;
 /* @var $this \yii\web\View */
 ?>
 
-<nav class="navbar nav-ctt">
+<nav class="nav-ctt navbar raleway">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -15,7 +15,7 @@ use yii\helpers\Url;
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand text-primary" href="#">CTT EXP & RENTALS</a>
+            <a class="navbar-brand text-primary" href="<?= Url::to(['site/index']) ?>">CTT EXP & RENTALS</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

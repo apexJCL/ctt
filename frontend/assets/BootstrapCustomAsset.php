@@ -18,7 +18,7 @@ class BootstrapCustomAsset extends AssetBundle
         'bootstrap.css'
     ];
     public $js = [
-        'javascripts/bootstrap-sprockets.js',
-        'javascripts/bootstrap.min.js'
+//        'javascripts/bootstrap-sprockets.js',
+//        'javascripts/bootstrap.min.js'
     ];
 }

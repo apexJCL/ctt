@@ -1,0 +1,8 @@
+$icon-font-path: 'fonts/bootstrap/';
+@import 'stylesheets/bootstrap';
+
+.container-greedy {
+  @extend .container-fluid;
+  padding-top: 30px;
+  min-height: 400px;
+}

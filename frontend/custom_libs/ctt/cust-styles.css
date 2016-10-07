@@ -301,4 +301,9 @@ a {
   a.text-primary:focus {
     color: #02a2ff; }
 
+.responsive-img {
+  display: block;
+  margin: 0 auto;
+  height: 100%; }
+
 /*# sourceMappingURL=cust-styles.css.map */

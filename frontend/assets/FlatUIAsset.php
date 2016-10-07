@@ -22,6 +22,6 @@ class FlatUIAsset extends AssetBundle
         'js/flat-ui.min.js'
     ];
     public $depends = [
-        'frontend\assets\BootstrapFullAsset'
+        'frontend\assets\BootstrapCustomAsset'
     ];
 }

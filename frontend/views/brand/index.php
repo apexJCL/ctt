@@ -1,8 +1,6 @@
 <?php
 
-use yii\helpers\Html;
-use yii\grid\GridView;
-use yii\helpers\Url;
+use kartik\grid\GridView;
 use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
@@ -12,22 +10,18 @@ use yii\widgets\Pjax;
 $this->title = Yii::t('app', 'Brands');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="row">
-    <?= $this->render('//layouts/_section_header') ?>
-    <div class="container-fluid grey lighten-4">
-        <div class="container">
+<?= $this->render('//layouts/_section_header') ?>
+<div class="container-greedy grey lighten-4">
+    <div class="row">
+        <div class="col-sm-12 col-lg-10 col-lg-offset-1">
             <?php Pjax::begin(); ?>    <?= GridView::widget([
                 'dataProvider' => $dataProvider,
                 'filterModel' => $searchModel,
-                'rowOptions' => [
-                    'class' => 'slim',
-                ],
+                'export' => false,
                 'columns' => [
                     ['class' => 'yii\grid\SerialColumn'],
-
                     'id',
                     'name',
-
                     ['class' => 'yii\grid\ActionColumn'],
                 ],
             ]); ?>

@@ -38,7 +38,7 @@ $this->title = 'CTTExp :: WebApp';
         <!--  Principal: Logo  -->
         <div class="container-fluid primary-overlay welcome-section" id="home">
             <div class="row">
-                <div class="col-sm-12 col-md-4 offset-md-1 col-lg-4 offset-lg-1">
+                <div class="col-sm-12 col-md-4 col-md-offset-1 col-lg-4 col-lg-offset-1">
                     <img src="/img/logo.png" alt="" class="responsive-img">
                 </div>
                 <!--            <div class="col s12 m5 l5 white-text">-->
