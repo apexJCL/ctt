@@ -35,8 +35,6 @@ phpunit.phar
 img/default_avatar.png
 img/users
 
-common/
-
 frontend/web/assets
 /frontend/custom_libs/bootstrap/stylesheets/
 /frontend/custom_libs/bootstrap/fonts/bootstrap/
