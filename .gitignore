@@ -40,3 +40,5 @@ frontend/web/assets
 /frontend/custom_libs/bootstrap/fonts/bootstrap/
 /frontend/custom_libs/bootstrap/javascripts/
 /frontend/custom_libs/bootstrap/images/
+/frontend/custom_libs/materialize/components/
+/frontend/custom_libs/materialize/js/

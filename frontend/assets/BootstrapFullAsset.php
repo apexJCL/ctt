@@ -14,6 +14,14 @@ class BootstrapFullAsset extends AssetBundle
 {
     public $sourcePath = '@bower/bootstrap/';
 
+    public $publishOptions = [
+        'only' => [
+            'dist/css/*.min.css',
+            'dist/js/*.min.js',
+            'dist/fonts/*.woff',
+        ]
+    ];
+
     public $css = [
         'dist/css/bootstrap.min.css',
     ];

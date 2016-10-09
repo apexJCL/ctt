@@ -15,32 +15,20 @@ use yii\widgets\ActiveForm;
                 <h4 class="modal-title"><?= Yii::t('app', 'Login') ?></h4>
             </div>
             <div class="modal-body">
-                <div class="row">
-                    <!-- Body -->
-                    <?php $form = ActiveForm::begin([
-                        'id' => 'login-form',
-                        'fieldConfig' => [
-                            'template' => "<div class=\"col-sm-12 form-group label-floating\">{label}{input}{error}</div>"
-                        ],
-                    ]); ?>
-                    <?= $form->field($model, 'username')->textInput(['autofocus' => false]) ?>
-                    <?= $form->field($model, 'password')->passwordInput() ?>
-                    <div class="form-group field-loginform-rememberme">
-                        <div class="col-sm-12 checkbox">
-                            <input type="hidden" name="LoginForm[rememberMe]" value="0">
-                            <label>
-                                <input type="checkbox" id="loginform-rememberme" name="LoginForm[rememberMe]" value="0"
-                                       checked="">
-                                <?= Yii::t('app', 'Remember Me') ?>
-                            </label>
-                            <div class="help-block"></div>
-                        </div>
-                    </div>
-                    <?= Html::submitButton('Aceptar', ['class' => 'btn blue darken-1', 'name' => 'login-button']) ?>
+                <!-- Body -->
+                <?php $form = ActiveForm::begin([
+                    'id' => 'login-form'
+                ]); ?>
+                <?= $form->field($model, 'username')->textInput(['autofocus' => false]) ?>
+                <?= $form->field($model, 'password')->passwordInput() ?>
+                <?= $form->field($model, 'rememberMe')->checkbox() ?>
+
+                <div class="modal-footer">
+                    <?= Html::submitButton('Aceptar', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
                     <button type="button" class="btn btn-danger"
                             data-dismiss="modal"><?= Yii::t('app', 'Cancel') ?></button>
-                    <?php ActiveForm::end(); ?>
                 </div>
+                <?php ActiveForm::end(); ?>
             </div>
         </div>
     </div>

@@ -4,18 +4,18 @@
 /* @var $content string */
 
 use frontend\assets\AppAsset;
-use frontend\assets\BootstrapFullAsset;
-use frontend\assets\BootstrapCustomAsset;
+use frontend\assets\BootstrapYetiAsset;
 use frontend\assets\CTTAppAsset;
-use frontend\assets\FlatUIAsset;
-use frontend\assets\MaterialDesignAsset;
 use frontend\assets\MaterializeCSSAsset;
 use yii\helpers\Html;
 
 AppAsset::register($this);
-FlatUIAsset::register($this);
-CTTAppAsset::register($this);
+// For quick background-color support
 MaterializeCSSAsset::register($this);
+//BootstrapCyborgAsset::register($this);
+//BootstrapPaperAsset::register($this);
+BootstrapYetiAsset::register($this);
+CTTAppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>

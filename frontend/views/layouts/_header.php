@@ -4,7 +4,7 @@ use yii\helpers\Url;
 /* @var $this \yii\web\View */
 ?>
 
-<nav class="nav-ctt navbar raleway">
+<nav class="navbar navbar-inverse raleway">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">

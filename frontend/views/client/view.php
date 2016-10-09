@@ -16,7 +16,7 @@ $this->title = $model->nombre;
         'photoUrl' => $model->getProfilePicture()
     ]) ?>
     <?php Pjax::end(); ?>
-    <div class="section grey lighten-4 fab-container greedy">
+    <div class="container-fluid greedy-horizontal-500  grey lighten-4 fab-container greedy">
         <?= $this->render('//layouts/_fab', [
             'buttons' => [
                 [
@@ -67,16 +67,16 @@ $this->title = $model->nombre;
             ]
         ]) ?>
         <div class="container row">
-            <div class="col s12 black-text raleway-bold show-on-small hide-on-med-and-up">
+            <div class="col-sm-s12 black-text raleway-bold show-on-small hide-on-med-and-up">
                 <h1>
                     <div class="thin-line primary-overlay"></div>
                     <?= Html::encode($this->title) ?>
                 </h1>
             </div>
-            <div class="col s12">
-                <h3 class="raleway-thin"><?= Yii::t('app', 'General Overview') ?></h3>
+            <div class="col-sm-12">
+                <h2 class="raleway-thin"><?= Yii::t('app', 'General Overview') ?></h2>
             </div>
-            <div class="col l4 m6 s12 ">
+            <div class="col-sm-12 col-md-6 col-lg-4">
                 <?= DetailView::widget([
                     'model' => $model,
                     'attributes' => [

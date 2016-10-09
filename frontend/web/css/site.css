@@ -281,14 +281,14 @@ h1.page-title {
     opacity: 1;
 }
 
-.nav-ctt {
-    background-color: rgba(20, 52, 78, 0.6);
-    min-height: 100px;
-}
+/*.nav-ctt {*/
+    /*background-color: rgba(20, 52, 78, 0.6);*/
+    /*min-height: 100px;*/
+/*}*/
 
-nav.darken-1 {
-    background-color: rgba(20, 52, 78, 0.8);
-}
+/*nav.darken-1 {*/
+    /*background-color: rgba(20, 52, 78, 0.8);*/
+/*}*/
 
 .showcase .row {
     margin: 0;

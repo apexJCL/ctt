@@ -23,3 +23,6 @@ function copy_directory($src,$dst) {
 }
 // Copy bootstrap assets for custom compilation
 copy_directory('vendor/bower/bootstrap-sass/assets', 'frontend/custom_libs/bootstrap');
+// Copy MaterializeCSS for custom compilation
+copy_directory('vendor/bower/materialize/sass/components', 'frontend/custom_libs/materialize/components');
+copy_directory('vendor/bower/materialize/dist/js', 'frontend/custom_libs/materialize/js');

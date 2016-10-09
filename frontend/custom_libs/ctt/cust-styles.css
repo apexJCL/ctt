@@ -83,16 +83,6 @@ FAB Button Style
     .photo-viewport {
       min-height: 200px; } }
 
-.dropdown-content-menu {
-  background-color: rgba(10, 29, 42, 0.6);
-  z-index: 100; }
-  .dropdown-content-menu li a {
-    text-align: left;
-    padding-left: 5px;
-    color: white; }
-  .dropdown-content-menu li:hover {
-    background-color: rgba(54, 166, 255, 0.8); }
-
 .profile-picture--container .foreground img {
   position: absolute;
   max-width: 256px;
@@ -287,23 +277,28 @@ footer.page-footer {
   border-radius: 0px;
   margin-bottom: 0px; }
 
-.text-primary {
-  color: white; }
-
-a {
-  color: #0277BD; }
-  a:hover {
-    color: #02a2ff; }
-  a:focus {
-    color: #02a2ff; }
-  a.text-primary:hover {
-    color: #02a2ff; }
-  a.text-primary:focus {
-    color: #02a2ff; }
-
 .responsive-img {
   display: block;
   margin: 0 auto;
   height: 100%; }
+
+.navbar-inverse {
+  background-color: rgba(20, 52, 77, 0.6); }
+
+.greedy-horizontal-300 {
+  min-height: 300px; }
+.greedy-horizontal-400 {
+  min-height: 400px; }
+.greedy-horizontal-500 {
+  min-height: 500px; }
+
+.padding-top-20, .padding-left-20, .padding-right-20, .padding-down-20 {
+  padding-top: 20px; }
+.padding-top-30, .padding-left-30, .padding-right-30, .padding-down-30 {
+  padding-top: 30px; }
+.padding-top-40, .padding-left-40, .padding-right-40, .padding-down-40 {
+  padding-top: 40px; }
+.padding-top-50, .padding-left-50, .padding-right-50, .padding-down-50 {
+  padding-top: 50px; }
 
 /*# sourceMappingURL=cust-styles.css.map */

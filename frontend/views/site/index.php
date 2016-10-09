@@ -41,13 +41,12 @@ $this->title = 'CTTExp :: WebApp';
                 <div class="col-sm-12 col-md-4 col-md-offset-1 col-lg-4 col-lg-offset-1">
                     <img src="/img/logo.png" alt="" class="responsive-img">
                 </div>
-                <!--            <div class="col s12 m5 l5 white-text">-->
-                <div class="col-sm-12 col-md-5 col-lg-5 white-text">
+                <div class="col-sm-12 col-md-5 col-lg-5">
                     <hr align="left" width="80%">
-                    <h1 class="raleway-bold page-title">
+                    <h1 class="raleway-bold page-title white-text">
                         Wapp Beta
                     </h1>
-                    <h5 class="raleway-bold">
+                    <h5 class="raleway-bold white-text">
                         Web Application Beta Version
                     </h5>
                 </div>

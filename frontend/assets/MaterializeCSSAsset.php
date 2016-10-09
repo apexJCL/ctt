@@ -14,7 +14,16 @@ use yii\web\AssetBundle;
 class MaterializeCSSAsset extends AssetBundle
 {
     public $sourcePath = '@frontend/custom_libs/materialize';
+    public $publishOptions = [
+      'only' => [
+          '*.css',
+          'js/*.min.js'
+      ]
+    ];
     public $css = [
         'materialize.css'
+    ];
+    public $js = [
+        'js/materialize.min.js'
     ];
 }

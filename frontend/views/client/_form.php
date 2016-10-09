@@ -10,7 +10,7 @@ use yii\widgets\ActiveForm;
 ?>
 
 <div class="row">
-    <div class="col s12">
+    <div class="col-sm-12">
         <h3 class="raleway-light">
             <?= Yii::t('app', 'General info') ?>
         </h3>

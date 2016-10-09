@@ -21,11 +21,14 @@ use yii\helpers\Html;
  *
  *
  */
+$default_options = ['class' => 'btn-primary btn-floating btn-large'];
 ?>
 <div class="fixed-action-btn horizontal main-fab">
-    <a class="btn-floating btn-large">
-        <i class="large material-icons">menu</i>
-    </a>
+    <?= Html::a(
+        Html::tag('i', 'menu', ['class' => 'mdi']),
+        '#',
+        isset($options) ? array_merge($options, $default_options) : $default_options
+    ) ?>
     <ul>
         <?php
         foreach ($buttons as $button) {

@@ -2,7 +2,7 @@
 /* @var $this \yii\web\View */
 ?>
 <!--Footer-->
-<footer class="page-footer grey darken-4 center-on-small-only raleway">
+<footer class="page-footer grey darken-4 center-on-small-only raleway white-text">
     <!--Footer Links-->
     <div class="container-fluid">
         <div class="row">
