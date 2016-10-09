@@ -19,10 +19,7 @@ class AppAsset extends AssetBundle
     ];
     public $depends = [
         'yii\web\YiiAsset',
-        'frontend\assets\MaterializeCSSCustomAsset',
-        'backend\assets\MaterializeAsset',
         'backend\assets\CommonAssets',
-        'frontend\assets\MaterialIconsAsset',
         'frontend\assets\CTTAppAsset'
     ];
 }

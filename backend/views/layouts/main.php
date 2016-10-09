@@ -4,9 +4,20 @@
 /* @var $content string */
 
 use backend\assets\AppAsset;
+use frontend\assets\BootstrapYetiAsset;
+use frontend\assets\MaterializeCSSAsset;
+use kartik\base\PluginAssetBundle;
 use yii\helpers\Html;
 
 AppAsset::register($this);
+// For quick background-color support
+MaterializeCSSAsset::register($this);
+// Loads bootstrap and bootstrap.js
+PluginAssetBundle::register($this);
+//BootstrapCyborgAsset::register($this);
+//BootstrapPaperAsset::register($this);
+BootstrapYetiAsset::register($this);
+
 $this->beginPage();
 ?>
 <!DOCTYPE html>
@@ -28,27 +39,17 @@ $this->beginPage();
 </head>
 <body>
 <?php $this->beginBody() ?>
-<?= $this->render('_header') ?>
-<main>
-    <?= $content ?>
-</main>
-<?= $this->render('@frontend/views/layouts/_footer') ?>
-<!-- Loading Overlay -->
-<div class="loading-overlay" id="loading">
-    <div class="loading-overlay__spinner">
-        <div class="preloader-wrapper big active">
-            <div class="spinner-layer">
-                <div class="circle-clipper left">
-                    <div class="circle"></div>
-                </div>
-                <div class="gap-patch">
-                    <div class="circle"></div>
-                </div>
-                <div class="circle-clipper right">
-                    <div class="circle"></div>
-                </div>
+
+<div id="wrapper">
+    <div class="overlay"></div>
+    <div id="page-content-wrapper">
+        <?= $this->render('_header') ?>
+        <main>
+            <div class="container-fluid no-padding no-margin">
+                <?= $content ?>
             </div>
-        </div>
+        </main>
+        <?= $this->render('@frontend/views/layouts/_footer') ?>
     </div>
 </div>
 <?php $this->endBody() ?>

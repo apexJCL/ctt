@@ -3,54 +3,62 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 
 ?>
-<div class="navbar-fixed">
-    <nav>
-        <div class="nav-wrapper container-header">
-            <a href="<?= Url::to(['/']) ?>" class="brand-logo center">
-                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" data-original-aspect-ratio="0.8"
-                     style="width: 40px; height: 50px; fill: #ffffff; vertical-align: middle">
-                    <g
-                        transform="translate(-13.066666603088379,-8.166666984558105)">
-                        <path
-                            d="M22.442001 25.480001l14.504 14.373334l-17.476667 17.313334l-4.671333 -4.638666L27.570667 39.853334L13.066667 25.480001l17.476667 -17.313334l4.671333 4.638666L22.442001 25.480001zM52.266668 12.805333L47.595334 8.166667L30.118667 25.480001l17.476667 17.313334l4.671333 -4.638666L39.494001 25.480001L52.266668 12.805333z"></path>
-                    </g>
-                </svg>
-                CTT EXP & RENTALS
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-1 col-md-1 col-lg-1">
+                <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+                    <span class="hamb-top"></span>
+                    <span class="hamb-middle"></span>
+                    <span class="hamb-bottom"></span>
+                </button>
+            </div>
+            <div class="col-sm-1 col-md-11 col-lg-11">
+                <a href="#" class="navbar-brand">CTT EXP & RENTALS</a>
+            </div>
+        </div>
+    </div>
+</nav>
+<!-- Sidebar -->
+<nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+    <ul class="nav sidebar-nav">
+        <li class="sidebar-brand">
+            <a href="#">
+                Brand
             </a>
-            <a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="mdi">menu</i></a>
-        </div>
-    </nav>
-</div>
-<ul id="slide-out" class="side-nav ctt">
-    <li class="no-padding">
-        <div class="userView" style="margin-bottom: 0px">
-            <a href="#!user"><img class="circle" src="<?= Yii::$app->user->identity->getProfilePicture() ?>"></a>
-            <img class="background responsive-img blue" src="/img/menu_banner_blue.jpg">
-        </div>
-    </li>
-    <li class="no-padding">
-        <ul class="collapsible collapsible-accordion white-text">
-            <li class="bold">
-                <?= Html::a(Html::tag('i', 'keyboard_arrow_down', ['class' => 'mdi left white-text']) . Yii::t('app', 'Access'), null, ['class' => "collapsible-header waves-effect waves-light blue darken-3 white-text"]) ?>
-                <div class="collapsible-body" style="">
-                    <ul class="blue darken-2">
-                        <li><?= Html::a(Html::tag('i', null, ['class' => 'mdi mdi-perm-identity white-text left']) . Yii::t('app', 'Users'), Url::to(['user/index']), ['class' => 'white-text']) ?></li>
-                        <li><?= Html::a(Html::tag('i', null, ['class' => 'mdi mdi-people white-text left']) . Yii::t('app', 'Roles'), Url::to(['role/index']), ['class' => 'white-text']) ?></li>
-                        <li><?= Html::a(Html::tag('i', null, ['class' => 'mdi mdi-lock white-text left']) . Yii::t('app', 'Permission'), Url::to(['permission/index']), ['class' => 'white-text']) ?></li>
-                        <li><?= Html::a(Html::tag('i', null, ['class' => 'mdi mdi-book white-text left']) . Yii::t('app', 'Binnacles'), Url::to(['binnacle/index']), ['class' => 'white-text']) ?></li>
-                    </ul>
-                </div>
-            </li>
-            <li class="no-padding">
-                <?= Html::a(Html::tag('i', 'account_circle', ['class' => 'mdi left white-text']) . Yii::$app->user->identity->username, null, ['class' => 'collapsible-header waves-effect waves-light blue darken-3 white-text']) ?>
-                <div class="collapsible-body">
-                    <ul class="blue darken-2">
-                        <li>
-                            <?= Html::a(Html::tag('i', null, ['class' => 'mdi mdi-exit-to-app white-text left']) . Yii::t('app', 'Logout'), ['site/logout'], ['data' => ['method' => 'post'], 'class' => 'white-text']) ?>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-        </ul>
-    </li>
-</ul>
+        </li>
+        <li>
+            <a href="#">Home</a>
+        </li>
+        <li>
+            <a href="#">About</a>
+        </li>
+        <li>
+            <a href="#">Events</a>
+        </li>
+        <li>
+            <a href="#">Team</a>
+        </li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Works <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                <li class="dropdown-header">Dropdown heading</li>
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">Services</a>
+        </li>
+        <li>
+            <a href="#">Contact</a>
+        </li>
+        <li>
+            <a href="https://twitter.com/maridlcrmn">Follow me</a>
+        </li>
+    </ul>
+</nav>
+<!-- /#sidebar-wrapper -->

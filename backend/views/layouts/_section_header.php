@@ -9,7 +9,7 @@ use yii\helpers\Html;
 <div class="static-display">
     <div class="static-display__background">
         <div class="static-display__background--blurry">
-            <img src="<?=$photoUrl?>" alt="#" class="">
+            <img src="<?= isset($photoUrl) ? $photoUrl : '/img/background.png'  ?>" alt="#" class="">
         </div>
     </div>
     <div class="static-display__foreground--brand-logo row">

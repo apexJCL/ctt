@@ -13,7 +13,7 @@ $this->title = Yii::t('app', 'Item Descriptions');
 ?>
 <div>
     <?= $this->render('//layouts/_section_header') ?>
-    <div class="section greedy-horizontal-300 grey lighten-4 fab-container">
+    <div class="section greedy-vertical-300 grey lighten-4 fab-container">
         <?= $this->render('//layouts/_fab', [
             'buttons' => [
                 [
