@@ -85,7 +85,7 @@ a.desc:after {
 
 .grid-view .filters input,
 .grid-view .filters select {
-    min-width: 50px;
+    min-width: 30px;
 }
 
 .hint-block {

@@ -11,7 +11,7 @@ $this->title = Yii::t('app', 'Categories');
 ?>
 <div>
     <?= $this->render('//layouts/_section_header') ?>
-    <div class="container-fluid padding-top-30 grey lighten-5 fab-container greedy">
+    <div class="container-fluid padding-top-30 padding-bottom-50 grey lighten-5 fab-container greedy">
         <?=
         $this->render('//layouts/_fab', [
             'buttons' => [
@@ -42,9 +42,9 @@ $this->title = Yii::t('app', 'Categories');
                     'name',
                     'description',
                     [
-                        'class' => 'yii\grid\ActionColumn',
+                        'class' => 'kartik\grid\ActionColumn',
                         'visibleButtons' => $permissions,
-                        'header' => Yii::t('app', 'Actions')
+                        'header' => Yii::t('app', 'Actions'),
                     ],
                 ],
                 'pjax' => true,

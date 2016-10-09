@@ -1,8 +1,8 @@
 <?php
 
 use frontend\models\ItemDescriptionSearch;
+use kartik\grid\GridView;
 use yii\data\ActiveDataProvider;
-use yii\grid\GridView;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\DetailView;
@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
     <div>
         <?= $this->render('//layouts/_section_header') ?>
-        <div class="section grey lighten-4 fab-container greedy">
+        <div class="container-fluid greedy-horizontal-500 grey lighten-4 fab-container">
             <?= $this->render('//layouts/_fab', [
                 'buttons' => [
                     [
@@ -32,9 +32,11 @@ $this->params['breadcrumbs'][] = $this->title;
                         'options' => [
                             'href' => '#delete',
                             'class' => 'btn-floating red modal-trigger tooltipped',
-                            'data-position' => 'bottom',
-                            'data-delay' => '1000',
-                            'data-tooltip' => Yii::t('app', 'Delete')
+                            'data' => [
+                                'position' => 'bottom',
+                                'delay' => '1000',
+                                'tooltip' => Yii::t('app', 'Delete')
+                            ],
                         ]
                     ],
                     [
@@ -69,46 +71,69 @@ $this->params['breadcrumbs'][] = $this->title;
                     ]
                 ]
             ]) ?>
-            <div class="row container-lazy">
-                <div class="col s12">
-                    <h3 class="raleway-light"><?= Yii::t('app', 'Existence') ?></h3>
-                </div>
-                <div class="col s12">
-                    <!-- Aquí va la muestra de los objetos que hay con este atributo -->
-                    <?php Pjax::begin(); ?>
-                    <?php Pjax::end(); ?>
-                </div>
-                <div class="col s12">
-                    <?= Html::a(
-                        Html::tag('i', 'add', ['class' => 'mdi']),
-                        Url::to(['item-description/create', 'item_id' => $model->id]),
-                        ['class' => 'btn right']) ?>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <h3 class="raleway-light"><?= Yii::t('app', 'Existence') ?></h3>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <!-- Aquí va la muestra de los objetos que hay con este atributo -->
+                        <?=
+                        GridView::widget([
+                            'export' => false,
+                            'pjax' => true,
+                            'dataProvider' => $itemDescriptionProvider,
+                            'filterModel' => $itemDescriptionSearch,
+                            'columns' => [
+                                'serial_number',
+                                'sell_price',
+                                'rent_price',
+                                [
+                                    'attribute' => 'sale',
+                                    'filterType' => GridView::FILTER_CHECKBOX,
+                                    'value' => function ($data) {
+                                        return Html::checkbox($data->serial_number, $data->sale, ['disabled' => 'true']);
+                                    },
+                                    'format' => 'raw'
+                                ]
+                            ]
+                        ])
+                        ?>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <?= Html::a(
+                            Html::tag('i', 'add', ['class' => 'mdi']),
+                            Url::to(['item-description/create', 'item_id' => $model->id]),
+                            ['class' => 'btn btn-primary waves-effect right']) ?>
+                    </div>
                 </div>
             </div>
-            <div class="row container-lazy">
-                <div class="col s12">
-                    <h3 class="raleway-light"><?= Yii::t('app', 'General Overview') ?></h3>
-                </div>
-                <div class="col s12">
-                    <?= DetailView::widget([
-                        'model' => $model,
-                        'attributes' => [
-                            'name',
-                            'description',
-                            [
-                                'attribute' => 'category_id',
-                                'label' => Yii::t('app', 'Category'),
-                                'format' => 'raw',
-                                'value' => $model->getCategory()->one()->name
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <h3 class="raleway-light"><?= Yii::t('app', 'General Overview') ?></h3>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-6">
+                        <?= DetailView::widget([
+                            'model' => $model,
+                            'attributes' => [
+                                'name',
+                                'description',
+                                [
+                                    'attribute' => 'category_id',
+                                    'label' => Yii::t('app', 'Category'),
+                                    'format' => 'raw',
+                                    'value' => $model->getCategory()->one()->name
+                                ],
+                                [
+                                    'attribute' => 'brand_id',
+                                    'label' => Yii::t('app', 'Brand'),
+                                    'format' => 'raw',
+                                    'value' => $model->getBrand()->one()->name
+                                ]
                             ],
-                            [
-                                'attribute' => 'brand_id',
-                                'label' => Yii::t('app', 'Brand'),
-                                'format' => 'raw',
-                                'value' => $model->getBrand()->one()->name
-                            ]
-                        ],
-                    ]) ?>
+                        ]) ?>
+                    </div>
                 </div>
             </div>
         </div>
