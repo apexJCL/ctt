@@ -1,9 +1,7 @@
 <?php
 
-use yii\grid\GridView;
-use yii\helpers\Html;
+use kartik\grid\GridView;
 use yii\helpers\Url;
-use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
 /* @var $searchModel common\models\ClientSearch */
@@ -12,7 +10,10 @@ use yii\widgets\Pjax;
 $this->title = Yii::t('app', 'Clients');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<?= $this->render('//layouts/_section_header') ?>
+<?= $this->render('//layouts/_section_header', [
+    'photoUrl' => '/img/background.jpg',
+    'titleColor' => 'white'
+]) ?>
 <div class="container-fluid greedy-horizontal-500 grey lighten-4 fab-container">
     <?= $this->render('//layouts/_fab', [
         'buttons' => [
@@ -42,10 +43,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
             </div>
             <div class="col-sm-12">
-                <?php Pjax::begin(); ?>
                 <?= GridView::widget([
                     'dataProvider' => $dataProvider,
                     'filterModel' => $searchModel,
+                    'export' => false,
                     'rowOptions' => [
                         'class' => 'slim',
                     ],
@@ -56,10 +57,11 @@ $this->params['breadcrumbs'][] = $this->title;
                         'apellido_paterno',
                         'apellido_materno',
                         'email:email',
-                        ['class' => 'yii\grid\ActionColumn'],
+                        ['class' => 'yii\grid\ActionColumn', 'header' => Yii::t('app', 'Actions')],
                     ],
+//                    'pjax' => true,
+//                    'responsive' => true,
                 ]); ?>
-                <?php Pjax::end(); ?>
             </div>
         </div>
     </div>

@@ -31,7 +31,7 @@ if ($loginRequired)
 ?>
 
 <li class="dropdown">
-    <a class="dropdown-toggle text-primary" id="<?= $id ?>" data-toggle="dropdown" aria-haspopup="true"
+    <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button"
        aria-expanded="false"><?= $title ?><b class="caret"></b></a>
     <ul class="dropdown-menu">
         <?php

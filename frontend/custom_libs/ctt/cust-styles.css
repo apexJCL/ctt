@@ -240,7 +240,7 @@ New display
   .footer-tag img {
     position: absolute;
     right: 2%;
-    bottom: 150px; }
+    bottom: 165px; }
   @media only screen and (max-width: 1333px) {
     .footer-tag {
       display: none; } }
@@ -292,13 +292,37 @@ footer.page-footer {
 .greedy-horizontal-500 {
   min-height: 500px; }
 
-.padding-top-20, .padding-left-20, .padding-right-20, .padding-down-20 {
+.padding-top-20 {
   padding-top: 20px; }
-.padding-top-30, .padding-left-30, .padding-right-30, .padding-down-30 {
+.padding-top-30 {
   padding-top: 30px; }
-.padding-top-40, .padding-left-40, .padding-right-40, .padding-down-40 {
+.padding-top-40 {
   padding-top: 40px; }
-.padding-top-50, .padding-left-50, .padding-right-50, .padding-down-50 {
+.padding-top-50 {
   padding-top: 50px; }
+.padding-left-20 {
+  padding-left: 20px; }
+.padding-left-30 {
+  padding-left: 30px; }
+.padding-left-40 {
+  padding-left: 40px; }
+.padding-left-50 {
+  padding-left: 50px; }
+.padding-right-20 {
+  padding-right: 20px; }
+.padding-right-30 {
+  padding-right: 30px; }
+.padding-right-40 {
+  padding-right: 40px; }
+.padding-right-50 {
+  padding-right: 50px; }
+.padding-bottom-20 {
+  padding-bottom: 20px; }
+.padding-bottom-30 {
+  padding-bottom: 30px; }
+.padding-bottom-40 {
+  padding-bottom: 40px; }
+.padding-bottom-50 {
+  padding-bottom: 50px; }
 
 /*# sourceMappingURL=cust-styles.css.map */

@@ -401,6 +401,12 @@ class User extends ActiveRecord implements IdentityInterface
         return false;
     }
 
+    /**
+     * Returns true or false whether or not a user can do something
+     *
+     * @param $permission
+     * @return bool
+     */
     public function canI($permission)
     {
         // If the user is root, skip

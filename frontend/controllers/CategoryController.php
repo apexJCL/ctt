@@ -3,6 +3,7 @@
 namespace frontend\controllers;
 
 use common\helpers\RBACHelper;
+use common\helpers\UserHelper;
 use Yii;
 use frontend\models\Category;
 use frontend\models\CategorySearch;
@@ -55,6 +56,11 @@ class CategoryController extends Controller
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'permissions' => [
+                'view' => UserHelper::canUser('view', $this->id),
+                'update' => UserHelper::canUser('update', $this->id),
+                'delete' => UserHelper::canUser('delete', $this->id),
+            ]
         ]);
     }
 

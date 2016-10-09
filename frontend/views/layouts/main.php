@@ -7,9 +7,13 @@ use frontend\assets\AppAsset;
 use frontend\assets\BootstrapYetiAsset;
 use frontend\assets\CTTAppAsset;
 use frontend\assets\MaterializeCSSAsset;
+use kartik\base\AssetBundle;
+use kartik\base\PluginAssetBundle;
 use yii\helpers\Html;
 
 AppAsset::register($this);
+// Loads bootstrap and bootstrap.js
+PluginAssetBundle::register($this);
 // For quick background-color support
 MaterializeCSSAsset::register($this);
 //BootstrapCyborgAsset::register($this);

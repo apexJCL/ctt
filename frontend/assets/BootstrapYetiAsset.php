@@ -22,7 +22,4 @@ class BootstrapYetiAsset extends AssetBundle
     public $css = [
         'bootstrap.min.css'
     ];
-    public $depends = [
-        'frontend\assets\BootstrapFullAsset'
-    ];
 }

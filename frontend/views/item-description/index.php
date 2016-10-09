@@ -1,7 +1,7 @@
 <?php
 
-use yii\helpers\Html;
-use yii\grid\GridView;
+use kartik\grid\GridView;
+use yii\bootstrap\Html;
 use yii\helpers\Url;
 use yii\widgets\Pjax;
 
@@ -13,7 +13,7 @@ $this->title = Yii::t('app', 'Item Descriptions');
 ?>
 <div>
     <?= $this->render('//layouts/_section_header') ?>
-    <div class="section grey lighten-4 fab-container">
+    <div class="section greedy-horizontal-300 grey lighten-4 fab-container">
         <?= $this->render('//layouts/_fab', [
             'buttons' => [
                 [
@@ -34,7 +34,7 @@ $this->title = Yii::t('app', 'Item Descriptions');
             ]
         ]) ?>
         <div class="container">
-            <?php Pjax::begin(); ?>    <?= GridView::widget([
+            <?= GridView::widget([
                 'dataProvider' => $dataProvider,
                 'filterModel' => $searchModel,
                 'rowOptions' => [
@@ -48,17 +48,25 @@ $this->title = Yii::t('app', 'Item Descriptions');
                     'serial_number',
                     'acquisition_price',
                     'sell_price',
+                    [
+                        'attribute' => 'sale',
+                        'filterType' => GridView::FILTER_CHECKBOX,
+                        'value' => function($data){
+                            return Html::checkbox($data->serial_number, $data->sale, ['disabled' => 'true']);
+                        },
+                        'format' => 'raw'
+                    ],
                     // 'rent_price',
                     // 'sale',
                     // 'created_at',
                     // 'updated_at',
                     // 'created_by',
                     // 'updated_by',
-
                     ['class' => 'yii\grid\ActionColumn'],
                 ],
+                'pjax' => true,
+                'export' => false
             ]); ?>
-            <?php Pjax::end(); ?>
         </div>
     </div>
 </div>

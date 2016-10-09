@@ -11,11 +11,9 @@ use yii\widgets\Pjax;
 $this->title = $model->nombre;
 ?>
 <div>
-    <?php Pjax::begin(); ?>
     <?= $this->render('_section_header_profile', [
         'photoUrl' => $model->getProfilePicture()
     ]) ?>
-    <?php Pjax::end(); ?>
     <div class="container-fluid greedy-horizontal-500  grey lighten-4 fab-container greedy">
         <?= $this->render('//layouts/_fab', [
             'buttons' => [
@@ -29,9 +27,10 @@ $this->title = $model->nombre;
                     'options' => [
                         'href' => '#delete',
                         'class' => 'btn-floating red modal-trigger tooltipped',
-                        'data-position' => 'bottom',
-                        'data-delay' => '1000',
-                        'data-tooltip' => Yii::t('app', 'Delete')
+                        'data' => [
+                            'toggle' => 'modal',
+                            'target' => '#deleteModal'
+                        ],
                     ]
                 ],
                 [
@@ -66,14 +65,17 @@ $this->title = $model->nombre;
                 ]
             ]
         ]) ?>
-        <div class="container row">
-            <div class="col-sm-s12 black-text raleway-bold show-on-small hide-on-med-and-up">
+        <div class="container row padding-top-20">
+            <div class="col-sm-s12 col-md-12 col-lg-12 black-text raleway-bold show-on-small hide-on-med-and-up">
                 <h1>
                     <div class="thin-line primary-overlay"></div>
                     <?= Html::encode($this->title) ?>
                 </h1>
             </div>
-            <div class="col-sm-12">
+            <div class="col-sm-s12 col-md-12 col-lg-12">
+                <?= Html::a(Html::tag('i', 'chevron_left', ['class' => 'mdi']) . Yii::t('app', 'Back') , Url::to(['client/index']), ['class' => 'btn-flat btn waves-effect']) ?>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-12">
                 <h2 class="raleway-thin"><?= Yii::t('app', 'General Overview') ?></h2>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-4">
@@ -88,22 +90,32 @@ $this->title = $model->nombre;
                     ],
                 ]) ?>
             </div>
+            <div class="col-sm-s12 col-md-12 col-lg-12">
+                <?= Html::a(Html::tag('i', 'chevron_left', ['class' => 'mdi']) . Yii::t('app', 'Back') , Url::to(['client/index']), ['class' => 'btn-flat btn']) ?>
+            </div>
         </div>
-        <!-- Modal -->
-        <div class="modal red accent-4 white-text" id="delete">
-            <div class="modal-content">
-                <h4>¿Seguro que desea eliminar a este cliente?</h4>
-                <p>Esta acción no se puede revertir</p>
+    </div>
+</div>
+
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="modalTitle">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 id="modalTitle" class="modal-title"><?= Yii::t('app', 'Warning') ?></h4>
+            </div>
+            <div class="modal-body">
+                <p><?= Yii::t('app', 'This action cannot be undone') ?></p>
             </div>
             <div class="modal-footer">
-                <a href="#!" class=" waves-effect waves-ripple btn-flat modal-close">Cancelar</a>
                 <?= Html::a("Eliminar", ['delete', 'id' => $model->id],
-                    ['class' => 'btn waves-effect waves-light red accent-2',
+                    ['class' => 'btn btn-danger waves-effect waves-light',
                         'data' => [
                             'method' => 'post'
                         ],
                     ])
                 ?>
+                <button type="button" class="btn btn-flat waves-effect" data-dismiss="modal"><?= Yii::t('app', 'Cancel') ?></button>
             </div>
         </div>
     </div>

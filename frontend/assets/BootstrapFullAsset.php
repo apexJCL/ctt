@@ -16,17 +16,17 @@ class BootstrapFullAsset extends AssetBundle
 
     public $publishOptions = [
         'only' => [
-            'dist/css/*.min.css',
-            'dist/js/*.min.js',
+            'dist/css/*.css',
+            'dist/js/*.js',
             'dist/fonts/*.woff',
         ]
     ];
 
     public $css = [
-        'dist/css/bootstrap.min.css',
+        'dist/css/bootstrap.css',
     ];
 
     public $js = [
-        'dist/js/bootstrap.min.js',
+        'dist/js/bootstrap.js',
     ];
 }
