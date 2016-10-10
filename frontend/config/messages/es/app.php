@@ -9,7 +9,7 @@
  * Each array element represents the translation (value) of a message (key).
  * If the value is empty, the message is considered as not translated.
  * Messages that no longer need translation will have their translations
- * enclosed between a pair of '' marks.
+ * enclosed between a pair of '@@' marks.
  *
  * Message string can be used with plural forms format. Check i18n section
  * of the guide for details.
@@ -17,12 +17,16 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Existence' => 'Existencias',
-    'Item ID' => 'ID de Artículo',
-    'If you think this is a mistake, please contact Support.' => 'Si cree que esto es un error, contacte a Soporte Técnico.',
-    'Please fill the next fields' => 'Porfavor, llene los siguientes campos',
-    'Signup' => 'Registrar',
-    'User\'s list' => 'Lista de usuarios',
+    'Actions' => '',
+    'All clients' => '',
+    'Inventory' => '',
+    'This action cannot be undone' => '',
+    'Warning' => '',
+    'If you think this is a mistake, please contact Support.' => '@@Si cree que esto es un error, contacte a Soporte Técnico.@@',
+    'Manage' => '@@Administrar@@',
+    'Please fill the next fields' => '@@Porfavor, llene los siguientes campos@@',
+    'Signup' => '@@Registrar@@',
+    'User\'s list' => '@@Lista de usuarios@@',
     'Accessory Of' => 'Accesorio de',
     'Acquisition Price' => 'Precio de adquisición',
     'Add' => 'Añadir',
@@ -47,16 +51,17 @@ return [
     'Delete' => 'Eliminar',
     'Description' => 'Descripción',
     'Edit' => 'Editar',
+    'Existence' => 'Existencias',
     'General Overview' => 'Datos Generales',
     'General info' => 'Información general',
     'ID' => 'ID',
     'If photo not uploaded, default avatar will be used' => 'Si no se sube una fotografía, se usará el avatar por defecto',
     'If you forgot your password you can' => 'Si olvidó su contraseña, solicite',
     'Item Descriptions' => 'Descripciones de artículos',
+    'Item ID' => 'ID de Artículo',
     'Items' => 'Artículos',
     'Login' => 'Iniciar Sesión',
     'Logout' => 'Cerrar Sesión',
-    'Manage' => 'Administrar',
     'Model' => 'Modelo',
     'Name' => 'Nombre',
     'Password' => 'Contraseña',

@@ -95,6 +95,10 @@ $this->params['breadcrumbs'][] = $this->title;
                                         return Html::checkbox($data->serial_number, $data->sale, ['disabled' => 'true']);
                                     },
                                     'format' => 'raw'
+                                ],
+                                [
+                                    'class' => kartik\grid\ActionColumn::className(),
+
                                 ]
                             ]
                         ])
@@ -102,7 +106,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
                     <div class="col-sm-12 col-md-12 col-lg-12">
                         <?= Html::a(
-                            Html::tag('i', 'add', ['class' => 'mdi']),
+                            Html::tag('i', null, ['class' => 'mdi mdi-add']),
                             Url::to(['item-description/create', 'item_id' => $model->id]),
                             ['class' => 'btn btn-primary waves-effect right']) ?>
                     </div>

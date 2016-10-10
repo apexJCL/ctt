@@ -12,11 +12,8 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Categories'), 'url' 
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div>
-    <?= $this->render('//layouts/_section_header', [
-        'photoUrl' => '',
-        'titleColor' => 'black'
-    ]) ?>
-    <div class="section grey lighten-5 fab-container greedy">
+    <?= $this->render('//layouts/_section_header') ?>
+    <div class="container-fluid grey lighten-5 fab-container greedy">
         <?= $this->render('//layouts/_fab', [
             'buttons' => [
                 [
@@ -67,10 +64,10 @@ $this->params['breadcrumbs'][] = $this->title;
             ]
         ]) ?>
         <div class="container row">
-            <div class="col s12">
+            <div class="col-sm-12 col-md-12 col-lg-12">
                 <h3 class="raleway-light"><?= Yii::t('app', 'General Overview') ?></h3>
             </div>
-            <div class="col s12">
+            <div class="col-sm-12 col-md-12 col-lg-4">
                 <?= DetailView::widget([
                     'model' => $model,
                     'attributes' => [

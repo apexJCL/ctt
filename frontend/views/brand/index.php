@@ -12,7 +12,7 @@ $this->title = Yii::t('app', 'Brands');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <?= $this->render('//layouts/_section_header') ?>
-<div class="container-fluid greedy-horizontal-400 grey lighten-4 fab-container padding-top-30">
+<div class="container-fluid greedy-horizontal-400 grey lighten-4 fab-container padding-top-30 padding-bottom-30">
     <?= $this->render('//layouts/_fab', [
         'buttons' => [
             [

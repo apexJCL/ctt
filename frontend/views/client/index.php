@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
     'photoUrl' => '/img/background.jpg',
     'titleColor' => 'white'
 ]) ?>
-<div class="container-fluid greedy-horizontal-500 grey lighten-4 fab-container">
+<div class="container-fluid padding-bottom-50 greedy-horizontal-500 grey lighten-4 fab-container">
     <?= $this->render('//layouts/_fab', [
         'buttons' => [
             [
@@ -59,8 +59,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'email:email',
                         ['class' => 'yii\grid\ActionColumn', 'header' => Yii::t('app', 'Actions')],
                     ],
-//                    'pjax' => true,
-//                    'responsive' => true,
+                    'pjax' => true
                 ]); ?>
             </div>
         </div>

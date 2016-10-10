@@ -1,7 +1,6 @@
 <?php
 
-use yii\grid\GridView;
-use yii\helpers\Html;
+use kartik\grid\GridView;
 use yii\helpers\Url;
 use yii\widgets\Pjax;
 
@@ -36,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ]
         ]) ?>
         <div class="container">
-            <?php Pjax::begin(); ?>    <?= GridView::widget([
+            <?= GridView::widget([
                 'dataProvider' => $dataProvider,
                 'filterModel' => $searchModel,
                 'rowOptions' => [
@@ -44,15 +43,25 @@ $this->params['breadcrumbs'][] = $this->title;
                 ],
                 'columns' => [
                     ['class' => 'yii\grid\SerialColumn'],
-                    'id',
                     'name',
                     'description',
-                    'category_id',
-                    'brand_id',
+                    [
+                        'attribute' => 'category_id',
+                        'value' => function($data){
+                            return $data->category->name;
+                        }
+                    ],
+                    [
+                        'attribute' => 'brand_id',
+                        'value' => function($data){
+                            return $data->brand->name;
+                        }
+                    ],
                     ['class' => 'yii\grid\ActionColumn'],
                 ],
+                'pjax' => true,
+                'export' => false
             ]); ?>
         </div>
     </div>
-    <?php Pjax::end(); ?>
 </div>
