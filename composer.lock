@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c743cd3b43bb082338b4d445c56f11de",
-    "content-hash": "fea169b295595f6327a6a7d638d259a8",
+    "hash": "c63fb0876fb5fb76290aebd50435daf0",
+    "content-hash": "8b4eb582bde8e3bd5629cf3570c37f58",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -54,108 +54,6 @@
                 "mobile-first",
                 "responsive",
                 "web"
-            ]
-        },
-        {
-            "name": "bower-asset/bootstrap-material-design",
-            "version": "v0.5.10",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/FezVrasta/bootstrap-material-design.git",
-                "reference": "6625d42cc2f591ea7bc05ea0f95a2d091c3a1865"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/FezVrasta/bootstrap-material-design/zipball/6625d42cc2f591ea7bc05ea0f95a2d091c3a1865",
-                "reference": "6625d42cc2f591ea7bc05ea0f95a2d091c3a1865",
-                "shasum": ""
-            },
-            "require": {
-                "bower-asset/bootstrap": "~3.3.6",
-                "bower-asset/bootstrap-sass": "~3.3.6",
-                "bower-asset/jquery": ">=2.2.0,<3.0.0"
-            },
-            "type": "bower-asset-library",
-            "extra": {
-                "bower-asset-main": [
-                    "dist/css/bootstrap-material-design.css",
-                    "dist/js/material.js",
-                    "dist/css/ripples.css",
-                    "dist/js/ripples.js"
-                ],
-                "bower-asset-ignore": [
-                    "test",
-                    "screenshots",
-                    "demo",
-                    ".editorconfig",
-                    ".gitignore",
-                    ".jshintrc",
-                    ".travis.yml",
-                    "CONTRIBUTING.md",
-                    "Gruntfile.json",
-                    "index.html",
-                    "**/.*",
-                    "node_modules",
-                    "bower_components",
-                    "test",
-                    "tests"
-                ]
-            },
-            "license": [
-                "https://github.com/FezVrasta/bootstrap-material-design/blob/master/LICENSE.md"
-            ],
-            "description": "Material Design theme for Bootstrap 3",
-            "keywords": [
-                "android",
-                "bootstrap",
-                "design",
-                "google",
-                "material",
-                "theme"
-            ]
-        },
-        {
-            "name": "bower-asset/bootstrap-sass",
-            "version": "v3.3.7",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/twbs/bootstrap-sass.git",
-                "reference": "5d6b2ebba0c2a5885ce2f0e01e9218db3d3b5e47"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/twbs/bootstrap-sass/zipball/5d6b2ebba0c2a5885ce2f0e01e9218db3d3b5e47",
-                "reference": "5d6b2ebba0c2a5885ce2f0e01e9218db3d3b5e47",
-                "shasum": ""
-            },
-            "require": {
-                "bower-asset/jquery": ">=1.9.1,<=3"
-            },
-            "type": "bower-asset-library",
-            "extra": {
-                "bower-asset-main": [
-                    "assets/stylesheets/_bootstrap.scss",
-                    "assets/javascripts/bootstrap.js"
-                ],
-                "bower-asset-ignore": [
-                    "**/.*",
-                    "lib",
-                    "tasks",
-                    "templates",
-                    "test",
-                    "*.gemspec",
-                    "Rakefile",
-                    "Gemfile"
-                ]
-            },
-            "license": [
-                "MIT"
-            ],
-            "description": "bootstrap-sass is a Sass-powered version of Bootstrap 3, ready to drop right into your Sass powered applications.",
-            "keywords": [
-                "bootstrap",
-                "sass",
-                "twbs"
             ]
         },
         {
@@ -210,53 +108,6 @@
                 "responsive",
                 "web"
             ]
-        },
-        {
-            "name": "bower-asset/flat-ui",
-            "version": "2.3.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/designmodo/Flat-UI.git",
-                "reference": "8e35fb5360f38fbabf581617052b69a261c01466"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/designmodo/Flat-UI/zipball/8e35fb5360f38fbabf581617052b69a261c01466",
-                "reference": "8e35fb5360f38fbabf581617052b69a261c01466",
-                "shasum": ""
-            },
-            "require": {
-                "bower-asset/videojs": "~4.7.2"
-            },
-            "require-dev": {
-                "bower-asset/bootstrap": "~3.2.0",
-                "bower-asset/bootstrap-switch": "~3.0.2",
-                "bower-asset/bootstrap-tagsinput": "~0.4.2",
-                "bower-asset/google-code-prettify": "~1.0.3",
-                "bower-asset/holderjs": "~2.4.0",
-                "bower-asset/html5shiv": "~3.7.2",
-                "bower-asset/jquery": "~1.11.1",
-                "bower-asset/jquery-ui": "~1.10.4",
-                "bower-asset/jquery-ui-touch-punch": "*",
-                "bower-asset/respond": "~1.4.2",
-                "bower-asset/select2": "~3.5.1",
-                "bower-asset/typeahead.js": "~0.10.5"
-            },
-            "type": "bower-asset-library",
-            "extra": {
-                "bower-asset-main": [
-                    "less/flat-ui.less",
-                    "dist/css/flat-ui.css",
-                    "dist/js/flat-ui.js",
-                    "dist/fonts/glyphicons/flat-ui-icons-regular.eot",
-                    "dist/fonts/glyphicons/flat-ui-icons-regular.svg",
-                    "dist/fonts/glyphicons/flat-ui-icons-regular.ttf",
-                    "dist/fonts/glyphicons/flat-ui-icons-regular.woff"
-                ],
-                "bower-asset-ignore": [
-                    ".*"
-                ]
-            }
         },
         {
             "name": "bower-asset/jquery",
@@ -446,44 +297,6 @@
                     "package.json"
                 ]
             }
-        },
-        {
-            "name": "bower-asset/videojs",
-            "version": "v4.7.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/videojs/video.js.git",
-                "reference": "760eb308db573022d6a96ee67bed9d205cde2aca"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/videojs/video.js/zipball/760eb308db573022d6a96ee67bed9d205cde2aca",
-                "reference": "760eb308db573022d6a96ee67bed9d205cde2aca",
-                "shasum": ""
-            },
-            "type": "bower-asset-library",
-            "extra": {
-                "bower-asset-main": [
-                    "dist/video-js/video.js",
-                    "dist/video-js/video-js.css"
-                ],
-                "bower-asset-ignore": [
-                    "**/.*",
-                    "node_modules",
-                    "bower_components",
-                    "test",
-                    "tests",
-                    "build"
-                ]
-            },
-            "description": "An HTML5 and Flash video player with a common API and skin for both.",
-            "keywords": [
-                "flash",
-                "html5",
-                "player",
-                "video",
-                "videojs"
-            ]
         },
         {
             "name": "bower-asset/yii2-pjax",
@@ -866,52 +679,6 @@
                 "web-font"
             ],
             "time": "2016-02-22 01:05:40"
-        },
-        {
-            "name": "npm-asset/mdbootstrap",
-            "version": "4.1.1",
-            "dist": {
-                "type": "tar",
-                "url": "https://registry.npmjs.org/mdbootstrap/-/mdbootstrap-4.1.1.tgz",
-                "reference": null,
-                "shasum": "a5f79db54d29a2ac1c2413a5ecf8039431ee6de5"
-            },
-            "type": "npm-asset-library",
-            "extra": {
-                "npm-asset-bugs": {
-                    "url": "https://github.com/mdbootstrap/bootstrap-material-design/issues"
-                },
-                "npm-asset-main": "index.html",
-                "npm-asset-directories": [],
-                "npm-asset-repository": {
-                    "type": "git",
-                    "url": "git://github.com/mdbootstrap/bootstrap-material-design.git"
-                },
-                "npm-asset-scripts": {
-                    "test": "echo \"Error: no test specified\" && exit 1"
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "MDBootstrap"
-                }
-            ],
-            "description": "Material Design for Bootstrap (MDB) is a powerful Material Design UI KIT for most popular HTML, CSS, and JS framework - Bootstrap.",
-            "homepage": "https://github.com/mdbootstrap/bootstrap-material-design#readme",
-            "keywords": [
-                "bootstrap",
-                "css",
-                "design",
-                "framework",
-                "material",
-                "mdb",
-                "mdbootstrap",
-                "mobile-first",
-                "responsive"
-            ]
         },
         {
             "name": "swiftmailer/swiftmailer",
