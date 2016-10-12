@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAEA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;EAiCE",
-"sources": ["../../../vendor/bower/bootstrap-material-design/sass/_colors.scss"],
-"names": [],
-"file": "bootstrap_material.css"
-}
