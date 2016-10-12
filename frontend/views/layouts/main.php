@@ -12,12 +12,8 @@ use kartik\base\PluginAssetBundle;
 use yii\helpers\Html;
 
 AppAsset::register($this);
-// For quick background-color support
 MaterializeCSSAsset::register($this);
-// Loads bootstrap and bootstrap.js
 PluginAssetBundle::register($this);
-//BootstrapCyborgAsset::register($this);
-//BootstrapPaperAsset::register($this);
 BootstrapYetiAsset::register($this);
 CTTAppAsset::register($this);
 ?>
