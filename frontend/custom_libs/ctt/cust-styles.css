@@ -277,6 +277,10 @@ footer.page-footer {
   border-radius: 0px;
   margin-bottom: 0px; }
 
+.container {
+  margin-top: 20px;
+  margin-bottom: 20px; }
+
 .responsive-img {
   display: block;
   margin: 0 auto;

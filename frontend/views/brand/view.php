@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div>
     <?= $this->render('//layouts/_section_header') ?>
-    <div class="section grey lighten-4 fab-container greedy">
+    <div class="section grey greedy lighten-4 fab-container greedy">
         <?= $this->render('//layouts/_fab', [
             'buttons' => [
                 [
@@ -63,9 +63,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 ]
             ]
         ]) ?>
-        <div class="container-lazy">
+        <div class="container">
             <div class="row">
-                <div class="col s12 m6">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <h3><?= Yii::t('app', 'Details') ?></h3>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-4">
                     <?= DetailView::widget([
                         'model' => $model,
                         'attributes' => [
@@ -73,6 +76,9 @@ $this->params['breadcrumbs'][] = $this->title;
                             'name',
                         ],
                     ]) ?>
+                </div>
+                <div class="col-sm-s12 col-md-12 col-lg-12">
+                    <?= Html::a(Html::tag('i', 'chevron_left', ['class' => 'mdi']) . Yii::t('app', 'Back'), Url::to(['index']), ['class' => 'btn-flat btn waves-effect']) ?>
                 </div>
             </div>
         </div>

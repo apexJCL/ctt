@@ -57,7 +57,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'apellido_paterno',
                         'apellido_materno',
                         'email:email',
-                        ['class' => 'yii\grid\ActionColumn', 'header' => Yii::t('app', 'Actions')],
+                        ['class' => kartik\grid\ActionColumn::className(), 'header' => Yii::t('app', 'Actions')],
                     ],
                     'pjax' => true
                 ]); ?>

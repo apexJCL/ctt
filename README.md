@@ -1,3 +1,3 @@
 # CTT
-(Ir a aplicación)[http://sistemactt.com]
+[Ir a aplicación](http://sistemactt.com)
 ;)

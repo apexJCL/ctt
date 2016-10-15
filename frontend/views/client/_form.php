@@ -42,10 +42,10 @@ use yii\widgets\ActiveForm;
                         <?= Yii::t('app', 'Protip: ') ?>
                     </div>
                     <div class="row no-margin">
-                        <div class="col s12">
+                        <div class="col-sm-12">
                             <p><?= Yii::t('app', 'If photo not uploaded, default avatar will be used') ?></p>
                         </div>
-                        <div class="col s12">
+                        <div class="col-sm-12">
                             <?= Html::img('/img/default_avatar.jpg', ['class' => 'responsive-img circle right', 'style' => 'max-width: 48px']) ?>
                         </div>
                     </div>

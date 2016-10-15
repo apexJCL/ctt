@@ -3,7 +3,6 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\DetailView;
-use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Client */
@@ -14,7 +13,7 @@ $this->title = $model->nombre;
     <?= $this->render('_section_header_profile', [
         'photoUrl' => $model->getProfilePicture()
     ]) ?>
-    <div class="container-fluid greedy-horizontal-500  grey lighten-4 fab-container greedy">
+    <div class="container-fluid greedy padding-bottom-50 grey lighten-4 fab-container greedy">
         <?= $this->render('//layouts/_fab', [
             'buttons' => [
                 [
@@ -73,7 +72,7 @@ $this->title = $model->nombre;
                 </h1>
             </div>
             <div class="col-sm-s12 col-md-12 col-lg-12">
-                <?= Html::a(Html::tag('i', 'chevron_left', ['class' => 'mdi']) . Yii::t('app', 'Back') , Url::to(['client/index']), ['class' => 'btn-flat btn waves-effect']) ?>
+                <?= Html::a(Html::tag('i', 'chevron_left', ['class' => 'mdi']) . Yii::t('app', 'Back'), Url::to(['client/index']), ['class' => 'btn-flat btn waves-effect']) ?>
             </div>
             <div class="col-sm-12 col-md-12 col-lg-12">
                 <h2 class="raleway-thin"><?= Yii::t('app', 'General Overview') ?></h2>
@@ -91,7 +90,7 @@ $this->title = $model->nombre;
                 ]) ?>
             </div>
             <div class="col-sm-s12 col-md-12 col-lg-12">
-                <?= Html::a(Html::tag('i', 'chevron_left', ['class' => 'mdi']) . Yii::t('app', 'Back') , Url::to(['client/index']), ['class' => 'btn-flat btn']) ?>
+                <?= Html::a(Html::tag('i', 'chevron_left', ['class' => 'mdi']) . Yii::t('app', 'Back'), Url::to(['client/index']), ['class' => 'btn-flat btn']) ?>
             </div>
         </div>
     </div>
@@ -115,7 +114,8 @@ $this->title = $model->nombre;
                         ],
                     ])
                 ?>
-                <button type="button" class="btn btn-flat waves-effect" data-dismiss="modal"><?= Yii::t('app', 'Cancel') ?></button>
+                <button type="button" class="btn btn-flat waves-effect"
+                        data-dismiss="modal"><?= Yii::t('app', 'Cancel') ?></button>
             </div>
         </div>
     </div>

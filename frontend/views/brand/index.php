@@ -2,7 +2,6 @@
 
 use kartik\grid\GridView;
 use yii\helpers\Url;
-use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
 /* @var $searchModel frontend\models\BrandSearch */
@@ -12,7 +11,7 @@ $this->title = Yii::t('app', 'Brands');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <?= $this->render('//layouts/_section_header') ?>
-<div class="container-fluid greedy-horizontal-400 grey lighten-4 fab-container padding-top-30 padding-bottom-30">
+<div class="container-fluid greedy grey lighten-4 fab-container padding-top-30 padding-bottom-30">
     <?= $this->render('//layouts/_fab', [
         'buttons' => [
             [
@@ -44,11 +43,12 @@ $this->params['breadcrumbs'][] = $this->title;
                         'id',
                         'name',
                         [
-                            'class' => 'yii\grid\ActionColumn',
+                            'class' => kartik\grid\ActionColumn::className(),
                             'header' => Yii::t('app', 'Actions')
                         ],
                     ],
-                    'pjax' => true
+                    'pjax' => true,
+                    'striped' => false
                 ]); ?>
             </div>
         </div>

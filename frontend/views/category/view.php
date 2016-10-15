@@ -76,6 +76,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     ],
                 ]) ?>
             </div>
+            <?= $this->render('//layouts/_back_button') ?>
         </div>
     </div>
 </div>

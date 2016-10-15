@@ -6,7 +6,6 @@ use yii\data\ActiveDataProvider;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\DetailView;
-use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
 /* @var $model frontend\models\Item */
@@ -14,31 +13,12 @@ use yii\widgets\Pjax;
 /** @var ItemDescriptionSearch $itemDescriptionSearch */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Items'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
 ?>
     <div>
         <?= $this->render('//layouts/_section_header') ?>
-        <div class="container-fluid greedy-horizontal-500 grey lighten-4 fab-container">
+        <div class="container-fluid greedy grey lighten-4 fab-container">
             <?= $this->render('//layouts/_fab', [
                 'buttons' => [
-                    [
-                        'permission' => 'delete',
-                        'link' => [
-                            'options' => [
-                                'class' => 'mdi mdi-delete'
-                            ]
-                        ],
-                        'options' => [
-                            'href' => '#delete',
-                            'class' => 'btn-floating red modal-trigger tooltipped',
-                            'data' => [
-                                'position' => 'bottom',
-                                'delay' => '1000',
-                                'tooltip' => Yii::t('app', 'Delete')
-                            ],
-                        ]
-                    ],
                     [
                         'permission' => 'update',
                         'link' => [
@@ -73,6 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ]) ?>
             <div class="container">
                 <div class="row">
+                    <?= $this->render('//layouts/_back_button') ?>
                     <div class="col-sm-12 col-md-12 col-lg-12">
                         <h3 class="raleway-light"><?= Yii::t('app', 'Existence') ?></h3>
                     </div>
@@ -98,6 +79,16 @@ $this->params['breadcrumbs'][] = $this->title;
                                 ],
                                 [
                                     'class' => kartik\grid\ActionColumn::className(),
+                                    'urlCreator' => function ($action, $model, $key, $index) {
+                                        switch ($action) {
+                                            case "view":
+                                                return Url::to(['item-description/view', 'id' => $model->id]);
+                                            case "update":
+                                                return Url::to(['item-description/update', 'id' => $model->id]);
+                                            case "delete":
+                                                return Url::to(['item-description/view', 'id' => $model->id]);
+                                        }
+                                    }
 
                                 ]
                             ]
@@ -138,6 +129,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             ],
                         ]) ?>
                     </div>
+                    <?= $this->render('//layouts/_back_button') ?>
                 </div>
             </div>
         </div>

@@ -1,7 +1,5 @@
 <?php
 
-use yii\helpers\Html;
-
 
 /* @var $this yii\web\View */
 /* @var $model frontend\models\Brand */
@@ -13,7 +11,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div>
     <?= $this->render('//layouts/_section_header') ?>
     <div class="section grey lighten-4 greedy">
-        <div class="container-lazy">
+        <div class="container">
             <?= $this->render('_form', [
                 'model' => $model,
             ]) ?>
