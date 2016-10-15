@@ -29,7 +29,8 @@
     "yiisoft/yii2-jui": "~2.0.0",
     "kartik-v/yii2-grid": "@dev",
     "bower-asset/materialize": "*",
-    "bower-asset/jquery": ">=2.2"
+    "bower-asset/jquery": ">=2.2",
+    "bower-asset/bootstrap-sass": ">=3.0"
   },
   "require-dev": {
     "yiisoft/yii2-codeception": "*",
