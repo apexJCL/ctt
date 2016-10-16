@@ -1,7 +1,7 @@
 <?php
 
+use kartik\detail\DetailView;
 use yii\bootstrap\Html;
-use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
 /* @var $model frontend\models\ItemDescription */
@@ -33,6 +33,14 @@ $this->params['breadcrumbs'][] = $this->title;
                         'created_by',
                         'updated_by',
                         'item_id'
+                    ],
+                    'striped' => false,
+                    'responsive' => false,
+                    'enableEditMode' => true,
+                    'mode'=>DetailView::MODE_VIEW,
+                    'panel'=>[
+                        'heading'=>'Book # ' . $model->id,
+                        'type'=>DetailView::TYPE_INFO,
                     ],
                 ]) ?>
             </div>

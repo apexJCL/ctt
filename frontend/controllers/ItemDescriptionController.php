@@ -2,19 +2,28 @@
 
 namespace frontend\controllers;
 
-use common\helpers\RBACHelper;
-use Yii;
+use frontend\models\Item;
 use frontend\models\ItemDescription;
 use frontend\models\ItemDescriptionSearch;
+use Yii;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * ItemDescriptionController implements the CRUD actions for ItemDescription model.
  */
 class ItemDescriptionController extends Controller
 {
+
+    static $roles = [
+        'root',
+        'indexItemDescription',
+        'viewItemDescription',
+        'updateItemDescription',
+        'deleteItemDescription'
+    ];
+
     /**
      * @inheritdoc
      */
@@ -32,15 +41,34 @@ class ItemDescriptionController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
+                        'actions' => ['details'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['list']
+                    ],
+                    [
+                        'allow' => true,
                         'actions' => ['index', 'create', 'update', 'view', 'delete'],
-                        'roles' => ['@'], // Any logged in user can go in, only if they have the permission assigned
-                        'matchCallback' => function ($rule, $action) {
-                            return RBACHelper::hasAccess($action);
-                        }
+                        'roles' => ItemDescriptionController::$roles,
                     ]
                 ]
             ],
         ];
+    }
+
+    public function actionDetails()
+    {
+        return $this->renderPartial('_details', [
+            'model' => ItemDescription::findById(Yii::$app->request->post("expandRowKey"))
+        ]);
+    }
+
+
+    public function actionList($q = null, $id = null)
+    {
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        return ItemDescription::ajaxSearch($q, $id);
     }
 
     /**
@@ -79,13 +107,16 @@ class ItemDescriptionController extends Controller
     {
         $model = new ItemDescription();
         $id = Yii::$app->request->getQueryParam('item_id');
+        $model->item_id = $id;
+        $dropdown = Item::dropdown();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
-                'item_id' => $id
+                'item_id' => $id,
+                'dropdown' => $dropdown
             ]);
         }
     }

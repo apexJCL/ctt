@@ -53,83 +53,95 @@ $this->title = $model->name;
             ]) ?>
             <div class="container">
                 <div class="row">
-                    <?= $this->render('//layouts/_back_button') ?>
                     <div class="col-sm-12 col-md-12 col-lg-12">
-                        <h3 class="raleway-light"><?= Yii::t('app', 'Existence') ?></h3>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <h3 class="raleway-light"><?= Yii::t('app', 'General Overview') ?></h3>
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-6">
+                                <?= DetailView::widget([
+                                    'model' => $model,
+                                    'attributes' => [
+                                        'name',
+                                        'description',
+                                        [
+                                            'attribute' => 'category_id',
+                                            'label' => Yii::t('app', 'Category'),
+                                            'format' => 'raw',
+                                            'value' => $model->getCategory()->one()->name
+                                        ],
+                                        [
+                                            'attribute' => 'brand_id',
+                                            'label' => Yii::t('app', 'Brand'),
+                                            'format' => 'raw',
+                                            'value' => $model->getBrand()->one()->name
+                                        ]
+                                    ],
+                                ]) ?>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-sm-12 col-md-12 col-lg-12">
-                        <!-- Aquí va la muestra de los objetos que hay con este atributo -->
-                        <?=
-                        GridView::widget([
-                            'export' => false,
-                            'pjax' => true,
-                            'dataProvider' => $itemDescriptionProvider,
-                            'filterModel' => $itemDescriptionSearch,
-                            'columns' => [
-                                'serial_number',
-                                'sell_price',
-                                'rent_price',
-                                [
-                                    'attribute' => 'sale',
-                                    'filterType' => GridView::FILTER_CHECKBOX,
-                                    'value' => function ($data) {
-                                        return Html::checkbox($data->serial_number, $data->sale, ['disabled' => 'true']);
-                                    },
-                                    'format' => 'raw'
-                                ],
-                                [
-                                    'class' => kartik\grid\ActionColumn::className(),
-                                    'urlCreator' => function ($action, $model, $key, $index) {
-                                        switch ($action) {
-                                            case "view":
-                                                return Url::to(['item-description/view', 'id' => $model->id]);
-                                            case "update":
-                                                return Url::to(['item-description/update', 'id' => $model->id]);
-                                            case "delete":
-                                                return Url::to(['item-description/view', 'id' => $model->id]);
-                                        }
-                                    }
-
-                                ]
-                            ]
-                        ])
-                        ?>
-                    </div>
-                    <div class="col-sm-12 col-md-12 col-lg-12">
-                        <?= Html::a(
-                            Html::tag('i', null, ['class' => 'mdi mdi-add']),
-                            Url::to(['item-description/create', 'item_id' => $model->id]),
-                            ['class' => 'btn btn-primary waves-effect right']) ?>
-                    </div>
-                </div>
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12 col-md-12 col-lg-12">
-                        <h3 class="raleway-light"><?= Yii::t('app', 'General Overview') ?></h3>
-                    </div>
+                    <!--  Column 2 -->
                     <div class="col-sm-12 col-md-12 col-lg-6">
-                        <?= DetailView::widget([
-                            'model' => $model,
-                            'attributes' => [
-                                'name',
-                                'description',
-                                [
-                                    'attribute' => 'category_id',
-                                    'label' => Yii::t('app', 'Category'),
-                                    'format' => 'raw',
-                                    'value' => $model->getCategory()->one()->name
-                                ],
-                                [
-                                    'attribute' => 'brand_id',
-                                    'label' => Yii::t('app', 'Brand'),
-                                    'format' => 'raw',
-                                    'value' => $model->getBrand()->one()->name
-                                ]
-                            ],
-                        ]) ?>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <h3 class="raleway-light"><?= Yii::t('app', 'Existence') ?></h3>
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <!-- Aquí va la muestra de los objetos que hay con este atributo -->
+                                <?=
+                                GridView::widget([
+                                    'export' => false,
+                                    'pjax' => true,
+                                    'dataProvider' => $itemDescriptionProvider,
+                                    'filterModel' => $itemDescriptionSearch,
+                                    'columns' => [
+                                        'serial_number',
+                                        [
+                                            'attribute' => 'sale',
+                                            'filterType' => GridView::FILTER_CHECKBOX,
+                                            'value' => function ($data) {
+                                                return Html::checkbox($data->serial_number, $data->sale, ['disabled' => 'true']);
+                                            },
+                                            'format' => 'raw'
+                                        ],
+                                        [
+                                            'class' => kartik\grid\ExpandRowColumn::className(),
+                                            'detailUrl' => Url::to(['item-description/details']),
+                                            'value' => function ($model, $key, $index) {
+                                                return GridView::ROW_COLLAPSED;
+                                            },
+                                            'detailRowCssClass' => GridView::TYPE_DEFAULT,
+                                            'expandIcon' => '<i class="mdi mdi-expand-less"></i>',
+                                            'collapseIcon' => '<i class="mdi mdi-expand-more"></i>',
+                                            'expandOneOnly' => true
+                                        ],
+                                        [
+                                            'class' => kartik\grid\ActionColumn::className(),
+                                            'urlCreator' => function ($action, $model, $key, $index) {
+                                                switch ($action) {
+                                                    case "view":
+                                                        return Url::to(['item-description/view', 'id' => $model->id]);
+                                                    case "update":
+                                                        return Url::to(['item-description/update', 'id' => $model->id]);
+                                                    case "delete":
+                                                        return Url::to(['item-description/view', 'id' => $model->id]);
+                                                }
+                                            }
+
+                                        ]
+                                    ]
+                                ])
+                                ?>
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <?= Html::a(
+                                    Html::tag('i', null, ['class' => 'mdi mdi-add']),
+                                    Url::to(['item-description/create', 'item_id' => $model->id]),
+                                    ['class' => 'btn btn-primary waves-effect right']) ?>
+                            </div>
+                        </div>
                     </div>
-                    <?= $this->render('//layouts/_back_button') ?>
                 </div>
             </div>
         </div>

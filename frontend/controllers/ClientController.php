@@ -2,7 +2,6 @@
 
 namespace frontend\controllers;
 
-use common\helpers\RBACHelper;
 use common\models\Bitacora;
 use common\models\Client;
 use common\models\ClientSearch;
@@ -10,7 +9,6 @@ use Yii;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\web\UploadedFile;
 
 /**
  * ClientController implements the CRUD actions for Client model.
@@ -28,11 +26,14 @@ class ClientController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['index', 'create', 'update', 'view', 'delete'],
-                        'roles' => ['@'], // Any logged in user can go in, only if they have the permission assigned
-                        'matchCallback' => function ($rule, $action) {
-                            return RBACHelper::hasAccess($action);
-                        }
+                        'actions' => ['details'],
+                        'verbs' => ['POST'],
+                        'roles' => ['root', 'viewClient']
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['index', 'update', 'delete', 'create', 'view'],
+                        'roles' => ['root', 'consultaClientes'] // Any logged in user can go in, only if they have the permission assigned
                     ]
                 ]
             ],
@@ -43,6 +44,14 @@ class ClientController extends Controller
                 ],
             ],
         ];
+    }
+
+    public function actionDetails()
+    {
+        $client = Client::find()->where(['id' => Yii::$app->request->post("expandRowKey")])->one();
+        return $this->renderPartial('_details', [
+            'model' => $client
+        ]);
     }
 
     /**

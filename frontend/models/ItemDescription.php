@@ -7,6 +7,7 @@ use Yii;
 use yii\behaviors\AttributeBehavior;
 use yii\db\ActiveRecord;
 use yii\db\Expression;
+use yii\db\Query;
 
 /**
  * This is the model class for table "item_description".
@@ -105,6 +106,17 @@ class ItemDescription extends \yii\db\ActiveRecord
     }
 
     /**
+     * Returns one ItemDescription object by ID
+     *
+     * @param $id
+     * @return array|null|ActiveRecord
+     */
+    public static function findById($id)
+    {
+        return self::find()->where(['id' => $id])->one();
+    }
+
+    /**
      * @return \yii\db\ActiveQuery
      */
     public function getAccessoryOf()
@@ -142,5 +154,23 @@ class ItemDescription extends \yii\db\ActiveRecord
     public function getItem()
     {
         return $this->hasOne(Item::className(), ['id' => 'item_id']);
+    }
+
+    public static function ajaxSearch($q, $id)
+    {
+        $out = ['results' => ['id' => '', 'text' => '']];
+        if (!is_null($q)) {
+            $query = new Query;
+            $query->select('id, serial_number AS text')
+                ->from('item_description')
+                ->where(['like', 'serial_number', $q])
+                ->limit(20);
+            $command = $query->createCommand();
+            $data = $command->queryAll();
+            $out['results'] = array_values($data);
+        } elseif ($id > 0) {
+            $out['results'] = ['id' => $id, 'text' => self::findById($id)->name];
+        }
+        return $out;
     }
 }

@@ -11,8 +11,7 @@ use yii\widgets\ActiveForm;
 
 $this->title = Yii::t('app', 'Manage permissions');
 $this->registerJsFile('/js/role/children_app.js', ['depends' => [
-    \yii\web\JqueryAsset::className(),
-    \backend\assets\MaterializeAsset::className()
+    \yii\web\JqueryAsset::className()
 ]
 ], View::POS_END);
 ?>

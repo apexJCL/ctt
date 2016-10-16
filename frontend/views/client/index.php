@@ -9,6 +9,10 @@ use yii\helpers\Url;
 
 $this->title = Yii::t('app', 'Clients');
 $this->params['breadcrumbs'][] = $this->title;
+$this->registerJsFile('/js/views/client.js', [
+    'depends' => \kartik\base\PluginAssetBundle::className(),
+    'position' => \yii\web\View::POS_END
+])
 ?>
 <?= $this->render('//layouts/_section_header', [
     'photoUrl' => '/img/background.jpg',
@@ -54,12 +58,29 @@ $this->params['breadcrumbs'][] = $this->title;
                         ['class' => 'yii\grid\SerialColumn'],
                         'id',
                         'nombre',
-                        'apellido_paterno',
-                        'apellido_materno',
                         'email:email',
-                        ['class' => kartik\grid\ActionColumn::className(), 'header' => Yii::t('app', 'Actions')],
+                        [
+                            'class' => kartik\grid\ExpandRowColumn::className(),
+                            'detailUrl' => Url::to(['client/details']),
+                            'value' => function ($model, $key, $index) {
+                                return GridView::ROW_COLLAPSED;
+                            },
+                            'detailRowCssClass' => GridView::TYPE_DEFAULT,
+                            'expandIcon' => '<i class="mdi mdi-expand-less"></i>',
+                            'collapseIcon' => '<i class="mdi mdi-expand-more"></i>',
+                        ],
+                        [
+                            'class' => 'kartik\grid\ActionColumn',
+                            'visibleButtons' => [
+                                'view' => false
+                            ],
+                            'header' => Yii::t('app', 'Actions'),
+                        ],
                     ],
-                    'pjax' => true
+                    'pjax' => true,
+                    'options' => [
+                        'id' => 'clientGrid'
+                    ]
                 ]); ?>
             </div>
         </div>

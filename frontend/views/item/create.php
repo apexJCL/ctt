@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div>
     <?= $this->render('//layouts/_section_header') ?>
-    <div class="section grey lighten-4 greedy">
+    <div class="section greedy grey lighten-4">
         <div class="container">
             <?= $this->render('_form', [
                 'model' => $model,

@@ -9,11 +9,10 @@ use yii\helpers\Url;
 use yii\web\View;
 use yii\widgets\ActiveForm;
 
-$this->title = Yii::t('app', 'Roles of: {name}', ['name'=> $model->nombre]);
+$this->title = Yii::t('app', 'Roles of: {name}', ['name' => $model->nombre]);
 
 $this->registerJsFile('/js/role/children_app.js', ['depends' => [
-    \yii\web\JqueryAsset::className(),
-    \backend\assets\MaterializeAsset::className()
+    \yii\web\JqueryAsset::className()
 ]
 ], View::POS_END);
 ?>
@@ -24,7 +23,7 @@ $this->registerJsFile('/js/role/children_app.js', ['depends' => [
     <div class="section grey lighten-4 greedy">
         <span type="hidden" data-type="1" id="authitem-type">
         <?php $form = ActiveForm::begin(); ?>
-        <div class="container">
+            <div class="container">
             <div class="row">
                 <div class="col s12">
                     <h3 class="raleway-light"><?= Yii::t('app', 'General overview') ?></h3>
@@ -49,7 +48,7 @@ $this->registerJsFile('/js/role/children_app.js', ['depends' => [
                         ],
                         'addButtonOptions' => [
                             'class' => 'btn-flat waves-effect waves-light',
-                            'label' => Html::tag('i','', ['class' => 'material-icons mdi-add'])
+                            'label' => Html::tag('i', '', ['class' => 'material-icons mdi-add'])
                         ],
                         'removeButtonOptions' => [
                             'class' => 'btn-flat waves-effect waves-red',
@@ -60,7 +59,7 @@ $this->registerJsFile('/js/role/children_app.js', ['depends' => [
                 <div class="col s12 m4">
                     <div class="card white">
                         <div class="card-content">
-                            <div class="card-title"><?= Yii::t('app', 'Protip')?></div>
+                            <div class="card-title"><?= Yii::t('app', 'Protip') ?></div>
                             <p><?= Yii::t('app', 'Assign only the necessary role for this user') ?></p>
                         </div>
                     </div>
@@ -72,6 +71,6 @@ $this->registerJsFile('/js/role/children_app.js', ['depends' => [
                 </div>
             </div>
         </div>
-        <?php ActiveForm::end(); ?>
+            <?php ActiveForm::end(); ?>
     </div>
 </div>

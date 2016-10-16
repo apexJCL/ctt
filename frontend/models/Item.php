@@ -7,6 +7,7 @@ use Yii;
 use yii\behaviors\AttributeBehavior;
 use yii\db\ActiveRecord;
 use yii\db\Expression;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "item".
@@ -35,6 +36,11 @@ class Item extends \yii\db\ActiveRecord
     public static function tableName()
     {
         return 'item';
+    }
+
+    public static function dropdown()
+    {
+        return ArrayHelper::map(self::find()->all(), 'id', 'name');
     }
 
     /**
