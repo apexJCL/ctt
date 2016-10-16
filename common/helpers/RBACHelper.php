@@ -2,7 +2,6 @@
 
 namespace common\helpers;
 
-use common\models\User;
 use Yii;
 
 class RBACHelper
@@ -26,8 +25,7 @@ class RBACHelper
      */
     public static function hasAccess($action)
     {
-        return Yii::$app->user->identity->canI($action->id . ucfirst($action->controller->id))
-        || User::hasRole(Yii::$app->user->id, 'root');
+        return Yii::$app->user->identity->canI($action->id . ucfirst($action->controller->id));
     }
 
 }

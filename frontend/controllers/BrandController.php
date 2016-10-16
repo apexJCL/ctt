@@ -2,18 +2,29 @@
 
 namespace frontend\controllers;
 
-use Yii;
+use common\helpers\RBACHelper;
 use frontend\models\Brand;
 use frontend\models\BrandSearch;
+use Yii;
+use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * BrandController implements the CRUD actions for Brand model.
  */
 class BrandController extends Controller
 {
+
+    static $roles = [
+        'root',
+        // Permissions
+        'indexBrand',
+        'viewBrand',
+        'updateBrand',
+    ];
+
     /**
      * @inheritdoc
      */
@@ -26,7 +37,31 @@ class BrandController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'actions' => ['list'],
+                        'roles' => ['root', 'indexBrand', 'viewBrand'],
+                        'verbs' => ['GET']
+                    ],
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action) {
+                            return RBACHelper::hasAccess($action);
+                        }
+                    ]
+                ]
+            ]
         ];
+    }
+
+    public function actionList($q = null, $id = null)
+    {
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        return Brand::ajaxSearch($q, $id);
     }
 
     /**

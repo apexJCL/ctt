@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use common\helpers\RBACHelper;
 use common\models\Bitacora;
 use common\models\Client;
 use common\models\ClientSearch;
@@ -33,7 +34,10 @@ class ClientController extends Controller
                     [
                         'allow' => true,
                         'actions' => ['index', 'update', 'delete', 'create', 'view'],
-                        'roles' => ['root', 'consultaClientes'] // Any logged in user can go in, only if they have the permission assigned
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action) {
+                            return RBACHelper::hasAccess($action);
+                        }
                     ]
                 ]
             ],

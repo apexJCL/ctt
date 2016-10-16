@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use common\helpers\RBACHelper;
 use frontend\models\Item;
 use frontend\models\ItemDescription;
 use frontend\models\ItemDescriptionSearch;
@@ -15,15 +16,6 @@ use yii\web\NotFoundHttpException;
  */
 class ItemDescriptionController extends Controller
 {
-
-    static $roles = [
-        'root',
-        'indexItemDescription',
-        'viewItemDescription',
-        'updateItemDescription',
-        'deleteItemDescription'
-    ];
-
     /**
      * @inheritdoc
      */
@@ -45,12 +37,16 @@ class ItemDescriptionController extends Controller
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['list']
+                        'actions' => ['list'],
+                        'roles' => ['@', 'root', 'indexItemDescription', 'viewItemDescription']
                     ],
                     [
                         'allow' => true,
                         'actions' => ['index', 'create', 'update', 'view', 'delete'],
-                        'roles' => ItemDescriptionController::$roles,
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action) {
+                            return RBACHelper::hasAccess($action);
+                        }
                     ]
                 ]
             ],

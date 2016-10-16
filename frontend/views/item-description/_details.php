@@ -10,6 +10,7 @@
  */
 use kartik\detail\DetailView;
 use kartik\helpers\Html;
+use yii\helpers\Url;
 
 ?>
 
@@ -17,7 +18,17 @@ use kartik\helpers\Html;
     'model' => $model,
     'attributes' => [
         'id',
-        'accessory_of',
+        [
+            'attribute' => 'item_id',
+            'value' => $model->item->name,
+            'label' => Yii::t('app', 'Item')
+        ],
+        [
+            'attribute' => 'accessory_of',
+            'value' => isset($model->accessory_of) ? Html::a($model->accessoryOf->serial_number,
+                Url::to(['item/view', 'id' => $model->accessory_of]), ["target" => "_blank"]) : Yii::t('app', 'None'),
+            'format' => 'raw'
+        ],
         'serial_number',
         'acquisition_price',
         [
@@ -26,12 +37,21 @@ use kartik\helpers\Html;
             'value' => $model->sale ? $model->sell_price : Html::tag('span', Yii::t('app', 'Not for sale'), ['class' => 'red-text'])
         ],
         'rent_price',
-        'sale',
+        [
+            'attribute' => 'sale',
+            'value' => Html::checkbox('sale', $model->sale, ['disabled' => 'disabled']),
+            'format' => 'raw'
+        ],
         'created_at',
+        [
+            'attribute' => 'created_by',
+            'value' => $model->createdBy->username
+        ],
         'updated_at',
-        'created_by',
-        'updated_by',
-        'item_id'
+        [
+            'attribute' => 'updated_by',
+            'value' => $model->updatedBy->username
+        ]
     ],
     'striped' => false,
     'responsive' => false,

@@ -4,12 +4,12 @@ namespace frontend\controllers;
 
 use common\helpers\RBACHelper;
 use common\helpers\UserHelper;
-use Yii;
 use frontend\models\Category;
 use frontend\models\CategorySearch;
+use Yii;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * CategoryController implements the CRUD actions for Category model.
@@ -33,8 +33,14 @@ class CategoryController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
+                        'actions' => ['list'],
+                        'roles' => ['root', 'indexCategory', 'viewCategory'],
+                        'verbs' => ['GET']
+                    ],
+                    [
+                        'allow' => true,
                         'actions' => ['index', 'create', 'update', 'view', 'delete'],
-                        'roles' => ['@'], // Any logged in user can go in, only if they have the permission assigned
+                        'roles' => ['@'],
                         'matchCallback' => function ($rule, $action) {
                             return RBACHelper::hasAccess($action);
                         }
@@ -42,6 +48,12 @@ class CategoryController extends Controller
                 ]
             ],
         ];
+    }
+
+    public function actionList($q = null, $id = null)
+    {
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        return Category::ajaxSearch($q, $id);
     }
 
     /**
