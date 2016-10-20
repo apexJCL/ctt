@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f8629c8c16433f305b46ea86918e4573",
-    "content-hash": "55bc2631206a6c227cb5ac1ad0f6b356",
+    "hash": "b2a61c962b0746556d442eb225801423",
+    "content-hash": "92cfd9c1f7ecf41508f1361778a80706",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -341,6 +341,34 @@
                     "package.json"
                 ]
             }
+        },
+        {
+            "name": "bower-asset/sprintf",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/alexei/sprintf.js.git",
+                "reference": "747b806c2dab5b64d5c9958c42884946a187c3b1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/alexei/sprintf.js/zipball/747b806c2dab5b64d5c9958c42884946a187c3b1",
+                "reference": "747b806c2dab5b64d5c9958c42884946a187c3b1",
+                "shasum": ""
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": "src/sprintf.js"
+            },
+            "license": [
+                "BSD-3-Clause-Clear"
+            ],
+            "description": "JavaScript sprintf implementation",
+            "keywords": [
+                "formatting",
+                "sprintf",
+                "string"
+            ]
         },
         {
             "name": "bower-asset/yii2-pjax",
@@ -783,12 +811,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-grid.git",
-                "reference": "c731108f7cc2f37cd76f77af84c869e7dfa636f2"
+                "reference": "08dd6ded1f0c81d5c28fc10a99b1dba39a83eeb6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-grid/zipball/c731108f7cc2f37cd76f77af84c869e7dfa636f2",
-                "reference": "c731108f7cc2f37cd76f77af84c869e7dfa636f2",
+                "url": "https://api.github.com/repos/kartik-v/yii2-grid/zipball/08dd6ded1f0c81d5c28fc10a99b1dba39a83eeb6",
+                "reference": "08dd6ded1f0c81d5c28fc10a99b1dba39a83eeb6",
                 "shasum": ""
             },
             "require": {
@@ -825,7 +853,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2016-10-08 18:18:35"
+            "time": "2016-10-18 06:14:24"
         },
         {
             "name": "kartik-v/yii2-helpers",

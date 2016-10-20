@@ -61,15 +61,7 @@ use yii\helpers\Url;
                 ?>
                 <!--  Renders User tab -->
                 <?php
-                if (Yii::$app->user->isGuest)
-                    echo $this->render('_link_render', [
-                        'url' => '#',
-                        'text' => Yii::t('app', 'Login'),
-                        'link_options' => [
-                            'data' => ['toggle' => 'modal', 'target' => '#loginModal'],
-                        ]
-                    ]);
-                else
+                if (!Yii::$app->user->isGuest)
                     echo $this->render('_dropdown_menu', [
                         'links' => [
                             [

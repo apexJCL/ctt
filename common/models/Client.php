@@ -115,13 +115,20 @@ class Client extends \yii\db\ActiveRecord
     {
         if (!empty($this->profilePicture) && isset($this->profilePicture)) {
             $this->deletePicture();
-            return $this->profilePicture->saveAs(Yii::getAlias('@common') . DIRECTORY_SEPARATOR . self::PICTURE_PATH . DIRECTORY_SEPARATOR . $this->id. '.' . $this->profilePicture->extension);
+            return $this->profilePicture->saveAs(
+                'img' .
+                DIRECTORY_SEPARATOR .
+                self::PICTURE_PATH .
+                DIRECTORY_SEPARATOR .
+                $this->id .
+                '.' .
+                $this->profilePicture->extension);
         } else return false;
     }
 
     public function deletePicture()
     {
-        $baseUrl = Yii::getAlias('@common') . DIRECTORY_SEPARATOR . self::PICTURE_PATH . DIRECTORY_SEPARATOR . $this->id;
+        $baseUrl = 'img' . DIRECTORY_SEPARATOR . self::PICTURE_PATH . DIRECTORY_SEPARATOR . $this->id;
         if (file_exists($baseUrl . self::JPG))
             return unlink($baseUrl . self::JPG);
         elseif (file_exists($baseUrl . self::PNG))

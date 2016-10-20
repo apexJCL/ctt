@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = $this->title;
 $this->registerJsFile('/js/views/client.js', [
     'depends' => \kartik\base\PluginAssetBundle::className(),
     'position' => \yii\web\View::POS_END
-])
+]);
 ?>
 <?= $this->render('//layouts/_section_header', [
     'photoUrl' => '/img/background.jpg',

@@ -32,7 +32,8 @@
     "kartik-v/yii2-widgets": "*",
     "bower-asset/materialize": "*",
     "bower-asset/jquery": ">=2.2",
-    "bower-asset/bootstrap-sass": ">=3.0"
+    "bower-asset/bootstrap-sass": ">=3.0",
+    "bower-asset/sprintf": "*"
   },
   "require-dev": {
     "yiisoft/yii2-codeception": "*",

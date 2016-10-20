@@ -9,7 +9,7 @@
  * Each array element represents the translation (value) of a message (key).
  * If the value is empty, the message is considered as not translated.
  * Messages that no longer need translation will have their translations
- * enclosed between a pair of '@@' marks.
+ * enclosed between a pair of '' marks.
  *
  * Message string can be used with plural forms format. Check i18n section
  * of the guide for details.
@@ -17,22 +17,25 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Article' => '',
-    'Creating specific item' => '',
-    'Details' => '',
-    'General Information' => '',
-    'Item' => '',
-    'None' => '',
-    'Not for sale' => '',
-    'Specific Information' => '',
-    'Type a few letters...' => '',
-    'Waiting for results...' => '',
-    'Create Item Description' => '@@Crear descripción de artículo@@',
-    'If you think this is a mistake, please contact Support.' => '@@Si cree que esto es un error, contacte a Soporte Técnico.@@',
-    'Manage' => '@@Administrar@@',
-    'Please fill the next fields' => '@@Porfavor, llene los siguientes campos@@',
-    'Signup' => '@@Registrar@@',
-    'User\'s list' => '@@Lista de usuarios@@',
+    'Article' => 'Artículos',
+    'Creating specific item' => 'Creando descripción de artículo',
+    'Details' => 'Detalles',
+    'General Information' => 'Información general',
+    'Item' => 'Artículo',
+    'None' => 'Ninguno',
+    'Not for sale' => 'No está a la venta',
+    'Remember Me' => 'Recuérdame',
+    'Specific Information' => 'Información específica',
+    'Type a few letters...' => 'Comience a escribir...',
+    'Waiting for results...' => 'Esperando resultados...',
+    'password' => 'Contraseña',
+    'username' => 'Nombre de usuario',
+    'Create Item Description' => 'Crear descripción de artículo',
+    'If you think this is a mistake, please contact Support.' => 'Si cree que esto es un error, contacte a Soporte Técnico.',
+    'Manage' => 'Administrar',
+    'Please fill the next fields' => 'Porfavor, llene los siguientes campos',
+    'Signup' => 'Registrar',
+    'User\'s list' => 'Lista de usuarios',
     'Accessory Of' => 'Accesorio de',
     'Acquisition Price' => 'Precio de adquisición',
     'Actions' => 'Acciones',

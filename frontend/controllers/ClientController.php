@@ -96,9 +96,10 @@ class ClientController extends Controller
         $model = new Client();
 
         if ($model->load(Yii::$app->request->post())) {
-            if ($user = $model->create())
-                return $this->redirect(['view', 'id' => $user->id]);
-            else
+            if ($user = $model->create()) {
+                Yii::$app->session->addFlash("info", Yii::t('app', 'User created successfully'), true);
+                return $this->redirect(['index']);
+            } else
                 return $this->render('create', [
                     'model' => $model,
                 ]);
@@ -121,7 +122,8 @@ class ClientController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->create()) {
             Bitacora::register(Client::tableName());
-            return $this->redirect(['view', 'id' => $model->id]);
+            Yii::$app->session->addFlash("info", Yii::t('app', 'User updated successfully'), true);
+            return $this->redirect(['index']);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -139,9 +141,10 @@ class ClientController extends Controller
     {
         if (Bitacora::register(Client::tableName())) {
             $this->findModel($id)->delete();
-            return $this->redirect(['index']);
+            Yii::$app->session->addFlash("info", Yii::t('app', 'User deleted successfully'), true);
         } else
-            return $this->redirect(['view', 'id' => $id]);
+            Yii::$app->session->addFlash("info", Yii::t('app', 'An error has ocurred'), true);
+        return $this->redirect(['index']);
     }
 
     /**
