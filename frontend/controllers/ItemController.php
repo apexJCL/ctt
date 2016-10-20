@@ -6,14 +6,14 @@ use common\helpers\RBACHelper;
 use frontend\models\Brand;
 use frontend\models\BrandSearch;
 use frontend\models\Category;
+use frontend\models\Item;
 use frontend\models\ItemDescription;
 use frontend\models\ItemDescriptionSearch;
-use Yii;
-use frontend\models\Item;
 use frontend\models\ItemSearch;
+use Yii;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 use yii\web\Response;
 
 /**
@@ -43,6 +43,12 @@ class ItemController extends Controller
                     ],
                     [
                         'allow' => true,
+                        'actions' => ['list'],
+                        'roles' => ['@'],
+                        'verbs' => ['GET']
+                    ],
+                    [
+                        'allow' => true,
                         'actions' => ['index', 'create', 'update', 'view', 'delete'],
                         'roles' => ['@'], // Any logged in user can go in, only if they have the permission assigned
                         'matchCallback' => function ($rule, $action) {
@@ -54,11 +60,18 @@ class ItemController extends Controller
         ];
     }
 
+    public function actionList($q = null, $id = null)
+    {
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        return Item::ajaxSearch($q, $id);
+    }
+
     /**
      * Lists all Item models.
      * @return mixed
      */
-    public function actionIndex()
+    public
+    function actionIndex()
     {
         $searchModel = new ItemSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
@@ -74,7 +87,8 @@ class ItemController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionView($id)
+    public
+    function actionView($id)
     {
         $existence = ItemDescription::find()->where(['item_id' => $id])->asArray()->all();
         $itemDescriptionSearch = ItemDescriptionSearch::newFor($id);
@@ -93,7 +107,8 @@ class ItemController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public
+    function actionCreate()
     {
         $model = new Item();
         $categories = Category::getCategoriesDropdown();
@@ -110,7 +125,7 @@ class ItemController extends Controller
         }
     }
 
-    // TODO: Finish item implementation, add itemDescriptions to items, categories, etc.
+// TODO: Finish item implementation, add itemDescriptions to items, categories, etc.
 
     /**
      * Updates an existing Item model.
@@ -118,7 +133,8 @@ class ItemController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionUpdate($id)
+    public
+    function actionUpdate($id)
     {
         $model = $this->findModel($id);
         $categories = Category::getCategoriesDropdown();
@@ -141,7 +157,8 @@ class ItemController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionDelete($id)
+    public
+    function actionDelete($id)
     {
         $this->findModel($id)->delete();
 
@@ -157,7 +174,9 @@ class ItemController extends Controller
      *
      * @return array|\yii\db\ActiveRecord[]|Response
      */
-    public function actionBrandAutocomplete(){
+    public
+    function actionBrandAutocomplete()
+    {
         if (!Yii::$app->request->isGet)
             return $this->redirect(['site/error']);
         Yii::$app->response->format = Response::FORMAT_JSON;
@@ -173,7 +192,8 @@ class ItemController extends Controller
      * @return Item the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id)
+    protected
+    function findModel($id)
     {
         if (($model = Item::findOne($id)) !== null) {
             return $model;

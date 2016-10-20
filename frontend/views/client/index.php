@@ -44,16 +44,12 @@ $this->registerJsFile('/js/views/client.js', [
                 <h2 class="raleway-thin"><?= Yii::t('app', 'All clients') ?></h2>
             </div>
             <div class="col-sm-12">
-
             </div>
             <div class="col-sm-12">
                 <?= GridView::widget([
                     'dataProvider' => $dataProvider,
                     'filterModel' => $searchModel,
                     'export' => false,
-                    'rowOptions' => [
-                        'class' => 'slim',
-                    ],
                     'columns' => [
                         ['class' => 'yii\grid\SerialColumn'],
                         'id',

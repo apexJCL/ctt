@@ -5,7 +5,6 @@ use kartik\widgets\Select2;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\JsExpression;
-use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
 /* @var $model frontend\models\ItemDescription */
@@ -17,39 +16,7 @@ use yii\widgets\DetailView;
 
 <div class="container">
     <div class="row">
-        <div class="col-sm-12 col-md-6 col-lg-4">
-            <div class="row">
-                <div class="col-sm-12 col-md-12 col-lg-12">
-                    <h3><?= Yii::t('app', 'General Information') ?></h3>
-                </div>
-                <div class="col-sm-12 col-md-12 col-lg-12">
-                    <?php
-
-                    /**
-                     * @var $item \frontend\models\Item
-                     */
-                    $item = $model->getItem()->one();
-                    echo DetailView::widget([
-                        'model' => $item,
-                        'attributes' => [
-                            'name',
-                            [
-                                'attribute' => 'brand_id',
-                                'value' => $item->brand->name,
-                                'label' => Yii::t('app', 'Brand')
-                            ],
-                            [
-                                'attribute' => 'category_id',
-                                'value' => $item->category->name,
-                                'label' => Yii::t('app', 'Category')
-                            ],
-                            'description',
-                            'model'
-                        ]
-                    ]) ?>
-                </div>
-            </div>
-        </div>
+        <?= isset($model->item_id) ? $this->render('_general_overview', ['model' => $model]) : null ?>
         <div class="col-sm-12 col-md-6 col-lg-8">
             <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-12">
@@ -62,7 +29,20 @@ use yii\widgets\DetailView;
                             <?= isset($model->item_id) ?
                                 $form->field($model, 'item_id')->textInput(['disabled' => 'disabled', 'value' => $model->item_id])
                                 :
-                                $form->field($model, 'item_id')->textInput()
+                                $form->field($model, 'item_id')->widget(Select2::className(), [
+                                    'options' => ['placeholder' => Yii::t('app', 'Article')],
+                                    'pluginOptions' => [
+                                        'allowClear' => true,
+                                        'language' => [
+                                            'errorLoading' => new JsExpression(sprintf("function () { return '%s'; }", Yii::t('app', 'Waiting for results...'))),
+                                        ],
+                                        'ajax' => [
+                                            'url' => Url::to(['item/list']),
+                                            'dataType' => 'json',
+                                            'data' => new JsExpression('function(params) { return {q:params.term}; }')
+                                        ]
+                                    ],
+                                ])
 
                             ?>
                         </div>
@@ -77,7 +57,8 @@ use yii\widgets\DetailView;
                                     'ajax' => [
                                         'url' => Url::to(['item-description/list']),
                                         'dataType' => 'json',
-                                        'data' => new JsExpression('function(params) { return {q:params.term}; }')
+                                        'data' => new JsExpression(/** @lang JavaScript 1.8 */
+                                            'function(params) { return { q:params.term }; }')
                                     ]
                                 ],
                             ]) ?>
@@ -101,7 +82,11 @@ use yii\widgets\DetailView;
                     <div class="row">
                         <div class="form-group pull-right">
                             <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-                            <?= Html::a(Yii::t('app', 'Cancel'), Url::to(['item/index']), ['class' => 'btn btn-flat waves-effect waves-light']) ?>
+                            <?= isset($model->item_id) ?
+                                Html::a(Yii::t('app', 'Cancel'), Url::to(['item/view', 'id' => $model->item_id]), ['class' => 'btn btn-flat waves-effect waves-light'])
+                                :
+                                Html::a(Yii::t('app', 'Cancel'), Url::to(['item/index']), ['class' => 'btn btn-flat waves-effect waves-light'])
+                            ?>
                         </div>
                         <?php ActiveForm::end(); ?>
                     </div>

@@ -9,7 +9,7 @@
  * Each array element represents the translation (value) of a message (key).
  * If the value is empty, the message is considered as not translated.
  * Messages that no longer need translation will have their translations
- * enclosed between a pair of '' marks.
+ * enclosed between a pair of '@@' marks.
  *
  * Message string can be used with plural forms format. Check i18n section
  * of the guide for details.
@@ -17,19 +17,27 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Actions' => 'Acciones',
-    'All clients' => 'Todos los clientes',
-    'Inventory' => 'Inventario',
-    'This action cannot be undone' => 'Esta acción no se puede deshacer',
-    'Warning' => 'Peligro',
-    'If you think this is a mistake, please contact Support.' => 'Si cree que esto es un error, contacte a Soporte Técnico.',
-    'Manage' => 'Administrar',
-    'Please fill the next fields' => 'Porfavor, llene los siguientes campos',
-    'Signup' => 'Registrar',
-    'User\'s list' => 'Lista de usuarios',
+    'Article' => '',
+    'Creating specific item' => '',
+    'Details' => '',
+    'General Information' => '',
+    'Item' => '',
+    'None' => '',
+    'Not for sale' => '',
+    'Specific Information' => '',
+    'Type a few letters...' => '',
+    'Waiting for results...' => '',
+    'Create Item Description' => '@@Crear descripción de artículo@@',
+    'If you think this is a mistake, please contact Support.' => '@@Si cree que esto es un error, contacte a Soporte Técnico.@@',
+    'Manage' => '@@Administrar@@',
+    'Please fill the next fields' => '@@Porfavor, llene los siguientes campos@@',
+    'Signup' => '@@Registrar@@',
+    'User\'s list' => '@@Lista de usuarios@@',
     'Accessory Of' => 'Accesorio de',
     'Acquisition Price' => 'Precio de adquisición',
+    'Actions' => 'Acciones',
     'Add' => 'Añadir',
+    'All clients' => 'Todos los clientes',
     'Are you sure you want to delete this item?' => '¿Seguro que desea eliminar este elemento?',
     'Back' => 'Atrás',
     'Brand' => 'Marca',
@@ -45,7 +53,6 @@ return [
     'Create Category' => 'Crear categoría',
     'Create Client' => 'Crear cliente',
     'Create Item' => 'Crear artículo',
-    'Create Item Description' => 'Crear descripción de artículo',
     'Created At' => 'Creado',
     'Created By' => 'Creado por',
     'Delete' => 'Eliminar',
@@ -57,6 +64,7 @@ return [
     'ID' => 'ID',
     'If photo not uploaded, default avatar will be used' => 'Si no se sube una fotografía, se usará el avatar por defecto',
     'If you forgot your password you can' => 'Si olvidó su contraseña, solicite',
+    'Inventory' => 'Inventario',
     'Item Descriptions' => 'Descripciones de artículos',
     'Item ID' => 'ID de Artículo',
     'Items' => 'Artículos',
@@ -77,9 +85,11 @@ return [
     'Search' => 'Buscar',
     'Sell Price' => 'Precio de venta',
     'Serial Number' => 'Número de serie',
+    'This action cannot be undone' => 'Esta acción no se puede deshacer',
     'Update' => 'Actualizar',
     'Update {modelClass}: ' => 'Actualizar {modelClass}: ',
     'Updated At' => 'Actualizado',
     'Updated By' => 'Actualizado por',
+    'Warning' => 'Peligro',
     'reset it' => 'reiniciarla',
 ];
