@@ -1,7 +1,5 @@
 <?php
 
-use yii\helpers\Html;
-
 
 /* @var $this yii\web\View */
 /* @var $item_id integer */
@@ -9,13 +7,17 @@ use yii\helpers\Html;
  * @var $dropdown array
  */
 
-$this->title = Yii::t('app', 'Creating specific item');
+$this->title = Yii::t('app', 'Creating specific item of {item}', [
+    'item' => $model->item->name,
+]);
 ?>
-<div class="container">
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?= $this->render('_form', [
-        'model' => $model,
-        'item_id' => $item_id,
-        'dropdown' => $dropdown
-    ]) ?>
+<?= $this->render('//layouts/_section_header') ?>
+<div class="container-fluid grey lighten-4">
+    <div class="container">
+        <?= $this->render('_form', [
+            'model' => $model,
+            'item_id' => $item_id,
+            'dropdown' => $dropdown
+        ]) ?>
+    </div>
 </div>

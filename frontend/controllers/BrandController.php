@@ -101,7 +101,8 @@ class BrandController extends Controller
         $model = new Brand();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            Yii::$app->session->addFlash("info", Yii::t('app', 'Brand created successfully'));
+            return $this->redirect(['index']);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -120,7 +121,8 @@ class BrandController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            Yii::$app->session->addFlash("info", Yii::t('app', 'Brand updated successfully'));
+            return $this->redirect(['index']);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -136,8 +138,8 @@ class BrandController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
-
+        if ($this->findModel($id)->delete() > 0)
+            Yii::$app->session->addFlash("info", Yii::t('app', 'Brand deleted successfully'));
         return $this->redirect(['index']);
     }
 

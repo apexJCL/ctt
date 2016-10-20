@@ -3,6 +3,7 @@
 namespace frontend\controllers;
 
 use common\helpers\RBACHelper;
+use common\helpers\UserHelper;
 use frontend\models\Brand;
 use frontend\models\BrandSearch;
 use frontend\models\Category;
@@ -98,7 +99,8 @@ class ItemController extends Controller
             'model' => $this->findModel($id),
             'existence' => $existence,
             'itemDescriptionProvider' => $itemDescriptionProvider,
-            'itemDescriptionSearch' => $itemDescriptionSearch
+            'itemDescriptionSearch' => $itemDescriptionSearch,
+            'permissions' => UserHelper::getPermissions($this->id, true)
         ]);
     }
 
@@ -115,6 +117,7 @@ class ItemController extends Controller
         $brands = Brand::getBrandsDropdown();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->addFlash("info", Yii::t('app', 'Item created successfully'));
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
@@ -141,6 +144,7 @@ class ItemController extends Controller
         $brands = Brand::getBrandsDropdown();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->addFlash("info", Yii::t('app', 'Item updated successfully'));
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
@@ -160,8 +164,8 @@ class ItemController extends Controller
     public
     function actionDelete($id)
     {
-        $this->findModel($id)->delete();
-
+        if ($this->findModel($id)->delete() > 0)
+            Yii::$app->session->addFlash("info", Yii::t('app', 'Item deleted successfully'));
         return $this->redirect(['index']);
     }
 

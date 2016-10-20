@@ -107,7 +107,8 @@ class ItemDescriptionController extends Controller
         $dropdown = Item::dropdown();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            Yii::$app->session->addFlash("info", Yii::t('app', 'Item created successfully'));
+            return $this->redirect(['item/view', 'id' => $model->item_id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -128,7 +129,8 @@ class ItemDescriptionController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            Yii::$app->session->addFlash("info", Yii::t('app', 'Item updated successfully'));
+            return $this->redirect(['item/view', 'id' => $model->item_id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -144,9 +146,10 @@ class ItemDescriptionController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
-
-        return $this->redirect(['index']);
+        $item_id = $this->findModel($id)->item_id;
+        if ($this->findModel($id)->delete() > 0)
+            Yii::$app->session->addFlash("info", Yii::t('app', 'Item deleted successfully'));
+        return $this->redirect(['item/view', 'id' => $item_id]);
     }
 
     /**

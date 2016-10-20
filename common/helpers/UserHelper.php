@@ -20,4 +20,13 @@ class UserHelper
 
         return Yii::$app->user->identity->canI($action . ucfirst($controller));
     }
+
+    public static function getPermissions($id, $hideView = false, $hideUpdate = false, $hideDelete = false)
+    {
+        return [
+            'view' => (!$hideView) ? self::canUser('view', $id) : !$hideView,
+            'update' => (!$hideUpdate) ? self::canUser('update', $id) : $hideUpdate,
+            'delete' => (!$hideDelete) ? self::canUser('delete', $id) : $hideDelete
+        ];
+    }
 }

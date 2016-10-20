@@ -10,7 +10,9 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model frontend\models\Item */
 /** @var ActiveDataProvider $itemDescriptionProvider */
-/** @var ItemDescriptionSearch $itemDescriptionSearch */
+/** @var ItemDescriptionSearch $itemDescriptionSearch
+ * @var array $permissions
+ */
 
 $this->title = $model->name;
 ?>
@@ -96,10 +98,13 @@ $this->title = $model->name;
                                     'dataProvider' => $itemDescriptionProvider,
                                     'filterModel' => $itemDescriptionSearch,
                                     'columns' => [
+                                        [
+                                            'class' => \kartik\grid\SerialColumn::className()
+                                        ],
                                         'serial_number',
                                         [
                                             'attribute' => 'sale',
-                                            'filterType' => GridView::FILTER_CHECKBOX,
+                                            'filterType' => GridView::FILTER_CHECKBOX_X,
                                             'value' => function ($data) {
                                                 return Html::checkbox($data->serial_number, $data->sale, ['disabled' => 'true']);
                                             },
@@ -121,13 +126,14 @@ $this->title = $model->name;
                                             'urlCreator' => function ($action, $model, $key, $index) {
                                                 switch ($action) {
                                                     case "view":
-                                                        return Url::to(['item-description/view', 'id' => $model->id]);
+                                                        return null;
                                                     case "update":
                                                         return Url::to(['item-description/update', 'id' => $model->id]);
                                                     case "delete":
-                                                        return Url::to(['item-description/view', 'id' => $model->id]);
+                                                        return Url::to(['item-description/delete', 'id' => $model->id]);
                                                 }
-                                            }
+                                            },
+                                            'visibleButtons' => $permissions,
 
                                         ]
                                     ]

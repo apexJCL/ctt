@@ -67,13 +67,13 @@ use yii\web\JsExpression;
                             <?= $form->field($model, 'serial_number')->textInput(['maxlength' => true]) ?>
                         </div>
                         <div class="col-sm-12 col-md-6 col-lg-4">
-                            <?= $form->field($model, 'acquisition_price')->textInput(['maxlength' => true]) ?>
+                            <?= $form->field($model, 'acquisition_price')->input('number', ['maxlength' => true, 'min' => 0, 'step' => '0.0001']) ?>
                         </div>
                         <div class="col-sm-12 col-md-6 col-lg-4">
-                            <?= $form->field($model, 'sell_price')->textInput(['maxlength' => true]) ?>
+                            <?= $form->field($model, 'sell_price')->input('number', ['maxlength' => true, 'min' => 0, 'step' => '0.0001']) ?>
                         </div>
                         <div class="col-sm-12 col-md-6 col-lg-4">
-                            <?= $form->field($model, 'rent_price')->textInput(['maxlength' => true]) ?>
+                            <?= $form->field($model, 'rent_price')->input('number', ['maxlength' => true, 'min' => 0, 'step' => '0.0001']) ?>
                         </div>
                         <div class="col-sm-12 col-md-6 col-lg-4">
                             <?= $form->field($model, 'sale')->checkbox() ?>

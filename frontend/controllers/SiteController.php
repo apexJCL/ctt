@@ -1,18 +1,17 @@
 <?php
 namespace frontend\controllers;
 
-use common\models\User;
-use Yii;
-use yii\base\InvalidParamException;
-use yii\web\BadRequestHttpException;
-use yii\web\Controller;
-use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
 use common\models\LoginForm;
+use common\models\User;
+use frontend\models\ContactForm;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
-use frontend\models\SignupForm;
-use frontend\models\ContactForm;
+use Yii;
+use yii\base\InvalidParamException;
+use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
+use yii\web\BadRequestHttpException;
+use yii\web\Controller;
 
 /**
  * Site controller
@@ -73,13 +72,14 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        if (!Yii::$app->user->isGuest){
+        if (!Yii::$app->user->isGuest) {
             return $this->render('app');
         }
 
         $model = new LoginForm();
 
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
+            Yii::$app->session->addFlash("info", Yii::t('app', 'Welcome back'), true);
             return $this->goBack();
         } else {
             return $this->render('index', [
@@ -102,6 +102,7 @@ class SiteController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
+
             return $this->goBack();
         } else {
             return $this->render('login', [

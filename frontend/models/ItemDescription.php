@@ -49,7 +49,7 @@ class ItemDescription extends \yii\db\ActiveRecord
         return [
             [['accessory_of', 'sale', 'created_by', 'updated_by', 'item_id'], 'integer'],
             [['acquisition_price', 'sell_price', 'rent_price'], 'number'],
-            [['item_id'], 'required'],
+            [['item_id', 'serial_number'], 'required'],
             [['created_at', 'updated_at'], 'safe'],
             [['serial_number'], 'string', 'max' => 255],
             [['accessory_of'], 'exist', 'skipOnError' => true, 'targetClass' => ItemDescription::className(), 'targetAttribute' => ['accessory_of' => 'id']],

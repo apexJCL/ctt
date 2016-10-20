@@ -44,7 +44,12 @@ $this->params['breadcrumbs'][] = $this->title;
                         'name',
                         [
                             'class' => kartik\grid\ActionColumn::className(),
-                            'header' => Yii::t('app', 'Actions')
+                            'header' => Yii::t('app', 'Actions'),
+                            'visibleButtons' => [
+                                'view' => false,
+                                'edit' => Yii::$app->user->identity->canI('editBrand'),
+                                'delete' => Yii::$app->user->identity->canI('deleteBrand')
+                            ],
                         ],
                     ],
                     'pjax' => true,

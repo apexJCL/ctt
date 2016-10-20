@@ -69,7 +69,7 @@ class CategoryController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
             'permissions' => [
-                'view' => UserHelper::canUser('view', $this->id),
+                'view' => false,
                 'update' => UserHelper::canUser('update', $this->id),
                 'delete' => UserHelper::canUser('delete', $this->id),
             ]
@@ -98,7 +98,8 @@ class CategoryController extends Controller
         $model = new Category();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            Yii::$app->session->addFlash("info", Yii::t('app', "Category created successfully"));
+            return $this->redirect(['index']);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -117,7 +118,8 @@ class CategoryController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            Yii::$app->session->addFlash("info", Yii::t('app', "Category updated successfully"));
+            return $this->redirect(['index']);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -133,7 +135,8 @@ class CategoryController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        if ($this->findModel($id)->delete() > 0)
+            Yii::$app->session->addFlash("info", Yii::t('app', "Category deleted successfully"));
 
         return $this->redirect(['index']);
     }
