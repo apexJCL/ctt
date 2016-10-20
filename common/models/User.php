@@ -282,7 +282,9 @@ class User extends ActiveRecord implements IdentityInterface
     {
         if (!empty($this->profilePicture) && isset($this->profilePicture)) {
             $this->deletePicture();
-            return $this->profilePicture->saveAs(Yii::getAlias('@common') . '/users/' . $this->username . '.' . $this->profilePicture->extension);
+            return $this->profilePicture->saveAs(
+                'img' . DIRECTORY_SEPARATOR . 'users' . DIRECTORY_SEPARATOR .
+                $this->username . '.' . $this->profilePicture->extension);
         } else return false;
     }
 
@@ -291,9 +293,9 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function getProfilePicture()
     {
-        $baseUrl = 'img/users/' . $this->username;
-        return file_exists($baseUrl . self::JPG) ? '/' . $baseUrl . self::JPG : (
-        file_exists($baseUrl . self::PNG) ? '/' . $baseUrl . self::PNG : '/img/default_avatar.jpg'
+        $baseUrl = 'img' . DIRECTORY_SEPARATOR . 'users' . DIRECTORY_SEPARATOR . $this->username;
+        return file_exists($baseUrl . self::JPG) ? DIRECTORY_SEPARATOR . $baseUrl . self::JPG : (
+        file_exists($baseUrl . self::PNG) ? DIRECTORY_SEPARATOR . $baseUrl . self::PNG : '/img/default_avatar.jpg'
         );
     }
 
@@ -305,7 +307,9 @@ class User extends ActiveRecord implements IdentityInterface
 
     public function deletePicture()
     {
-        $baseUrl = Yii::getAlias('@common') . DIRECTORY_SEPARATOR . 'users' . DIRECTORY_SEPARATOR . $this->username;
+        $baseUrl =
+            'img' . DIRECTORY_SEPARATOR . 'users' . DIRECTORY_SEPARATOR .
+            $this->username . '.';
         if (file_exists($baseUrl . self::JPG))
             return unlink($baseUrl . self::JPG);
         elseif (file_exists($baseUrl . self::PNG))
