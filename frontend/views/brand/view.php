@@ -12,7 +12,9 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Brands'), 'url' => [
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div>
-    <?= $this->render('//layouts/_section_header') ?>
+    <?= $this->render('//layouts/_section_header', [
+        'photoUrl' => '/img/sections/brand/banner.jpg'
+    ]) ?>
     <div class="section grey greedy lighten-4 fab-container greedy">
         <?= $this->render('//layouts/_fab', [
             'buttons' => [

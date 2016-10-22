@@ -8,7 +8,9 @@ $this->title = Yii::t('app', 'Update {modelClass}: ', [
     ]) . $model->name;
 ?>
 
-<?= $this->render('//layouts/_section_header') ?>
+<?= $this->render('//layouts/_section_header',[
+    'photoUrl' => '/img/sections/brand/banner.jpg'
+]) ?>
 <div class="container-fluid grey lighten-4 greedy">
     <div class="container">
         <?= $this->render('_form', [

@@ -12,7 +12,9 @@ $this->title = Yii::t('app', 'Items');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div>
-    <?= $this->render('//layouts/_section_header') ?>
+    <?= $this->render('//layouts/_section_header', [
+        'photoUrl' => '/img/sections/item/banner.jpg'
+    ]) ?>
     <div class="container-fluid padding-top-20 grey lighten-5 fab-container greedy">
         <?=
         $this->render('//layouts/_fab', [
@@ -57,7 +59,10 @@ $this->params['breadcrumbs'][] = $this->title;
                             return $data->brand->name;
                         }
                     ],
-                    ['class' => 'yii\grid\ActionColumn'],
+                    [
+                        'class' => 'kartik\grid\ActionColumn',
+                        'visibleButtons' => $permissions
+                    ],
                 ],
                 'pjax' => true,
                 'export' => false

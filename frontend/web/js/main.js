@@ -4,7 +4,7 @@ $(document).ready(function () {
 
     if (flash_info != null) {
         flash_info.forEach(function (entry) {
-            Materialize.toast(entry, 5000, 'blue');
+            Materialize.toast(entry, 2000, 'blue increase-font--50');
         });
     }
 });

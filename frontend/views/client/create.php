@@ -10,7 +10,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div>
     <?= $this->render('//layouts/_section_header', [
-        'photoUrl' => '/img/background.jpg',
+        'photoUrl' => '/img/sections/clients/banner.jpg',
         'titleColor' => 'white'
     ]) ?>
     <!-- Actual Form -->

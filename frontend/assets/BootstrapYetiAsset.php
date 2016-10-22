@@ -20,6 +20,7 @@ class BootstrapYetiAsset extends AssetBundle
         ]
     ];
     public $css = [
-        'bootstrap.min.css'
+        'bootstrap.min.css',
+        'bootstrap-dialog.min.css'
     ];
 }

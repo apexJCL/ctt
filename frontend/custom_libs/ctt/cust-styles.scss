@@ -2,7 +2,7 @@
 $background-img-blur-intensity: 1px;
 $background-img-opacity: 0.5;
 $profile-img-radius: 96px;
-$static-viewport-height: 350px;
+$static-viewport-height: 300px;
 $mute_value: 30%;
 
 /** Fonts **/
@@ -94,7 +94,7 @@ FAB Button Style
   top: -30px;
   right: 20px;
   max-height: 48px;
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 1024px) {
     position: fixed;
     top: auto;
     bottom: 25px;
@@ -172,6 +172,9 @@ New display
 */
 
 .static-display {
+  @media only screen and (max-width: 1024px){
+    display: none;
+  }
   &__background {
     min-width: 100%;
     max-height: $static-viewport-height;
@@ -247,6 +250,9 @@ New display
 
 .static-display--viewport {
   min-height: $static-viewport-height;
+  @media only screen and (max-width: 1024px){
+    display: none;
+  }
 }
 
 .loading-overlay {
@@ -318,7 +324,7 @@ New display
   img {
     position: absolute;
     right: 2%;
-    bottom: 165px;
+    bottom: 190px;
   }
   @media only screen and (max-width: 1333px) {
     display: none;
@@ -478,4 +484,15 @@ footer.page-footer {
 
 .bg-white-transparent {
   background-color: rgba(255, 255, 255, 0.40);
+}
+
+.increase-font{
+  &--50{
+    font-size: 1.5rem;
+  }
+}
+
+.useful-bar{
+  background-color: black;
+  border-bottom: 1px solid white;
 }

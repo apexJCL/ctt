@@ -10,7 +10,9 @@ use yii\helpers\Url;
 $this->title = Yii::t('app', 'Brands');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<?= $this->render('//layouts/_section_header') ?>
+<?= $this->render('//layouts/_section_header',[
+    'photoUrl' => '/img/sections/brand/banner.jpg'
+]) ?>
 <div class="container-fluid greedy grey lighten-4 fab-container padding-top-30 padding-bottom-30">
     <?= $this->render('//layouts/_fab', [
         'buttons' => [

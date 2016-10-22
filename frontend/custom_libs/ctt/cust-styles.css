@@ -67,7 +67,7 @@ FAB Button Style
   top: -30px;
   right: 20px;
   max-height: 48px; }
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 1024px) {
     .main-fab {
       position: fixed;
       top: auto;
@@ -117,9 +117,12 @@ FAB Button Style
 /*
 New display
 */
+@media only screen and (max-width: 1024px) {
+  .static-display {
+    display: none; } }
 .static-display__background {
   min-width: 100%;
-  max-height: 350px;
+  max-height: 300px;
   position: fixed;
   z-index: -3;
   left: 50%;
@@ -171,15 +174,18 @@ New display
   position: relative;
   float: left;
   display: flex;
-  min-height: 350px; }
+  min-height: 300px; }
   .static-display__foreground--brand-logo img {
-    max-height: 350px;
+    max-height: 300px;
     padding: 10px; }
   .static-display__foreground--brand-logo .row {
-    min-height: 350px; }
+    min-height: 300px; }
 
 .static-display--viewport {
-  min-height: 350px; }
+  min-height: 300px; }
+  @media only screen and (max-width: 1024px) {
+    .static-display--viewport {
+      display: none; } }
 
 .loading-overlay {
   display: none;
@@ -240,7 +246,7 @@ New display
   .footer-tag img {
     position: absolute;
     right: 2%;
-    bottom: 165px; }
+    bottom: 190px; }
   @media only screen and (max-width: 1333px) {
     .footer-tag {
       display: none; } }
@@ -331,5 +337,12 @@ footer.page-footer {
 
 .bg-white-transparent {
   background-color: rgba(255, 255, 255, 0.4); }
+
+.increase-font--50 {
+  font-size: 1.5rem; }
+
+.useful-bar {
+  background-color: black;
+  border-bottom: 1px solid white; }
 
 /*# sourceMappingURL=cust-styles.css.map */

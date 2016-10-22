@@ -10,10 +10,6 @@ use yii\helpers\Url;
 
 ?>
 
-<div class="col-sm-s12 col-md-12 col-lg-12">
-    <?= Html::a(
-        Html::tag('i', 'chevron_left', ['class' => 'mdi']) . Yii::t('app', 'Back'),
-        Url::to(['index']),
-        ['class' => 'btn-flat btn waves-effect'])
-    ?>
+<div class="col-sm-12">
+    <?= Html::a(Html::tag('i', null, ['class' => 'mdi mdi-keyboard-arrow-left']), Url::to(['index']), ['class' => 'btn-floating light-blue']) ?>
 </div>

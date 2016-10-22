@@ -15,7 +15,7 @@ $this->registerJsFile('/js/views/client.js', [
 ]);
 ?>
 <?= $this->render('//layouts/_section_header', [
-    'photoUrl' => '/img/background.jpg',
+    'photoUrl' => '/img/sections/clients/banner.jpg',
     'titleColor' => 'white'
 ]) ?>
 <div class="container-fluid padding-bottom-50 greedy-horizontal-500 grey lighten-4 fab-container">

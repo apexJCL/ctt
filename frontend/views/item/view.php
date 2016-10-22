@@ -17,7 +17,9 @@ use yii\widgets\DetailView;
 $this->title = $model->name;
 ?>
     <div>
-        <?= $this->render('//layouts/_section_header') ?>
+        <?= $this->render('//layouts/_section_header', [
+            'photoUrl' => '/img/sections/item/banner.jpg'
+        ]) ?>
         <div class="container-fluid greedy grey lighten-4 fab-container">
             <?= $this->render('//layouts/_fab', [
                 'buttons' => [
@@ -55,6 +57,7 @@ $this->title = $model->name;
             ]) ?>
             <div class="container">
                 <div class="row">
+                    <?= $this->render('//layouts/_back_button') ?>
                     <div class="col-sm-12 col-md-12 col-lg-12">
                         <div class="row">
                             <div class="col-sm-12 col-md-12 col-lg-12">
@@ -123,16 +126,6 @@ $this->title = $model->name;
                                         ],
                                         [
                                             'class' => kartik\grid\ActionColumn::className(),
-                                            'urlCreator' => function ($action, $model, $key, $index) {
-                                                switch ($action) {
-                                                    case "view":
-                                                        return null;
-                                                    case "update":
-                                                        return Url::to(['item-description/update', 'id' => $model->id]);
-                                                    case "delete":
-                                                        return Url::to(['item-description/delete', 'id' => $model->id]);
-                                                }
-                                            },
                                             'visibleButtons' => $permissions,
 
                                         ]
@@ -146,6 +139,7 @@ $this->title = $model->name;
                                     Url::to(['item-description/create', 'item_id' => $model->id]),
                                     ['class' => 'btn btn-primary waves-effect right']) ?>
                             </div>
+                            <?= $this->render('//layouts/_back_button') ?>
                         </div>
                     </div>
                 </div>

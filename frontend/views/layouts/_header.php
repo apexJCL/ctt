@@ -4,6 +4,22 @@ use yii\helpers\Url;
 /* @var $this \yii\web\View */
 ?>
 
+<div class="useful-bar">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5">
+                <a class=""
+                   href="<?= Url::to(['site/index']) ?>" style="text-decoration: none">
+                    <h1 class="white-text"><?= Yii::t('app', 'Sistema de Gestión Integral') ?></h1>
+                </a>
+
+            </div>
+            <div class="col-lg-1 col-lg-offset-6">
+                <h1 class="raleway-bold white-text">SGI</h1>
+            </div>
+        </div>
+    </div>
+</div>
 <nav class="navbar navbar-inverse raleway">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -15,7 +31,6 @@ use yii\helpers\Url;
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand text-primary" href="<?= Url::to(['site/index']) ?>">CTT EXP & RENTALS</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
