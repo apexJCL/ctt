@@ -246,7 +246,7 @@ New display
   .footer-tag img {
     position: absolute;
     right: 2%;
-    bottom: 190px; }
+    bottom: 160px; }
   @media only screen and (max-width: 1333px) {
     .footer-tag {
       display: none; } }

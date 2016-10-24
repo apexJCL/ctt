@@ -20,40 +20,38 @@ $this->title = 'CTTExp :: WebApp';
 </div>
 
 <div class="container-fluid primary-overlay padding-top-50 padding-bottom-50 greedy-vh">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12 col-md-4 col-lg-3 col-lg-offset-3">
-                <img src="/img/logo.png" alt="" class="responsive-img">
-            </div>
-            <div class="col-sm-12 col-md-8 col-lg-3">
-                <div class="row">
-                    <div class="col-sm-12 col-md-12 col-lg-12">
-                        <?= Yii::$app->user->isGuest ? '<h1 class="raleway-light white-text">' . Yii::t("app", "Login") . '</h1>' : '' ?>
-                    </div>
-                    <?php $form = ActiveForm::begin([
-                        'id' => 'login-form'
-                    ]); ?>
-                    <div class="col-sm-12 col-md-6 col-lg-12">
-                        <?= $form->field($model, 'username')->textInput(['autofocus' => false])->label(Yii::t('app', 'username'), [
-                            'class' => 'white-text'
-                        ]) ?>
-                    </div>
-                    <div class="col-sm-12 col-md-6 col-lg-12">
-                        <?= $form->field($model, 'password')->passwordInput()->label(Yii::t('app', 'password'), [
-                            'class' => 'white-text'
-                        ]) ?>
-                    </div>
-                    <div class="col-sm-12 col-md-6 col-lg-12">
-                        <?= $form->field($model, 'rememberMe')->checkbox()->label(Yii::t('app', 'Remember Me'), [
-                            'class' => 'white-text'
-                        ]) ?>
-                    </div>
-
-                    <div class="modal-footer">
-                        <?= Html::submitButton(Yii::t('app', 'Accept'), ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
-                    </div>
-                    <?php ActiveForm::end(); ?>
+    <div class="row">
+        <div class="col-sm-12 col-md-4 col-lg-3">
+            <img src="/img/logo.png" alt="" class="responsive-img">
+        </div>
+        <div class="col-sm-12 col-md-8 col-lg-3">
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <?= Yii::$app->user->isGuest ? '<h1 class="raleway-light white-text">' . Yii::t("app", "Login") . '</h1>' : '' ?>
                 </div>
+                <?php $form = ActiveForm::begin([
+                    'id' => 'login-form'
+                ]); ?>
+                <div class="col-sm-12 col-md-6 col-lg-12">
+                    <?= $form->field($model, 'username')->textInput(['autofocus' => false])->label(Yii::t('app', 'username'), [
+                        'class' => 'white-text'
+                    ]) ?>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-12">
+                    <?= $form->field($model, 'password')->passwordInput()->label(Yii::t('app', 'password'), [
+                        'class' => 'white-text'
+                    ]) ?>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-12">
+                    <?= $form->field($model, 'rememberMe')->checkbox()->label(Yii::t('app', 'Remember Me'), [
+                        'class' => 'white-text'
+                    ]) ?>
+                </div>
+
+                <div class="modal-footer">
+                    <?= Html::submitButton(Yii::t('app', 'Accept'), ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+                </div>
+                <?php ActiveForm::end(); ?>
             </div>
         </div>
     </div>
