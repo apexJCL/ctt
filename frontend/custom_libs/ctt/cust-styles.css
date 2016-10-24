@@ -297,6 +297,8 @@ footer.page-footer {
 
 .greedy {
   min-height: 100%; }
+  .greedy-vh {
+    min-height: 75vh; }
   .greedy-vertical-300 {
     min-height: 300px; }
   .greedy-vertical-400 {

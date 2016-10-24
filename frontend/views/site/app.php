@@ -13,7 +13,7 @@
     </video>
 </div>
 
-<div class="primary-overlay padding-top-50 padding-bottom-50">
+<div class="primary-overlay padding-top-50 padding-bottom-50 greedy-vh">
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-4 col-lg-3">

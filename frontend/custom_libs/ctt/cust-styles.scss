@@ -411,6 +411,9 @@ footer.page-footer {
 
 .greedy {
   min-height: 100%;
+  &-vh {
+    min-height: 75vh;
+  }
   &-vertical {
     &-300 {
       min-height: 300px;
