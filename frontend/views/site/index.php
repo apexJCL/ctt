@@ -22,10 +22,10 @@ $this->title = 'CTTExp :: WebApp';
 <div class="container-fluid primary-overlay padding-top-50 padding-bottom-50">
     <div class="container">
         <div class="row">
-            <div class="col-sm-12 col-md-4 col-lg-4 col-lg-offset-1">
+            <div class="col-sm-12 col-md-4 col-lg-3">
                 <img src="/img/logo.png" alt="" class="responsive-img">
             </div>
-            <div class="col-sm-12 col-md-8 col-lg-5">
+            <div class="col-sm-12 col-md-8 col-lg-6">
                 <div class="row">
                     <div class="col-sm-12 col-md-12 col-lg-12">
                         <?= Yii::$app->user->isGuest ? '<h1 class="raleway-light white-text">' . Yii::t("app", "Login") . '</h1>' : '' ?>
