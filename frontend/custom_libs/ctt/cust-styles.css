@@ -295,12 +295,14 @@ footer.page-footer {
 .navbar-inverse {
   background-color: rgba(20, 52, 77, 0.6); }
 
-.greedy-vertical-300 {
-  min-height: 300px; }
-.greedy-vertical-400 {
-  min-height: 400px; }
-.greedy-vertical-500 {
-  min-height: 500px; }
+.greedy {
+  min-height: 100%; }
+  .greedy-vertical-300 {
+    min-height: 300px; }
+  .greedy-vertical-400 {
+    min-height: 400px; }
+  .greedy-vertical-500 {
+    min-height: 500px; }
 
 .padding-top-20 {
   padding-top: 20px; }

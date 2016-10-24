@@ -4,7 +4,7 @@
 <!--Footer-->
 <footer class="page-footer grey darken-4 center-on-small-only raleway white-text">
     <!--Footer Links-->
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
 
             <!--First column-->
