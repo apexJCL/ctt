@@ -4,6 +4,7 @@
 /* @var $content string */
 
 use backend\assets\AppAsset;
+use backend\assets\FontAwesomeAsset;
 use frontend\assets\BootstrapYetiAsset;
 use frontend\assets\MaterializeCSSAsset;
 use kartik\base\PluginAssetBundle;
@@ -17,6 +18,7 @@ PluginAssetBundle::register($this);
 //BootstrapCyborgAsset::register($this);
 //BootstrapPaperAsset::register($this);
 BootstrapYetiAsset::register($this);
+FontAwesomeAsset::register($this);
 
 $this->beginPage();
 ?>
