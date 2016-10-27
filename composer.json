@@ -34,7 +34,8 @@
     "bower-asset/jquery": ">=2.2",
     "bower-asset/bootstrap-sass": ">=3.0",
     "bower-asset/sprintf": "*",
-    "kartik-v/yii2-checkbox-x": "^1.0"
+    "kartik-v/yii2-checkbox-x": "^1.0",
+    "components/font-awesome": "*"
   },
   "require-dev": {
     "yiisoft/yii2-codeception": "*",

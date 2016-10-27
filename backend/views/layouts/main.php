@@ -39,19 +39,11 @@ $this->beginPage();
 </head>
 <body>
 <?php $this->beginBody() ?>
-
-<div id="wrapper">
-    <div class="overlay"></div>
-    <div id="page-content-wrapper">
-        <?= $this->render('_header') ?>
-        <main>
-            <div class="container-fluid no-padding no-margin">
-                <?= $content ?>
-            </div>
-        </main>
-        <?= $this->render('@frontend/views/layouts/_footer') ?>
-    </div>
-</div>
+<?= $this->render('_header') ?>
+<main>
+    <?= $content ?>
+</main>
+<?= $this->render('@frontend/views/layouts/_footer') ?>
 <?php $this->endBody() ?>
 </body>
 </html>
