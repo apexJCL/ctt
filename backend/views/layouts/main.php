@@ -4,8 +4,10 @@
 /* @var $content string */
 
 use backend\assets\AppAsset;
+use backend\assets\CommonAssets;
 use backend\assets\FontAwesomeAsset;
 use frontend\assets\BootstrapYetiAsset;
+use frontend\assets\CTTAppAsset;
 use frontend\assets\MaterializeCSSAsset;
 use kartik\base\PluginAssetBundle;
 use yii\helpers\Html;
@@ -18,6 +20,8 @@ PluginAssetBundle::register($this);
 //BootstrapCyborgAsset::register($this);
 //BootstrapPaperAsset::register($this);
 BootstrapYetiAsset::register($this);
+CommonAssets::register($this);
+CTTAppAsset::register($this);
 FontAwesomeAsset::register($this);
 
 $this->beginPage();

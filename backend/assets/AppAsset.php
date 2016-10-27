@@ -18,8 +18,6 @@ class AppAsset extends AssetBundle
         'js/main.js'
     ];
     public $depends = [
-        'yii\web\YiiAsset',
-        'backend\assets\CommonAssets',
-        'frontend\assets\CTTAppAsset'
+        'yii\web\YiiAsset'
     ];
 }
