@@ -17,14 +17,8 @@ AppAsset::register($this);
 PluginAssetBundle::register($this);
 MaterializeCSSAsset::register($this);
 BootstrapYetiAsset::register($this);
-<<<<<<< HEAD
-CommonAssets::register($this);
-CTTAppAsset::register($this);
-FontAwesomeAsset::register($this);
-=======
 CTTAppAsset::register($this);
 SprintfAsset::register($this);
->>>>>>> backend_final
 
 $this->beginPage();
 ?>
@@ -47,13 +41,6 @@ $this->beginPage();
 </head>
 <body>
 <?php $this->beginBody() ?>
-<<<<<<< HEAD
-<?= $this->render('_header') ?>
-<main>
-    <?= $content ?>
-</main>
-<?= $this->render('@frontend/views/layouts/_footer') ?>
-=======
 
 <?= $this->render('_header') ?>
 
@@ -63,7 +50,6 @@ $this->beginPage();
 
 <?= $this->render('@frontend/views/layouts/_footer') ?>
 
->>>>>>> backend_final
 <?php $this->endBody() ?>
 </body>
 </html>
