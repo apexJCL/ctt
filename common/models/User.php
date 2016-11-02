@@ -293,7 +293,18 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function getProfilePicture()
     {
-        $baseUrl = 'img' . DIRECTORY_SEPARATOR . 'users' . DIRECTORY_SEPARATOR . $this->username;
+        return $this->getProfilePictureByUsername($this->username);
+    }
+
+    /**
+     * Returns picture URL for the username specified
+     *
+     * @param $username
+     * @return string
+     */
+    public function getProfilePictureByUsername($username)
+    {
+        $baseUrl = 'img' . DIRECTORY_SEPARATOR . 'users' . DIRECTORY_SEPARATOR . $username;
         return file_exists($baseUrl . self::JPG) ? DIRECTORY_SEPARATOR . $baseUrl . self::JPG : (
         file_exists($baseUrl . self::PNG) ? DIRECTORY_SEPARATOR . $baseUrl . self::PNG : '/img/default_avatar.jpg'
         );

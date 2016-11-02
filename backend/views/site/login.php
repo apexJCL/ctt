@@ -14,10 +14,17 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="section white-text">
     <div class="container">
         <div class="row">
+<<<<<<< HEAD
             <div class="col-lg-3 col-lg-offset-1 hide-on-med-and-down">
                 <img src="/img/logo.png" alt="" class="responsive-img">
             </div>
             <div class="col-sm-12 col-lg-6">
+=======
+            <div class="col-lg-4 col-sm-12 hide-on-med-and-down">
+                <img src="/img/logo.png" alt="" class="responsive-img">
+            </div>
+            <div class="col-sm-12 col-lg-8">
+>>>>>>> backend_final
                 <div class="col-sm-12 z-depth-1">
                     <h1 class="no-margin"><?= Html::encode($this->title) ?></h1>
                     <p><?= Yii::t('app', 'Please login before continue') ?></p>

@@ -27,8 +27,8 @@
             </div>
 
             <div class="col-md-4 text-right">
-                <h5 class="title">© 2016 by TSR Development Software</h5>
-                <p>Powered by Yii2</p>
+                <p class="flow-text">© 2016 by TSR Development Software</p>
+                <p class="flow-text">Powered by Yii2</p>
             </div>
                 <!--/.Second column-->
         </div>

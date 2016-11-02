@@ -9,20 +9,22 @@ use backend\assets\FontAwesomeAsset;
 use frontend\assets\BootstrapYetiAsset;
 use frontend\assets\CTTAppAsset;
 use frontend\assets\MaterializeCSSAsset;
+use frontend\assets\SprintfAsset;
 use kartik\base\PluginAssetBundle;
 use yii\helpers\Html;
 
 AppAsset::register($this);
-// For quick background-color support
-MaterializeCSSAsset::register($this);
-// Loads bootstrap and bootstrap.js
 PluginAssetBundle::register($this);
-//BootstrapCyborgAsset::register($this);
-//BootstrapPaperAsset::register($this);
+MaterializeCSSAsset::register($this);
 BootstrapYetiAsset::register($this);
+<<<<<<< HEAD
 CommonAssets::register($this);
 CTTAppAsset::register($this);
 FontAwesomeAsset::register($this);
+=======
+CTTAppAsset::register($this);
+SprintfAsset::register($this);
+>>>>>>> backend_final
 
 $this->beginPage();
 ?>
@@ -45,11 +47,23 @@ $this->beginPage();
 </head>
 <body>
 <?php $this->beginBody() ?>
+<<<<<<< HEAD
 <?= $this->render('_header') ?>
 <main>
     <?= $content ?>
 </main>
 <?= $this->render('@frontend/views/layouts/_footer') ?>
+=======
+
+<?= $this->render('_header') ?>
+
+<main>
+    <?= $content ?>
+</main>
+
+<?= $this->render('@frontend/views/layouts/_footer') ?>
+
+>>>>>>> backend_final
 <?php $this->endBody() ?>
 </body>
 </html>
