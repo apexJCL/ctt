@@ -35,11 +35,7 @@
     "bower-asset/bootstrap-sass": ">=3.0",
     "bower-asset/sprintf": "*",
     "kartik-v/yii2-checkbox-x": "^1.0",
-<<<<<<< HEAD
     "components/font-awesome": "*"
-=======
-    "yiister/yii2-gentelella": "~1.0"
->>>>>>> backend_final
   },
   "require-dev": {
     "codeception/codeception": "*",
