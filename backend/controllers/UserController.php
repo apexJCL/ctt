@@ -2,14 +2,13 @@
 
 namespace backend\controllers;
 
-use frontend\models\SignupForm;
-use Yii;
 use common\models\User;
 use common\models\UserSearch;
+use Yii;
 use yii\data\ArrayDataProvider;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
 
 /**
@@ -24,8 +23,14 @@ class UserController extends Controller
     {
         return [
             'access' => [
-                'class' =>  \yii\filters\AccessControl::className(),
+                'class' => \yii\filters\AccessControl::className(),
                 'rules' => [
+                    [
+                        'allow' => true,
+                        'actions' => ['details'],
+                        'verbs' => ['POST'],
+                        'roles' => ['root', 'viewUser']
+                    ],
                     [
                         'allow' => true,
                         'roles' => ['@']
@@ -137,7 +142,7 @@ class UserController extends Controller
         if ($model && $model->load(Yii::$app->request->post()) && $model->manageRoles(array_values(Yii::$app->request->post()['User']['roles'])))
             return $this->redirect(['view', 'id' => $model->id]);
         else
-            return $this->render('roles',[
+            return $this->render('roles', [
                 'model' => $model,
             ]);
     }
@@ -156,5 +161,17 @@ class UserController extends Controller
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
+    }
+
+    public function actionDetails()
+    {
+        $user = User::find()->where(['id' => Yii::$app->request->post("expandRowKey")])->one();
+        $roleProvider = new ArrayDataProvider([
+            'allModels' => $user->getChildren()
+        ]);
+        return $this->renderPartial('_details', [
+            'model' => $user,
+            'roleProvider' => $roleProvider
+        ]);
     }
 }

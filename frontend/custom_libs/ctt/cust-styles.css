@@ -275,6 +275,9 @@ div.userView {
 footer.page-footer {
   margin-top: 0px; }
 
+.footer {
+  margin-top: 0px; }
+
 .btn-group.open .dropdown-toggle {
   -webkit-box-shadow: none;
   box-shadow: none; }

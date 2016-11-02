@@ -5,18 +5,18 @@
 
 use backend\assets\AppAsset;
 use frontend\assets\BootstrapYetiAsset;
+use frontend\assets\CTTAppAsset;
 use frontend\assets\MaterializeCSSAsset;
+use frontend\assets\SprintfAsset;
 use kartik\base\PluginAssetBundle;
 use yii\helpers\Html;
 
 AppAsset::register($this);
-// For quick background-color support
-//MaterializeCSSAsset::register($this);
-// Loads bootstrap and bootstrap.js
-//PluginAssetBundle::register($this);
-//BootstrapCyborgAsset::register($this);
-//BootstrapPaperAsset::register($this);
-//BootstrapYetiAsset::register($this);
+PluginAssetBundle::register($this);
+MaterializeCSSAsset::register($this);
+BootstrapYetiAsset::register($this);
+CTTAppAsset::register($this);
+SprintfAsset::register($this);
 
 $this->beginPage();
 ?>
@@ -40,18 +40,14 @@ $this->beginPage();
 <body>
 <?php $this->beginBody() ?>
 
-<div id="wrapper">
-    <div class="overlay"></div>
-    <div id="page-content-wrapper">
-        <?= $this->render('_header') ?>
-        <main>
-            <div class="container-fluid no-padding no-margin">
-                <?= $content ?>
-            </div>
-        </main>
-        <?= $this->render('@frontend/views/layouts/_footer') ?>
-    </div>
-</div>
+<?= $this->render('_header') ?>
+
+<main>
+    <?= $content ?>
+</main>
+
+<?= $this->render('@frontend/views/layouts/_footer') ?>
+
 <?php $this->endBody() ?>
 </body>
 </html>
