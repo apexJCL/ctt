@@ -35,7 +35,8 @@
     "bower-asset/bootstrap-sass": ">=3.0",
     "bower-asset/sprintf": "*",
     "kartik-v/yii2-checkbox-x": "^1.0",
-    "components/font-awesome": "*"
+    "components/font-awesome": "*",
+    "bower-asset/fullcalendar": "*"
   },
   "require-dev": {
     "codeception/codeception": "*",

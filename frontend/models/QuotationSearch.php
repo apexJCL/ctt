@@ -1,16 +1,16 @@
 <?php
 
-namespace common\models;
+namespace frontend\models;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\Client;
+use frontend\models\Quotation;
 
 /**
- * ClientSearch represents the model behind the search form about `common\models\Client`.
+ * QuotationSearch represents the model behind the search form about `frontend\models\Quotation`.
  */
-class ClientSearch extends Client
+class QuotationSearch extends Quotation
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class ClientSearch extends Client
     public function rules()
     {
         return [
-            [['id'], 'integer'],
-            [['nombre', 'apellido_paterno', 'apellido_materno', 'email'], 'safe'],
+            [['id', 'project_id'], 'integer'],
+            [['fecha'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class ClientSearch extends Client
      */
     public function search($params)
     {
-        $query = Client::find();
+        $query = Quotation::find();
 
         // add conditions that should always apply here
 
@@ -60,12 +60,9 @@ class ClientSearch extends Client
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'project_id' => $this->project_id,
+            'fecha' => $this->fecha,
         ]);
-
-        $query->andFilterWhere(['like', 'nombre', $this->nombre])
-            ->andFilterWhere(['like', 'apellido_paterno', $this->apellido_paterno])
-            ->andFilterWhere(['like', 'apellido_materno', $this->apellido_materno])
-            ->andFilterWhere(['like', 'email', $this->email]);
 
         return $dataProvider;
     }
