@@ -2,7 +2,6 @@
 
 namespace frontend\models;
 
-use common\models\Client;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 

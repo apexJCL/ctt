@@ -1,7 +1,5 @@
 <?php
 
-use yii\helpers\Html;
-
 
 /* @var $this yii\web\View */
 /* @var $model frontend\models\Project */
@@ -16,6 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-sm-12">
             <?= $this->render('_form', [
                 'model' => $model,
+                'data' => $data
             ]) ?>
         </div>
     </div>

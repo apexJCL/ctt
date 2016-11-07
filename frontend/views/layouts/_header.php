@@ -35,14 +35,22 @@ use yii\helpers\Url;
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <!-- Links -->
                 <?=
-                $this->render('_link_render', [
-                    'url' => ['client/index'],
-                    'text' => Yii::t('app', 'Clients'),
-                    'permission' => 'indexClient',
-                    'link_options' => [
-                        'class' => 'text-primary'
+                $this->render('_dropdown_menu', [
+                    'title' => Yii::t('app', 'Business'),
+                    'id' => 'businessDropdown',
+                    'loginRequired' => true,
+                    'links' => [
+                        [
+                            'url' => ['client/index'],
+                            'title' => Yii::t('app', 'Clients'),
+                            'permission' => 'indexClient'
+                        ],
+                        [
+                            'title' => Yii::t('app', 'Projects'),
+                            'permission' => 'indexProjects',
+                            'url' => Url::to(['project/index'])
+                        ]
                     ]
                 ])
                 ?>

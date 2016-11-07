@@ -8,24 +8,18 @@
  *
  */
 use frontend\assets\FullCalendarAsset;
-use yii\bootstrap\Html;
+use yii\helpers\Url;
 use yii\web\View;
 
 FullCalendarAsset::register($this);
 
-class Button
-{
-    var $text;
-    var $click;
-}
-
-$increaseHeight = new Button();
-$increaseHeight->text = Html::tag('i', null, ['class' => 'mdi mdi-add']);
-$increaseHeight->click = "function(){alert('hello');}";
+$eventUrl = Url::to(['project/calendar-fetch']);
 
 $script = /* @lang  JavaScript */
     <<<SCRIPT
-   $('#calendar').fullCalendar({
+    var clndr = $('#calendar'); 
+    
+   clndr.fullCalendar({
         weekends: true,
         header: {
             left: 'incrementHeight',
@@ -33,12 +27,14 @@ $script = /* @lang  JavaScript */
             right: 'today prev,next'
         },
         height: "auto",
-        customButtons: {
-            incrementHeight: {
-                text: '$increaseHeight->text',
-                click: $increaseHeight->click
+        eventSources: [
+            {
+                url: '$eventUrl',
+                success:  function(data) {
+                  console.debug(data);
+                }
             }
-        }
+        ]  
     });
 SCRIPT;
 $this->registerJs($script, View::POS_READY);

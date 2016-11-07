@@ -46,12 +46,12 @@ if ($loginRequired)
                             isset($link['options']) ? $link['options'] : null
                         )
                     );
-                elseif (Yii::$app->user->identity->canI($link['permission']) || !isset($link['permission'])) // If login is required and has permission (if requested)
+                elseif (isset($link['permission']) && Yii::$app->user->identity->canI($link['permission'])) // If login is required and has permission (if requested)
                     echo Html::tag(
                         'li',
                         Html::a(
-                            $link['title'],
-                            $link['url'],
+                            isset($link['title']) ? $link['title'] : 'Title goes here',
+                            isset($link['url']) ? $link['url'] : '#',
                             isset($link['options']) ? $link['options'] : null
                         )
                     );

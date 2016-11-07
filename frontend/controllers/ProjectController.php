@@ -4,6 +4,7 @@ namespace frontend\controllers;
 
 use frontend\models\Project;
 use frontend\models\ProjectSearch;
+use frontend\models\ProjectStatus;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
@@ -24,8 +25,9 @@ class ProjectController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
+                    'calendar-fetch' => ['POST', 'GET']
                 ],
-            ],
+            ]
         ];
     }
 
@@ -61,6 +63,13 @@ class ProjectController extends Controller
         return $this->render('calendar');
     }
 
+    public function actionCalendarFetch($start, $end)
+    {
+        $projects = Project::getRange(\Yii::$app->request->get('start'), \Yii::$app->request->get('end'));
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        return $projects;
+    }
+
     /**
      * Creates a new Project model.
      * If creation is successful, the browser will be redirected to the 'view' page.
@@ -75,6 +84,7 @@ class ProjectController extends Controller
         } else {
             return $this->render('create', [
                 'model' => $model,
+                'data' => ProjectStatus::dropdown()
             ]);
         }
     }

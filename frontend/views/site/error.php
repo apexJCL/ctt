@@ -5,12 +5,12 @@
 /* @var $message string */
 /* @var $exception Exception */
 
-use yii\helpers\Html;
-
 $this->title = $name;
 ?>
 <div class="section black greedy">
     <div class="container">
-        <h1 class="white-text">404</h1>
+        <div class="row col-sm-12"><?= $name ?></div>
+        <div class="row col-sm-12"><?= $message ?></div>
+        <div class="row col-sm-12"><?= $exception ?></div>
     </div>
 </div>

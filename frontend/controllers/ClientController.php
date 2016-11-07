@@ -4,8 +4,8 @@ namespace frontend\controllers;
 
 use common\helpers\RBACHelper;
 use common\models\Bitacora;
-use common\models\Client;
-use common\models\ClientSearch;
+use frontend\models\Client;
+use frontend\models\ClientSearch;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
