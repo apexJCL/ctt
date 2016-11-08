@@ -25,7 +25,13 @@ class ProjectStatus extends \yii\db\ActiveRecord
 
     public static function dropdown()
     {
-        return self::find()->select(['id', 'descripcion', 'color'])->asArray()->all();
+        $status = self::find()->all();
+        $r = [];
+        /* @var $s ProjectStatus */
+        foreach ($status as $s) {
+            $r[$s->id] = $s->descripcion;
+        }
+        return $r;
     }
 
     /**

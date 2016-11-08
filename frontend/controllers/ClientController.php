@@ -27,6 +27,10 @@ class ClientController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
+                        'actions' => ['list']
+                    ],
+                    [
+                        'allow' => true,
                         'actions' => ['details'],
                         'verbs' => ['POST'],
                         'roles' => ['root', 'viewClient']
@@ -56,6 +60,13 @@ class ClientController extends Controller
         return $this->renderPartial('_details', [
             'model' => $client
         ]);
+    }
+
+    public function actionList($q = null, $id = null)
+    {
+        $clients = Client::findList($q, $id);
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        return $clients;
     }
 
     /**

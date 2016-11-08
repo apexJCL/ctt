@@ -29,6 +29,11 @@ class Project extends \yii\db\ActiveRecord
         return 'project';
     }
 
+    public static function fetchProject($id)
+    {
+        return self::find()->where(['id' => $id])->one();
+    }
+
     /**
      * @inheritdoc
      */

@@ -6,6 +6,7 @@ use Yii;
 use yii\behaviors\AttributeBehavior;
 use yii\db\ActiveRecord;
 use yii\db\Expression;
+use yii\db\Query;
 use yii\web\UploadedFile;
 
 /**
@@ -33,6 +34,24 @@ class Client extends \yii\db\ActiveRecord
     public static function tableName()
     {
         return 'client';
+    }
+
+    public static function findList($q, $id)
+    {
+        $out = ['results' => ['id' => '', 'text' => '']];
+        if (!is_null($q)) {
+            $query = new Query;
+            $query->select('id, nombre AS text')
+                ->from(self::tableName())
+                ->where(['like', 'nombre', $q])
+                ->limit(20);
+            $command = $query->createCommand();
+            $data = $command->queryAll();
+            $out['results'] = array_values($data);
+        } elseif ($id > 0) {
+            $out['results'] = ['id' => $id, 'text' => self::findById($id)->name];
+        }
+        return $out;
     }
 
     /**

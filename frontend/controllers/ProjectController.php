@@ -9,6 +9,7 @@ use Yii;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\web\Response;
 
 /**
  * ProjectController implements the CRUD actions for Project model.
@@ -25,7 +26,8 @@ class ProjectController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
-                    'calendar-fetch' => ['POST', 'GET']
+                    'calendar-fetch' => ['POST', 'GET'],
+                    'details' => ['GET']
                 ],
             ]
         ];
@@ -63,10 +65,17 @@ class ProjectController extends Controller
         return $this->render('calendar');
     }
 
+    public function actionDetails($id)
+    {
+        $project = Project::fetchProject($id);
+        \Yii::$app->response->format = Response::FORMAT_JSON;
+        return ['object' => $project, 'content' => $this->renderPartial('_details', ['model' => $project])];
+    }
+
     public function actionCalendarFetch($start, $end)
     {
         $projects = Project::getRange(\Yii::$app->request->get('start'), \Yii::$app->request->get('end'));
-        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        \Yii::$app->response->format = Response::FORMAT_JSON;
         return $projects;
     }
 
@@ -104,6 +113,7 @@ class ProjectController extends Controller
         } else {
             return $this->render('update', [
                 'model' => $model,
+                'data' => ProjectStatus::dropdown()
             ]);
         }
     }
