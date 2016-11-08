@@ -6,6 +6,7 @@
 use frontend\assets\AppAsset;
 use frontend\assets\BootstrapYetiAsset;
 use frontend\assets\CTTAppAsset;
+use frontend\assets\JQueryFabAsset;
 use frontend\assets\MaterializeCSSAsset;
 use frontend\assets\SprintfAsset;
 use kartik\base\PluginAssetBundle;
@@ -17,6 +18,7 @@ PluginAssetBundle::register($this);
 BootstrapYetiAsset::register($this);
 CTTAppAsset::register($this);
 SprintfAsset::register($this);
+JQueryFabAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>

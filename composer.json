@@ -31,7 +31,7 @@
     "kartik-v/yii2-detail-view": "@dev",
     "kartik-v/yii2-widgets": "*",
     "bower-asset/materialize": "*",
-    "bower-asset/jquery": ">=2.2",
+    "bower-asset/jquery": "~2",
     "bower-asset/bootstrap-sass": ">=3.0",
     "bower-asset/sprintf": "*",
     "kartik-v/yii2-checkbox-x": "^1.0",

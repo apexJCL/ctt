@@ -9,6 +9,7 @@
  */
 use frontend\assets\FullCalendarAsset;
 use frontend\assets\FullCalendarMaterialAsset;
+use yii\bootstrap\Html;
 use yii\helpers\Url;
 use yii\web\View;
 
@@ -78,15 +79,31 @@ $script = /* @lang JavaScript */
 SCRIPT;
 
 $this->registerJs($script, View::POS_READY);
-
-
 ?>
-
 <div class="container-fluid padding-bottom-50">
+    <?= $this->render('//layouts/_jfab', [
+        'links' => [
+            [
+                "bgcolor" => "#2196F3",
+                "icon" => Html::tag('i', null, ['class' => 'mdi mdi-add'])
+            ],
+            [
+                "url" => Url::to(['site/index']),
+                "bgcolor" => "#03A9F4",
+                "color" => "#ffffff",
+                "icon" => Html::tag('i', null, ['class' => 'fa fa-pencil']),
+                "target" => "_blank"
+            ]
+        ],
+        'options' => [
+            'rotate' => 'false'
+        ]
+    ]) ?>
     <div class="container">
         <div id='calendar'></div>
     </div>
 </div>
+
 <!-- Modal Structure -->
 <div id="projectModal" class="modal">
     <h2 id="projectTitle"></h2>
