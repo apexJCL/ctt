@@ -32,7 +32,7 @@ function (calEvent, jsEvent, view) {
         var mdl = $('#projectModal');
         mdl.find('#projectTitle').html(data.object.nombre);
         mdl.find('#content').html(data.content);
-        mdl.modal('open');
+        mdl.modal('toggle');
     });
 }
 JS;
@@ -50,7 +50,6 @@ $script = /* @lang JavaScript */
     <<<SCRIPT
     var clndr = $('#calendar');
     var projectModal = $('#projectModal');
-    $('.modal').modal();
     
    clndr.fullCalendar({
         weekends: true,
@@ -91,7 +90,7 @@ $this->registerJs($script, View::POS_READY);
                 "url" => Url::to(['site/index']),
                 "bgcolor" => "#03A9F4",
                 "color" => "#ffffff",
-                "icon" => Html::tag('i', null, ['class' => 'fa fa-pencil']),
+                "icon" => Html::tag('i', null, ['class' => 'mdi mdi-trash']),
                 "target" => "_blank"
             ]
         ],
@@ -103,10 +102,21 @@ $this->registerJs($script, View::POS_READY);
         <div id='calendar'></div>
     </div>
 </div>
-
-<!-- Modal Structure -->
-<div id="projectModal" class="modal">
-    <h2 id="projectTitle"></h2>
-    <hr>
-    <div id="content"></div>
+<!-- Modal -->
+<div class="modal fade" id="projectModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="projectTitle">Modal title</h4>
+            </div>
+            <div class="modal-body" id="content">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
 </div>

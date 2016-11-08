@@ -1,3 +1,11 @@
+bin
 components
+dist
+extras
+fonts
 js
+sass
+templates
+test
+tests
 materialize.css.map

@@ -9,14 +9,13 @@
  */
 ?>
 
-<div class="container">
-    <?= \kartik\detail\DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'nombre',
-            'lugar',
-            'fecha_inicio',
-            'fecha_fin'
-        ]
-    ]) ?>
-</div>
+
+<?= \kartik\detail\DetailView::widget([
+    'model' => $model,
+    'attributes' => [
+        'nombre',
+        'lugar',
+        'fecha_inicio',
+        'fecha_fin'
+    ]
+]) ?>
